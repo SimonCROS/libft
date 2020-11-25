@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 11:24:58 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 11:49:18 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/25 11:06:20 by scros             #+#    #+#             */
+/*   Updated: 2020/11/25 12:01:16 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t i;
+	char *str;
 
-	if (!dst || !src)
+	if (!s)
 		return (0);
-	i = 0;
-	while (i < dstsize - 1 && src[i])
-	{
-		if (dstsize > 0)
-			dst[i] = src[i];
-		i++;
-	}
-	if (dstsize > 0)
-		dst[i] = 0;
-	while (src[i])
-		i++;
-	return (i);
+	if (start >= ft_strlen(s))
+		len = 0;
+	if (!(str = malloc(len + 1)))
+		return (0);
+	ft_memcpy(str, s + start, len);
+	str[len] = 0;
+	return (str);
 }

@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 11:24:58 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 11:49:18 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/23 11:02:33 by scros             #+#    #+#             */
+/*   Updated: 2020/11/25 10:59:18 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t i;
-
-	if (!dst || !src)
-		return (0);
-	i = 0;
-	while (i < dstsize - 1 && src[i])
-	{
-		if (dstsize > 0)
-			dst[i] = src[i];
-		i++;
-	}
-	if (dstsize > 0)
-		dst[i] = 0;
-	while (src[i])
-		i++;
-	return (i);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 11:24:58 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 11:49:18 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/25 11:52:00 by scros             #+#    #+#             */
+/*   Updated: 2020/11/25 11:57:04 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t i;
+	unsigned char *str;
 
-	if (!dst || !src)
-		return (0);
-	i = 0;
-	while (i < dstsize - 1 && src[i])
-	{
-		if (dstsize > 0)
-			dst[i] = src[i];
-		i++;
-	}
-	if (dstsize > 0)
-		dst[i] = 0;
-	while (src[i])
-		i++;
-	return (i);
+	str = b;
+	while (len--)
+		*(str++) = c;
+	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 16:21:17 by scros             #+#    #+#             */
-/*   Updated: 2020/11/24 18:09:00 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 11:56:17 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char *str;
-
-	str = s;
-	while (n--)
-		*(str++) = 0;
+	ft_memset(s, 0, n);
 }

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 16:23:49 by scros             #+#    #+#             */
-/*   Updated: 2020/11/24 18:15:07 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 12:00:28 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	sstr = (unsigned char*)src;
 	dstr = dst;
 	if (!dst && !src)
-		return (dst);
+		return (0);
 	while (i < n)
 	{
 		dstr[i] = sstr[i];
