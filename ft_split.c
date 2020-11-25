@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:12:45 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 12:00:58 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 12:33:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ char		**ft_split(const char *s, char c)
 	char	**output;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	max = ft_init((char*)s, c) + 1;
 	lens = ft_init_lens((char*)s, c, max, &starts);
 	if (!(output = malloc(max * sizeof(*output))))
-		return (0);
+		return (NULL);
 	if (max > 1)
 		ft_fill((char*)s, output, lens, starts);
 	else

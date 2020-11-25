@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 16:23:49 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 12:31:14 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
+/*   Updated: 2020/11/25 15:26:11 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+static long int	ft_numlen(long int n)
 {
-	size_t			i;
-	unsigned char	*sstr;
-	unsigned char	*dstr;
+	if (n < 0)
+		return (1 + ft_numlen(n * -1));
+	if (n < 10)
+		return (1);
+	return (1 + ft_numlen(n / 10));
+}
 
-	i = 0;
-	sstr = (unsigned char*)src;
-	dstr = dst;
-	if (!dst && !src)
+char			*ft_itoa(int n)
+{
+	long int	len;
+	long int	nbr;
+	char		*str;
+
+	nbr = n;
+	len = ft_numlen(nbr) + 1;
+	if (!(str = malloc(len)))
 		return (NULL);
-	while (i < n)
+	if (n < 0)
+		nbr *= -1;
+	str[--len] = 0;
+	while (1)
 	{
-		dstr[i] = sstr[i];
-		++i;
+		str[--len] = (nbr % 10) + '0';
+		if (!nbr)
+			break ;
+		nbr /= 10;
 	}
-	return (dst);
+	if (n < 0)
+		str[0] = '-';
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:06:20 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 12:01:16 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 12:34:19 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	char *str;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	if (start >= ft_strlen(s))
 		len = 0;
 	if (!(str = malloc(len + 1)))
-		return (0);
+		return (NULL);
 	ft_memcpy(str, s + start, len);
 	str[len] = 0;
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 17:57:55 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 12:00:39 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 12:31:23 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (cp);
 		++cp;
 	}
-	return (0);
+	return (NULL);
 }

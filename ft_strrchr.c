@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 12:13:44 by scros             #+#    #+#             */
-/*   Updated: 2020/11/24 16:20:15 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 12:34:11 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	if (cp[i] == c)
 		return (cp + i);
-	return (0);
+	return (NULL);
 }

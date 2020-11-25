@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 13:32:07 by scros             #+#    #+#             */
-/*   Updated: 2020/11/24 09:36:52 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 12:34:05 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	poi = (char*)haystack;
 	nlen = ft_strlen(needle);
 	if (nlen > ft_strlen(haystack))
-		return (0);
+		return (NULL);
 	max = len - nlen;
 	if (max > len)
 		max = len;
@@ -33,5 +33,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			return (poi + i);
 		++i;
 	}
-	return (0);
+	return (NULL);
 }
