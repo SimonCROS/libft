@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/11/26 09:24:50 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/11/26 10:32:11 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,17 +23,19 @@ ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJS		= $(SRCS:.c=.o)
 OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 
+HEADERS		= libft.h
+
 NAME		= libft.a
 
 CC			= gcc
 RM			= rm -f
 
-CFLAGS		= -Wall -Wextra -Werror 
+CFLAGS		= -Wall -Wextra -Werror
 
 all:		$(NAME)
 
-.c.o:
-			$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c	$(HEADERS)
+			$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			ar rc $(NAME) $(OBJS)
