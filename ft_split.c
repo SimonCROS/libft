@@ -6,15 +6,15 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:12:45 by scros             #+#    #+#             */
-/*   Updated: 2020/11/26 18:02:04 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/27 10:21:54 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*free_all(char **obj)
+static void	*free_all(char **obj, int len)
 {
-	while (*obj)
+	while (len--)
 	{
 		free(*obj);
 		obj++;
@@ -59,7 +59,7 @@ char		**ft_split(const char *s, char c)
 		if (newstr - s)
 		{
 			if (!(output[i] = ft_substr(s, 0, newstr - s)))
-				return (free_all(output));
+				return (free_all(output, i));
 			s = newstr;
 			i++;
 		}
