@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:12:45 by scros             #+#    #+#             */
-/*   Updated: 2020/11/27 10:21:54 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/30 09:07:16 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static int	ft_init(const char *s, char c)
 	int j;
 
 	i = 0;
-	if (s[0] == c)
-		j = -1;
+	j = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] != c)
-			i++;
-		++j;
 		while (s[i] && s[i] == c)
+			i++;
+		if (s[0])
+			++j;
+		while (s[i] && s[i] != c)
 			i++;
 	}
 	return (j);

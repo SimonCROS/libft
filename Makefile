@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/11/26 10:32:11 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/11/30 09:34:07 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CFLAGS		= -Wall -Wextra -Werror
 all:		$(NAME)
 
 %.o: %.c	$(HEADERS)
-			$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			ar rc $(NAME) $(OBJS)
