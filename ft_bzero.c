@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 16:21:17 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 19:10:00 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/11/30 10:40:42 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@ void	ft_bzero(void *s, size_t n)
 
 	while (n)
 	{
-		if (n >= sizeof(__int128_t))
+		if (n >= sizeof(long))
 		{
-			cur = sizeof(__int128_t);
-			*((__int128_t*)s) = 0;
-		}
-		else if (n >= sizeof(long long))
-		{
-			cur = sizeof(long long);
-			*((long long*)s) = 0;
+			cur = sizeof(long);
+			*((long*)s) = 0;
 		}
 		else
 		{
