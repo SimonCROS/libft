@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/07 14:56:10 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/07 18:07:57 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,29 +105,60 @@ RM			= rm -rf
 
 CFLAGS		= -Wall -Wextra -Werror
 
+bar			= 0
+compteur	= 0
+count		= $(words $(SRCS))
+
 all:		$(NAME)
 
-compteur = 0
-count =	$(words $(SRCS))
+ball:		bar $(NAME)
+			
+bar:
+			$(eval bar=1)
 
 $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval compteur=$(shell echo $$(($(compteur)+1))))
 			@tabs 6
-			@echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_PURPLE)$@$(_RESET)"
+			@if [ $(bar) -eq 0 ]; then \
+				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)"; \
+			else \
+				str="\r$(_IGREEN)"; \
+				for ((i=0; i < $$(($(compteur)*50/$(count))); i++)) do \
+					str+=" "; \
+				done; \
+				str+="$(_IWHITE)"; \
+				for ((i=0; i < 50 - $$(($(compteur)*50/$(count))); i++)) do \
+					str+=" "; \
+				done; \
+				str+="$(_RESET) $(_PURPLE)$$(($(compteur)*100/$(count)))% $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@               	"; \
+				str+="$(_RESET)\c"; \
+				echo "$$str"; \
+			fi
+
 			@mkdir -p $(dir $@)
 			@$(CC) $(CFLAGS) -c -o $@ $< -I $(INC)
 
-$(NAME):	$(OBJS) $(HEADERS)
+$(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
 			@ar rc $(NAME) $(OBJS)
 
+pre_compile:
+			@echo "$(_BOLD)$(_CYAN)Compiling...$(_RESET)"
+			@echo "\n"
+
+post_compile:
+			@echo "\n"
+			@echo "$(_RED)Finished !$(_RESET)"
+
 clean:
-			@echo "$(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)"
+			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@echo "$(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)"
+			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
 			@$(RM) $(NAME)
 
 re:			fclean all
 
-.PHONY:		all bonus clean fclean re
+bre:		fclean ball
+
+.PHONY:		all ball bar pre_compile post_compile clean fclean re bre
