@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/07 18:43:50 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/08 15:32:04 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,15 +43,30 @@ INC			= includes
 CONV_SRCS	=	ft_atoi.c			\
 				ft_itoa.c
 
-LIST_SRCS	=	ft_lstadd_back.c	\
-				ft_lstadd_front.c	\
-				ft_lstclear.c		\
-				ft_lstdelone.c		\
-				ft_lstiter.c		\
-				ft_lstlast.c		\
-				ft_lstmap.c			\
-				ft_lstnew.c			\
-				ft_lstsize.c
+LIST_SRCS	=	ft_lst_add_all.c	\
+				ft_lst_clear.c		\
+				ft_lst_destroy.c	\
+				ft_lst_foreach.c	\
+				ft_lst_get_entry.c	\
+				ft_lst_is_empty.c	\
+				ft_lst_last.c		\
+				ft_lst_new.c		\
+				ft_lst_pop.c		\
+				ft_lst_set.c		\
+				ft_lst_size.c		\
+				ft_lst_splice.c		\
+				ft_lst_concat.c		\
+				ft_lst_get.c		\
+				ft_lst_insert.c		\
+				ft_lst_last_entry.c	\
+				ft_lst_new_entry.c	\
+				ft_lst_push.c		\
+				ft_lst_shift.c		\
+				ft_lst_slice.c		\
+				ft_lst_unshift.c
+
+MATH_SRCS	=	ft_min.c			\
+				ft_max.c
 
 MEMORY_SRCS	=	ft_bzero.c			\
 				ft_calloc.c			\
@@ -107,6 +122,7 @@ CFLAGS		= -Wall -Wextra -Werror
 
 bar			= 0
 compteur	= 0
+compile		= 0
 count		= $(words $(SRCS))
 
 all:		$(NAME)
@@ -118,8 +134,8 @@ bar:
 
 $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval compteur=$(shell echo $$(($(compteur)+1))))
-			@tabs 6
-			@if [ $(bar) -eq 0 ]; then \
+			@tabs 6; \
+			if [ $(bar) -eq 0 ]; then \
 				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
 			else \
 				str="\r$(_IGREEN)"; \
@@ -133,12 +149,12 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 				str+="$(_RESET) $(_PURPLE)$$(($(compteur)*100/$(count)))% $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@               	"; \
 				str+="$(_RESET)\c"; \
 				echo "$$str"; \
-			fi
-			@mkdir -p $(dir $@)
-			@$(CC) $(CFLAGS) -c -o $@ $< -I $(INC)
-			@if [ $(bar) -eq 0 ]; then \
+			fi; \
+			mkdir -p $(dir $@); \
+			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
+			if [ $(bar) -eq 0 ]; then \
 				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
-			fi
+			fi;
 
 $(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
 			@ar rc $(NAME) $(OBJS)
