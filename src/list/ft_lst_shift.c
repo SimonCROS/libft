@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 14:34:27 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 17:21:27 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	*ft_lst_shift(t_list *list)
 
 	if (ft_lst_is_empty(list))
 		return (NULL);
-	first = list->first;
+	first = ft_lst_shift_entry(list);
 	value = first->value;
-	list->first = first->next;
 	free(first);
-	--(list->size);
 	return (value);
 }

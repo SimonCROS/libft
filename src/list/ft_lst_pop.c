@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 14:53:32 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 17:34:30 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	*ft_lst_pop(t_list *list)
 {
+	t_entry **last_pointer;
 	t_entry *last;
 	void	*value;
 
 	if (ft_lst_is_empty(list))
 		return (NULL);
 	last = list->first;
-	if (!last->next)
-		list->first = NULL;
+	last_pointer = &(list->first);
 	while (last->next)
 	{
-		if (!last->next->next)
-			last->next = NULL;
+		last_pointer = &(last->next);
 		last = last->next;
 	}
 	value = last->value;
 	free(last);
+	*last_pointer = NULL;
 	--(list->size);
 	return (value);
 }

@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 14:54:33 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 17:17:09 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *list)
+int	ft_lst_size(t_list *list)
 {
 	t_entry	*entry;
 	int		i;

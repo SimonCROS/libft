@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/08 15:32:04 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/08 15:43:13 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -165,7 +165,7 @@ pre_compile:
 
 post_compile:
 			@echo "\n"
-			@echo "$(_RED)Finished !$(_RESET)"
+			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(compteur)$(_RESET) files compiled)$(_RESET)"
 
 clean:
 			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"

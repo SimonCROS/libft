@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 13:59:58 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 17:12:16 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_list	*ft_lst_new(t_list_delete delete)
 		return (NULL);
 	list->delete = delete;
 	list->size = 0;
+	list->first = NULL;
 	return (list);
 }

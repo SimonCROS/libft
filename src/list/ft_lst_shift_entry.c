@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lst_shift_entry.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 15:45:28 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 16:48:34 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2020/12/08 17:20:26 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	*ft_lst_shift_entry(t_list *list)
 {
-	t_list *element;
+	t_entry *first;
 
-	if (!(element = malloc(sizeof(*element))))
+	if (ft_lst_is_empty(list))
 		return (NULL);
-	element->content = content;
-	element->next = NULL;
-	return (element);
+	first = list->first;
+	list->first = first->next;
+	--(list->size);
+	return (first);
 }
