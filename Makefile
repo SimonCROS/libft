@@ -140,11 +140,13 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
 			else \
 				str="\r$(_IGREEN)"; \
-				for ((i=0; i < $$(($(compteur)*50/$(count))); i++)) do \
+				for i in {1...$$(($(compteur)*50/$(count)))}; \
+				do \
 					str+=" "; \
 				done; \
 				str+="$(_IWHITE)"; \
-				for ((i=0; i < 50 - $$(($(compteur)*50/$(count))); i++)) do \
+				for i in {1...$$((50-($(compteur)*50/$(count))))}; \
+				do \
 					str+=" "; \
 				done; \
 				str+="$(_RESET) $(_PURPLE)$$(($(compteur)*100/$(count)))% $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@               	"; \
