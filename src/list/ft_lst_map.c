@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_entry.c                                 :+:      :+:    :+:   */
+/*   ft_lst_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 14:08:54 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 10:19:48 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2020/12/10 11:08:55 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_entry	*ft_lst_new_entry(void *value)
+t_list		*ft_lst_map(t_list *list, t_function mapper)
 {
 	t_entry	*entry;
+	t_list	*copy;
 
-	if (!(entry = malloc(sizeof(t_entry))))
+	if (!(copy = ft_lst_new(list->delete)))
 		return (NULL);
-	entry->value = value;
-	entry->next = NULL;
-	return (entry);
+	if (ft_lst_is_empty(list))
+		return (copy);
+	entry = list->first;
+	ft_lst_push(copy, mapper(entry->value));
+	while (entry->next)
+	{
+		entry = entry->next;
+		ft_lst_push(copy, mapper(entry->value));
+	}
+	return (copy);
 }

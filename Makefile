@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/10 09:19:28 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/10 09:54:05 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,11 @@ LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_new.c		\
 				ft_lst_pop.c		\
 				ft_lst_set.c		\
+				ft_lst_copy.c		\
 				ft_lst_size.c		\
+				ft_lst_map.c		\
 				ft_lst_splice.c		\
+				ft_lst_reduce.c		\
 				ft_lst_concat.c		\
 				ft_lst_shift_entry.c\
 				ft_lst_get.c		\
@@ -104,11 +107,14 @@ STRING_SRCS	=	ft_isalnum.c		\
 				ft_tolower.c		\
 				ft_toupper.c
 
+UTIL_SRCS	=	ft_identity.c
+
 SRCS		=	$(addprefix convert/, $(CONV_SRCS))	\
 				$(addprefix list/, $(LIST_SRCS))	\
 				$(addprefix memory/, $(MEMORY_SRCS))\
 				$(addprefix print/, $(PRINT_SRCS))	\
 				$(addprefix string/, $(STRING_SRCS))\
+				$(addprefix util/, $(UTIL_SRCS))\
 
 OBJS		= $(addprefix $(BIN)/, $(SRCS:.c=.o))
 
@@ -140,9 +146,11 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
 			else \
 				str="\r$(_IGREEN)"; \
-				for i in $$(seq 1 $$(($(compteur)*50/$(count)))); do \
-					str+=" "; \
-				done; \
+				if [ $$(($(compteur)*50/$(count))) -gt 0 ]; then \
+					for i in $$(seq 1 $$(($(compteur)*50/$(count)))); do \
+						str+=" "; \
+					done; \
+				fi; \
 				str+="$(_IWHITE)"; \
 				if [ $$((50 - ($(compteur)*50/$(count)))) -gt 0 ]; then \
 					for i in $$(seq 1 $$((50 - ($(compteur)*50/$(count))))); do \

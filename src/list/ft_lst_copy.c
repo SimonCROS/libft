@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_entry.c                                 :+:      :+:    :+:   */
+/*   ft_lst_copy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 14:08:54 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 10:19:48 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2020/12/10 09:52:05 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_entry	*ft_lst_new_entry(void *value)
+t_list		*ft_lst_copy(t_list *list)
 {
-	t_entry	*entry;
-
-	if (!(entry = malloc(sizeof(t_entry))))
-		return (NULL);
-	entry->value = value;
-	entry->next = NULL;
-	return (entry);
+	return (ft_lst_map(list, ft_identity()));
 }

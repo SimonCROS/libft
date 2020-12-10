@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 14:56:22 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 11:09:04 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_lst_push(t_list *list, void *element)
 {
 	t_entry *entry;
 
+	if (!list)
+		return (0);
 	if (!(entry = ft_lst_new_entry(element)))
 		return (list->size);
 	if (ft_lst_is_empty(list))
