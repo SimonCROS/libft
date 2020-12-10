@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/08 17:57:13 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/10 09:19:28 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,13 +56,13 @@ LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_size.c		\
 				ft_lst_splice.c		\
 				ft_lst_concat.c		\
+				ft_lst_shift_entry.c\
 				ft_lst_get.c		\
 				ft_lst_insert.c		\
 				ft_lst_last_entry.c	\
 				ft_lst_new_entry.c	\
 				ft_lst_push.c		\
 				ft_lst_shift.c		\
-				ft_lst_shift_entry.c\
 				ft_lst_slice.c		\
 				ft_lst_unshift.c
 
@@ -140,15 +140,15 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
 			else \
 				str="\r$(_IGREEN)"; \
-				for i in {1...$$(($(compteur)*50/$(count)))}; \
-				do \
+				for i in $$(seq 1 $$(($(compteur)*50/$(count)))); do \
 					str+=" "; \
 				done; \
 				str+="$(_IWHITE)"; \
-				for i in {1...$$((50-($(compteur)*50/$(count))))}; \
-				do \
-					str+=" "; \
-				done; \
+				if [ $$((50 - ($(compteur)*50/$(count)))) -gt 0 ]; then \
+					for i in $$(seq 1 $$((50 - ($(compteur)*50/$(count))))); do \
+						str+=" "; \
+					done; \
+				fi; \
 				str+="$(_RESET) $(_PURPLE)$$(($(compteur)*100/$(count)))% $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@               	"; \
 				str+="$(_RESET)\c"; \
 				echo "$$str"; \
