@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_entry.c                                 :+:      :+:    :+:   */
+/*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 14:08:54 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 10:19:48 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
+/*   Updated: 2020/12/10 11:27:54 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef TYPES_H
+# define TYPES_H
 
-t_entry	*ft_lst_new_entry(void *value)
+typedef void		*(*t_function)(void *);
+typedef void		*(*t_bifunction)(void *, void *);
+typedef void		(*t_consumer)(void *);
+
+typedef struct		s_entry
 {
-	t_entry	*entry;
+	void			*value;
+	struct s_entry	*next;
+}					t_entry;
 
-	if (!(entry = malloc(sizeof(t_entry))))
-		return (NULL);
-	entry->value = value;
-	entry->next = NULL;
-	return (entry);
-}
+typedef struct		s_list
+{
+	t_consumer		delete;
+	struct s_entry	*first;
+	int				size;
+}					t_list;
+
+#endif

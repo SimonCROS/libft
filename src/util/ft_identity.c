@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_entry.c                                 :+:      :+:    :+:   */
+/*   ft_identity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 14:08:54 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 10:19:48 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/10 09:46:13 by scros             #+#    #+#             */
+/*   Updated: 2020/12/10 09:55:14 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_entry	*ft_lst_new_entry(void *value)
+static void		*ft_identity_funct(void *input)
 {
-	t_entry	*entry;
+	return (input);
+}
 
-	if (!(entry = malloc(sizeof(t_entry))))
-		return (NULL);
-	entry->value = value;
-	entry->next = NULL;
-	return (entry);
+t_function		ft_identity(void)
+{
+	return (&ft_identity_funct);
 }
