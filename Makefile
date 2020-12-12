@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/10 14:33:31 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/12 15:09:28 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,7 @@ STRING_SRCS	=	ft_isalnum.c		\
 				ft_split.c			\
 				ft_strchr.c			\
 				ft_strdup.c			\
+				ft_strindex_of.c	\
 				ft_strjoin.c		\
 				ft_strlcat.c		\
 				ft_strlcpy.c		\
