@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/10 09:54:05 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/10 14:33:31 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_concat.c		\
 				ft_lst_shift_entry.c\
 				ft_lst_get.c		\
+				ft_lst_remove.c		\
 				ft_lst_insert.c		\
 				ft_lst_last_entry.c	\
 				ft_lst_new_entry.c	\

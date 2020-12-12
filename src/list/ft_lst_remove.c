@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_insert.c                                    :+:      :+:    :+:   */
+/*   ft_lst_remove.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 14:21:50 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 14:12:26 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lst_insert(t_list *list, int index, void *value)
+void	*ft_lst_remove(t_list *list, int index)
 {
-	t_list *new_empty;
+	t_entry **last_pointer;
+	t_entry *last;
+	void	*value;
 
-	if (!(new_empty = ft_lst_splice(list, index, 0, value)))
-		return (list->size);
-	free(new_empty);
-	return (list->size);
+	if (ft_lst_is_empty(list) || index < 0 || index >= list->size)
+		return (NULL);
+	last = list->first;
+	last_pointer = &(list->first);
+	while (index--)
+	{
+		last_pointer = &(last->next);
+		last = last->next;
+	}
+	value = last->value;
+	free(last);
+	*last_pointer = NULL;
+	--(list->size);
+	return (value);
 }

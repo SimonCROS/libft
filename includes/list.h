@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 13:00:46 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 14:33:49 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_list				*ft_lst_new(t_consumer delete);
 t_list				*ft_lst_copy(t_list *list);
 void				*ft_lst_shift_entry(t_list *list);
 void				*ft_lst_set(t_list *list, int index, void *new_value);
+void				*ft_lst_remove(t_list *list, int index);
 void				*ft_lst_get(t_list *list, int index);
 void				*ft_lst_shift(t_list *list);
 void				*ft_lst_last(t_list *list);
