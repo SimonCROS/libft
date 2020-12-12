@@ -144,7 +144,7 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval compteur=$(shell echo $$(($(compteur)+1))))
 			@tabs 6; \
 			if [ $(bar) -eq 0 ]; then \
-				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
+				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)❖$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
 			else \
 				str="\r$(_IGREEN)"; \
 				if [ $$(($(compteur)*50/$(count))) -gt 0 ]; then \
@@ -165,7 +165,7 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
 			if [ $(bar) -eq 0 ]; then \
-				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
+				echo " $(_GREEN)✓$(_RESET)"; \
 			fi;
 
 $(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
@@ -180,11 +180,11 @@ post_compile:
 			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(compteur)$(_RESET) files compiled)$(_RESET)"
 
 clean:
-			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
+			@echo "🗑  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
+			@echo "🗑  $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
 			@$(RM) $(NAME)
 
 re:			fclean all
