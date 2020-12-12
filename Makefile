@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/12 15:09:28 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/12 17:29:06 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,7 @@ UTIL_SRCS	=	ft_identity.c
 
 SRCS		=	$(addprefix convert/, $(CONV_SRCS))	\
 				$(addprefix list/, $(LIST_SRCS))	\
+				$(addprefix math/, $(MATH_SRCS))	\
 				$(addprefix memory/, $(MEMORY_SRCS))\
 				$(addprefix print/, $(PRINT_SRCS))	\
 				$(addprefix string/, $(STRING_SRCS))\
