@@ -39,6 +39,13 @@ _IWHITE		= \033[47m
 BIN			= bin
 SRC			= src
 INC			= includes
+CONV		= convert
+LIST		= list
+MATH		= math
+MEMORY		= memory
+PRINT		= print
+STRING		= string
+UTIL		= util
 
 CONV_SRCS	=	ft_atoi.c			\
 				ft_atoi_len.c		\
@@ -112,17 +119,17 @@ STRING_SRCS	=	ft_isalnum.c		\
 
 UTIL_SRCS	=	ft_identity.c
 
-SRCS		=	$(addprefix convert/, $(CONV_SRCS))	\
-				$(addprefix list/, $(LIST_SRCS))	\
-				$(addprefix math/, $(MATH_SRCS))	\
-				$(addprefix memory/, $(MEMORY_SRCS))\
-				$(addprefix print/, $(PRINT_SRCS))	\
-				$(addprefix string/, $(STRING_SRCS))\
-				$(addprefix util/, $(UTIL_SRCS))\
+SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))	\
+				$(addprefix $(LIST)/, $(LIST_SRCS))	\
+				$(addprefix $(MATH)/, $(MATH_SRCS))	\
+				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))\
+				$(addprefix $(PRINT)/, $(PRINT_SRCS))	\
+				$(addprefix $(STRING)/, $(STRING_SRCS))\
+				$(addprefix $(UTIL)/, $(UTIL_SRCS))\
 
-OBJS		= $(addprefix $(BIN)/, $(SRCS:.c=.o))
+OBJS		=	$(addprefix $(BIN)/, $(SRCS:.c=.o))
 
-HEADERS		= $(addprefix $(INC)/, libft.h)
+HEADERS		=	$(addprefix $(INC)/, libft.h)
 
 NAME		= libft.a
 
@@ -132,37 +139,58 @@ RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
 
 bar			= 0
-compteur	= 0
 compile		= 0
+CONV_COUNTER	= 0
+LIST_COUNTER	= 0
+MATH_COUNTER	= 0
+MEMORY_COUNTER	= 0
+PRINT_COUNTER	= 0
+STRING_COUNTER	= 0
+UTIL_COUNTER	= 0
 count		= $(words $(SRCS))
-
-all:		$(NAME)
-
-ball:		bar $(NAME)
-			
-bar:
-			$(eval bar=1)
-
-$(BIN)/%.o: $(SRC)/%.c $(HEADERS)
-			$(eval compteur=$(shell echo $$(($(compteur)+1))))
-			@tabs 6; \
+compile_code= tabs 6; \
 			if [ $(bar) -eq 0 ]; then \
-				echo "$$(($(compteur)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
+				echo "$$(($(COUNTER)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
 			else \
-				str="\r$(_IGREEN)"; \
-				if [ $$(($(compteur)*50/$(count))) -gt 0 ]; then \
-					for i in $$(seq 1 $$(($(compteur)*50/$(count)))); do \
-						str+=" "; \
+				if [ $$local_compt -gt 1 ]; then \
+					tput cuu1; \
+					tput el; \
+					tput cuu1; \
+					tput el; \
+				else \
+					tput cuu1; \
+					tput el; \
+					echo "\n"; \
+				fi; \
+				if [ $$(($$local_compt*50/$$local_count)) -gt 0 ]; then \
+					for i in $$(seq 1 $$(($$local_compt*50/$$local_count))); do \
+						str="$${str} "; \
 					done; \
 				fi; \
-				str+="$(_IWHITE)"; \
-				if [ $$((50 - ($(compteur)*50/$(count)))) -gt 0 ]; then \
-					for i in $$(seq 1 $$((50 - ($(compteur)*50/$(count))))); do \
-						str+=" "; \
+				str="$${str}$(_IWHITE)"; \
+				if [ $$((50 - ($$local_compt*50/$$local_count))) -gt 0 ]; then \
+					for i in $$(seq 1 $$((50 - ($$local_compt*50/$$local_count)))); do \
+						str="$${str} "; \
 					done; \
 				fi; \
-				str+="$(_RESET) $(_PURPLE)$$(($(compteur)*100/$(count)))% $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@               	"; \
-				str+="$(_RESET)\c"; \
+				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@               	"; \
+				str="$${str}$(_RESET)"; \
+				echo "$$str"; \
+				\
+				str="$(_IGREEN)"; \
+				if [ $$(($(COUNTER)*50/$(count))) -gt 0 ]; then \
+					for i in $$(seq 1 $$(($(COUNTER)*50/$(count)))); do \
+						str="$${str} "; \
+					done; \
+				fi; \
+				str="$${str}$(_IWHITE)"; \
+				if [ $$((50 - ($(COUNTER)*50/$(count)))) -gt 0 ]; then \
+					for i in $$(seq 1 $$((50 - ($(COUNTER)*50/$(count))))); do \
+						str="$${str} "; \
+					done; \
+				fi; \
+				str="$${str}$(_RESET) $(_PURPLE)$$(($(COUNTER)*100/$(count)))% $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@               	"; \
+				str="$${str}$(_RESET)"; \
 				echo "$$str"; \
 			fi; \
 			mkdir -p $(dir $@); \
@@ -171,16 +199,62 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
 			fi;
 
+all:		$(NAME)
+
+ball:		bar $(NAME)
+			
+bar:
+			$(eval bar=1)
+
+$(BIN)/$(CONV)/%.o: $(SRC)/$(CONV)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval CONV_COUNTER=$(shell echo $$(($(CONV_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(CONV_COUNTER); local_count=$(words $(CONV_SRCS)); $(compile_code)
+
+$(BIN)/$(LIST)/%.o: $(SRC)/$(LIST)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval LIST_COUNTER=$(shell echo $$(($(LIST_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(LIST_COUNTER); local_count=$(words $(LIST_SRCS)); $(compile_code)
+
+$(BIN)/$(MATH)/%.o: $(SRC)/$(MATH)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval MATH_COUNTER=$(shell echo $$(($(MATH_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(MATH_COUNTER); local_count=$(words $(MATH_SRCS)); $(compile_code)
+
+$(BIN)/$(MEMORY)/%.o: $(SRC)/$(MEMORY)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval MEMORY_COUNTER=$(shell echo $$(($(MEMORY_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(MEMORY_COUNTER); local_count=$(words $(MEMORY_SRCS)); $(compile_code)
+
+$(BIN)/$(PRINT)/%.o: $(SRC)/$(PRINT)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval PRINT_COUNTER=$(shell echo $$(($(PRINT_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(PRINT_COUNTER); local_count=$(words $(PRINT_SRCS)); $(compile_code)
+
+$(BIN)/$(STRING)/%.o: $(SRC)/$(STRING)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval STRING_COUNTER=$(shell echo $$(($(STRING_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(STRING_COUNTER); local_count=$(words $(STRING_SRCS)); $(compile_code)
+
+$(BIN)/$(UTIL)/%.o: $(SRC)/$(UTIL)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval UTIL_COUNTER=$(shell echo $$(($(UTIL_COUNTER)+1))))
+			@str="$(_IYELLOW)"; local_compt=$(UTIL_COUNTER); local_count=$(words $(UTIL_SRCS)); $(compile_code)
+
+$(BIN)/%.o: $(SRC)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			@str="$(_IGREEN)"; local_compt=0; local_count=0; $(compile_code)
+
 $(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
 			@ar rc $(NAME) $(OBJS)
 
 pre_compile:
 			@echo "$(_BOLD)$(_CYAN)Compiling...$(_RESET)"
-			@echo "\n"
+			@echo "\n\n"
 
 post_compile:
 			@echo "\n"
-			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(compteur)$(_RESET) files compiled)$(_RESET)"
+			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(COUNTER)$(_RESET) files compiled)$(_RESET)"
 
 clean:
 			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
