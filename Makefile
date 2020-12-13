@@ -160,7 +160,6 @@ compile_code= tabs 6; \
 				else \
 					tput cuu1; \
 					tput el; \
-					echo "\n"; \
 				fi; \
 				if [ $$(($$local_compt*50/$$local_count)) -gt 0 ]; then \
 					for i in $$(seq 1 $$(($$local_compt*50/$$local_count))); do \
