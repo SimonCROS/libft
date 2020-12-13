@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/12 17:29:06 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/13 14:54:42 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC			= src
 INC			= includes
 
 CONV_SRCS	=	ft_atoi.c			\
+				ft_atoi_len.c		\
 				ft_itoa.c
 
 LIST_SRCS	=	ft_lst_add_all.c	\
