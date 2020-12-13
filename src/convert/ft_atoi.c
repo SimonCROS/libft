@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 11:26:15 by scros             #+#    #+#             */
-/*   Updated: 2020/12/13 14:55:01 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 15:05:06 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_atoi(const char *str)
 {
-	return (ft_atoi_len(str, NULL));
+	int len;
+
+	return (ft_atoi_len(str, &len));
 }
