@@ -15,7 +15,7 @@
 t_list	*ft_lst_splice(t_list *list, int start, int delete_count, void *value)
 {
 	t_entry	*first;
-	t_entry	*tmp;
+//	t_entry	*tmp;
 	t_list	*copy;
 
 	if (!list || !(copy = ft_lst_new(list->delete)))
@@ -33,7 +33,7 @@ t_list	*ft_lst_splice(t_list *list, int start, int delete_count, void *value)
 		else
 		{
 			first = ft_lst_get_entry(list, start - 1);
-			tmp = first->next;
+//			tmp = first->next;
 			first->next = ft_lst_new_entry(value);
 		}
 	}
