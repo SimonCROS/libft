@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 17:21:38 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:52:19 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_lst_clear(t_list *list)
 		return ;
 	while ((buf = ft_lst_shift_entry(list)))
 	{
-		if (list->delete)
-			list->delete(buf->value);
+		if (list->del)
+			list->del(buf->value);
 		free(buf);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 13:51:26 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 17:47:57 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:53:12 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lst_slice(t_list *list, int start, int end)
 {
 	t_list *copy;
 
-	if (!(copy = ft_lst_new(list->delete)))
+	if (!(copy = ft_lst_new(list->del)))
 		return (NULL);
 	if (start < 0)
 		start += list->size;

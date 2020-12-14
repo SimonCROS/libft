@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2020/12/10 11:27:54 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:52:07 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct		s_entry
 
 typedef struct		s_list
 {
-	t_consumer		delete;
+	t_consumer		del;
 	struct s_entry	*first;
 	int				size;
 }					t_list;

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 15:30:28 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:52:15 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_lst_add_all(t_list *container, t_list *list)
 	t_entry	*last;
 	int		i;
 
-	if (container->delete != list->delete || ft_lst_is_empty(list))
+	if (container->del != list->del || ft_lst_is_empty(list))
 		return (container->size);
 	i = 0;
 	last = ft_lst_last_entry(container);
