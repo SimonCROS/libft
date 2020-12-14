@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2020/12/14 17:45:43 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 19:43:29 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char				**ft_split(const char *s, char c);
 char				*ft_strnstr(const char *hay, const char *need, size_t len);
 char				*ft_substr(const char *s, unsigned int start, size_t len);
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+char				*ft_strinsert(char *dst, const char *src, size_t start);
 char				*ft_strtrim(const char *s1, const char *set);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strrchr(const char *s, int c);
