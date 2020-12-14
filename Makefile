@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/14 10:13:34 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/14 10:48:28 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,12 +166,9 @@ compile_code= tabs 6; \
 				fi; \
 				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_BLUE)Compiling $$name... ($(_YELLOW)$<$(_BLUE))               	"; \
 				str="$${str}$(_RESET)"; \
+				tput cuu1; \
+				tput el; \
 				if [ $$local_compt -gt 1 ]; then \
-					tput cuu1; \
-					tput el; \
-					tput cuu1; \
-					tput el; \
-				else \
 					tput cuu1; \
 					tput el; \
 				fi; \
