@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/13 16:16:54 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/14 10:13:34 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,18 +149,10 @@ STRING_COUNTER	= 0
 UTIL_COUNTER	= 0
 count		= $(words $(SRCS))
 compile_code= tabs 6; \
+			str="$${color}"; \
 			if [ $(bar) -eq 0 ]; then \
 				echo "$$(($(COUNTER)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
 			else \
-				if [ $$local_compt -gt 1 ]; then \
-					tput cuu1; \
-					tput el; \
-					tput cuu1; \
-					tput el; \
-				else \
-					tput cuu1; \
-					tput el; \
-				fi; \
 				if [ $$(($$local_compt*50/$$local_count)) -gt 0 ]; then \
 					for i in $$(seq 1 $$(($$local_compt*50/$$local_count))); do \
 						str="$${str} "; \
@@ -172,8 +164,17 @@ compile_code= tabs 6; \
 						str="$${str} "; \
 					done; \
 				fi; \
-				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@               	"; \
+				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_BLUE)Compiling $$name... ($(_YELLOW)$<$(_BLUE))               	"; \
 				str="$${str}$(_RESET)"; \
+				if [ $$local_compt -gt 1 ]; then \
+					tput cuu1; \
+					tput el; \
+					tput cuu1; \
+					tput el; \
+				else \
+					tput cuu1; \
+					tput el; \
+				fi; \
 				echo "$$str"; \
 				\
 				str="$(_IGREEN)"; \
@@ -188,7 +189,7 @@ compile_code= tabs 6; \
 						str="$${str} "; \
 					done; \
 				fi; \
-				str="$${str}$(_RESET) $(_PURPLE)$$(($(COUNTER)*100/$(count)))% $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@               	"; \
+				str="$${str}$(_RESET) $(_PURPLE)$$(($(COUNTER)*100/$(count)))% $(_BLUE)Compiling..."; \
 				str="$${str}$(_RESET)"; \
 				echo "$$str"; \
 			fi; \
@@ -196,7 +197,30 @@ compile_code= tabs 6; \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
 			if [ $(bar) -eq 0 ]; then \
 				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
-			fi;
+			elif [ $$local_compt -eq $$local_count ]; then \
+				str="$${color}"; \
+				for i in $$(seq 1 $$(($$local_compt*50/$$local_count))); do \
+					str="$${str} "; \
+				done; \
+				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_BLUE)Compiling $$name... $(_GREEN)done$(_BLUE)               	"; \
+				str="$${str}$(_RESET)"; \
+				tput cuu1; \
+				tput cuu1; \
+				tput el; \
+				echo "$$str"; \
+				tput cud1; \
+				if [ $(COUNTER) -eq $(count) ]; then \
+					str="$(_IGREEN)"; \
+					for i in $$(seq 1 $$(($(COUNTER)*50/$(count)))); do \
+						str="$${str} "; \
+					done; \
+					str="$${str}$(_RESET) $(_PURPLE)$$(($(COUNTER)*100/$(count)))% $(_BLUE)Compiling... $(_GREEN)done"; \
+					str="$${str}$(_RESET)"; \
+					tput cuu1; \
+					tput el; \
+					echo "$$str"; \
+				fi; \
+			fi; \
 
 all:		$(NAME)
 
@@ -208,41 +232,41 @@ bar:
 $(BIN)/$(CONV)/%.o: $(SRC)/$(CONV)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval CONV_COUNTER=$(shell echo $$(($(CONV_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(CONV_COUNTER); local_count=$(words $(CONV_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(CONV_COUNTER); local_count=$(words $(CONV_SRCS)); name="converters"; $(compile_code)
 
 $(BIN)/$(LIST)/%.o: $(SRC)/$(LIST)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval LIST_COUNTER=$(shell echo $$(($(LIST_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(LIST_COUNTER); local_count=$(words $(LIST_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(LIST_COUNTER); local_count=$(words $(LIST_SRCS)); name="lists"; $(compile_code)
 
 $(BIN)/$(MATH)/%.o: $(SRC)/$(MATH)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval MATH_COUNTER=$(shell echo $$(($(MATH_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(MATH_COUNTER); local_count=$(words $(MATH_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(MATH_COUNTER); local_count=$(words $(MATH_SRCS)); name="maths"; $(compile_code)
 
 $(BIN)/$(MEMORY)/%.o: $(SRC)/$(MEMORY)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval MEMORY_COUNTER=$(shell echo $$(($(MEMORY_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(MEMORY_COUNTER); local_count=$(words $(MEMORY_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(MEMORY_COUNTER); local_count=$(words $(MEMORY_SRCS)); name="memories"; $(compile_code)
 
 $(BIN)/$(PRINT)/%.o: $(SRC)/$(PRINT)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval PRINT_COUNTER=$(shell echo $$(($(PRINT_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(PRINT_COUNTER); local_count=$(words $(PRINT_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(PRINT_COUNTER); local_count=$(words $(PRINT_SRCS)); name="printers"; $(compile_code)
 
 $(BIN)/$(STRING)/%.o: $(SRC)/$(STRING)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval STRING_COUNTER=$(shell echo $$(($(STRING_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(STRING_COUNTER); local_count=$(words $(STRING_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(STRING_COUNTER); local_count=$(words $(STRING_SRCS)); name="strings"; $(compile_code)
 
 $(BIN)/$(UTIL)/%.o: $(SRC)/$(UTIL)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval UTIL_COUNTER=$(shell echo $$(($(UTIL_COUNTER)+1))))
-			@str="$(_IYELLOW)"; local_compt=$(UTIL_COUNTER); local_count=$(words $(UTIL_SRCS)); $(compile_code)
+			@color="$(_IYELLOW)"; local_compt=$(UTIL_COUNTER); local_count=$(words $(UTIL_SRCS)); name="utils"; $(compile_code)
 
 $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			@str="$(_IGREEN)"; local_compt=0; local_count=0; $(compile_code)
+			@color="$(_IGREEN)"; local_compt=0; local_count=0; name=""; $(compile_code)
 
 $(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
 			@ar rc $(NAME) $(OBJS)
