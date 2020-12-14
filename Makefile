@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/14 12:39:26 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/14 13:24:15 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,13 +121,13 @@ UTIL_SRCS	=	ft_identity.c		\
 				ft_ternary.c
 
 
-SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))	\
-				$(addprefix $(LIST)/, $(LIST_SRCS))	\
-				$(addprefix $(MATH)/, $(MATH_SRCS))	\
-				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))\
+SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))		\
+				$(addprefix $(LIST)/, $(LIST_SRCS))		\
+				$(addprefix $(MATH)/, $(MATH_SRCS))		\
+				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))	\
 				$(addprefix $(PRINT)/, $(PRINT_SRCS))	\
-				$(addprefix $(STRING)/, $(STRING_SRCS))\
-				$(addprefix $(UTIL)/, $(UTIL_SRCS))\
+				$(addprefix $(STRING)/, $(STRING_SRCS))	\
+				$(addprefix $(UTIL)/, $(UTIL_SRCS))		\
 
 OBJS		=	$(addprefix $(BIN)/, $(SRCS:.c=.o))
 
@@ -151,73 +151,33 @@ STRING_COUNTER	= 0
 UTIL_COUNTER	= 0
 count		= $(words $(SRCS))
 compile_code= tabs 6; \
-			str="$${color}"; \
 			if [ $(bar) -eq 0 ]; then \
 				echo "$$(($(COUNTER)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
 			else \
-				if [ $$(($$local_compt*50/$$local_count)) -gt 0 ]; then \
-					for i in $$(seq 1 $$(($$local_compt*50/$$local_count))); do \
-						str="$${str} "; \
-					done; \
-				fi; \
-				str="$${str}$(_IWHITE)"; \
-				if [ $$((50 - ($$local_compt*50/$$local_count))) -gt 0 ]; then \
-					for i in $$(seq 1 $$((50 - ($$local_compt*50/$$local_count)))); do \
-						str="$${str} "; \
-					done; \
-				fi; \
-				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_BLUE)Compiling $$name... ($(_YELLOW)$<$(_BLUE))               	"; \
-				str="$${str}$(_RESET)"; \
 				tput cuu1; \
 				if [ $$local_compt -gt 1 ]; then \
 					tput cuu1; \
 				fi; \
 				tput el; \
-				echo "$$str"; \
+				printf "$${color}%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\n" $$(($$local_compt*50/$$local_count)) " " $$((50 - ($$local_compt*50/$$local_count))) $$((50 - ($$local_compt*50/$$local_count))) " " $$(($$local_compt*100/$$local_count)) "$$name..."; \
 				\
-				str="$(_IGREEN)"; \
-				if [ $$(($(COUNTER)*50/$(count))) -gt 0 ]; then \
-					for i in $$(seq 1 $$(($(COUNTER)*50/$(count)))); do \
-						str="$${str} "; \
-					done; \
-				fi; \
-				str="$${str}$(_IWHITE)"; \
-				if [ $$((50 - ($(COUNTER)*50/$(count)))) -gt 0 ]; then \
-					for i in $$(seq 1 $$((50 - ($(COUNTER)*50/$(count))))); do \
-						str="$${str} "; \
-					done; \
-				fi; \
-				str="$${str}$(_RESET) $(_PURPLE)$$(($(COUNTER)*100/$(count)))% $(_BLUE)Compiling..."; \
-				str="$${str}$(_RESET)"; \
 				tput el; \
-				echo "$$str"; \
+				printf "$(_IGREEN)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" $$(($(COUNTER)*50/$(count))) " " $$((50 - ($(COUNTER)*50/$(count)))) $$((50 - ($(COUNTER)*50/$(count)))) " " $$(($(COUNTER)*100/$(count))) "..."; \
 			fi; \
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
 			if [ $(bar) -eq 0 ]; then \
 				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
 			elif [ $$local_compt -eq $$local_count ]; then \
-				str="$${color}"; \
-				for i in $$(seq 1 $$(($$local_compt*50/$$local_count))); do \
-					str="$${str} "; \
-				done; \
-				str="$${str}$(_RESET) $(_PURPLE)$$(($$local_compt*100/$$local_count))% $(_BLUE)Compiling $$name... $(_GREEN)done$(_BLUE)               	"; \
-				str="$${str}$(_RESET)"; \
 				tput cuu1; \
 				tput cuu1; \
 				tput el; \
-				echo "$$str"; \
+				printf "$${color}%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$$name..."; \
 				tput cud1; \
 				if [ $(COUNTER) -eq $(count) ]; then \
-					str="$(_IGREEN)"; \
-					for i in $$(seq 1 $$(($(COUNTER)*50/$(count)))); do \
-						str="$${str} "; \
-					done; \
-					str="$${str}$(_RESET) $(_PURPLE)$$(($(COUNTER)*100/$(count)))% $(_BLUE)Compiling... $(_GREEN)done"; \
-					str="$${str}$(_RESET)"; \
 					tput cuu1; \
 					tput el; \
-					echo "$$str"; \
+					printf "$(_IGREEN)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
 				fi; \
 			fi; \
 
