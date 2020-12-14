@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2020/12/13 14:54:19 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 12:29:31 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_bzero(void *s, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_ternary(int condition, int expr1, int expr2);
 int					ft_atoi_len(const char *str, int *len);
 int					ft_strindex_of(char *str, char c);
 int					ft_atoi(const char *str);

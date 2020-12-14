@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/14 10:48:28 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/14 12:35:13 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,9 @@ STRING_SRCS	=	ft_isalnum.c		\
 				ft_tolower.c		\
 				ft_toupper.c
 
-UTIL_SRCS	=	ft_identity.c
+UTIL_SRCS	=	ft_identity.c		\
+				ft_ternary.c
+
 
 SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))	\
 				$(addprefix $(LIST)/, $(LIST_SRCS))	\
