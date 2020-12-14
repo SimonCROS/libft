@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
-/*   Updated: 2020/12/14 14:53:19 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:54:56 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_list	*ft_lst_splice(t_list *list, int start, int delete_count, void *value)
 {
 	t_entry	*first;
-//	t_entry	*tmp;
 	t_list	*copy;
 
 	if (!list || !(copy = ft_lst_new(list->del)))
@@ -33,7 +32,6 @@ t_list	*ft_lst_splice(t_list *list, int start, int delete_count, void *value)
 		else
 		{
 			first = ft_lst_get_entry(list, start - 1);
-//			tmp = first->next;
 			first->next = ft_lst_new_entry(value);
 		}
 	}
