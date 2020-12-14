@@ -6,14 +6,15 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 16:47:15 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 11:01:55 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 17:42:26 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+ssize_t	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	if (c)
+		return (write(fd, &c, 1));
+	return (0);
 }

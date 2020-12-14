@@ -6,14 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:02:33 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 10:59:18 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 17:42:05 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+ssize_t	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	return (ft_putstr_fd(s, fd) + ft_putchar_fd('\n', fd));
 }

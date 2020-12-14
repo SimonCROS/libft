@@ -6,27 +6,17 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 11:00:02 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 17:47:11 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+ssize_t	ft_putnbr_fd(long n, int fd)
 {
-	long int lnb;
-
-	lnb = n;
-	if (lnb < 0)
-	{
-		ft_putchar_fd('-', fd);
-		lnb *= -1;
-	}
-	if (lnb < 10)
-		ft_putchar_fd(lnb + '0', fd);
-	else
-	{
-		ft_putnbr_fd(lnb / 10, fd);
-		ft_putnbr_fd(lnb % 10, fd);
-	}
+	if (n < 0)
+		return (ft_putchar_fd('-', fd) + ft_putchar_fd(-n, fd));
+	if (n < 10)
+		return (ft_putchar_fd(n + '0', fd));
+	return (ft_putnbr_fd(n / 10, fd) + ft_putnbr_fd(n % 10, fd));
 }
