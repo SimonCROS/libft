@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2020/12/15 13:48:36 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 14:30:07 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 
 t_function			ft_identity(void);
+ssize_t				ft_puthex_fd(unsigned char c, int fd);
 ssize_t				ft_putendl_fd(char *s, int fd);
 ssize_t				ft_putchar_fd(char c, int fd);
 ssize_t				ft_putstr_fd(char *s, int fd);

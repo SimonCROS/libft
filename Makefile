@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/15 13:46:54 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/15 14:31:29 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ MEMORY_SRCS	=	ft_bzero.c			\
 
 PRINT_SRCS	=	ft_putchar_fd.c		\
 				ft_putendl_fd.c		\
+				ft_puthex_fd.c		\
 				ft_putnbr_fd.c		\
 				ft_putstr_fd.c
 
