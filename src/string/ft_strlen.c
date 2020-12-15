@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 10:54:33 by scros             #+#    #+#             */
-/*   Updated: 2020/11/23 16:20:24 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 11:12:01 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	size_t i;
 
 	i = -1;
+	if (!s)
+		return (-1);
 	while (s[++i])
 		;
 	return (i);
