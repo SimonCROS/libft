@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 19:23:27 by scros             #+#    #+#             */
-/*   Updated: 2020/12/15 13:48:28 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 13:52:08 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strninsert(char *dst, const char *src, size_t start, size_t max)
 	if (!src || start >= dst_len)
 		return (dst + dst_len);
 	i = 0;
-	while (src[i] && dst[i + start] && i == max)
+	while (src[i] && dst[i + start] && i != max)
 	{
 		dst[i + start] = src[i];
 		i++;
