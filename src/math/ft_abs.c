@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.h                                             :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 14:04:21 by scros             #+#    #+#             */
-/*   Updated: 2020/12/15 11:00:21 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/15 10:59:00 by scros             #+#    #+#             */
+/*   Updated: 2020/12/15 11:00:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "libft.h"
 
-long	ft_abs(long number);
-int		ft_max(int n1, int n2);
-int		ft_min(int n1, int n2);
-
-#endif
+long	ft_abs(long number)
+{
+	if (number < 0)
+		return (-number);
+	return (number);
+}

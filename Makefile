@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/14 19:28:26 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/15 11:00:47 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_unshift.c
 
 MATH_SRCS	=	ft_min.c			\
-				ft_max.c
+				ft_max.c			\
+				ft_abs.c
 
 MEMORY_SRCS	=	ft_bzero.c			\
 				ft_calloc.c			\
