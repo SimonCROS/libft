@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2020/12/15 14:30:07 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 17:47:29 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char				*ft_strtrim(const char *s1, const char *set);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strchr(const char *s, int c);
+char				*ft_itoa_to(int n, char *dest);
 char				*ft_strdup(const char *s1);
 char				*ft_itoa(int n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
