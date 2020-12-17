@@ -20,5 +20,5 @@ char	*ft_uitoa(unsigned int n)
 	len = ft_intlen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_itoa_to(n, str));
+	return (ft_uitoa_to(n, str));
 }
