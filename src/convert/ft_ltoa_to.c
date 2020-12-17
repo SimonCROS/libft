@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/16 17:28:05 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 15:30:55 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,23 @@
 
 char	*ft_ltoa_to(long n, char *dest)
 {
-	long long	len;
-	long long	nbr;
+	int	len;
 
-	len = ft_longlen(n);
-	nbr = n;
+	len = ft_intlen(n);
+	if (n < 0 && n - 1 > 0)
+	{
+		ft_strlcpy(dest, "-9223372036854775808", len + 1);
+		return (dest);
+	}
 	if (n < 0)
-		nbr *= -1;
+		n *= -1;
 	dest[len] = 0;
 	while (1)
 	{
-		dest[--len] = (nbr % 10) + '0';
-		if (!nbr)
+		dest[--len] = (n % 10) + '0';
+		if (!n)
 			break ;
-		nbr /= 10;
+		n /= 10;
 	}
 	if (n < 0)
 		dest[0] = '-';

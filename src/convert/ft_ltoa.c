@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/16 17:19:49 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 15:41:33 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_ltoa(int n)
+char	*ft_ltoa(long n)
 {
 	long int	len;
 	char		*str;
