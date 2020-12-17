@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/16 17:36:16 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/17 15:05:55 by scros             #+#    #+#             */
+/*   Updated: 2020/12/17 15:05:55 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef UTIL_H
+# define UTIL_H
 
-char	*ft_itoa(int n)
-{
-	long int	len;
-	char		*str;
+# include "libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = malloc(len)))
-		return (NULL);
-	return (ft_itoa_to(n, str));
-}
+int			ft_ternary(int condition, int expr1, int expr2);
+t_function	ft_identity(void);
+
+#endif

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/16 17:36:16 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/17 15:06:03 by scros             #+#    #+#             */
+/*   Updated: 2020/12/17 15:06:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PRINT_H
+# define PRINT_H
 
-char	*ft_itoa(int n)
-{
-	long int	len;
-	char		*str;
+# include "libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = malloc(len)))
-		return (NULL);
-	return (ft_itoa_to(n, str));
-}
+ssize_t	ft_puthex_fd(unsigned char c, int fd);
+ssize_t	ft_putendl_fd(char *s, int fd);
+ssize_t	ft_putstr_fd(char *s, int fd);
+ssize_t	ft_putchar_fd(char c, int fd);
+ssize_t	ft_putnbr_fd(long n, int fd);
+
+#endif

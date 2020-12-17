@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa_to.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/16 17:36:16 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
+/*   Updated: 2020/12/17 14:43:40 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+/*
+** Write the integer n in the string dest.
+**
+** Returns dest.
+*/
+
+char	*ft_uitoa_to(int n, char *dest)
 {
 	long int	len;
-	char		*str;
+	long int	nbr;
 
-	len = ft_intlen(n) + 1;
-	if (!(str = malloc(len)))
-		return (NULL);
-	return (ft_itoa_to(n, str));
+	len = ft_intlen(n);
+	nbr = n;
+	if (n < 0)
+		nbr *= -1;
+	dest[len] = 0;
+	while (1)
+	{
+		dest[--len] = (nbr % 10) + '0';
+		if (!nbr)
+			break ;
+		nbr /= 10;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
 }
