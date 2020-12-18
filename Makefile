@@ -167,7 +167,7 @@ count		= $(words $(SRCS))
 compile_code= tabs 6; \
 			if [ $(bar) -eq 0 ]; then \
 				echo "$$(($(COUNTER)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
-			else \
+			elif [ $(bar) -eq 1 ]; then \
 				tput cuu1; \
 				if [ $$local_compt -gt 1 ]; then \
 					tput cuu1; \
@@ -177,19 +177,29 @@ compile_code= tabs 6; \
 				\
 				tput el; \
 				printf "$(_IGREEN)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" $$(($(COUNTER)*50/$(count))) " " $$((50 - ($(COUNTER)*50/$(count)))) $$((50 - ($(COUNTER)*50/$(count)))) " " $$(($(COUNTER)*100/$(count))) "..."; \
+			elif [ $(bar) -eq 2 ]; then \
+				tput el; \
+				printf "$(_IGREEN)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\r" $$(($(COUNTER)*50/$(count))) " " $$((50 - ($(COUNTER)*50/$(count)))) $$((50 - ($(COUNTER)*50/$(count)))) " " $$(($(COUNTER)*100/$(count))) "..."; \
 			fi; \
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
 			if [ $(bar) -eq 0 ]; then \
 				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
-			elif [ $$local_compt -eq $$local_count ]; then \
-				tput cuu1; \
-				tput cuu1; \
-				tput el; \
-				printf "$${color}%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$$name..."; \
-				tput cud1; \
-				if [ $(COUNTER) -eq $(count) ]; then \
+			elif [ $(bar) -eq 1 ]; then \
+				if [ $$local_compt -eq $$local_count ]; then \
 					tput cuu1; \
+					tput cuu1; \
+					tput el; \
+					printf "$${color}%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$$name..."; \
+					tput cud1; \
+					if [ $(COUNTER) -eq $(count) ]; then \
+						tput cuu1; \
+						tput el; \
+						printf "$(_IGREEN)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
+					fi; \
+				fi; \
+			elif [ $(bar) -eq 2 ]; then \
+				if [ $(COUNTER) -eq $(count) ]; then \
 					tput el; \
 					printf "$(_IGREEN)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
 				fi; \
@@ -241,6 +251,13 @@ $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			@color="$(_IGREEN)"; local_compt=0; local_count=0; name=""; $(compile_code)
 
+multi:		fclean pre_compile fast_comp post_compile
+			@ar rc $(NAME) $(OBJS)
+
+fast_comp:
+			@tput cuu1;
+			@$(MAKE) bar=2 -j --no-print-directory $(OBJS)
+
 $(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
 			@ar rc $(NAME) $(OBJS)
 
@@ -264,4 +281,4 @@ re:			fclean all
 
 bre:		fclean ball
 
-.PHONY:		all ball bar pre_compile post_compile clean fclean re bre
+.PHONY:		all ball bar pre_compile post_compile clean fclean re bre multi fast_comp
