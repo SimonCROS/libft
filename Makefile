@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/15 17:48:03 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/18 09:50:34 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,13 @@ UTIL		= util
 CONV_SRCS	=	ft_atoi.c			\
 				ft_atoi_len.c		\
 				ft_itoa.c			\
-				ft_itoa_to.c
+				ft_itoa_to.c		\
+				ft_uitoa.c			\
+				ft_uitoa_to.c		\
+				ft_ltoa.c			\
+				ft_ltoa_to.c		\
+				ft_ultoa.c			\
+				ft_ultoa_to.c		\
 
 LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_clear.c		\
