@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/18 14:29:41 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/18 16:08:56 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_uintlen(unsigned int n)
 	return (1 + ft_uintlen(n / 10));
 }
 
-int	ft_intlen_hex(unsigned long long n)
+int	ft_intlen_hex(unsigned int n)
 {
 	if (n < 16)
 		return (1);
