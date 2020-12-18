@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 15:05:22 by scros             #+#    #+#             */
-/*   Updated: 2020/12/17 15:05:22 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/18 14:54:22 by scros             #+#    #+#             */
+/*   Updated: 2020/12/18 14:54:22 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 char	*ft_strninsert(char *dst, const char *src, size_t start, size_t max);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strinsert(char *dst, const char *src, size_t start);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
@@ -29,6 +30,8 @@ char	*ft_strrchr(const char *s, int c);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
+char	*ft_strtoupper(char *str);
+char	*ft_strtolower(char *str);
 size_t	ft_strlen(const char *s);
 int		ft_toupper(int c);
 int		ft_tolower(int c);

@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/18 14:35:33 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/18 14:49:55 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,6 +128,8 @@ STRING_SRCS	=	ft_isalnum.c		\
 				ft_substr.c			\
 				ft_tolower.c		\
 				ft_toupper.c		\
+				ft_strtolower.c		\
+				ft_strtoupper.c		\
 
 UTIL_SRCS	=	ft_identity.c		\
 				ft_ternary.c		\
