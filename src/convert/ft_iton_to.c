@@ -62,8 +62,6 @@ char	*ft_uitoa_to(unsigned int n, char *dest)
 			break ;
 		n /= 10;
 	}
-	if (n < 0)
-		dest[0] = '-';
 	return (dest);
 }
 
@@ -88,7 +86,5 @@ char	*ft_itohex_to(unsigned int n, char *dest)
 			break ;
 		n /= 16;
 	}
-	if (n < 0)
-		dest[0] = '-';
 	return (dest);
 }

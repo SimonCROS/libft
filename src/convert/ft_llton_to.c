@@ -62,8 +62,6 @@ char	*ft_ulltoa_to(unsigned long long n, char *dest)
 			break ;
 		n /= 10;
 	}
-	if (n < 0)
-		dest[0] = '-';
 	return (dest);
 }
 
@@ -88,7 +86,5 @@ char	*ft_lltohex_to(unsigned long long n, char *dest)
 			break ;
 		n /= 16;
 	}
-	if (n < 0)
-		dest[0] = '-';
 	return (dest);
 }
