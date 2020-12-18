@@ -6,11 +6,11 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/15 17:26:25 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/18 14:29:46 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_longlen(long long n)
+int	ft_longlen(long n)
 {
 	if (n < 0 && n - 1 > 0)
 		return (20);
@@ -19,4 +19,18 @@ int	ft_longlen(long long n)
 	if (n < 10)
 		return (1);
 	return (1 + ft_longlen(n / 10));
+}
+
+int	ft_ulonglen(unsigned long n)
+{
+	if (n < 10)
+		return (1);
+	return (1 + ft_ulonglen(n / 10));
+}
+
+int	ft_longlen_hex(unsigned long n)
+{
+	if (n < 16)
+		return (1);
+	return (1 + ft_longlen_hex(n / 16));
 }

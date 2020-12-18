@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/18 09:50:34 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/18 14:35:33 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,14 +49,12 @@ UTIL		= util
 
 CONV_SRCS	=	ft_atoi.c			\
 				ft_atoi_len.c		\
-				ft_itoa.c			\
-				ft_itoa_to.c		\
-				ft_uitoa.c			\
-				ft_uitoa_to.c		\
-				ft_ltoa.c			\
-				ft_ltoa_to.c		\
-				ft_ultoa.c			\
-				ft_ultoa_to.c		\
+				ft_iton.c			\
+				ft_iton_to.c		\
+				ft_llton.c			\
+				ft_llton_to.c		\
+				ft_lton.c			\
+				ft_lton_to.c		\
 
 LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_clear.c		\
@@ -85,13 +83,12 @@ LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_slice.c		\
 				ft_lst_unshift.c
 
-MATH_SRCS	=	ft_min.c			\
-				ft_max.c			\
-				ft_abs.c			\
-				ft_ulonglen.c		\
-				ft_uintlen.c		\
+MATH_SRCS	=	ft_abs.c			\
+				ft_intlen.c			\
 				ft_longlen.c		\
-				ft_intlen.c
+				ft_longlonglen.c	\
+				ft_max.c			\
+				ft_min.c			\
 
 MEMORY_SRCS	=	ft_bzero.c			\
 				ft_calloc.c			\
@@ -100,13 +97,13 @@ MEMORY_SRCS	=	ft_bzero.c			\
 				ft_memcmp.c			\
 				ft_memcpy.c			\
 				ft_memmove.c		\
-				ft_memset.c
+				ft_memset.c			\
 
 PRINT_SRCS	=	ft_putchar_fd.c		\
 				ft_putendl_fd.c		\
 				ft_puthex_fd.c		\
 				ft_putnbr_fd.c		\
-				ft_putstr_fd.c
+				ft_putstr_fd.c		\
 
 STRING_SRCS	=	ft_isalnum.c		\
 				ft_isalpha.c		\
@@ -130,10 +127,10 @@ STRING_SRCS	=	ft_isalnum.c		\
 				ft_strtrim.c		\
 				ft_substr.c			\
 				ft_tolower.c		\
-				ft_toupper.c
+				ft_toupper.c		\
 
 UTIL_SRCS	=	ft_identity.c		\
-				ft_ternary.c
+				ft_ternary.c		\
 
 
 SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))		\

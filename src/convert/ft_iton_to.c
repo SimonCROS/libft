@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_to.c                                       :+:      :+:    :+:   */
+/*   ft_iton_to.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/17 15:30:31 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/18 14:37:25 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,56 @@ char	*ft_itoa_to(int n, char *dest)
 		if (!n)
 			break ;
 		n /= 10;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
+}
+
+/*
+** Write the unsigned integer n in the string dest.
+**
+** Returns dest.
+*/
+
+char	*ft_uitoa_to(unsigned int n, char *dest)
+{
+	int	len;
+
+	len = ft_uintlen(n);
+	dest[len] = 0;
+	while (1)
+	{
+		dest[--len] = (n % 10) + '0';
+		if (!n)
+			break ;
+		n /= 10;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
+}
+
+/*
+** Write the unsigned integer in the string dest in hex format.
+**
+** Returns dest.
+*/
+
+char	*ft_itohex_to(unsigned int n, char *dest)
+{
+	int	len;
+	int c;
+
+	len = ft_intlen_hex(n);
+	dest[len] = 0;
+	while (1)
+	{
+		c = (n % 16);
+		dest[--len] = (c > 9) ? 'a' + c - 10 : '0' + c;
+		if (!n)
+			break ;
+		n /= 16;
 	}
 	if (n < 0)
 		dest[0] = '-';
