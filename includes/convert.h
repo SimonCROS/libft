@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/18 14:37:36 by scros             #+#    #+#             */
-/*   Updated: 2020/12/18 14:37:36 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/18 18:03:01 by scros             #+#    #+#             */
+/*   Updated: 2020/12/18 18:03:01 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int		ft_atoi_len(const char *str, int *len);
 char	*ft_lltoa_to(long long n, char *dest);
 char	*ft_ltoa_to(long n, char *dest);
 char	*ft_itoa_to(int n, char *dest);
+char	*ft_lltohex(unsigned long n);
+char	*ft_ulltoa(unsigned long n);
 char	*ft_uitohex(unsigned int n);
 char	*ft_ltohex(unsigned long n);
-char	*ft_ltohex(unsigned long n);
-char	*ft_ultoa(unsigned long n);
 char	*ft_ultoa(unsigned long n);
 char	*ft_uitoa(unsigned int n);
 int		ft_atoi(const char *str);
-char	*ft_ltoa(long n);
+char	*ft_lltoa(long n);
 char	*ft_ltoa(long n);
 char	*ft_itoa(int n);
 
