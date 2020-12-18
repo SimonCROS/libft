@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/17 15:31:36 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/18 10:06:51 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_ultoa_to(unsigned long n, char *dest)
 {
 	int	len;
 
-	len = ft_intlen(n);
+	len = ft_ulonglen(n);
 	if (n + 1 == 0)
 	{
 		ft_strlcpy(dest, "18446744073709551615", len + 1);
