@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 18:46:09 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 19:02:55 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	*ft_stohex_to(unsigned short n, char *dest, int prefix, int min_width)
 	short	c;
 
 	len = ft_shortlen_hex(n, prefix, min_width);
+	ft_memset(dest, '0', len + 1);
 	dest[len] = 0;
 	while (1)
 	{

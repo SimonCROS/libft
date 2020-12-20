@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 18:56:05 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 19:03:52 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_ucharlen(unsigned char n)
 int	ft_charlen_hex(unsigned char n, int prefix, int min_width)
 {
 	if (min_width)
-		return (ft_min(min_width, ft_charlen_hex(n / 16, 0, 0)));
+		return (ft_min(min_width + prefix * 2, ft_charlen_hex(n / 16, 0, 0)));
 	if (prefix)
 		return (3 + ft_charlen_hex(n / 16, 0, 0));
 	if (n < 16)
