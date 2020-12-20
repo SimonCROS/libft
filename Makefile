@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/18 14:49:55 by scros            ###   ########lyon.fr    #
+#    Updated: 2020/12/20 16:24:14 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,10 @@ CONV_SRCS	=	ft_atoi.c			\
 				ft_llton_to.c		\
 				ft_lton.c			\
 				ft_lton_to.c		\
+				ft_ston.c			\
+				ft_ston_to.c		\
+				ft_cton.c			\
+				ft_cton_to.c		\
 
 LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_clear.c		\
@@ -84,6 +88,8 @@ LIST_SRCS	=	ft_lst_add_all.c	\
 				ft_lst_unshift.c
 
 MATH_SRCS	=	ft_abs.c			\
+				ft_charlen.c		\
+				ft_shortlen.c		\
 				ft_intlen.c			\
 				ft_longlen.c		\
 				ft_longlonglen.c	\

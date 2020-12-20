@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/18 18:02:43 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 16:22:16 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*ft_ulltoa(unsigned long n)
 
 char	*ft_lltohex(unsigned long n)
 {
-	long int	len;
-	char		*str;
+	int		len;
+	char	*str;
 
 	len = ft_longlen_hex(n) + 1;
 	if (!(str = malloc(len)))

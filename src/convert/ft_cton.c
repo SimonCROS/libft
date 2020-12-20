@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lton.c                                          :+:      :+:    :+:   */
+/*   ft_cton.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:22:23 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 16:23:02 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_ltoa(long n)
+char	*ft_ctoa(char n)
 {
 	int		len;
 	char	*str;
@@ -20,10 +20,10 @@ char	*ft_ltoa(long n)
 	len = ft_intlen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ltoa_to(n, str));
+	return (ft_ctoa_to(n, str));
 }
 
-char	*ft_ultoa(unsigned long n)
+char	*ft_uctoa(unsigned char n)
 {
 	int		len;
 	char	*str;
@@ -31,16 +31,16 @@ char	*ft_ultoa(unsigned long n)
 	len = ft_intlen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ultoa_to(n, str));
+	return (ft_uctoa_to(n, str));
 }
 
-char	*ft_ltohex(unsigned long n)
+char	*ft_ctohex(unsigned char n)
 {
 	int		len;
 	char	*str;
 
-	len = ft_longlen_hex(n) + 1;
+	len = ft_charlen_hex(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ltohex_to(n, str));
+	return (ft_ctohex_to(n, str));
 }
