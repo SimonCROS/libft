@@ -6,14 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:24:43 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 16:34:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_charlen(char n)
 {
 	if (n < 0 && n - 1 > 0)
-		return (20);
+		return (4);
 	if (n < 0)
 		return (1 + ft_charlen(-n));
 	if (n < 10)
