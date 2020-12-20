@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/18 14:29:46 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 17:25:04 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int	ft_ulonglen(unsigned long n)
 	return (1 + ft_ulonglen(n / 10));
 }
 
-int	ft_longlen_hex(unsigned long n)
+int	ft_longlen_hex(unsigned long n, int prefix)
 {
+	if (prefix)
+		return (2 + ft_longlen_hex(n / 16, 0));
 	if (n < 16)
 		return (1);
-	return (1 + ft_longlen_hex(n / 16));
+	return (1 + ft_longlen_hex(n / 16, 0));
 }
