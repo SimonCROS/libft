@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/18 14:31:43 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 17:11:04 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_lltohex_to(unsigned long long n, char *dest)
 	int	len;
 	int c;
 
-	len = ft_longlen_hex(n);
+	len = ft_longlonglen_hex(n);
 	dest[len] = 0;
 	while (1)
 	{

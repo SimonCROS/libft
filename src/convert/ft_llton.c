@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:32:38 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 17:12:21 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_lltoa(long n)
 	len = ft_longlonglen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ltoa_to(n, str));
+	return (ft_lltoa_to(n, str));
 }
 
 char	*ft_ulltoa(unsigned long n)
@@ -31,7 +31,7 @@ char	*ft_ulltoa(unsigned long n)
 	len = ft_longlonglen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ultoa_to(n, str));
+	return (ft_ulltoa_to(n, str));
 }
 
 char	*ft_lltohex(unsigned long n)
@@ -39,8 +39,8 @@ char	*ft_lltohex(unsigned long n)
 	int		len;
 	char	*str;
 
-	len = ft_longlen_hex(n) + 1;
+	len = ft_longlonglen_hex(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ltohex_to(n, str));
+	return (ft_lltohex_to(n, str));
 }
