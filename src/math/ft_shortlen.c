@@ -6,9 +6,11 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 18:51:55 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 18:55:58 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_shortlen(short n)
 {
