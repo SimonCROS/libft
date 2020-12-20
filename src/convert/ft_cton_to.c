@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:31:33 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 16:56:18 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_ctoa_to(char n, char *dest)
 	int	len;
 
 	len = ft_charlen(n);
-	if (n < 0 && n - 1 > 0)
+	if (n == -128)
 	{
 		ft_strlcpy(dest, "-128", len + 1);
 		return (dest);
