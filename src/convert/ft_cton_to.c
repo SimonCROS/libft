@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:56:18 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 17:28:38 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ char	*ft_uctoa_to(unsigned char n, char *dest)
 ** Returns dest.
 */
 
-char	*ft_ctohex_to(unsigned char n, char *dest)
+char	*ft_ctohex_to(unsigned char n, char *dest, int prefix)
 {
 	int		len;
 	char	c;
 
-	len = ft_charlen_hex(n);
+	len = ft_charlen_hex(n, prefix);
 	dest[len] = 0;
 	while (1)
 	{
@@ -85,6 +85,11 @@ char	*ft_ctohex_to(unsigned char n, char *dest)
 		if (!n)
 			break ;
 		n /= 16;
+	}
+	if (prefix)
+	{
+		dest[0] = '0';
+		dest[1] = 'x';
 	}
 	return (dest);
 }

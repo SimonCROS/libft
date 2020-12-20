@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/20 16:26:14 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:26:14 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/20 17:29:03 by scros             #+#    #+#             */
+/*   Updated: 2020/12/20 17:29:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "libft.h"
 
-int		ft_longlonglen_hex(unsigned long long n);
+int		ft_longlonglen_hex(unsigned long long n, int prefix);
+int		ft_shortlen_hex(unsigned short n, int prefix);
+int		ft_longlen_hex(unsigned long n, int prefix);
+int		ft_charlen_hex(unsigned char n, int prefix);
+int		ft_intlen_hex(unsigned int n, int prefix);
 int		ft_ulonglonglen(unsigned long long n);
-int		ft_shortlen_hex(unsigned short n);
-int		ft_longlen_hex(unsigned long n);
-int		ft_charlen_hex(unsigned char n);
 int		ft_ushortlen(unsigned short n);
-int		ft_intlen_hex(unsigned int n);
 int		ft_ulonglen(unsigned long n);
 int		ft_ucharlen(unsigned char n);
 int		ft_longlonglen(long long n);
