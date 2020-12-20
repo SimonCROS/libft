@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 17:27:44 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 17:38:12 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_uitoa(unsigned int n)
 	return (ft_uitoa_to(n, str));
 }
 
-char	*ft_uitohex(unsigned int n, int prefix)
+char	*ft_itohex(unsigned int n, int prefix)
 {
 	int		len;
 	char	*str;
