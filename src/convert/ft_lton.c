@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 17:27:27 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 18:53:08 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ char	*ft_ultoa(unsigned long n)
 	return (ft_ultoa_to(n, str));
 }
 
-char	*ft_ltohex(unsigned long n, int prefix)
+char	*ft_ltohex(unsigned long n, int prefix, int min_width)
 {
 	int		len;
 	char	*str;
 
-	len = ft_longlen_hex(n, prefix) + 1;
+	len = ft_longlen_hex(n, prefix, min_width) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
-	return (ft_ltohex_to(n, str, prefix));
+	return (ft_ltohex_to(n, str, prefix, min_width));
 }
