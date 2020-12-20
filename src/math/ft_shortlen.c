@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/20 16:33:57 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/20 16:58:05 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_shortlen(short n)
 {
-	if (n < 0 && n - 1 > 0)
+	if (n == -32768)
 		return (6);
 	if (n < 0)
 		return (1 + ft_shortlen(-n));
