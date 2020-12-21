@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 10:21:27 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 10:28:49 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	ft_uintlen(unsigned int n)
 	return (1 + ft_uintlen(n / 10));
 }
 
-int	ft_intlen_hex(unsigned int n, int prefix, int min_width)
+int	ft_intlen_hex(unsigned int n, int prefix, int width)
 {
-	if (min_width)
-		return (ft_max(min_width + (!!prefix * 2), ft_intlen_hex(n / 16, 0, 0)));
+	if (width)
+		return (ft_max(width + (!!prefix * 2), ft_intlen_hex(n / 16, 0, 0)));
 	if (prefix)
 		return (3 + ft_intlen_hex(n / 16, 0, 0));
 	if (n < 16)
