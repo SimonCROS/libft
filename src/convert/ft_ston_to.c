@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 10:24:25 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 14:17:37 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,13 @@ char	*ft_ustoa_to(unsigned short n, char *dest)
 ** Returns dest.
 */
 
-char	*ft_stohex_to(unsigned short n, char *dest, int prefix, int min_width)
+char	*ft_stohex_to(unsigned short n, char *dest, int prefix)
 {
 	int		len;
 	short	c;
 
-	len = ft_shortlen_hex(n, prefix, min_width);
+	len = ft_strlen(dest);
 	ft_memset(dest, '0', len);
-	dest[len] = 0;
 	while (1)
 	{
 		c = (n % 16);
