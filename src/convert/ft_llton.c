@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 14:20:49 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 14:42:45 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_lltoa(long n)
 	len = ft_longlonglen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
+	str[len] = 0;
 	return (ft_lltoa_to(n, str));
 }
 
@@ -31,6 +32,7 @@ char	*ft_ulltoa(unsigned long n)
 	len = ft_longlonglen(n) + 1;
 	if (!(str = malloc(len)))
 		return (NULL);
+	str[len] = 0;
 	return (ft_ulltoa_to(n, str));
 }
 
