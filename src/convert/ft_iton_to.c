@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 14:17:54 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 14:37:07 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_itoa_to(int n, char *dest)
 {
 	int	len;
 
-	len = ft_intlen(n);
+	len = ft_strlen(dest);
+	ft_memset(dest, '0', len);
 	if (n < 0 && n - 1 > 0)
 	{
 		ft_strlcpy(dest, "-2147483648", len + 1);
@@ -53,8 +54,8 @@ char	*ft_uitoa_to(unsigned int n, char *dest)
 {
 	int	len;
 
-	len = ft_uintlen(n);
-	dest[len] = 0;
+	len = ft_strlen(dest);
+	ft_memset(dest, '0', len);
 	while (1)
 	{
 		dest[--len] = (n % 10) + '0';

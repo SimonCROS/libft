@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 14:17:04 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/21 14:37:00 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ char	*ft_uctoa_to(unsigned char n, char *dest)
 {
 	int	len;
 
-	len = ft_ucharlen(n);
-	dest[len] = 0;
+	len = ft_strlen(dest);
+	ft_memset(dest, '0', len);
 	while (1)
 	{
 		dest[--len] = (n % 10) + '0';
