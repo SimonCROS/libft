@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:09:09 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 10:28:54 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 11:40:45 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ int	ft_charlen_hex(unsigned char n, int prefix, int width)
 	if (n < 16)
 		return (1);
 	return (1 + ft_charlen_hex(n / 16, 0, 0));
+}
+
+int	ft_charlen_octal(unsigned char n)
+{
+	if (n < 8)
+		return (1);
+	return (1 + ft_charlen_octal(n / 8));
 }

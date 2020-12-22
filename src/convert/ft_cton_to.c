@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/21 14:37:00 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 11:37:54 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,30 @@ char	*ft_ctohex_to(unsigned char n, char *dest, int prefix)
 	{
 		dest[0] = '0';
 		dest[1] = 'x';
+	}
+	return (dest);
+}
+
+/*
+** Write the unsigned char in the string dest in octal format.
+**
+** Returns dest.
+*/
+
+char	*ft_ctooctal_to(unsigned char n, char *dest)
+{
+	int		len;
+	char	c;
+
+	len = ft_strlen(dest);
+	ft_memset(dest, '0', len);
+	while (1)
+	{
+		c = (n % 8);
+		dest[--len] = '0' + c;
+		if (!n)
+			break ;
+		n /= 8;
 	}
 	return (dest);
 }
