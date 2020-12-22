@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/22 11:42:56 by scros            ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 11:44:22 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ char	*ft_itooctal(unsigned int n)
 	if (!(str = malloc(len)))
 		return (NULL);
 	str[len] = 0;
-	return (ft_stooctal_to(n, str));
+	return (ft_itooctal_to(n, str));
 }
