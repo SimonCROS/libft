@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 15:06:03 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:14 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/12 16:42:19 by scros             #+#    #+#             */
+/*   Updated: 2021/01/12 17:23:55 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#include "math.h"
 
-# include "libft.h"
+double	root(double n)
+{
+	double	min;
+	double	max;
+	double	mid;
+	int		i;
 
-ssize_t	ft_puthex_fd(unsigned char c, int fd);
-ssize_t	ft_putendl_fd(char *s, int fd);
-ssize_t	ft_putstr_fd(char *s, int fd);
-ssize_t	ft_putchar_fd(char c, int fd);
-ssize_t	ft_putnbr_fd(long n, int fd);
-
-#endif
+	min = ft_min(1, n);
+	max = ft_max(1, n);
+	i = -1;
+	while (100 * min * min < n)
+		min *= 10;
+	while (100 * max * max > n)
+		max *= 0.1;
+	while (++i < 100)
+	{
+		mid = (min + max) / 2;
+		if (mid * mid == n)
+			return (mid);
+		if (mid * mid > n)
+			max = mid;
+		else
+			min = mid;
+	}
+	return (mid);
+}

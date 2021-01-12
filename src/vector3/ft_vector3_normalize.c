@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   ft_vector3_normalize.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 15:06:03 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:14 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/12 16:58:02 by scros             #+#    #+#             */
+/*   Updated: 2021/01/12 18:13:16 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#include "vector3.h"
+#include "math.h"
 
-# include "libft.h"
+t_vector3	*ft_vector3_normalize(t_vector3 *v)
+{
+	double length;
 
-ssize_t	ft_puthex_fd(unsigned char c, int fd);
-ssize_t	ft_putendl_fd(char *s, int fd);
-ssize_t	ft_putstr_fd(char *s, int fd);
-ssize_t	ft_putchar_fd(char c, int fd);
-ssize_t	ft_putnbr_fd(long n, int fd);
-
-#endif
+	length = ft_vector3_length(v);
+	if (ft_abs(length) < 0)
+		return (ft_vector3_init(v, 0, 0, 0));
+	v->x /= length;
+	v->y /= length;
+	v->z /= length;
+	return (v);
+}

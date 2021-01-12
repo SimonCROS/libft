@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2020/12/20 16:24:14 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/12 17:35:20 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,108 +46,122 @@ MEMORY		= memory
 PRINT		= print
 STRING		= string
 UTIL		= util
+VECTOR3		= vector3
 
-CONV_SRCS	=	ft_atoi.c			\
-				ft_atoi_len.c		\
-				ft_iton.c			\
-				ft_iton_to.c		\
-				ft_llton.c			\
-				ft_llton_to.c		\
-				ft_lton.c			\
-				ft_lton_to.c		\
-				ft_ston.c			\
-				ft_ston_to.c		\
-				ft_cton.c			\
-				ft_cton_to.c		\
+CONV_SRCS	=	ft_atoi.c				\
+				ft_atoi_len.c			\
+				ft_iton.c				\
+				ft_iton_to.c			\
+				ft_llton.c				\
+				ft_llton_to.c			\
+				ft_lton.c				\
+				ft_lton_to.c			\
+				ft_ston.c				\
+				ft_ston_to.c			\
+				ft_cton.c				\
+				ft_cton_to.c			\
 
-LIST_SRCS	=	ft_lst_add_all.c	\
-				ft_lst_clear.c		\
-				ft_lst_destroy.c	\
-				ft_lst_foreach.c	\
-				ft_lst_get_entry.c	\
-				ft_lst_is_empty.c	\
-				ft_lst_last.c		\
-				ft_lst_new.c		\
-				ft_lst_pop.c		\
-				ft_lst_set.c		\
-				ft_lst_copy.c		\
-				ft_lst_size.c		\
-				ft_lst_map.c		\
-				ft_lst_splice.c		\
-				ft_lst_reduce.c		\
-				ft_lst_concat.c		\
-				ft_lst_shift_entry.c\
-				ft_lst_get.c		\
-				ft_lst_remove.c		\
-				ft_lst_insert.c		\
-				ft_lst_last_entry.c	\
-				ft_lst_new_entry.c	\
-				ft_lst_push.c		\
-				ft_lst_shift.c		\
-				ft_lst_slice.c		\
+LIST_SRCS	=	ft_lst_add_all.c		\
+				ft_lst_clear.c			\
+				ft_lst_destroy.c		\
+				ft_lst_foreach.c		\
+				ft_lst_get_entry.c		\
+				ft_lst_is_empty.c		\
+				ft_lst_last.c			\
+				ft_lst_new.c			\
+				ft_lst_pop.c			\
+				ft_lst_set.c			\
+				ft_lst_copy.c			\
+				ft_lst_size.c			\
+				ft_lst_map.c			\
+				ft_lst_splice.c			\
+				ft_lst_reduce.c			\
+				ft_lst_concat.c			\
+				ft_lst_shift_entry.c	\
+				ft_lst_get.c			\
+				ft_lst_remove.c			\
+				ft_lst_insert.c			\
+				ft_lst_last_entry.c		\
+				ft_lst_new_entry.c		\
+				ft_lst_push.c			\
+				ft_lst_shift.c			\
+				ft_lst_slice.c			\
 				ft_lst_unshift.c
 
-MATH_SRCS	=	ft_abs.c			\
-				ft_charlen.c		\
-				ft_shortlen.c		\
-				ft_intlen.c			\
-				ft_longlen.c		\
-				ft_longlonglen.c	\
-				ft_max.c			\
-				ft_min.c			\
+MATH_SRCS	=	ft_abs.c				\
+				ft_charlen.c			\
+				ft_shortlen.c			\
+				ft_intlen.c				\
+				ft_longlen.c			\
+				ft_longlonglen.c		\
+				ft_max.c				\
+				ft_min.c				\
+				ft_sqrt.c				\
 
-MEMORY_SRCS	=	ft_bzero.c			\
-				ft_calloc.c			\
-				ft_memccpy.c		\
-				ft_memchr.c			\
-				ft_memcmp.c			\
-				ft_memcpy.c			\
-				ft_memmove.c		\
-				ft_memset.c			\
+MEMORY_SRCS	=	ft_bzero.c				\
+				ft_calloc.c				\
+				ft_memccpy.c			\
+				ft_memchr.c				\
+				ft_memcmp.c				\
+				ft_memcpy.c				\
+				ft_memmove.c			\
+				ft_memset.c				\
 
-PRINT_SRCS	=	ft_putchar_fd.c		\
-				ft_putendl_fd.c		\
-				ft_puthex_fd.c		\
-				ft_putnbr_fd.c		\
-				ft_putstr_fd.c		\
+PRINT_SRCS	=	ft_putchar_fd.c			\
+				ft_putendl_fd.c			\
+				ft_puthex_fd.c			\
+				ft_putnbr_fd.c			\
+				ft_putstr_fd.c			\
 
-STRING_SRCS	=	ft_isalnum.c		\
-				ft_isalpha.c		\
-				ft_isascii.c		\
-				ft_isdigit.c		\
-				ft_isprint.c		\
-				ft_split.c			\
-				ft_strchr.c			\
-				ft_strinsert.c		\
-				ft_strninsert.c		\
-				ft_strdup.c			\
-				ft_strindex_of.c	\
-				ft_strjoin.c		\
-				ft_strlcat.c		\
-				ft_strlcpy.c		\
-				ft_strlen.c			\
-				ft_strmapi.c		\
-				ft_strncmp.c		\
-				ft_strnstr.c		\
-				ft_strrchr.c		\
-				ft_strtrim.c		\
-				ft_substr.c			\
-				ft_tolower.c		\
-				ft_toupper.c		\
-				ft_strtolower.c		\
-				ft_strtoupper.c		\
+STRING_SRCS	=	ft_isalnum.c			\
+				ft_isalpha.c			\
+				ft_isascii.c			\
+				ft_isdigit.c			\
+				ft_isprint.c			\
+				ft_split.c				\
+				ft_strchr.c				\
+				ft_strinsert.c			\
+				ft_strninsert.c			\
+				ft_strdup.c				\
+				ft_strindex_of.c		\
+				ft_strjoin.c			\
+				ft_strlcat.c			\
+				ft_strlcpy.c			\
+				ft_strlen.c				\
+				ft_strmapi.c			\
+				ft_strncmp.c			\
+				ft_strnstr.c			\
+				ft_strrchr.c			\
+				ft_strtrim.c			\
+				ft_substr.c				\
+				ft_tolower.c			\
+				ft_toupper.c			\
+				ft_strtolower.c			\
+				ft_strtoupper.c			\
 
-UTIL_SRCS	=	ft_identity.c		\
-				ft_ternary.c		\
+UTIL_SRCS	=	ft_identity.c			\
+				ft_ternary.c			\
+
+VECTOR3_SRCS=	ft_vector3_add.c		\
+				ft_vector3_clone.c		\
+				ft_vector3_distance.c	\
+				ft_vector3_div.c		\
+				ft_vector3_init.c		\
+				ft_vector3_length.c		\
+				ft_vector3_mul.c		\
+				ft_vector3_new.c		\
+				ft_vector3_normalize.c	\
+				ft_vector3_sub.c		\
 
 
-SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))		\
-				$(addprefix $(LIST)/, $(LIST_SRCS))		\
-				$(addprefix $(MATH)/, $(MATH_SRCS))		\
-				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))	\
-				$(addprefix $(PRINT)/, $(PRINT_SRCS))	\
-				$(addprefix $(STRING)/, $(STRING_SRCS))	\
-				$(addprefix $(UTIL)/, $(UTIL_SRCS))		\
+SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))			\
+				$(addprefix $(LIST)/, $(LIST_SRCS))			\
+				$(addprefix $(MATH)/, $(MATH_SRCS))			\
+				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))		\
+				$(addprefix $(PRINT)/, $(PRINT_SRCS))		\
+				$(addprefix $(STRING)/, $(STRING_SRCS))		\
+				$(addprefix $(UTIL)/, $(UTIL_SRCS))			\
+				$(addprefix $(VECTOR3)/, $(VECTOR3_SRCS))	\
 
 OBJS		=	$(addprefix $(BIN)/, $(SRCS:.c=.o))
 
@@ -169,6 +183,7 @@ MEMORY_COUNTER	= 0
 PRINT_COUNTER	= 0
 STRING_COUNTER	= 0
 UTIL_COUNTER	= 0
+VECTOR3_COUNTER	= 0
 count		= $(words $(SRCS))
 compile_code= tabs 6; \
 			if [ $(bar) -eq 0 ]; then \
@@ -252,6 +267,11 @@ $(BIN)/$(UTIL)/%.o: $(SRC)/$(UTIL)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval UTIL_COUNTER=$(shell echo $$(($(UTIL_COUNTER)+1))))
 			@color="$(_IYELLOW)"; local_compt=$(UTIL_COUNTER); local_count=$(words $(UTIL_SRCS)); name="utils"; $(compile_code)
+
+$(BIN)/$(VECTOR3)/%.o: $(SRC)/$(VECTOR3)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval VECTOR3_COUNTER=$(shell echo $$(($(VECTOR3_COUNTER)+1))))
+			@color="$(_IYELLOW)"; local_compt=$(VECTOR3_COUNTER); local_count=$(words $(VECTOR3_SRCS)); name="vector3"; $(compile_code)
 
 $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))

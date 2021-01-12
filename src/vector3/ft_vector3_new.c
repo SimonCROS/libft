@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   ft_vector3_new.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 15:06:03 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:14 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/12 16:58:02 by scros             #+#    #+#             */
+/*   Updated: 2021/01/12 17:42:17 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#include <stdlib.h>
+#include "vector3.h"
 
-# include "libft.h"
+t_vector3	*ft_vector3_new(double x, double y, double z)
+{
+	t_vector3	*vector;
 
-ssize_t	ft_puthex_fd(unsigned char c, int fd);
-ssize_t	ft_putendl_fd(char *s, int fd);
-ssize_t	ft_putstr_fd(char *s, int fd);
-ssize_t	ft_putchar_fd(char c, int fd);
-ssize_t	ft_putnbr_fd(long n, int fd);
-
-#endif
+	if (!(vector = malloc(sizeof(t_vector3))))
+		return (NULL);
+	return (ft_vector3_init(vector, x, y, z));
+}

@@ -6,12 +6,25 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2020/12/22 11:42:14 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/12 17:20:43 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
+
+typedef struct		s_entry
+{
+	void			*value;
+	struct s_entry	*next;
+}					t_entry;
+
+typedef struct		s_list
+{
+	t_consumer		del;
+	struct s_entry	*first;
+	int				size;
+}					t_list;
 
 t_entry				*ft_lst_get_entry(t_list *list, int index);
 t_entry				*ft_lst_last_entry(t_list *list);

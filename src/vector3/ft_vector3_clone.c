@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   ft_vector3_clone.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 15:06:03 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:14 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/12 17:00:09 by scros             #+#    #+#             */
+/*   Updated: 2021/01/12 17:43:50 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#include "vector3.h"
 
-# include "libft.h"
-
-ssize_t	ft_puthex_fd(unsigned char c, int fd);
-ssize_t	ft_putendl_fd(char *s, int fd);
-ssize_t	ft_putstr_fd(char *s, int fd);
-ssize_t	ft_putchar_fd(char c, int fd);
-ssize_t	ft_putnbr_fd(long n, int fd);
-
-#endif
+t_vector3	*ft_vector3_clone(t_vector3 *v)
+{
+	return (ft_vector3_new(v->x, v->y, v->z));
+}

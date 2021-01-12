@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2020/12/22 11:42:12 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/12 17:20:20 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,5 @@
 typedef void		*(*t_function)(void *);
 typedef void		*(*t_bifunction)(void *, void *);
 typedef void		(*t_consumer)(void *);
-
-typedef struct		s_entry
-{
-	void			*value;
-	struct s_entry	*next;
-}					t_entry;
-
-typedef struct		s_list
-{
-	t_consumer		del;
-	struct s_entry	*first;
-	int				size;
-}					t_list;
 
 #endif
