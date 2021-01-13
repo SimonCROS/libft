@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:00:09 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:43:50 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/13 13:34:31 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
 
-t_vector3	*ft_vector3_clone(t_vector3 *v)
+t_vector3	*ft_vector3_clone(const t_vector3 *v)
 {
 	return (ft_vector3_new(v->x, v->y, v->z));
 }
