@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/12 17:35:20 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/13 14:43:24 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ _IWHITE		= \033[47m
 BIN			= bin
 SRC			= src
 INC			= includes
+
+COLOR		= color
 CONV		= convert
 LIST		= list
 MATH		= math
@@ -47,6 +49,10 @@ PRINT		= print
 STRING		= string
 UTIL		= util
 VECTOR3		= vector3
+
+COLOR_SRCS	=	ft_color_clone.c		\
+				ft_color_from.c			\
+				ft_color_to.c			\
 
 CONV_SRCS	=	ft_atoi.c				\
 				ft_atoi_len.c			\
@@ -154,7 +160,8 @@ VECTOR3_SRCS=	ft_vector3_add.c		\
 				ft_vector3_sub.c		\
 
 
-SRCS		=	$(addprefix $(CONV)/, $(CONV_SRCS))			\
+SRCS		=	$(addprefix $(COLOR)/, $(COLOR_SRCS))		\
+				$(addprefix $(CONV)/, $(CONV_SRCS))			\
 				$(addprefix $(LIST)/, $(LIST_SRCS))			\
 				$(addprefix $(MATH)/, $(MATH_SRCS))			\
 				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))		\
@@ -275,7 +282,7 @@ $(BIN)/$(VECTOR3)/%.o: $(SRC)/$(VECTOR3)/%.c $(HEADERS)
 
 $(BIN)/%.o: $(SRC)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			@color="$(_IGREEN)"; local_compt=0; local_count=0; name=""; $(compile_code)
+			@color="$(_IGREEN)"; local_compt=1; local_count=1; name=""; $(compile_code)
 
 multi:		fclean pre_compile fast_comp post_compile
 			@ar rc $(NAME) $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:22:20 by scros             #+#    #+#             */
-/*   Updated: 2021/01/13 14:25:36 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/13 15:05:18 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 unsigned int	ft_color_to_hex(const t_color *c)
 {
-	return (c->a << 24 | c->r << 16 | c->g << 8 | c->b);
+	return (0x00ffffff & ft_color_to_hexa(c));
 }

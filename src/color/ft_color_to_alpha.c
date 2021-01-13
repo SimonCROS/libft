@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_color_to_alpha.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/13 14:41:29 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/13 14:22:20 by scros             #+#    #+#             */
+/*   Updated: 2021/01/13 15:04:53 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "color.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-
-# include "types.h"
-
-# include "color.h"
-# include "convert.h"
-# include "list.h"
-# include "math.h"
-# include "memory.h"
-# include "print.h"
-# include "string.h"
-# include "util.h"
-# include "vector3.h"
-
-#endif
+unsigned int	ft_color_to_hexa(const t_color *c)
+{
+	return (c->a << 24 | c->r << 16 | c->g << 8 | c->b);
+}
