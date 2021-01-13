@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/13 15:11:44 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/13 17:20:14 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,6 +152,8 @@ UTIL_SRCS	=	ft_identity.c			\
 
 VECTOR3_SRCS=	ft_vector3_add.c		\
 				ft_vector3_clone.c		\
+				ft_vector3_copy.c		\
+				ft_vector3_cross.c		\
 				ft_vector3_distance.c	\
 				ft_vector3_div.c		\
 				ft_vector3_init.c		\
