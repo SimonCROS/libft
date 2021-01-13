@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/13 14:43:24 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/13 15:11:44 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ VECTOR3		= vector3
 COLOR_SRCS	=	ft_color_clone.c		\
 				ft_color_from.c			\
 				ft_color_to.c			\
+				ft_color_from_alpha.c	\
+				ft_color_to_alpha.c		\
 
 CONV_SRCS	=	ft_atoi.c				\
 				ft_atoi_len.c			\
@@ -183,6 +185,7 @@ CFLAGS		= -Wall -Wextra -Werror
 
 bar			= 0
 compile		= 0
+COLOR_COUNTER	= 0
 CONV_COUNTER	= 0
 LIST_COUNTER	= 0
 MATH_COUNTER	= 0
@@ -239,6 +242,11 @@ ball:		bar $(NAME)
 			
 bar:
 			$(eval bar=1)
+
+$(BIN)/$(COLOR)/%.o: $(SRC)/$(COLOR)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval COLOR_COUNTER=$(shell echo $$(($(COLOR_COUNTER)+1))))
+			@color="$(_IYELLOW)"; local_compt=$(COLOR_COUNTER); local_count=$(words $(COLOR_SRCS)); name="colors"; $(compile_code)
 
 $(BIN)/$(CONV)/%.o: $(SRC)/$(CONV)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
