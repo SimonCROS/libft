@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:36:23 by scros             #+#    #+#             */
-/*   Updated: 2021/01/13 13:40:41 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/13 14:39:50 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ typedef struct	s_vector3
 }				t_vector3;
 
 double			ft_vector3_distance_squared(t_vector3 *v, double x, double y,
-				double z);
+	double z);
 double			ft_vector3_distance_squaredv(t_vector3 *v1,
-				const t_vector3 *v2);
+	const t_vector3 *v2);
 double			ft_vector3_distance(t_vector3 *v, double x, double y, double z);
 t_vector3		*ft_vector3_init(t_vector3 *v, double x, double y, double z);
 t_vector3		*ft_vector3_viv(t_vector3 *v, double x, double y, double z);
