@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putvec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 16:47:15 by scros             #+#    #+#             */
-/*   Updated: 2020/12/14 17:42:26 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
+/*   Updated: 2021/01/14 14:23:13 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t	ft_putchar_fd(char c, int fd)
+ssize_t	ft_putvec(t_vector3 *v)
 {
-	if (c)
-		return (write(fd, &c, 1));
-	return (0);
+	return (ft_printf("(%d, %d, %d)", (int)v->x, (int)v->y, (int)v->z));
 }

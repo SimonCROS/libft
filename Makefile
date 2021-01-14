@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/14 13:19:14 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/14 14:18:28 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,11 +115,16 @@ MEMORY_SRCS	=	ft_bzero.c				\
 				ft_memmove.c			\
 				ft_memset.c				\
 
-PRINT_SRCS	=	ft_putchar_fd.c			\
-				ft_putendl_fd.c			\
-				ft_puthex_fd.c			\
-				ft_putnbr_fd.c			\
-				ft_putstr_fd.c			\
+PRINT_SRCS	=	printf/ft_applyer.c		\
+				printf/ft_ints.c		\
+				printf/ft_numtoa.c		\
+				ft_printf.c				\
+				ft_putchar.c			\
+				ft_putendl.c			\
+				ft_puthex.c				\
+				ft_putnbr.c				\
+				ft_putstr.c				\
+				ft_putvec.c				\
 
 STRING_SRCS	=	ft_isalnum.c			\
 				ft_isalpha.c			\

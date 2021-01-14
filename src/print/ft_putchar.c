@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:02:33 by scros             #+#    #+#             */
-/*   Updated: 2020/12/14 17:42:05 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/11/24 16:47:15 by scros             #+#    #+#             */
+/*   Updated: 2021/01/14 14:09:06 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t	ft_putendl_fd(char *s, int fd)
+ssize_t	ft_putchar_fd(char c, int fd)
 {
-	return (ft_putstr_fd(s, fd) + ft_putchar_fd('\n', fd));
+	if (c)
+		return (write(fd, &c, 1));
+	return (0);
+}
+
+ssize_t	ft_putchar(char c)
+{
+	return (ft_putchar_fd(c, 1));
 }
