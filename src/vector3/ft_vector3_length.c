@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:00:05 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 17:17:24 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 17:22:18 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
 #include "ftmath.h"
-#ifdef USE_LIBC_MATH
+#ifdef __MATH_H__
 # include <math.h>
 # define SQRT sqrt
 #else
