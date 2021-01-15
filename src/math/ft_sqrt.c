@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:42:19 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:23:55 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 12:55:55 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math.h"
+#include "_math.h"
 
-double	root(double n)
+double	ft_sqrt(double n)
 {
 	double	min;
 	double	max;

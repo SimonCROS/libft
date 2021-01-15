@@ -6,12 +6,12 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:00:03 by scros             #+#    #+#             */
-/*   Updated: 2021/01/13 13:34:57 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 12:49:44 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
-#include "math.h"
+#include "_math.h"
 
 double	ft_vector3_distance_squared(t_vector3 *v, double x, double y, double z)
 {

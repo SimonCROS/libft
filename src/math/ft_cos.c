@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_cos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 12:49:44 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/15 12:53:10 by scros             #+#    #+#             */
+/*   Updated: 2021/01/15 12:54:52 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "_math.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+double	ft_sin(double x){
+    double	t;
+	double	s;
+    int		p;
 
-# include "types.h"
-
-# include "color.h"
-# include "convert.h"
-# include "list.h"
-# include "_math.h"
-# include "memory.h"
-# include "print.h"
-# include "string.h"
-# include "util.h"
-# include "vector3.h"
-
-#endif
+    t = 1.0;
+    s = 1.0;
+    p = 0;
+    while(ft_fabs(t / s) > .00000001)
+    {
+        p++;
+        t = (-t * x * x) / ((2 * p - 1) * (2 * p));
+        s += t;
+    }
+    return (s);
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.h                                             :+:      :+:    :+:   */
+/*   _math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:41:54 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:38 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 12:48:00 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_longlonglen(long long n);
 int		ft_uintlen(unsigned int n);
 int		ft_min(int n1, int n2);
 int		ft_max(int n1, int n2);
+double	ft_fabs(double number);
 double	ft_sqrt(double number);
 int		ft_shortlen(short n);
 long	ft_abs(long number);
