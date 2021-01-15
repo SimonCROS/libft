@@ -6,25 +6,26 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 12:53:10 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 12:54:52 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 13:08:02 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_math.h"
+#include "ftmath.h"
 
-double	ft_sin(double x){
-    double	t;
+double	ft_cos(double x)
+{
+	double	t;
 	double	s;
-    int		p;
+	int		p;
 
-    t = 1.0;
-    s = 1.0;
-    p = 0;
-    while(ft_fabs(t / s) > .00000001)
-    {
-        p++;
-        t = (-t * x * x) / ((2 * p - 1) * (2 * p));
-        s += t;
-    }
-    return (s);
+	t = 1.0;
+	s = 1.0;
+	p = 0;
+	while (ft_fabs(t / s) > .00000001)
+	{
+		p++;
+		t = (-t * x * x) / ((2 * p - 1) * (2 * p));
+		s += t;
+	}
+	return (s);
 }

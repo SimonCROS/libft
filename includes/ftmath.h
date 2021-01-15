@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _math.h                                             :+:      :+:    :+:   */
+/*   ftmath.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:41:54 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 12:48:00 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 13:08:21 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#ifndef FTMATH_H
+# define FTMATH_H
 
 # include "libft.h"
 
@@ -39,6 +39,8 @@ int		ft_shortlen(short n);
 long	ft_abs(long number);
 int		ft_longlen(long n);
 int		ft_charlen(char n);
+double	ft_cos(double x);
 int		ft_intlen(int n);
+double	ft_sin(double x);
 
 #endif

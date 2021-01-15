@@ -6,12 +6,12 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:58:02 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 12:49:44 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 13:08:02 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
-#include "_math.h"
+#include "ftmath.h"
 
 t_vector3	*ft_vector3_normalize(t_vector3 *v)
 {

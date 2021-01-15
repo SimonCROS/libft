@@ -6,14 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 14:06:15 by scros             #+#    #+#             */
-/*   Updated: 2021/01/14 14:20:31 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 13:09:10 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-#include "libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
 typedef struct	s_flags
