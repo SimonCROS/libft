@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:42:19 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 17:23:32 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 17:57:38 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@ double	ft_sqrt(double n)
 	double	min;
 	double	max;
 	double	mid;
-	int		i;
 
+	mid = 0;
 	min = ft_fmin(1, n);
 	max = ft_fmax(1, n);
-	i = -1;
-	while (100 * min * min < n)
-		min *= 10;
-	while (100 * max * max > n)
-		max *= 0.1;
-	while (++i < 100)
+	while (ft_fabs(n - (mid * mid)) > 0.00001)
 	{
 		mid = (min + max) / 2;
 		if (mid * mid == n)
