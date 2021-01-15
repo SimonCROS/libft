@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:41:54 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 13:08:21 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 17:30:04 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		ft_longlen_octal(unsigned long n);
 int		ft_charlen_octal(unsigned char n);
 int		ft_intlen_octal(unsigned int n);
 int		ft_ushortlen(unsigned short n);
+double	ft_fmax(double n1, double n2);
+double	ft_fmin(double n1, double n2);
 int		ft_ulonglen(unsigned long n);
 int		ft_ucharlen(unsigned char n);
 int		ft_longlonglen(long long n);

@@ -6,11 +6,18 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 14:02:46 by scros             #+#    #+#             */
-/*   Updated: 2020/12/08 14:03:39 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 17:30:12 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_max(int n1, int n2)
+int		ft_max(int n1, int n2)
+{
+	if (n1 > n2)
+		return (n1);
+	return (n2);
+}
+
+double	ft_fmax(double n1, double n2)
 {
 	if (n1 > n2)
 		return (n1);
