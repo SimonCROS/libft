@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 13:33:36 by scros             #+#    #+#             */
-/*   Updated: 2021/01/16 13:34:15 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/16 14:12:36 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ t_vector3		ft_vector3_divd(const t_vector3 *v, float a);
 t_vector3		ft_vector3_news(float x, float y, float z);
 t_vector3		*ft_vector3_new(float x, float y, float z);
 t_vector3		ft_vector3_normalize(const t_vector3 *v);
-t_vector3		*ft_vector3_setz(t_vector3 *v, float z);
-t_vector3		*ft_vector3_sety(t_vector3 *v, float y);
-t_vector3		*ft_vector3_setx(t_vector3 *v, float x);
 t_vector3		*ft_vector3_clone(const t_vector3 *v);
 double			ft_vector3_length(const t_vector3 *v);
 t_vector3		ft_vector3_copy(const t_vector3 *v);
