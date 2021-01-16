@@ -6,12 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:43 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/16 17:06:52 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
+
+# include "types.h"
 
 typedef struct		s_entry
 {
@@ -22,7 +24,7 @@ typedef struct		s_entry
 typedef struct		s_list
 {
 	t_consumer		del;
-	struct s_entry	*first;
+	t_entry			*first;
 	int				size;
 }					t_list;
 

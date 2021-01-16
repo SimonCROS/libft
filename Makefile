@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/16 13:09:33 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/16 17:07:26 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ INC			= includes
 COLOR		= color
 CONV		= convert
 LIST		= list
+ITERATOR	= iterator
 MATH		= math
 MEMORY		= memory
 PRINT		= print
@@ -69,6 +70,10 @@ CONV_SRCS	=	ft_atoi.c				\
 				ft_cton.c				\
 				ft_cton_to.c			\
 
+ITERATOR_SRCS=	ft_iterator_has_next.c	\
+				ft_iterator_new.c		\
+				ft_iterator_next.c		\
+
 LIST_SRCS	=	ft_lst_add_all.c		\
 				ft_lst_clear.c			\
 				ft_lst_destroy.c		\
@@ -94,7 +99,7 @@ LIST_SRCS	=	ft_lst_add_all.c		\
 				ft_lst_push.c			\
 				ft_lst_shift.c			\
 				ft_lst_slice.c			\
-				ft_lst_unshift.c
+				ft_lst_unshift.c		\
 
 MATH_SRCS	=	ft_abs.c				\
 				ft_charlen.c			\
@@ -175,6 +180,7 @@ VECTOR3_SRCS=	ft_vector3_add.c		\
 SRCS		=	$(addprefix $(COLOR)/, $(COLOR_SRCS))		\
 				$(addprefix $(CONV)/, $(CONV_SRCS))			\
 				$(addprefix $(LIST)/, $(LIST_SRCS))			\
+				$(addprefix $(ITERATOR)/, $(ITERATOR_SRCS))	\
 				$(addprefix $(MATH)/, $(MATH_SRCS))			\
 				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))		\
 				$(addprefix $(PRINT)/, $(PRINT_SRCS))		\
@@ -198,6 +204,7 @@ compile		= 0
 COLOR_COUNTER	= 0
 CONV_COUNTER	= 0
 LIST_COUNTER	= 0
+ITERATOR_COUNTER= 0
 MATH_COUNTER	= 0
 MEMORY_COUNTER	= 0
 PRINT_COUNTER	= 0
@@ -267,6 +274,11 @@ $(BIN)/$(LIST)/%.o: $(SRC)/$(LIST)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
 			$(eval LIST_COUNTER=$(shell echo $$(($(LIST_COUNTER)+1))))
 			@color="$(_IYELLOW)"; local_compt=$(LIST_COUNTER); local_count=$(words $(LIST_SRCS)); name="lists"; $(compile_code)
+
+$(BIN)/$(ITERATOR)/%.o: $(SRC)/$(ITERATOR)/%.c $(HEADERS)
+			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+			$(eval ITERATOR_COUNTER=$(shell echo $$(($(ITERATOR_COUNTER)+1))))
+			@color="$(_IYELLOW)"; local_compt=$(ITERATOR_COUNTER); local_count=$(words $(ITERATOR_SRCS)); name="iterators"; $(compile_code)
 
 $(BIN)/$(MATH)/%.o: $(SRC)/$(MATH)/%.c $(HEADERS)
 			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
