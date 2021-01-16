@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/15 13:09:03 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/16 17:12:33 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "color.h"
 # include "convert.h"
 # include "list.h"
+# include "iterator.h"
 # include "ftmath.h"
 # include "memory.h"
 # include "print.h"
