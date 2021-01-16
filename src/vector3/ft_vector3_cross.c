@@ -6,24 +6,23 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 17:11:39 by scros             #+#    #+#             */
-/*   Updated: 2021/01/13 17:19:25 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/16 13:32:05 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
 
-t_vector3	*ft_vector3_cross(t_vector3 *v, double x, double y, double z)
+t_vector3	ft_vector3_cross(const t_vector3 *v, float x, float y, float z)
 {
-	t_vector3 tmp;
+	t_vector3 vec;
 
-	ft_vector3_copy(&tmp, v);
-	v->x = tmp.y * z - tmp.z * y;
-	v->x = tmp.z * x - tmp.x * z;
-	v->x = tmp.x * y - tmp.y * x;
-	return (v);
+	vec.x = v->y * z - v->z * y;
+	vec.y = v->z * x - v->x * z;
+	vec.z = v->x * y - v->y * x;
+	return (vec);
 }
 
-t_vector3	*ft_vector3_crossv(t_vector3 *v1, const t_vector3 *v2)
+t_vector3	ft_vector3_crossv(const t_vector3 *v1, const t_vector3 *v2)
 {
 	return (ft_vector3_cross(v1, v2->x, v2->y, v2->z));
 }

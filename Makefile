@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/15 12:57:08 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/16 13:09:33 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -164,11 +164,11 @@ VECTOR3_SRCS=	ft_vector3_add.c		\
 				ft_vector3_distance.c	\
 				ft_vector3_div.c		\
 				ft_vector3_dot.c		\
-				ft_vector3_init.c		\
 				ft_vector3_length.c		\
 				ft_vector3_mul.c		\
 				ft_vector3_new.c		\
 				ft_vector3_normalize.c	\
+				ft_vector3_set.c		\
 				ft_vector3_sub.c		\
 
 
