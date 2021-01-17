@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 15:54:41 by scros             #+#    #+#             */
-/*   Updated: 2021/01/17 15:57:57 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/17 15:59:56 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_color				ft_color_addd(const t_color v, unsigned char a);
 t_color				ft_color_from_hexa(unsigned int hex);
 t_color				ft_color_from_hex(unsigned int hex);
 unsigned int		ft_color_to_hexa(const t_color c);
-t_color				*ft_color_clone(const t_color *c);
+t_color				*ft_color_clone(const t_color c);
 unsigned int		ft_color_to_hex(const t_color c);
 t_color				ft_color_copy(const t_color c);
 
