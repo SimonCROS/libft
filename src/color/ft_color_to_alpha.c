@@ -6,13 +6,13 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:22:20 by scros             #+#    #+#             */
-/*   Updated: 2021/01/14 13:02:54 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/17 15:43:44 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-unsigned int	ft_color_to_hexa(const t_color *c)
+unsigned int	ft_color_to_hexa(const t_color c)
 {
-	return (c->a << 24 | c->r << 16 | c->g << 8 | c->b);
+	return (c.a << 24 | c.r << 16 | c.g << 8 | c.b);
 }

@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/17 14:37:19 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/17 15:51:24 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,13 @@ STRING		= string
 UTIL		= util
 VECTOR3		= vector3
 
-COLOR_SRCS	=	ft_color_clone.c		\
+COLOR_SRCS	=	ft_color_add.c			\
+				ft_color_clone.c		\
+				ft_color_div.c			\
 				ft_color_from.c			\
 				ft_color_to.c			\
+				ft_color_mul.c			\
+				ft_color_sub.c			\
 				ft_color_from_alpha.c	\
 				ft_color_to_alpha.c		\
 
