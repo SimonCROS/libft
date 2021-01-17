@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:00:03 by scros             #+#    #+#             */
-/*   Updated: 2021/01/16 13:32:25 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/17 10:49:05 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float	ft_vector3_distance_squared(const t_vector3 *v, float x, float y,
 	dx = v->x - x;
 	dy = v->y - y;
 	dz = v->z - z;
-	return (dx * dx + dy * dy + dz * dz);
+	return (ft_fabs(dx * dx + dy * dy + dz * dz));
 }
 
 float	ft_vector3_distance_squaredv(const t_vector3 *v1, const t_vector3 *v2)
