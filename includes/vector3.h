@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 13:33:36 by scros             #+#    #+#             */
-/*   Updated: 2021/01/16 14:12:36 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/17 14:37:01 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_vector3		ft_vector3_news(float x, float y, float z);
 t_vector3		*ft_vector3_new(float x, float y, float z);
 t_vector3		ft_vector3_normalize(const t_vector3 *v);
 t_vector3		*ft_vector3_clone(const t_vector3 *v);
+t_vector3		ft_vector3_negate(const t_vector3 *v);
 double			ft_vector3_length(const t_vector3 *v);
 t_vector3		ft_vector3_copy(const t_vector3 *v);
 
