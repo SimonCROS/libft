@@ -43,7 +43,7 @@ INC			= includes
 COLOR		= color
 CONV		= convert
 LIST		= list
-ITERATOR	= iterator
+ITERAT		= iterator
 MATH		= math
 MEMORY		= memory
 PRINT		= print
@@ -51,7 +51,8 @@ STRING		= string
 UTIL		= util
 VECTOR3		= vector3
 
-COLOR_SRCS	=	ft_color_add.c			\
+COLOR_SRCS	=	$(addprefix $(COLOR)/,	\
+				ft_color_add.c			\
 				ft_color_clone.c		\
 				ft_color_div.c			\
 				ft_color_from.c			\
@@ -60,8 +61,10 @@ COLOR_SRCS	=	ft_color_add.c			\
 				ft_color_sub.c			\
 				ft_color_from_alpha.c	\
 				ft_color_to_alpha.c		\
+				)
 
-CONV_SRCS	=	ft_atoi.c				\
+CONV_SRCS	=	$(addprefix $(CONV)/,	\
+				ft_atoi.c				\
 				ft_atoi_len.c			\
 				ft_iton.c				\
 				ft_iton_to.c			\
@@ -73,12 +76,16 @@ CONV_SRCS	=	ft_atoi.c				\
 				ft_ston_to.c			\
 				ft_cton.c				\
 				ft_cton_to.c			\
+				)
 
-ITERATOR_SRCS=	ft_iterator_has_next.c	\
+ITERAT_SRCS	=	$(addprefix $(ITERAT)/,	\
+				ft_iterator_has_next.c	\
 				ft_iterator_new.c		\
 				ft_iterator_next.c		\
+				)
 
-LIST_SRCS	=	ft_lst_add_all.c		\
+LIST_SRCS	=	$(addprefix $(LIST)/,	\
+				ft_lst_add_all.c		\
 				ft_lst_clear.c			\
 				ft_lst_destroy.c		\
 				ft_lst_foreach.c		\
@@ -104,8 +111,10 @@ LIST_SRCS	=	ft_lst_add_all.c		\
 				ft_lst_shift.c			\
 				ft_lst_slice.c			\
 				ft_lst_unshift.c		\
+				)
 
-MATH_SRCS	=	ft_abs.c				\
+MATH_SRCS	=	$(addprefix $(MATH)/,	\
+				ft_abs.c				\
 				ft_charlen.c			\
 				ft_cos.c				\
 				ft_shortlen.c			\
@@ -116,8 +125,10 @@ MATH_SRCS	=	ft_abs.c				\
 				ft_min.c				\
 				ft_sin.c				\
 				ft_sqrt.c				\
+				)
 
-MEMORY_SRCS	=	ft_bzero.c				\
+MEMORY_SRCS	=	$(addprefix $(MEMORY)/,	\
+				ft_bzero.c				\
 				ft_calloc.c				\
 				ft_memccpy.c			\
 				ft_memchr.c				\
@@ -125,8 +136,10 @@ MEMORY_SRCS	=	ft_bzero.c				\
 				ft_memcpy.c				\
 				ft_memmove.c			\
 				ft_memset.c				\
+				)
 
-PRINT_SRCS	=	printf/ft_applyer.c		\
+PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
+				printf/ft_applyer.c		\
 				printf/ft_ints.c		\
 				printf/ft_numtoa.c		\
 				ft_printf.c				\
@@ -136,8 +149,10 @@ PRINT_SRCS	=	printf/ft_applyer.c		\
 				ft_putnbr.c				\
 				ft_putstr.c				\
 				ft_putvec.c				\
+				)
 
-STRING_SRCS	=	ft_isalnum.c			\
+STRING_SRCS	=	$(addprefix $(STRING)/,	\
+				ft_isalnum.c			\
 				ft_isalpha.c			\
 				ft_isascii.c			\
 				ft_isdigit.c			\
@@ -162,11 +177,15 @@ STRING_SRCS	=	ft_isalnum.c			\
 				ft_toupper.c			\
 				ft_strtolower.c			\
 				ft_strtoupper.c			\
+				)
 
-UTIL_SRCS	=	ft_identity.c			\
+UTIL_SRCS	=	$(addprefix $(UTIL)/,	\
+				ft_identity.c			\
 				ft_ternary.c			\
+				)
 
-VECTOR3_SRCS=	ft_vector3_add.c		\
+VECTOR3_SRCS=	$(addprefix $(VECTOR3)/,\
+				ft_vector3_add.c		\
 				ft_vector3_angle.c		\
 				ft_vector3_clone.c		\
 				ft_vector3_copy.c		\
@@ -182,173 +201,144 @@ VECTOR3_SRCS=	ft_vector3_add.c		\
 				ft_vector3_normalize.c	\
 				ft_vector3_set.c		\
 				ft_vector3_sub.c		\
+				)
 
 
-SRCS		=	$(addprefix $(COLOR)/, $(COLOR_SRCS))		\
-				$(addprefix $(CONV)/, $(CONV_SRCS))			\
-				$(addprefix $(LIST)/, $(LIST_SRCS))			\
-				$(addprefix $(ITERATOR)/, $(ITERATOR_SRCS))	\
-				$(addprefix $(MATH)/, $(MATH_SRCS))			\
-				$(addprefix $(MEMORY)/, $(MEMORY_SRCS))		\
-				$(addprefix $(PRINT)/, $(PRINT_SRCS))		\
-				$(addprefix $(STRING)/, $(STRING_SRCS))		\
-				$(addprefix $(UTIL)/, $(UTIL_SRCS))			\
-				$(addprefix $(VECTOR3)/, $(VECTOR3_SRCS))	\
+SRCS		=	$(COLOR_SRCS)			\
+				$(CONV_SRCS)			\
+				$(LIST_SRCS)			\
+				$(ITERAT_SRCS)			\
+				$(MATH_SRCS)			\
+				$(MEMORY_SRCS)			\
+				$(PRINT_SRCS)			\
+				$(STRING_SRCS)			\
+				$(UTIL_SRCS)			\
+				$(VECTOR3_SRCS)			\
 
-OBJS		=	$(addprefix $(BIN)/, $(SRCS:.c=.o))
+OBJS		=	$(addprefix $(BIN)/, $($(join $(if $($(TYPE)_SRCS), $(TYPE)_)SRCS,:.c=.o)))
 
 HEADERS		=	$(addprefix $(INC)/, libft.h)
 
-NAME		= libft.a
+BAR			= 0
+
+OUTPUT		= libft.a
 
 CC			= gcc
 RM			= rm -rf
 
 CFLAGS		= -Wall -Wextra -Werror
+MFLAGS		= --no-print-directory BAR=$(BAR) V_GLOBAL_COUNT=$(GLOBAL_COUNT) V_GLOBAL_COUNTER=$(GLOBAL_COUNTER)
 
-bar			= 0
-compile		= 0
-COLOR_COUNTER	= 0
-CONV_COUNTER	= 0
-LIST_COUNTER	= 0
-ITERATOR_COUNTER= 0
-MATH_COUNTER	= 0
-MEMORY_COUNTER	= 0
-PRINT_COUNTER	= 0
-STRING_COUNTER	= 0
-UTIL_COUNTER	= 0
-VECTOR3_COUNTER	= 0
-count		= $(words $(SRCS))
-compile_code= tabs 6; \
-			if [ $(bar) -eq 0 ]; then \
-				echo "$$(($(COUNTER)*100/$(count)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
-			elif [ $(bar) -eq 1 ]; then \
+GLOBAL_COUNTER	= $(or $(V_GLOBAL_COUNTER),0)
+GLOBAL_COUNT	= $(or $(V_GLOBAL_COUNT),$(words $(OBJS)))
+GLOBAL_COLOR			= $(_IGREEN)
+
+TYPE			=
+TYPE_NAME		=
+TYPE_COLOR		= $(_IYELLOW)
+TYPE_COUNTER	= 0
+TYPE_COUNT		= $(words $(OBJS))
+
+COMPILE_FILE	= tabs 6; \
+			if [ $(BAR) -eq 0 ]; then \
+				echo "$$(($(GLOBAL_COUNTER)*100/$(TYPE_COUNT)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
+			elif [ $(BAR) -eq 1 ]; then \
 				tput cuu1; \
-				if [ $$local_compt -gt 1 ]; then \
+				if [ $(TYPE_COUNTER) -gt 1 ]; then \
 					tput cuu1; \
 				fi; \
 				tput el; \
-				printf "$${color}%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\n" $$(($$local_compt*50/$$local_count)) " " $$((50 - ($$local_compt*50/$$local_count))) $$((50 - ($$local_compt*50/$$local_count))) " " $$(($$local_compt*100/$$local_count)) "$$name..."; \
+				printf "$(TYPE_COLOR)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\n" $$(($(TYPE_COUNTER)*50/$(TYPE_COUNT))) " " $$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) $$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) " " $$(($(TYPE_COUNTER)*100/$(TYPE_COUNT))) "$(or $(TYPE_NAME),$(TYPE))..."; \
 				\
 				tput el; \
-				printf "$(_IGREEN)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" $$(($(COUNTER)*50/$(count))) " " $$((50 - ($(COUNTER)*50/$(count)))) $$((50 - ($(COUNTER)*50/$(count)))) " " $$(($(COUNTER)*100/$(count))) "..."; \
-			elif [ $(bar) -eq 2 ]; then \
-				tput el; \
-				printf "$(_IGREEN)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\r" $$(($(COUNTER)*50/$(count))) " " $$((50 - ($(COUNTER)*50/$(count)))) $$((50 - ($(COUNTER)*50/$(count)))) " " $$(($(COUNTER)*100/$(count))) "..."; \
+				printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" \
+					$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
+					$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
+					" " \
+					$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
+					$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
+					" " \
+					$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT))) \
+					"..."; \
 			fi; \
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
-			if [ $(bar) -eq 0 ]; then \
+			if [ $(BAR) -eq 0 ]; then \
 				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
-			elif [ $(bar) -eq 1 ]; then \
-				if [ $$local_compt -eq $$local_count ]; then \
+			elif [ $(BAR) -eq 1 ]; then \
+				if [ $(TYPE_COUNTER) -eq $(TYPE_COUNT) ]; then \
 					tput cuu1; \
 					tput cuu1; \
 					tput el; \
-					printf "$${color}%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$$name..."; \
+					printf "$(TYPE_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$(or $(TYPE_NAME),$(TYPE))..."; \
 					tput cud1; \
-					if [ $(COUNTER) -eq $(count) ]; then \
+					if [ $(GLOBAL_COUNTER) -eq $(TYPE_COUNT) ]; then \
 						tput cuu1; \
 						tput el; \
-						printf "$(_IGREEN)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
+						printf "$(GLOBAL_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
 					fi; \
-				fi; \
-			elif [ $(bar) -eq 2 ]; then \
-				if [ $(COUNTER) -eq $(count) ]; then \
-					tput el; \
-					printf "$(_IGREEN)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
 				fi; \
 			fi; \
 
-all:		$(NAME)
+all:		$(OUTPUT)
 
-ball:		bar $(NAME)
-			
+ball:		bar $(OUTPUT)
+
 bar:
-			$(eval bar=1)
+			$(eval BAR=1)
 
-$(BIN)/$(COLOR)/%.o: $(SRC)/$(COLOR)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval COLOR_COUNTER=$(shell echo $$(($(COLOR_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(COLOR_COUNTER); local_count=$(words $(COLOR_SRCS)); name="colors"; $(compile_code)
+$(BIN)/$($(TYPE))/%.o: $(SRC)/$($(TYPE))/%.c $(HEADERS)
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+1))))
+			$(eval TYPE_COUNTER=$(shell echo $$(($(TYPE_COUNTER)+1))))
+			@$(COMPILE_FILE)
 
-$(BIN)/$(CONV)/%.o: $(SRC)/$(CONV)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval CONV_COUNTER=$(shell echo $$(($(CONV_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(CONV_COUNTER); local_count=$(words $(CONV_SRCS)); name="converters"; $(compile_code)
-
-$(BIN)/$(LIST)/%.o: $(SRC)/$(LIST)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval LIST_COUNTER=$(shell echo $$(($(LIST_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(LIST_COUNTER); local_count=$(words $(LIST_SRCS)); name="lists"; $(compile_code)
-
-$(BIN)/$(ITERATOR)/%.o: $(SRC)/$(ITERATOR)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval ITERATOR_COUNTER=$(shell echo $$(($(ITERATOR_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(ITERATOR_COUNTER); local_count=$(words $(ITERATOR_SRCS)); name="iterators"; $(compile_code)
-
-$(BIN)/$(MATH)/%.o: $(SRC)/$(MATH)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval MATH_COUNTER=$(shell echo $$(($(MATH_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(MATH_COUNTER); local_count=$(words $(MATH_SRCS)); name="maths"; $(compile_code)
-
-$(BIN)/$(MEMORY)/%.o: $(SRC)/$(MEMORY)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval MEMORY_COUNTER=$(shell echo $$(($(MEMORY_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(MEMORY_COUNTER); local_count=$(words $(MEMORY_SRCS)); name="memories"; $(compile_code)
-
-$(BIN)/$(PRINT)/%.o: $(SRC)/$(PRINT)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval PRINT_COUNTER=$(shell echo $$(($(PRINT_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(PRINT_COUNTER); local_count=$(words $(PRINT_SRCS)); name="printers"; $(compile_code)
-
-$(BIN)/$(STRING)/%.o: $(SRC)/$(STRING)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval STRING_COUNTER=$(shell echo $$(($(STRING_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(STRING_COUNTER); local_count=$(words $(STRING_SRCS)); name="strings"; $(compile_code)
-
-$(BIN)/$(UTIL)/%.o: $(SRC)/$(UTIL)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval UTIL_COUNTER=$(shell echo $$(($(UTIL_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(UTIL_COUNTER); local_count=$(words $(UTIL_SRCS)); name="utils"; $(compile_code)
-
-$(BIN)/$(VECTOR3)/%.o: $(SRC)/$(VECTOR3)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			$(eval VECTOR3_COUNTER=$(shell echo $$(($(VECTOR3_COUNTER)+1))))
-			@color="$(_IYELLOW)"; local_compt=$(VECTOR3_COUNTER); local_count=$(words $(VECTOR3_SRCS)); name="vector3"; $(compile_code)
-
-$(BIN)/%.o: $(SRC)/%.c $(HEADERS)
-			$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
-			@color="$(_IGREEN)"; local_compt=1; local_count=1; name=""; $(compile_code)
-
-multi:		fclean pre_compile fast_comp post_compile
-			@ar rc $(NAME) $(OBJS)
-
-fast_comp:
-			@tput cuu1;
-			@$(MAKE) bar=2 -j --no-print-directory $(OBJS)
-
-$(NAME):	$(HEADERS) pre_compile $(OBJS) post_compile
-			@ar rc $(NAME) $(OBJS)
+ifeq ($($(TYPE)_SRCS),)
+$(OUTPUT):	$(HEADERS) pre_compile compile post_compile
+			@ar rc $(OUTPUT) $(OBJS)
+else
+$(OUTPUT):	$(HEADERS) $(OBJS)
+endif
 
 pre_compile:
 			@echo "$(_BOLD)$(_CYAN)Compiling...$(_RESET)"
 			@echo "\n\n"
 
+compile:
+			@$(MAKE) $(MFLAGS) TYPE=COLOR	TYPE_NAME="colors"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(COLOR_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=CONV	TYPE_NAME="converters"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(CONV_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=LIST	TYPE_NAME="lists"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(LIST_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=ITERAT	TYPE_NAME="iterators"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(ITERAT_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=MATH	TYPE_NAME="maths"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(MATH_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=MEMORY	TYPE_NAME="memories"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(MEMORY_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=PRINT	TYPE_NAME="prints"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(PRINT_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=STRING	TYPE_NAME="strings"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(STRING_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=UTIL	TYPE_NAME="utils"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(UTIL_SRCS))))))
+			@$(MAKE) $(MFLAGS) TYPE=VECTOR3	TYPE_NAME="3D vectors"
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(VECTOR3_SRCS))))))
+
 post_compile:
 			@echo "\n"
-			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(COUNTER)$(_RESET) files compiled)$(_RESET)"
+			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(GLOBAL_COUNTER)$(_RESET) files compiled)$(_RESET)"
 
 clean:
 			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
-			@$(RM) $(NAME)
+			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(OUTPUT)$(_RESET)\n"
+			@$(RM) $(OUTPUT)
 
 re:			fclean all
 
 bre:		fclean ball
 
-.PHONY:		all ball bar pre_compile post_compile clean fclean re bre multi fast_comp
+.PHONY:		all ball bar pre_compile compile post_compile clean fclean re bre multi
