@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/22 11:11:01 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/22 11:15:13 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -221,7 +221,7 @@ override HEADERS	=	$(addprefix $(INC)/, libft.h)
 
 BAR						= 0
 
-OUTPUT					= libft.a
+NAME					= libft.a
 
 CC						= gcc
 RM						= rm -rf
@@ -287,7 +287,7 @@ override COMPILE_FILE	= tabs 6; \
 			fi;
 endif
 
-all:		$(OUTPUT)
+all:		$(NAME)
 			@:
 
 ball:
@@ -299,9 +299,9 @@ $(BIN)/$($(TYPE))/%.o: $(SRC)/$($(TYPE))/%.c $(HEADERS)
 			@$(COMPILE_FILE)
 
 ifeq ($($(TYPE)_SRCS),)
-$(OUTPUT):	pre_compile compile post_compile
+$(NAME):	pre_compile compile post_compile
 else
-$(OUTPUT):	$(OBJS)
+$(NAME):	$(OBJS)
 			@ar rc $@ $^
 endif
 
@@ -335,8 +335,8 @@ clean:
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(OUTPUT)$(_RESET)\n"
-			@$(RM) $(OUTPUT)
+			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
+			@$(RM) $(NAME)
 
 re:			fclean all
 
