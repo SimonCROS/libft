@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/20 13:15:31 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/22 10:25:54 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -227,11 +227,11 @@ CC			= gcc
 RM			= rm -rf
 
 CFLAGS		= -Wall -Wextra -Werror
-MFLAGS		= --no-print-directory BAR=$(BAR) V_GLOBAL_COUNT=$(GLOBAL_COUNT) V_GLOBAL_COUNTER=$(GLOBAL_COUNTER)
+MFLAGS		= --no-print-directory V_GLOBAL_COUNT=$(GLOBAL_COUNT) V_GLOBAL_COUNTER=$(GLOBAL_COUNTER)
 
 GLOBAL_COUNTER	= $(or $(V_GLOBAL_COUNTER),0)
 GLOBAL_COUNT	= $(or $(V_GLOBAL_COUNT),$(words $(OBJS)))
-GLOBAL_COLOR			= $(_IGREEN)
+GLOBAL_COLOR	= $(_IGREEN)
 
 TYPE			=
 TYPE_NAME		=
@@ -239,53 +239,58 @@ TYPE_COLOR		= $(_IYELLOW)
 TYPE_COUNTER	= 0
 TYPE_COUNT		= $(words $(OBJS))
 
+ifeq ($(BAR), 0)
 COMPILE_FILE	= tabs 6; \
-			if [ $(BAR) -eq 0 ]; then \
-				echo "$$(($(GLOBAL_COUNTER)*100/$(TYPE_COUNT)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
-			elif [ $(BAR) -eq 1 ]; then \
-				tput cuu1; \
-				if [ $(TYPE_COUNTER) -gt 1 ]; then \
-					tput cuu1; \
-				fi; \
-				tput el; \
-				printf "$(TYPE_COLOR)%*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\n" $$(($(TYPE_COUNTER)*50/$(TYPE_COUNT))) " " $$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) $$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) " " $$(($(TYPE_COUNTER)*100/$(TYPE_COUNT))) "$(or $(TYPE_NAME),$(TYPE))..."; \
-				\
-				tput el; \
-				printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" \
-					$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
-					$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
-					" " \
-					$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
-					$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
-					" " \
-					$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT))) \
-					"..."; \
-			fi; \
+			echo "$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
-			if [ $(BAR) -eq 0 ]; then \
-				echo " $(_GREEN)\xE2\x9C\x93$(_RESET)"; \
-			elif [ $(BAR) -eq 1 ]; then \
-				if [ $(TYPE_COUNTER) -eq $(TYPE_COUNT) ]; then \
-					tput cuu1; \
+			echo " $(_GREEN)\xE2\x9C\x93$(_RESET)";
+else
+COMPILE_FILE	= tabs 6; \
+			tput cuu1; \
+			if [ $(TYPE_COUNTER) -gt 1 ]; then \
+				tput cuu1; \
+			fi; \
+			tput el; \
+			printf "$(TYPE_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\n" \
+				$$(($(TYPE_COUNTER)*50/$(TYPE_COUNT))) \
+				$$(($(TYPE_COUNTER)*50/$(TYPE_COUNT))) \
+				" " \
+				$$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) \
+				$$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) \
+				" " $$(($(TYPE_COUNTER)*100/$(TYPE_COUNT))) \
+				"$(or $(TYPE_NAME),$(TYPE))..."; \
+			\
+			tput el; \
+			printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" \
+				$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
+				$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
+				" " \
+				$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
+				$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
+				" " \
+				$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT))) \
+				"..."; \
+			mkdir -p $(dir $@); \
+			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
+			if [ $(TYPE_COUNTER) -eq $(TYPE_COUNT) ]; then \
+				tput cuu1; \
+				tput cuu1; \
+				tput el; \
+				printf "$(TYPE_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$(or $(TYPE_NAME),$(TYPE))..."; \
+				tput cud1; \
+				if [ $(GLOBAL_COUNTER) -eq $(GLOBAL_COUNT) ]; then \
 					tput cuu1; \
 					tput el; \
-					printf "$(TYPE_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$(or $(TYPE_NAME),$(TYPE))..."; \
-					tput cud1; \
-					if [ $(GLOBAL_COUNTER) -eq $(TYPE_COUNT) ]; then \
-						tput cuu1; \
-						tput el; \
-						printf "$(GLOBAL_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
-					fi; \
+					printf "$(GLOBAL_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
 				fi; \
-			fi; \
+			fi;
+endif
 
 all:		$(OUTPUT)
 
-ball:		bar $(OUTPUT)
-
-bar:
-			$(eval BAR=1)
+ball:
+			@$(MAKE) $(MFLAGS) BAR=1
 
 $(BIN)/$($(TYPE))/%.o: $(SRC)/$($(TYPE))/%.c $(HEADERS)
 			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+1))))
@@ -293,10 +298,10 @@ $(BIN)/$($(TYPE))/%.o: $(SRC)/$($(TYPE))/%.c $(HEADERS)
 			@$(COMPILE_FILE)
 
 ifeq ($($(TYPE)_SRCS),)
-$(OUTPUT):	$(HEADERS) pre_compile compile post_compile
-			@ar rc $(OUTPUT) $(OBJS)
+$(OUTPUT):	pre_compile compile post_compile
 else
-$(OUTPUT):	$(HEADERS) $(OBJS)
+$(OUTPUT):	$(OBJS)
+			@ar rc $@ $^
 endif
 
 pre_compile:
@@ -341,4 +346,4 @@ re:			fclean all
 
 bre:		fclean ball
 
-.PHONY:		all ball bar pre_compile compile post_compile clean fclean re bre multi
+.PHONY:		all ball pre_compile compile post_compile clean fclean re bre
