@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/22 10:25:54 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/22 10:47:45 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -308,27 +308,22 @@ pre_compile:
 			@echo "$(_BOLD)$(_CYAN)Compiling...$(_RESET)"
 			@echo "\n\n"
 
+define compile_type
+			@$(MAKE) $(MFLAGS) TYPE=$1 TYPE_NAME=$2
+			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $($1_SRCS))))))
+endef
+
 compile:
-			@$(MAKE) $(MFLAGS) TYPE=COLOR	TYPE_NAME="colors"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(COLOR_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=CONV	TYPE_NAME="converters"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(CONV_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=LIST	TYPE_NAME="lists"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(LIST_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=ITERAT	TYPE_NAME="iterators"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(ITERAT_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=MATH	TYPE_NAME="maths"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(MATH_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=MEMORY	TYPE_NAME="memories"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(MEMORY_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=PRINT	TYPE_NAME="prints"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(PRINT_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=STRING	TYPE_NAME="strings"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(STRING_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=UTIL	TYPE_NAME="utils"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(UTIL_SRCS))))))
-			@$(MAKE) $(MFLAGS) TYPE=VECTOR3	TYPE_NAME="3D vectors"
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $(VECTOR3_SRCS))))))
+			$(call compile_type,COLOR,"colors")
+			$(call compile_type,CONV,"converters")
+			$(call compile_type,ITERAT,"iterators")
+			$(call compile_type,LIST,"lists")
+			$(call compile_type,MATH,"maths")
+			$(call compile_type,MEMORY,"memories")
+			$(call compile_type,PRINT,"prints")
+			$(call compile_type,STRING,"strings")
+			$(call compile_type,UTIL,"utils")
+			$(call compile_type,VECTOR3,"3D vectors")
 
 post_compile:
 			@echo "\n"
