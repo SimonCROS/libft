@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/22 11:15:13 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/01/26 09:39:40 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -300,9 +300,9 @@ $(BIN)/$($(TYPE))/%.o: $(SRC)/$($(TYPE))/%.c $(HEADERS)
 
 ifeq ($($(TYPE)_SRCS),)
 $(NAME):	pre_compile compile post_compile
+			@ar rcs $@ $(OBJS)
 else
 $(NAME):	$(OBJS)
-			@ar rc $@ $^
 endif
 
 pre_compile:
@@ -311,7 +311,7 @@ pre_compile:
 
 define compile_type
 			@$(MAKE) $(MFLAGS) TYPE=$1 TYPE_NAME=$2
-			$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $($1_SRCS))))))
+			@$(eval GLOBAL_COUNTER=$(shell echo $$(($(GLOBAL_COUNTER)+$(words $($1_SRCS))))))
 endef
 
 compile:
