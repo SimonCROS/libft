@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:26:34 by scros             #+#    #+#             */
-/*   Updated: 2021/01/17 15:57:23 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/26 13:28:49 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_color			ft_color_from_rgba(unsigned char r, unsigned char g,
 	color.r = r;
 	color.g = g;
 	color.b = b;
-	color.a = 255 - a;
+	color.a = a;
 	return (color);
 }
 
@@ -61,7 +61,7 @@ t_color			ft_color_from_hsla(unsigned short h, unsigned char s,
 		color.g = hue2rgb(p, q, h) * 255;
 		color.b = hue2rgb(p, q, h - 1 / 3) * 255;
 	}
-	color.a = 255 - a;
+	color.a = a;
 	return (color);
 }
 
@@ -72,6 +72,6 @@ t_color			ft_color_from_hexa(unsigned int hex)
 	color.a = hex >> 24;
 	color.r = hex >> 16;
 	color.g = hex >> 8;
-	color.b = hex;
+	color.b = 255 - hex;
 	return (color);
 }
