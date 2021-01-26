@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:26:34 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 13:28:49 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/26 13:34:12 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ t_color			ft_color_from_hexa(unsigned int hex)
 {
 	t_color	color;
 
-	color.a = hex >> 24;
+	color.a = 255 - (hex >> 24);
 	color.r = hex >> 16;
 	color.g = hex >> 8;
-	color.b = 255 - hex;
+	color.b = hex;
 	return (color);
 }
