@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_hash_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 14:46:13 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2021/01/26 15:10:14 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
+t_hash	*ft_hash_new(t_biconsumer del)
+{
+	t_hash	*hash;
 
-#endif
+	if (!(hash = malloc(sizeof(t_hash))))
+		return (NULL);
+	hash->del = del;
+	hash->first = NULL;
+	return (hash);
+}

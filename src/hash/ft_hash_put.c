@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_hash_put.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 14:46:13 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2021/01/26 15:19:47 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
+void	ft_hash_put(t_hash *hash, char *key, void *element)
+{
+	t_hentry *entry;
 
-#endif
+	if (!(entry = ft_hash_new_entry(key, element)))
+		return ;
+	entry->next = hash->first;
+	hash->first = entry;
+}

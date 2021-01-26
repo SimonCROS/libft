@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 14:54:22 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:16 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/01/26 14:56:47 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_strindex_of(char *str, char c);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
+int		ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	*ft_strtoupper(char *str);
 char	*ft_strtolower(char *str);

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_hash_new_entry.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 14:46:13 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 14:08:54 by scros             #+#    #+#             */
+/*   Updated: 2021/01/26 15:19:43 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
+t_hentry	*ft_hash_new_entry(char *key, void *value)
+{
+	t_hentry	*entry;
 
-#endif
+	if (!(entry = malloc(sizeof(t_hentry))))
+		return (NULL);
+	entry->key = key;
+	entry->value = value;
+	entry->next = NULL;
+	return (entry);
+}

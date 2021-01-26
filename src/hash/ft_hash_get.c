@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_hash_get.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 14:46:13 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 14:33:21 by scros             #+#    #+#             */
+/*   Updated: 2021/01/26 15:19:36 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
+void	*ft_hash_get(t_hash *hash, char *key)
+{
+	t_hentry	*entry;
 
-#endif
+	if (!(entry = ft_hash_get_entry(hash, key)))
+		return (NULL);
+	return (entry->value);
+}

@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_hash_is_empty.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 14:46:13 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2021/01/26 15:19:40 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
-
-#endif
+int	ft_hash_is_empty(t_hash *hash)
+{
+	if (!hash)
+		return (1);
+	return (!(hash->first));
+}

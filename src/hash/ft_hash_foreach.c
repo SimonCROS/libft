@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_hash_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/01/26 14:46:13 by scros            ###   ########lyon.fr   */
+/*   Created: 2020/12/08 12:41:48 by scros             #+#    #+#             */
+/*   Updated: 2021/01/26 15:10:33 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
+void	ft_hash_foreach(t_hash *hash, t_biconsumer visitor)
+{
+	t_hentry *entry;
 
-#endif
+	if (ft_hash_is_empty(hash))
+		return ;
+	entry = hash->first;
+	visitor(entry->key, entry->value);
+	while (entry->next)
+	{
+		entry = entry->next;
+		visitor(entry->key, entry->value);
+	}
+}
