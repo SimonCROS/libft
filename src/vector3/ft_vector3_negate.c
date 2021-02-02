@@ -6,14 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 14:35:42 by scros             #+#    #+#             */
-/*   Updated: 2021/01/17 14:36:20 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 12:36:23 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
 #include "ftmath.h"
 
-t_vector3	ft_vector3_negate(const t_vector3 *v)
+t_vector3	vec3_negate(t_vector3 v)
 {
-	return (ft_vector3_muld(v, -1));
+	return (vec3_muld(v, -1));
 }
