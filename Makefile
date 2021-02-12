@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/01/26 15:18:42 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/02/12 15:12:40 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,15 +53,13 @@ override UTIL		= util
 override VECTOR3	= vector3
 
 override COLOR_SRCS	=	$(addprefix $(COLOR)/,	\
-				ft_color_add.c			\
-				ft_color_clone.c		\
-				ft_color_div.c			\
-				ft_color_from.c			\
-				ft_color_to.c			\
-				ft_color_mul.c			\
-				ft_color_sub.c			\
-				ft_color_from_alpha.c	\
-				ft_color_to_alpha.c		\
+				color_add.c				\
+				color_clone.c			\
+				color_div.c				\
+				color_from.c			\
+				color_to.c				\
+				color_mul.c				\
+				color_sub.c				\
 				)
 
 override CONV_SRCS	=	$(addprefix $(CONV)/,	\

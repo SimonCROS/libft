@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_from.c                                    :+:      :+:    :+:   */
+/*   color_to.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 13:26:34 by scros             #+#    #+#             */
-/*   Updated: 2021/01/17 15:57:30 by scros            ###   ########lyon.fr   */
+/*   Created: 2021/01/13 14:22:20 by scros             #+#    #+#             */
+/*   Updated: 2021/02/12 15:11:25 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-t_color			ft_color_from_rgb(unsigned char r, unsigned char g,
-	unsigned char b)
+unsigned int	ft_color_to_hexa(const t_color c)
 {
-	return (ft_color_from_rgba(r, g, b, 255));
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+	unsigned char a;
+
+	r = c.r * 255;
+	g = c.g * 255;
+	b = c.b * 255;
+	a = 255 - (c.a * 255);
+	return (a << 24 | r << 16 | g << 8 | b);
 }
 
-t_color			ft_color_from_hsl(unsigned short h, unsigned char s,
-	unsigned char l)
+unsigned int	ft_color_to_hex(const t_color c)
 {
-	return (ft_color_from_hsla(h, s, l, 255));
-}
-
-t_color			ft_color_from_hex(unsigned int hex)
-{
-	return (ft_color_from_hexa(0x00ffffff & hex));
+	return (0x00ffffff & ft_color_to_hexa(c));
 }
