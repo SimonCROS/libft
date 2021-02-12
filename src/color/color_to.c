@@ -6,14 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:22:20 by scros             #+#    #+#             */
-/*   Updated: 2021/02/12 15:14:57 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/12 15:22:12 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 #include <math.h>
 
-unsigned int	ft_color_to_hexa(const t_color c)
+unsigned int	color_to_hexa(const t_color c)
 {
 	unsigned char r;
 	unsigned char g;
@@ -27,7 +27,7 @@ unsigned int	ft_color_to_hexa(const t_color c)
 	return (a << 24 | r << 16 | g << 8 | b);
 }
 
-unsigned int	ft_color_to_hex(const t_color c)
+unsigned int	color_to_hex(const t_color c)
 {
-	return (0x00ffffff & ft_color_to_hexa(c));
+	return (0x00ffffff & color_to_hexa(c));
 }

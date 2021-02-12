@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:20:14 by scros             #+#    #+#             */
-/*   Updated: 2021/02/12 15:20:23 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/12 15:22:32 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_color			color_div(const t_color v1, const t_color v2);
 t_color			color_add(const t_color v1, const t_color v2);
 t_color			color_mulf(const t_color v, float a);
 t_color			color_divf(const t_color v, float a);
-unsigned int	ft_color_to_hexa(const t_color c);
 t_color			color_from_hexa(unsigned int hex);
-unsigned int	ft_color_to_hex(const t_color c);
 t_color			color_from_hex(unsigned int hex);
+unsigned int	color_to_hexa(const t_color c);
+unsigned int	color_to_hex(const t_color c);
 t_color			*color_clone(const t_color c);
 t_color			color_copy(const t_color c);
 
