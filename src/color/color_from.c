@@ -6,14 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:26:34 by scros             #+#    #+#             */
-/*   Updated: 2021/02/12 15:11:06 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/12 15:20:28 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-t_color			color_from_rgba(unsigned char r, unsigned char g,
-	unsigned char b, unsigned char a)
+t_color			color_newa(unsigned char r, unsigned char g, unsigned char b,
+	unsigned char a)
 {
 	t_color	color;
 
@@ -35,10 +35,9 @@ t_color			color_from_hexa(unsigned int hex)
 	return (color);
 }
 
-t_color			color_from_rgb(unsigned char r, unsigned char g,
-	unsigned char b)
+t_color			color_new(unsigned char r, unsigned char g, unsigned char b)
 {
-	return (color_from_rgba(r, g, b, 255));
+	return (color_newa(r, g, b, 255));
 }
 
 t_color			color_from_hex(unsigned int hex)
