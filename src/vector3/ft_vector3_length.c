@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "vector3.h"
-#include "ftmath.h"
+#include <math.h>
 
 float	vec3_length_squared(t_vector3 v)
 {
@@ -20,5 +20,5 @@ float	vec3_length_squared(t_vector3 v)
 
 float	vec3_length(t_vector3 v)
 {
-	return (ft_sqrt(vec3_length_squared(v)));
+	return (sqrtf(vec3_length_squared(v)));
 }
