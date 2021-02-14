@@ -45,18 +45,16 @@ t_vector3	vec3_rotate_z(t_vector3 vec, float theta)
 
 t_vector3	vec3_rotate_axis(t_vector3 vec, t_vector3 a, float theta)
 {
-	double		x_prime;
-	double		y_prime;
-	double		z_prime;
+	t_vector3	res;
 
-	x_prime = a.x * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
+	res.x = a.x * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
 			+ vec.x * cos(theta)
 			+ (-a.z * vec.y + a.y * vec.z) * sin(theta);
-	y_prime = a.y * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
+	res.y = a.y * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
 			+ vec.y * cos(theta)
 			+ (a.z * vec.x - a.x * vec.z) * sin(theta);
-	z_prime = a.z * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
+	res.z = a.z * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
 			+ vec.z * cos(theta)
 			+ (-a.y * vec.x + a.x * vec.y) * sin(theta);
-	return (vec3_new(x_prime, y_prime, z_prime));
+	return (res);
 }

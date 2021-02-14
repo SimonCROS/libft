@@ -13,12 +13,12 @@
 #include "vector3.h"
 #include "ftmath.h"
 
-double	vec3_length_squared(t_vector3 v)
+float	vec3_length_squared(t_vector3 v)
 {
 	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }
 
-double	vec3_length(t_vector3 v)
+float	vec3_length(t_vector3 v)
 {
 	return (ft_sqrt(vec3_length_squared(v)));
 }
