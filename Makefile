@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/02/12 15:12:40 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/02/17 14:07:19 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ override CONV		= convert
 override LIST		= list
 override ITERAT		= iterator
 override MATH		= math
+override MATRIX		= matrix
 override HASH		= hash
 override MEMORY		= memory
 override PRINT		= print
@@ -124,6 +125,10 @@ override MATH_SRCS	=	$(addprefix $(MATH)/,	\
 				ft_min.c				\
 				ft_sin.c				\
 				ft_sqrt.c				\
+				)
+
+override MATRIX_SRCS=	$(addprefix $(MATRIX)/,	\
+				matrix44.c				\
 				)
 
 override HASH_SRCS	=	$(addprefix $(HASH)/,	\
@@ -224,6 +229,7 @@ override SRCS		=	$(COLOR_SRCS)			\
 				$(LIST_SRCS)			\
 				$(ITERAT_SRCS)			\
 				$(MATH_SRCS)			\
+				$(MATRIX_SRCS)			\
 				$(HASH_SRCS)			\
 				$(MEMORY_SRCS)			\
 				$(PRINT_SRCS)			\
@@ -336,6 +342,7 @@ compile:
 			$(call compile_type,ITERAT,"iterators")
 			$(call compile_type,LIST,"lists")
 			$(call compile_type,MATH,"maths")
+			$(call compile_type,MATRIX,"matrixs")
 			$(call compile_type,HASH,"hashs")
 			$(call compile_type,MEMORY,"memories")
 			$(call compile_type,PRINT,"prints")
