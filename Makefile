@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/02/17 14:07:19 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/02/19 11:12:33 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,9 +79,10 @@ override CONV_SRCS	=	$(addprefix $(CONV)/,	\
 				)
 
 override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
-				ft_iterator_has_next.c	\
-				ft_iterator_new.c		\
-				ft_iterator_next.c		\
+				iterator_has_next.c		\
+				iterator_new.c			\
+				iterator_next.c			\
+				iterator_reset.c		\
 				)
 
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
