@@ -16,7 +16,8 @@ void	*ft_lst_get(t_list *list, int index)
 {
 	t_entry	*entry;
 
-	if (!(entry = ft_lst_get_entry(list, index)))
+	entry = ft_lst_get_entry(list, index);
+	if (!entry)
 		return (NULL);
 	return (entry->value);
 }

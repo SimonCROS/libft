@@ -17,7 +17,8 @@ t_list	*ft_lst_splice(t_list *list, int start, int delete_count, void *value)
 	t_entry	*first;
 	t_list	*copy;
 
-	if (!list || !(copy = ft_lst_new(list->del)))
+	copy = ft_lst_new(list->del);
+	if (!list || !copy)
 		return (NULL);
 	if (start < 0)
 		start += list->size;

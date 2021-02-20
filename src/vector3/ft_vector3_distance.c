@@ -11,19 +11,19 @@
 /* ************************************************************************** */
 
 #include "vector3.h"
-#include "ftmath.h"
+#include <math.h>
 
 float	vec3_distance_squared(t_vector3 v, float x, float y,
 	float z)
 {
-	float dx;
-	float dy;
-	float dz;
+	float	dx;
+	float	dy;
+	float	dz;
 
 	dx = v.x - x;
 	dy = v.y - y;
 	dz = v.z - z;
-	return (ft_fabs(dx * dx + dy * dy + dz * dz));
+	return (fabsf(dx * dx + dy * dy + dz * dz));
 }
 
 float	vec3_distance_squaredv(t_vector3 v1, t_vector3 v2)
@@ -33,7 +33,7 @@ float	vec3_distance_squaredv(t_vector3 v1, t_vector3 v2)
 
 float	vec3_distance(t_vector3 v, float x, float y, float z)
 {
-	return (ft_sqrt(vec3_distance_squared(v, x, y, z)));
+	return (sqrtf(vec3_distance_squared(v, x, y, z)));
 }
 
 float	vec3_distancev(t_vector3 v1, t_vector3 v2)

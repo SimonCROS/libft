@@ -15,7 +15,7 @@
 
 void	*iterator_next(t_iterator *iterator)
 {
-	void *tmp;
+	void	*tmp;
 
 	if (!iterator->current)
 		return (NULL);

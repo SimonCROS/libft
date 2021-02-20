@@ -68,14 +68,6 @@ override CONV_SRCS	=	$(addprefix $(CONV)/,	\
 				ft_atoi_len.c			\
 				ft_iton.c				\
 				ft_iton_to.c			\
-				ft_llton.c				\
-				ft_llton_to.c			\
-				ft_lton.c				\
-				ft_lton_to.c			\
-				ft_ston.c				\
-				ft_ston_to.c			\
-				ft_cton.c				\
-				ft_cton_to.c			\
 				)
 
 override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
@@ -132,21 +124,6 @@ override MATRIX_SRCS=	$(addprefix $(MATRIX)/,	\
 				matrix44.c				\
 				)
 
-override HASH_SRCS	=	$(addprefix $(HASH)/,	\
-				ft_hash_clear.c			\
-				ft_hash_destroy.c		\
-				ft_hash_foreach.c		\
-				ft_hash_get.c			\
-				ft_hash_get_entry.c		\
-				ft_hash_is_empty.c		\
-				ft_hash_new.c			\
-				ft_hash_new_entry.c		\
-				ft_hash_put.c			\
-				ft_hash_remove.c		\
-				ft_hash_replace.c		\
-				ft_hash_size.c			\
-				)
-
 override MEMORY_SRCS=	$(addprefix $(MEMORY)/,	\
 				ft_bzero.c				\
 				ft_calloc.c				\
@@ -159,16 +136,11 @@ override MEMORY_SRCS=	$(addprefix $(MEMORY)/,	\
 				)
 
 override PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
-				printf/ft_applyer.c		\
-				printf/ft_ints.c		\
-				printf/ft_numtoa.c		\
-				ft_printf.c				\
 				ft_putchar.c			\
 				ft_putendl.c			\
 				ft_puthex.c				\
 				ft_putnbr.c				\
 				ft_putstr.c				\
-				ft_putvec.c				\
 				)
 
 override STRING_SRCS=	$(addprefix $(STRING)/,	\
@@ -231,7 +203,6 @@ override SRCS		=	$(COLOR_SRCS)			\
 				$(ITERAT_SRCS)			\
 				$(MATH_SRCS)			\
 				$(MATRIX_SRCS)			\
-				$(HASH_SRCS)			\
 				$(MEMORY_SRCS)			\
 				$(PRINT_SRCS)			\
 				$(STRING_SRCS)			\
@@ -344,7 +315,6 @@ compile:
 			$(call compile_type,LIST,"lists")
 			$(call compile_type,MATH,"maths")
 			$(call compile_type,MATRIX,"matrixs")
-			$(call compile_type,HASH,"hashs")
 			$(call compile_type,MEMORY,"memories")
 			$(call compile_type,PRINT,"prints")
 			$(call compile_type,STRING,"strings")

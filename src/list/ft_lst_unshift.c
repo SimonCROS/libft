@@ -14,9 +14,10 @@
 
 int	ft_lst_unshift(t_list *list, void *element)
 {
-	t_entry *entry;
+	t_entry	*entry;
 
-	if (!(entry = ft_lst_new_entry(element)))
+	entry = ft_lst_new_entry(element);
+	if (!entry)
 		return (list->size);
 	entry->next = list->first;
 	list->first = entry;

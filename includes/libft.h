@@ -23,7 +23,6 @@
 # include "list.h"
 # include "iterator.h"
 # include "ftmath.h"
-# include "hash.h"
 # include "memory.h"
 # include "print.h"
 # include "string.h"

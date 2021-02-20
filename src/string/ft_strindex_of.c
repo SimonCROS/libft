@@ -12,7 +12,7 @@
 
 int	ft_strindex_of(char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)

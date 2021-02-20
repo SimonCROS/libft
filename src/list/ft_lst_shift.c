@@ -14,7 +14,7 @@
 
 void	*ft_lst_shift(t_list *list)
 {
-	t_entry *first;
+	t_entry	*first;
 	void	*value;
 
 	if (ft_lst_is_empty(list))

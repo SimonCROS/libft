@@ -15,11 +15,11 @@
 
 # include "vector3.h"
 
-typedef struct	s_matrix44
+typedef struct s_matrix44
 {
-	float		e[4][4];
-}				t_matrix44;
+	float	e[4][4];
+}	t_matrix44;
 
-t_vector3		mat44_mul_vec(t_matrix44 matrix, t_vector3 in);
+t_vector3	mat44_mul_vec(t_matrix44 matrix, t_vector3 in);
 
 #endif

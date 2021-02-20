@@ -14,11 +14,12 @@
 
 int	ft_lst_push(t_list *list, void *element)
 {
-	t_entry *entry;
+	t_entry	*entry;
 
 	if (!list)
 		return (0);
-	if (!(entry = ft_lst_new_entry(element)))
+	entry = ft_lst_new_entry(element);
+	if (!entry)
 		return (list->size);
 	if (ft_lst_is_empty(list))
 		list->first = entry;

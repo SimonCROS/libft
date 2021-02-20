@@ -25,8 +25,8 @@ static void	*free_all(char **obj, int len)
 
 static int	ft_init(const char *s, char c)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -42,13 +42,14 @@ static int	ft_init(const char *s, char c)
 	return (j);
 }
 
-char		**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	int		i;
 	char	*newstr;
 	char	**output;
 
-	if (!s || !(output = ft_calloc(ft_init(s, c) + 1, sizeof(*output))))
+	output = ft_calloc(ft_init(s, c) + 1, sizeof(*output));
+	if (!s || !output)
 		return (NULL);
 	i = 0;
 	while (*s)
@@ -58,10 +59,10 @@ char		**ft_split(const char *s, char c)
 			newstr = ft_strchr(s, 0);
 		if (newstr - s)
 		{
-			if (!(output[i] = ft_substr(s, 0, newstr - s)))
-				return (free_all(output, i));
+			output[i] = ft_substr(s, 0, newstr - s);
+			if (!output[i++])
+				return (free_all(output, --i));
 			s = newstr;
-			i++;
 		}
 		else
 			s++;

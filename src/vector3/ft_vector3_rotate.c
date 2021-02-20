@@ -48,13 +48,13 @@ t_vector3	vec3_rotate_axis(t_vector3 vec, t_vector3 a, float theta)
 	t_vector3	res;
 
 	res.x = a.x * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
-			+ vec.x * cos(theta)
-			+ (-a.z * vec.y + a.y * vec.z) * sin(theta);
+		+ vec.x * cos(theta)
+		+ (-a.z * vec.y + a.y * vec.z) * sin(theta);
 	res.y = a.y * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
-			+ vec.y * cos(theta)
-			+ (a.z * vec.x - a.x * vec.z) * sin(theta);
+		+ vec.y * cos(theta)
+		+ (a.z * vec.x - a.x * vec.z) * sin(theta);
 	res.z = a.z * (a.x * vec.x + a.y * vec.y + a.z * vec.z) * (1 - cos(theta))
-			+ vec.z * cos(theta)
-			+ (-a.y * vec.x + a.x * vec.y) * sin(theta);
+		+ vec.z * cos(theta)
+		+ (-a.y * vec.x + a.x * vec.y) * sin(theta);
 	return (res);
 }

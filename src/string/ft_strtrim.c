@@ -14,7 +14,7 @@
 
 static int	ft_contains(char needle, const char *haystack)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (haystack[i])
@@ -23,7 +23,7 @@ static int	ft_contains(char needle, const char *haystack)
 	return (0);
 }
 
-char		*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*str;
 	size_t	from;
@@ -37,7 +37,8 @@ char		*ft_strtrim(const char *s1, const char *set)
 		++from;
 	while (to > from && ft_contains(s1[to], set))
 		--to;
-	if (!(str = malloc(to - from + 2)))
+	str = malloc(to - from + 2);
+	if (!str)
 		return (NULL);
 	ft_memcpy(str, &(s1[from]), to - from + 1);
 	str[to - from + 1] = 0;

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "vector3.h"
-#include "ftmath.h"
 
 t_vector3	vec3_negate(t_vector3 v)
 {

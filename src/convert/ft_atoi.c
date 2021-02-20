@@ -14,7 +14,7 @@
 
 int	ft_atoi(const char *str)
 {
-	int len;
+	int	len;
 
 	return (ft_atoi_len(str, &len));
 }

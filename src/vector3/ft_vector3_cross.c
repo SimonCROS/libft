@@ -14,7 +14,7 @@
 
 t_vector3	vec3_cross(t_vector3 v, float x, float y, float z)
 {
-	t_vector3 vec;
+	t_vector3	vec;
 
 	vec.x = v.y * z - v.z * y;
 	vec.y = v.z * x - v.x * z;

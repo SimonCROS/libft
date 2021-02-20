@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_list		*ft_lst_copy(t_list *list)
+t_list	*ft_lst_copy(t_list *list)
 {
 	return (ft_lst_map(list, ft_identity()));
 }

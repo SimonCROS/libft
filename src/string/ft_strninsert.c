@@ -23,8 +23,8 @@
 
 char	*ft_strninsert(char *dst, const char *src, size_t start, size_t max)
 {
-	size_t i;
-	size_t dst_len;
+	size_t	i;
+	size_t	dst_len;
 
 	if (!dst)
 		return (NULL);

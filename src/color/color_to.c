@@ -15,10 +15,10 @@
 
 unsigned int	color_to_hexa(const t_color c)
 {
-	unsigned char r;
-	unsigned char g;
-	unsigned char b;
-	unsigned char a;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	unsigned char	a;
 
 	r = fminf(c.r, 1) * 255;
 	g = fminf(c.g, 1) * 255;

@@ -14,9 +14,10 @@
 
 int	ft_lst_insert(t_list *list, int index, void *value)
 {
-	t_list *new_empty;
+	t_list	*new_empty;
 
-	if (!(new_empty = ft_lst_splice(list, index, 0, value)))
+	new_empty = ft_lst_splice(list, index, 0, value);
+	if (!new_empty)
 		return (list->size);
 	free(new_empty);
 	return (list->size);

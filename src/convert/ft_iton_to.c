@@ -75,14 +75,17 @@ char	*ft_uitoa_to(unsigned int n, char *dest)
 char	*ft_itohex_to(unsigned int n, char *dest, int prefix)
 {
 	int	len;
-	int c;
+	int	c;
 
 	len = ft_strlen(dest);
 	ft_memset(dest, '0', len);
 	while (1)
 	{
 		c = (n % 16);
-		dest[--len] = (c > 9) ? 'a' + c - 10 : '0' + c;
+		if (c > 9)
+			dest[--len] = 'a' + c - 10;
+		else
+			dest[--len] = '0' + c;
 		if (!n)
 			break ;
 		n /= 16;

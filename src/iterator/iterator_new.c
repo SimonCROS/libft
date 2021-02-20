@@ -21,7 +21,7 @@ t_iterator	iterator_new(const t_list *list)
 	return (iterator);
 }
 
-void		iterator_init(t_iterator *iterator, const t_list *list)
+void	iterator_init(t_iterator *iterator, const t_list *list)
 {
 	iterator->list = list;
 	iterator->current = list->first;

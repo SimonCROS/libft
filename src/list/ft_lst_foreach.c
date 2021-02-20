@@ -14,7 +14,7 @@
 
 void	ft_lst_foreach(t_list *list, t_consumer visitor)
 {
-	t_entry *entry;
+	t_entry	*entry;
 
 	if (ft_lst_is_empty(list))
 		return ;

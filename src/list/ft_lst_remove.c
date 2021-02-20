@@ -14,8 +14,8 @@
 
 void	*ft_lst_remove(t_list *list, int index)
 {
-	t_entry **last_pointer;
-	t_entry *last;
+	t_entry	**last_pointer;
+	t_entry	*last;
 	void	*value;
 
 	if (ft_lst_is_empty(list) || index < 0 || index >= list->size)

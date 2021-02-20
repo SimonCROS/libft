@@ -16,7 +16,8 @@ t_entry	*ft_lst_new_entry(void *value)
 {
 	t_entry	*entry;
 
-	if (!(entry = malloc(sizeof(t_entry))))
+	entry = malloc(sizeof(t_entry));
+	if (!entry)
 		return (NULL);
 	entry->value = value;
 	entry->next = NULL;

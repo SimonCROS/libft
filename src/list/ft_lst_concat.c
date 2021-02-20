@@ -18,7 +18,8 @@ t_list	*ft_lst_concat(t_list *t1, t_list *t2)
 
 	if (t1->del != t2->del)
 		return (NULL);
-	if (!(copy = ft_lst_new(t1->del)))
+	copy = ft_lst_new(t1->del);
+	if (!copy)
 		return (NULL);
 	ft_lst_add_all(copy, t1);
 	ft_lst_add_all(copy, t2);

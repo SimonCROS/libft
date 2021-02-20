@@ -17,7 +17,8 @@ t_color	*color_clone(const t_color c)
 {
 	t_color	*color;
 
-	if (!(color = malloc(sizeof(t_color))))
+	color = malloc(sizeof(t_color));
+	if (!color)
 		return (NULL);
 	*color = color_copy(c);
 	return (color);

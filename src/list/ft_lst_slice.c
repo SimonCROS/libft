@@ -14,9 +14,10 @@
 
 t_list	*ft_lst_slice(t_list *list, int start, int end)
 {
-	t_list *copy;
+	t_list	*copy;
 
-	if (!(copy = ft_lst_new(list->del)))
+	copy = ft_lst_new(list->del);
+	if (!copy)
 		return (NULL);
 	if (start < 0)
 		start += list->size;

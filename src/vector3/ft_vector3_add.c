@@ -14,7 +14,7 @@
 
 t_vector3	vec3_add(t_vector3 v, float x, float y, float z)
 {
-	t_vector3 vec;
+	t_vector3	vec;
 
 	vec.x = v.x + x;
 	vec.y = v.y + y;

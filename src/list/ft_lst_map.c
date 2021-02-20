@@ -12,12 +12,13 @@
 
 #include "libft.h"
 
-t_list		*ft_lst_map(t_list *list, t_function mapper)
+t_list	*ft_lst_map(t_list *list, t_function mapper)
 {
 	t_entry	*entry;
 	t_list	*copy;
 
-	if (!(copy = ft_lst_new(list->del)))
+	copy = ft_lst_new(list->del);
+	if (!copy)
 		return (NULL);
 	if (ft_lst_is_empty(list))
 		return (copy);

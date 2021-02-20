@@ -18,7 +18,8 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	len = ft_intlen(n) + 1;
-	if (!(str = malloc(len)))
+	str = malloc(len);
+	if (!str)
 		return (NULL);
 	str[len] = 0;
 	return (ft_itoa_to(n, str));
@@ -30,7 +31,8 @@ char	*ft_uitoa(unsigned int n)
 	char	*str;
 
 	len = ft_intlen(n) + 1;
-	if (!(str = malloc(len)))
+	str = malloc(len);
+	if (!str)
 		return (NULL);
 	str[len] = 0;
 	return (ft_uitoa_to(n, str));
@@ -42,7 +44,8 @@ char	*ft_itohex(unsigned int n, int prefix)
 	char	*str;
 
 	len = ft_intlen_hex(n, prefix, 0) + 1;
-	if (!(str = malloc(len)))
+	str = malloc(len);
+	if (!str)
 		return (NULL);
 	str[len] = 0;
 	return (ft_itohex_to(n, str, prefix));
@@ -54,7 +57,8 @@ char	*ft_itooctal(unsigned int n)
 	char	*str;
 
 	len = ft_intlen_octal(n) + 1;
-	if (!(str = malloc(len)))
+	str = malloc(len);
+	if (!str)
 		return (NULL);
 	str[len] = 0;
 	return (ft_itooctal_to(n, str));

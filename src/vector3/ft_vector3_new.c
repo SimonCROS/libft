@@ -17,7 +17,8 @@ t_vector3	*vec3_malloc(float x, float y, float z)
 {
 	t_vector3	*vec;
 
-	if (!(vec = malloc(sizeof(t_vector3))))
+	vec = malloc(sizeof(t_vector3));
+	if (!vec)
 		return (NULL);
 	vec3_set(vec, x, y, z);
 	return (vec);

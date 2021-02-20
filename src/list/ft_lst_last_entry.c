@@ -14,7 +14,7 @@
 
 t_entry	*ft_lst_last_entry(t_list *list)
 {
-	t_entry *entry;
+	t_entry	*entry;
 
 	if (ft_lst_is_empty(list))
 		return (NULL);

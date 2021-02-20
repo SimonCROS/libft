@@ -14,14 +14,16 @@
 
 void	ft_lst_clear(t_list *list)
 {
-	t_entry *buf;
+	t_entry	*buf;
 
 	if (ft_lst_is_empty(list))
 		return ;
-	while ((buf = ft_lst_shift_entry(list)))
+	buf = ft_lst_shift_entry(list);
+	while (buf)
 	{
 		if (list->del)
 			list->del(buf->value);
 		free(buf);
+		buf = ft_lst_shift_entry(list);
 	}
 }

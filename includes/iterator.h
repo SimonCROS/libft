@@ -15,11 +15,11 @@
 
 # include "list.h"
 
-typedef struct		s_iterator
+typedef struct s_iterator
 {
 	const t_list	*list;
 	t_entry			*current;
-}					t_iterator;
+}	t_iterator;
 
 int					iterator_has_next(const t_iterator *iterator);
 void				*iterator_next(t_iterator *iterator);

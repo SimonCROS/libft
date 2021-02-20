@@ -16,7 +16,8 @@ t_list	*ft_lst_new(t_consumer del)
 {
 	t_list	*list;
 
-	if (!(list = malloc(sizeof(t_list))))
+	list = malloc(sizeof(t_list));
+	if (!list)
 		return (NULL);
 	list->del = del;
 	list->size = 0;

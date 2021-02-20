@@ -16,11 +16,11 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef void		*(*t_function)(void *);
-typedef void		*(*t_bifunction)(void *, void *);
-typedef void		(*t_consumer)(void *);
-typedef void		(*t_biconsumer)(void *, void *);
-typedef int			(*t_predicate)(void *);
-typedef int			(*t_bipredicate)(void *, void *);
+typedef void*	(*t_function)(void *);
+typedef void*	(*t_bifunction)(void *, void *);
+typedef void	(*t_consumer)(void *);
+typedef void	(*t_biconsumer)(void *, void *);
+typedef int		(*t_predicate)(void *);
+typedef int		(*t_bipredicate)(void *, void *);
 
 #endif
