@@ -79,32 +79,34 @@ override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
 				)
 
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
-				ft_lst_add_all.c		\
-				ft_lst_clear.c			\
-				ft_lst_destroy.c		\
-				ft_lst_foreach.c		\
-				ft_lst_get_entry.c		\
-				ft_lst_is_empty.c		\
-				ft_lst_last.c			\
-				ft_lst_new.c			\
-				ft_lst_pop.c			\
-				ft_lst_set.c			\
-				ft_lst_copy.c			\
-				ft_lst_size.c			\
-				ft_lst_map.c			\
-				ft_lst_splice.c			\
-				ft_lst_reduce.c			\
-				ft_lst_concat.c			\
-				ft_lst_shift_entry.c	\
-				ft_lst_get.c			\
-				ft_lst_remove.c			\
-				ft_lst_insert.c			\
-				ft_lst_last_entry.c		\
-				ft_lst_new_entry.c		\
-				ft_lst_push.c			\
-				ft_lst_shift.c			\
-				ft_lst_slice.c			\
-				ft_lst_unshift.c		\
+				lst_add_all.c			\
+				lst_clear.c				\
+				lst_destroy.c			\
+				lst_foreach.c			\
+				lst_get_entry.c			\
+				lst_is_empty.c			\
+				lst_last.c				\
+				lst_new.c				\
+				lst_pop.c				\
+				lst_set.c				\
+				lst_copy.c				\
+				lst_size.c				\
+				lst_map.c				\
+				lst_splice.c			\
+				lst_reduce.c			\
+				lst_concat.c			\
+				lst_shift_entry.c		\
+				lst_get.c				\
+				lst_remove.c			\
+				lst_insert.c			\
+				lst_last_entry.c		\
+				lst_new_entry.c			\
+				lst_push.c				\
+				lst_shift.c				\
+				lst_slice.c				\
+				lst_unshift.c			\
+				lst_destroy.c			\
+				lst_filter.c			\
 				)
 
 override MATH_SRCS	=	$(addprefix $(MATH)/,	\
