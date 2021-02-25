@@ -1,4 +1,3 @@
-#include "types.h"
 #include "optional.h"
 
 void	*o_else_getp(t_opt opt, t_function f, void *p)

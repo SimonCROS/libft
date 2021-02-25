@@ -12,11 +12,13 @@ t_list	*lst_filter(t_list *list, t_predicate filter)
 	if (lst_is_empty(list))
 		return (copy);
 	entry = list->first;
-	lst_push(copy, mapper(entry->value));
+	if (filter(entry->value))
+		lst_push(copy, entry->value);
 	while (entry->next)
 	{
 		entry = entry->next;
-		lst_push(copy, mapper(entry->value));
+		if (filter(entry->value))
+			lst_push(copy, entry->value);
 	}
 	return (copy);
 }

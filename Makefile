@@ -81,32 +81,33 @@ override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
 				lst_add_all.c			\
 				lst_clear.c				\
-				lst_destroy.c			\
-				lst_foreach.c			\
-				lst_get_entry.c			\
-				lst_is_empty.c			\
-				lst_last.c				\
-				lst_new.c				\
-				lst_pop.c				\
-				lst_set.c				\
-				lst_copy.c				\
-				lst_size.c				\
-				lst_map.c				\
-				lst_splice.c			\
-				lst_reduce.c			\
 				lst_concat.c			\
-				lst_shift_entry.c		\
-				lst_get.c				\
-				lst_remove.c			\
-				lst_insert.c			\
-				lst_last_entry.c		\
-				lst_new_entry.c			\
-				lst_push.c				\
-				lst_shift.c				\
-				lst_slice.c				\
-				lst_unshift.c			\
+				lst_copy.c				\
+				lst_delete.c			\
 				lst_destroy.c			\
 				lst_filter.c			\
+				lst_firts.c				\
+				lst_foreach.c			\
+				lst_get.c				\
+				lst_get_entry.c			\
+				lst_insert.c			\
+				lst_is_empty.c			\
+				lst_last.c				\
+				lst_last_entry.c		\
+				lst_map.c				\
+				lst_new.c				\
+				lst_new_entry.c			\
+				lst_pop.c				\
+				lst_push.c				\
+				lst_reduce.c			\
+				lst_remove.c			\
+				lst_set.c				\
+				lst_shift.c				\
+				lst_shift_entry.c		\
+				lst_size.c				\
+				lst_slice.c				\
+				lst_splice.c			\
+				lst_unshift.c			\
 				)
 
 override MATH_SRCS	=	$(addprefix $(MATH)/,	\
@@ -143,6 +144,7 @@ override OPTIONAL_SRCS=	$(addprefix $(OPTIONAL)/,	\
 				o_else.c				\
 				o_filter.c				\
 				o_else_get.c			\
+				o_if_present.c			\
 				)
 
 override PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
@@ -257,17 +259,19 @@ override COMPILE_FILE	= tabs 6; \
 				tput cuu1; \
 			fi; \
 			tput el; \
-			printf "$(TYPE_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s ($(_YELLOW)$<$(_BLUE))\n" \
+			printf "$(TYPE_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s $(_RED)%3d/%-3d $(_BLUE)($(_YELLOW)$<$(_BLUE))\n" \
 				$$(($(TYPE_COUNTER)*50/$(TYPE_COUNT))) \
 				$$(($(TYPE_COUNTER)*50/$(TYPE_COUNT))) \
 				" " \
 				$$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) \
 				$$((50 - ($(TYPE_COUNTER)*50/$(TYPE_COUNT)))) \
 				" " $$(($(TYPE_COUNTER)*100/$(TYPE_COUNT))) \
-				"$(or $(TYPE_NAME),$(TYPE))..."; \
+				"$(or $(TYPE_NAME),$(TYPE))..." \
+				$(TYPE_COUNTER) \
+				$(TYPE_COUNT); \
 			\
 			tput el; \
-			printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s\n" \
+			printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s $(_RESET)%3d/%-3d  \n" \
 				$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
 				$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
 				" " \
@@ -275,19 +279,31 @@ override COMPILE_FILE	= tabs 6; \
 				$$((50 - ($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT)))) \
 				" " \
 				$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT))) \
-				"..."; \
+				"..." \
+				$(GLOBAL_COUNTER) \
+				$(GLOBAL_COUNT); \
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
 			if [ $(TYPE_COUNTER) -eq $(TYPE_COUNT) ]; then \
 				tput cuu1; \
 				tput cuu1; \
 				tput el; \
-				printf "$(TYPE_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "$(or $(TYPE_NAME),$(TYPE))..."; \
+				printf "$(TYPE_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_RESET)%3d/%-3d  $(_GREEN)done\n" \
+				50 \
+				" " \
+				"$(or $(TYPE_NAME),$(TYPE))..." \
+				$(TYPE_COUNTER) \
+				$(TYPE_COUNT); \
 				tput cud1; \
 				if [ $(GLOBAL_COUNTER) -eq $(GLOBAL_COUNT) ]; then \
 					tput cuu1; \
 					tput el; \
-					printf "$(GLOBAL_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_GREEN)done\n" 50 " " "..."; \
+					printf "$(GLOBAL_COLOR)%*s$(_RESET) $(_PURPLE)100%% $(_BLUE)Compiling %-15s $(_RESET)%3d/%-3d  $(_GREEN)done\n" \
+					50 \
+					" " \
+					"..." \
+					$(GLOBAL_COUNTER) \
+					$(GLOBAL_COUNT); \
 				fi; \
 			fi;
 endif
