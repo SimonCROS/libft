@@ -48,6 +48,7 @@ override MATH		= math
 override MATRIX		= matrix
 override HASH		= hash
 override MEMORY		= memory
+override OPTIONAL	= optional
 override PRINT		= print
 override STRING		= string
 override UTIL		= util
@@ -135,6 +136,13 @@ override MEMORY_SRCS=	$(addprefix $(MEMORY)/,	\
 				ft_memset.c				\
 				)
 
+override OPTIONAL_SRCS=	$(addprefix $(OPTIONAL)/,	\
+				o_map.c					\
+				o_else.c				\
+				o_filter.c				\
+				o_else_get.c			\
+				)
+
 override PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
 				ft_putchar.c			\
 				ft_putendl.c			\
@@ -204,6 +212,7 @@ override SRCS		=	$(COLOR_SRCS)			\
 				$(MATH_SRCS)			\
 				$(MATRIX_SRCS)			\
 				$(MEMORY_SRCS)			\
+				$(OPTIONAL_SRCS)		\
 				$(PRINT_SRCS)			\
 				$(STRING_SRCS)			\
 				$(UTIL_SRCS)			\
@@ -316,6 +325,7 @@ compile:
 			$(call compile_type,MATH,"maths")
 			$(call compile_type,MATRIX,"matrixs")
 			$(call compile_type,MEMORY,"memories")
+			$(call compile_type,OPTIONAL,"optionals")
 			$(call compile_type,PRINT,"prints")
 			$(call compile_type,STRING,"strings")
 			$(call compile_type,UTIL,"utils")

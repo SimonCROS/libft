@@ -16,6 +16,7 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef void*	(*t_supplier)();
 typedef void*	(*t_function)(void *);
 typedef void*	(*t_bifunction)(void *, void *);
 typedef void	(*t_consumer)(void *);
