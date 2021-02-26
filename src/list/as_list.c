@@ -13,10 +13,11 @@ t_list	*as_list(void **array, t_consumer del)
 {
 	t_list	*list;
 
+	if (!array)
+		return (NULL);
 	list = lst_new(del);
-	if (array)
-		while (*array)
-			lst_push(list, *(array++));
+	while (*array)
+		lst_push(list, *(array++));
 	return (list);
 }
 
