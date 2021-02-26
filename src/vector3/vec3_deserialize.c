@@ -12,10 +12,22 @@
 
 int	vec3_deserialize(const char *str, t_vector3 *vector)
 {
-	char **values;
+	char	**values;
 
 	values = ft_split(str, ",");
-	if (!values[0] || !values[1] || !values[2])
-		return (0);
-	
+	if (values[0] && values[1] && values[2])
+	{
+		if (is_float(values[0]) && is_float(values[0]) && is_float(values[0]))
+		{
+			vector->x = atof(values[0]);
+			vector->y = atof(values[1]);
+			vector->z = atof(values[2]);
+			return (1);
+		}
+		free(values[0]);
+		free(values[1]);
+		free(values[2]);
+	}	
+	free(values);
+	return (0);
 }

@@ -25,6 +25,7 @@ char	*ft_itooctal(unsigned int n);
 char	*ft_uitoa(unsigned int n);
 float	ft_atof(const char **str);
 int		ft_atoi(const char *str);
+int		is_float(char *str);
 char	*ft_itoa(int n);
 
 #endif

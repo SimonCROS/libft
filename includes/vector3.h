@@ -22,6 +22,7 @@ typedef struct s_vector3
 
 t_vector3	vec3_rotate_axis(t_vector3 vec, t_vector3 a, float theta);
 float		vec3_distance(t_vector3 v, float x, float y, float z);
+int			vec3_deserialize(const char *str, t_vector3 *vector);
 t_vector3	vec3_cross(t_vector3 v, float x, float y, float z);
 t_vector3	*vec3_set(t_vector3 *v, float x, float y, float z);
 float		vec3_distance_squaredv(t_vector3 v1, t_vector3 v2);

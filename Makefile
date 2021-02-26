@@ -205,6 +205,7 @@ override VECTOR3_SRCS=	$(addprefix $(VECTOR3)/,\
 				ft_vector3_normalize.c	\
 				ft_vector3_set.c		\
 				ft_vector3_sub.c		\
+				vec3_deserialize.c		\
 				)
 
 

@@ -14,8 +14,11 @@ float	ft_atof(const char **str)
 	ret = 0;
 	mul = 1;
 	dot = 0;
-	if (*((*str)++) == '-')
+	if (**str == '-')
+	{
+		(*str)++;
 		mul = -1;
+	}
 	while ((**str >= '0' && **str <= '9') || (**str == '.' && !dot))
 	{
 		if (**str == '.')
@@ -32,35 +35,31 @@ float	ft_atof(const char **str)
 }
 
 /**
- * @brief Convert a string to a float only if the string is fully translated
+ * @brief Check is a string is at float format ('^[0-9]+(\.[0-9])?$')
  * 
  * @param str the string to convert
  * @param result the float
- * @return if the string is fully translated
+ * @return if the string is a float
  */
 
-int	is_float(const char **str)
+int	is_float(char *str)
 {
-	int		dot;
-	float	ret;
-	float	mul;
+	int	dot;
 
-	ret = 0;
-	mul = 1;
 	dot = 0;
-	if (*((*str)++) == '-')
-		mul = -1;
-	while ((**str >= '0' && **str <= '9') || (**str == '.' && !dot))
+	if (!(*str))
+		return (0);
+	if (*str == '-')
+		str++;
+	while ((*str >= '0' && *str <= '9') || (*str == '.' && !dot))
 	{
-		if (**str == '.')
+		if (dot)
+			dot++;
+		if (*str == '.')
 			dot = 1;
-		else
-		{
-			if (dot)
-				mul /= 10.0f;
-			ret = ret * 10.0f + (float)(**str - '0');
-		}
-		(*str)++;
+		else if (dot == 1)
+			return (0);
+		str++;
 	}
-	return (ret * mul);
+	return (!(*str));
 }
