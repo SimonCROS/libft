@@ -5,7 +5,7 @@
  * @return float the final float
  */
 
-float	ft_atof(const char **str)
+float	ft_atof(char *str)
 {
 	int		dot;
 	float	ret;
@@ -14,22 +14,22 @@ float	ft_atof(const char **str)
 	ret = 0;
 	mul = 1;
 	dot = 0;
-	if (**str == '-')
+	if (*str == '-')
 	{
-		(*str)++;
+		str++;
 		mul = -1;
 	}
-	while ((**str >= '0' && **str <= '9') || (**str == '.' && !dot))
+	while ((*str >= '0' && *str <= '9') || (*str == '.' && !dot))
 	{
-		if (**str == '.')
+		if (*str == '.')
 			dot = 1;
 		else
 		{
 			if (dot)
 				mul /= 10.0f;
-			ret = ret * 10.0f + (float)(**str - '0');
+			ret = ret * 10.0f + (float)(*str - '0');
 		}
-		(*str)++;
+		str++;
 	}
 	return (ret * mul);
 }

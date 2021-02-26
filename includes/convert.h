@@ -23,7 +23,7 @@ char	*ft_itohex(unsigned int n, int prefix);
 char	*ft_itoa_to(int n, char *dest);
 char	*ft_itooctal(unsigned int n);
 char	*ft_uitoa(unsigned int n);
-float	ft_atof(const char **str);
+float	ft_atof(char *str);
 int		ft_atoi(const char *str);
 int		is_float(char *str);
 char	*ft_itoa(int n);
