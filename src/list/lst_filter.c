@@ -1,6 +1,14 @@
 #include "list.h"
 #include <stdlib.h>
 
+/**
+ * @brief Copies all elements of the list in a new list if they pass the filter.
+ * 
+ * @param list the list
+ * @param filter the filter
+ * @return t_list* the new list
+ */
+
 t_list	*lst_filter(t_list *list, t_predicate filter)
 {
 	t_entry	*entry;
@@ -21,4 +29,39 @@ t_list	*lst_filter(t_list *list, t_predicate filter)
 			lst_push(copy, entry->value);
 	}
 	return (copy);
+}
+
+/**
+ * @brief Loop inside all values of the list and remove them if the predicate
+ * filter returns false.
+ * 
+ * @param list the list
+ * @param filter the filter
+ */
+
+void	lst_filter_in(t_list *list, t_predicate filter)
+{
+	t_entry	*entry;
+	t_list	tmp;
+
+	if (lst_is_empty(list))
+		return ;
+	tmp = *list;
+	list->first = NULL;
+	entry = tmp.first;
+	if (filter(entry->value))
+	{
+		lst_push(list, entry->value);
+		entry->value = NULL;
+	}
+	while (entry->next)
+	{
+		entry = entry->next;
+		if (filter(entry->value))
+		{
+			lst_push(list, entry->value);
+			entry->value = NULL;
+		}
+	}
+	lst_clear(&tmp);
 }

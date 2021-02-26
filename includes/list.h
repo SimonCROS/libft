@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2021/02/26 13:53:38 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 15:08:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_entry	*lst_last_entry(t_list *list);
 t_entry	*lst_new_entry(void *value);
 t_list	*lst_splice(t_list *list, int start, int end, void *value);
 t_list	*lst_slice(t_list *list, int start, int end);
-t_list	*lst_map(t_list *list, t_function mapper);
+t_list	*lst_map(t_list *list, t_function mapper, t_consumer del);
 t_list	*lst_concat(t_list *t1, t_list *t2);
 t_list	*lst_new(t_consumer del);
 t_list	*lst_copy(t_list *list);
@@ -44,6 +44,8 @@ t_opt	lst_set(t_list *list, int index, void *new_value);
 t_opt	lst_remove(t_list *list, int index);
 t_opt	lst_get(t_list *list, int index);
 t_opt	lst_shift(t_list *list);
+void	lst_map_in(t_list *list, t_function mapper, t_consumer del);
+void	lst_filter_in(t_list *list, t_predicate filter);
 t_opt	lst_last(t_list *list);
 t_opt	lst_first(t_list *list);
 t_opt	lst_pop(t_list *list);

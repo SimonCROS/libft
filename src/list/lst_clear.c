@@ -9,7 +9,7 @@ void	lst_clear(t_list *list)
 	buf = lst_shift_entry(list);
 	while (buf)
 	{
-		if (list->del)
+		if (list->del && buf->value)
 			list->del(buf->value);
 		free(buf);
 		buf = lst_shift_entry(list);
