@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:43:24 by scros             #+#    #+#             */
-/*   Updated: 2021/01/12 17:20:49 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 15:46:57 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*ft_itohex(unsigned int n, int prefix);
 char	*ft_itoa_to(int n, char *dest);
 char	*ft_itooctal(unsigned int n);
 char	*ft_uitoa(unsigned int n);
+float	ft_atof(const char **str);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 

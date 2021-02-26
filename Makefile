@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/02/26 12:40:58 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/02/26 15:47:18 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ override CONV_SRCS	=	$(addprefix $(CONV)/,	\
 				ft_atoi_len.c			\
 				ft_iton.c				\
 				ft_iton_to.c			\
+				ft_atof.c				\
 				)
 
 override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
