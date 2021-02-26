@@ -4,11 +4,9 @@
 
 static int	is_uchar(char *str)
 {
-	int		dot;
 	float	ret;
 
 	ret = 0;
-	dot = 0;
 	while (*str >= '0' && *str <= '9')
 		ret = ret * 10 + (*(str++) - '0');
 	return (!(*str) && ret < 256);
