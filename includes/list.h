@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2021/02/26 11:18:48 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:53:38 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	lst_clear(t_list *list);
 int		lst_insert(t_list *list, int index, void *value);
 int		lst_add_all(t_list *container, t_list *list);
 int		lst_unshift(t_list *list, void *element);
+t_list	*as_listf(void **array, t_consumer del);
 t_list	*as_list(void **array, t_consumer del);
 int		lst_push(t_list *list, void *element);
 int		lst_is_empty(t_list *list);

@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:12:45 by scros             #+#    #+#             */
-/*   Updated: 2020/11/30 11:11:51 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:52:31 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ static int	ft_init(const char *s, char c)
 	return (j);
 }
 
+/**
+ * @brief Split the string each character separator into an array of strings.
+ * 
+ * @param string the string to split
+ * @param separator the separator
+ * @return char** an array of strings
+ */
+
 char	**ft_split(const char *s, char c)
 {
 	int		i;
@@ -68,5 +76,23 @@ char	**ft_split(const char *s, char c)
 			s++;
 	}
 	output[i] = 0;
+	return (output);
+}
+
+/**
+ * @brief Split the string each character separator into an array of strings,
+ * then free the base string.
+ * 
+ * @param string the string to split
+ * @param separator the separator
+ * @return char** an array of strings
+ */
+
+char	**ft_splitf(char *s, char c)
+{
+	char	**output;
+
+	output = ft_split(s, c);
+	free(s);
 	return (output);
 }
