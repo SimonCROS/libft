@@ -62,6 +62,7 @@ override COLOR_SRCS	=	$(addprefix $(COLOR)/,	\
 				color_to.c				\
 				color_mul.c				\
 				color_sub.c				\
+				color_deserialize.c		\
 				)
 
 override CONV_SRCS	=	$(addprefix $(CONV)/,	\
