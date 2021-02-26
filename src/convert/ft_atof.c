@@ -35,7 +35,7 @@ float	ft_atof(const char **str)
 }
 
 /**
- * @brief Check is a string is at float format ('^[0-9]+(\.[0-9])?$')
+ * @brief Check is a string is at float format ('^[0-9]*(\.[0-9])?$')
  * 
  * @param str the string to convert
  * @param result the float
@@ -57,9 +57,7 @@ int	is_float(char *str)
 			dot++;
 		if (*str == '.')
 			dot = 1;
-		else if (dot == 1)
-			return (0);
 		str++;
 	}
-	return (!(*str));
+	return (dot != 1 && !(*str));
 }
