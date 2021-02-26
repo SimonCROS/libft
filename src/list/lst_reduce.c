@@ -1,21 +1,20 @@
 #include "libft.h"
 
-void	*lst_reduce(t_list *list, void *identity, t_bifunction accumulator,
-	t_consumer accumulator_free)
+void	*lst_reduce(t_list *list, void *id, t_bifunction acc, t_consumer acc_f)
 {
 	t_entry	*entry;
 	void	*identity_tmp;
 
 	if (lst_is_empty(list))
-		return (identity);
+		return (id);
 	entry = list->first;
 	while (entry)
 	{
-		identity_tmp = identity;
-		identity = accumulator(identity, entry->value);
-		if (accumulator_free)
-			accumulator_free(identity_tmp);
+		identity_tmp = id;
+		id = acc(id, entry->value);
+		if (acc_f)
+			acc_f(identity_tmp);
 		entry = entry->next;
 	}
-	return (identity);
+	return (id);
 }

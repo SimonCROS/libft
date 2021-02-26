@@ -6,15 +6,14 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:00:03 by scros             #+#    #+#             */
-/*   Updated: 2021/02/02 12:39:27 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 11:24:03 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector3.h"
 #include <math.h>
 
-float	vec3_distance_squared(t_vector3 v, float x, float y,
-	float z)
+float	vec3_distance_squared(t_vector3 v, float x, float y, float z)
 {
 	float	dx;
 	float	dy;

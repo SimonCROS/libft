@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2021/01/16 17:06:52 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 11:18:48 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ t_opt	lst_pop(t_list *list);
 void	lst_delete(t_list *list, int index);
 void	lst_foreach(t_list *list, t_consumer visitor);
 void	lst_destroy(t_list *list);
-void	*lst_reduce(t_list *list, void *identity,
-			t_bifunction accumulator, t_consumer accumulator_free);
+void	*lst_reduce(t_list *list, void *identity, t_bifunction accumulator
+	, t_consumer accumulator_free);
 void	lst_clear(t_list *list);
 int		lst_insert(t_list *list, int index, void *value);
 int		lst_add_all(t_list *container, t_list *list);
 int		lst_unshift(t_list *list, void *element);
+t_list	*as_list(void **array, t_consumer del);
 int		lst_push(t_list *list, void *element);
 int		lst_is_empty(t_list *list);
 int		lst_size(t_list *list);

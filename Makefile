@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/02/19 11:12:33 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/02/26 11:22:50 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
 				)
 
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
+				as_list.c				\
 				lst_add_all.c			\
 				lst_clear.c				\
 				lst_concat.c			\
@@ -113,15 +114,12 @@ override LIST_SRCS	=	$(addprefix $(LIST)/,	\
 override MATH_SRCS	=	$(addprefix $(MATH)/,	\
 				ft_abs.c				\
 				ft_charlen.c			\
-				ft_cos.c				\
 				ft_shortlen.c			\
 				ft_intlen.c				\
 				ft_longlen.c			\
 				ft_longlonglen.c		\
 				ft_max.c				\
 				ft_min.c				\
-				ft_sin.c				\
-				ft_sqrt.c				\
 				)
 
 override MATRIX_SRCS=	$(addprefix $(MATRIX)/,	\
