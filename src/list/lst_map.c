@@ -37,15 +37,16 @@ t_list	*lst_map(t_list *list, t_function mapper, t_consumer del)
  * @param list the list
  * @param mapper the function to execute on all the values of the list
  * @param del the function to delete an element of the list
+ * @return t_list* the same list, for chaining
  */
 
-void	lst_map_in(t_list *list, t_function mapper, t_consumer del)
+t_list	*lst_map_in(t_list *list, t_function mapper, t_consumer del)
 {
 	t_entry	*entry;
 
 	list->del = del;
 	if (lst_is_empty(list))
-		return ;
+		return (list);
 	entry = list->first;
 	entry->value = mapper(entry->value);
 	while (entry->next)
@@ -53,4 +54,5 @@ void	lst_map_in(t_list *list, t_function mapper, t_consumer del)
 		entry = entry->next;
 		entry->value = mapper(entry->value);
 	}
+	return (list);
 }

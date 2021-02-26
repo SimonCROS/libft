@@ -37,15 +37,16 @@ t_list	*lst_filter(t_list *list, t_predicate filter)
  * 
  * @param list the list
  * @param filter the filter
+ * @return t_list* the same list, for chaining
  */
 
-void	lst_filter_in(t_list *list, t_predicate filter)
+t_list	*lst_filter_in(t_list *list, t_predicate filter)
 {
 	t_entry	*entry;
 	t_list	tmp;
 
 	if (lst_is_empty(list))
-		return ;
+		return (list);
 	tmp = *list;
 	list->first = NULL;
 	entry = tmp.first;
@@ -64,4 +65,5 @@ void	lst_filter_in(t_list *list, t_predicate filter)
 		}
 	}
 	lst_clear(&tmp);
+	return (list);
 }
