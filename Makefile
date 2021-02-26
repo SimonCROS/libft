@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/02/26 11:22:50 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/02/26 12:40:58 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -269,7 +269,7 @@ override COMPILE_FILE	= tabs 6; \
 				$(TYPE_COUNT); \
 			\
 			tput el; \
-			printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s $(_RESET)%3d/%-3d  \n" \
+			printf "$(GLOBAL_COLOR)%*.*s$(_IWHITE)%*.*s$(_RESET) $(_PURPLE)%3d%% $(_BLUE)Compiling %-15s $(_RED)%3d/%-3d  \n" \
 				$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
 				$$(($(GLOBAL_COUNTER)*50/$(GLOBAL_COUNT))) \
 				" " \
