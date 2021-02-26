@@ -61,6 +61,7 @@ int		lst_unshift(t_list *list, void *element);
 t_list	*as_listf(void **array, t_consumer del);
 t_list	*as_list(void **array, t_consumer del);
 int		lst_push(t_list *list, void *element);
+int		lst_not_empty(t_list *list);
 int		lst_is_empty(t_list *list);
 int		lst_size(t_list *list);
 
