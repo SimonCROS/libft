@@ -52,8 +52,8 @@ t_opt	lst_pop(t_list *list);
 void	lst_delete(t_list *list, int index);
 void	lst_foreach(t_list *list, t_consumer visitor);
 void	lst_destroy(t_list *list);
-void	*lst_reduce(t_list *list, void *identity, t_bifunction accumulator
-	, t_consumer accumulator_free);
+void	*lst_reduce(t_list *list, void *identity, t_bifunction accumulator,
+			t_consumer accumulator_free);
 void	lst_clear(t_list *list);
 int		lst_insert(t_list *list, int index, void *value);
 int		lst_add_all(t_list *container, t_list *list);
