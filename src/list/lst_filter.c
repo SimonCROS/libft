@@ -48,6 +48,7 @@ t_list	*lst_filter_in(t_list *list, t_predicate filter)
 	if (lst_is_empty(list))
 		return (list);
 	tmp = *list;
+	list->size = 0;
 	list->first = NULL;
 	entry = tmp.first;
 	if (filter(entry->value))
