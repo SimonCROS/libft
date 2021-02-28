@@ -19,11 +19,10 @@ int	vec3_deserialize(const char *str, t_vector3 *vector)
 	val = ft_split(str, ',');
 	if (val[0] && val[1] && val[2])
 	{
-		if (is_float(val[0]) && is_float(val[0]) && is_float(val[0]))
-		{
-			*vector = vec3_new(atof(val[0]), atof(val[1]), atof(val[2]));
+		if (ft_atof_full(val[0], &(vector->x))
+			&& ft_atof_full(val[1], &(vector->y))
+			&& ft_atof_full(val[2], &(vector->z)))
 			modified = 1;
-		}
 		free(val[0]);
 		free(val[1]);
 		free(val[2]);
