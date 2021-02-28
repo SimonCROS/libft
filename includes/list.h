@@ -53,6 +53,7 @@ void	lst_delete(t_list *list, int index);
 void	lst_foreach(t_list *list, t_consumer visitor);
 void	lst_foreachp(t_list *list, t_biconsumer visitor, void *param);
 void	lst_destroy(t_list *list);
+void	lst_free(t_list *list);
 void	*lst_reduce(t_list *list, void *identity, t_bifunction accumulator,
 			t_consumer accumulator_free);
 void	lst_clear(t_list *list);

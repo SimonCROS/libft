@@ -1,17 +1,31 @@
 #include "libft.h"
 
-void	lst_clear(t_list *list)
+void	lst_free(t_list *list)
 {
-	t_entry	*buf;
+	t_entry	*entry;
 
 	if (lst_is_empty(list))
 		return ;
-	buf = lst_shift_entry(list);
-	while (buf)
+	entry = lst_shift_entry(list);
+	while (entry)
 	{
-		if (list->del && buf->value)
-			list->del(buf->value);
-		free(buf);
-		buf = lst_shift_entry(list);
+		free(entry);
+		entry = lst_shift_entry(list);
+	}
+}
+
+void	lst_clear(t_list *list)
+{
+	t_entry	*entry;
+
+	if (lst_is_empty(list))
+		return ;
+	entry = lst_shift_entry(list);
+	while (entry)
+	{
+		if (list->del && entry->value)
+			list->del(entry->value);
+		free(entry);
+		entry = lst_shift_entry(list);
 	}
 }
