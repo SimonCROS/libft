@@ -20,7 +20,7 @@ t_bitmap	*bitmap_init(uint32_t width, uint32_t height, uint16_t bitsperpixel)
 	ft_strcpy(bitmap->header.fileheader.signature, "BM");
 	bitmap->header.fileheader.filesize = pixelbytesize + sizeof(t_bitmap);
 	bitmap->header.fileheader.fileoffset_to_pixelarray = sizeof(t_bitmap);
-	bitmap->header.infoheader.dibheadersize =sizeof(t_bmpinfoheader);
+	bitmap->header.infoheader.dibheadersize = sizeof(t_bmpinfoheader);
 	bitmap->header.infoheader.width = width;
 	bitmap->header.infoheader.height = height;
 	bitmap->header.infoheader.planes = 1;
