@@ -19,6 +19,7 @@ char	*ft_strrchr(const char *s, int c);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 int		ft_strcmp(char *s1, char *s2);
+char	**ft_splitf(char *s, char c);
 char	*ft_strdup(const char *s1);
 char	*ft_strtoupper(char *str);
 char	*ft_strtolower(char *str);
