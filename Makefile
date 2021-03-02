@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/03/02 15:30:29 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/03/02 15:48:09 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -177,6 +177,7 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 				ft_strjoin.c			\
 				ft_strlcat.c			\
 				ft_strlcpy.c			\
+				ft_strcpy.c				\
 				ft_strlen.c				\
 				ft_strcmp.c				\
 				ft_strmapi.c			\
