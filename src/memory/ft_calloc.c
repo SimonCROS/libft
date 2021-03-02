@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 18:30:15 by scros             #+#    #+#             */
-/*   Updated: 2020/11/25 12:01:30 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/03/02 14:40:21 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	pointer = malloc(count * size);
 	if (!pointer)
-		return (0);
+		return (NULL);
 	ft_bzero(pointer, count * size);
 	return (pointer);
 }
