@@ -6,7 +6,7 @@
 #    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/02/26 15:47:18 by scros            ###   ########lyon.fr    #
+#    Updated: 2021/03/02 15:30:29 by scros            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ override SRC		= src
 override INC		= includes
 
 override COLOR		= color
+override BITMAP		= bitmap
 override CONV		= convert
 override LIST		= list
 override ITERAT		= iterator
@@ -53,6 +54,12 @@ override PRINT		= print
 override STRING		= string
 override UTIL		= util
 override VECTOR3	= vector3
+
+override BITMAP_SRCS=	$(addprefix $(BITMAP)/,	\
+				bmp_init.c				\
+				bmp_set_pixel.c			\
+				bmp_write.c				\
+				)
 
 override COLOR_SRCS	=	$(addprefix $(COLOR)/,	\
 				color_add.c				\
@@ -210,7 +217,9 @@ override VECTOR3_SRCS=	$(addprefix $(VECTOR3)/,\
 				)
 
 
-override SRCS		=	$(COLOR_SRCS)			\
+override SRCS		=					\
+				$(BITMAP_SRCS)			\
+				$(COLOR_SRCS)			\
 				$(CONV_SRCS)			\
 				$(LIST_SRCS)			\
 				$(ITERAT_SRCS)			\
@@ -337,6 +346,7 @@ define compile_type
 endef
 
 compile:
+			$(call compile_type,BITMAP,"bitmaps")
 			$(call compile_type,COLOR,"colors")
 			$(call compile_type,CONV,"converters")
 			$(call compile_type,ITERAT,"iterators")

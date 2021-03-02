@@ -2,6 +2,7 @@
 # define BITMAP_H
 
 # include <stdlib.h>
+# include "color.h"
 
 typedef struct s_bmpfileheader
 {
@@ -38,8 +39,10 @@ typedef struct s_bitmap
 	uint32_t		*body;
 }	t_bitmap;
 
-t_bitmap	*bitmap_init(uint32_t width, uint32_t height
-	, uint16_t bitsperpixel);
-t_bitmap	*bitmap_write(int fd, t_bitmap birmap);
+t_bitmap	*bmp_init(uint32_t width, uint32_t height, uint16_t bytesperpixel);
+void		bmp_set_pixel(t_bitmap *bitmap, uint32_t x, uint32_t y
+				, t_color color);
+int			bmp_save(char *output, t_bitmap *bitmap);
+void		bmp_write(int fd, t_bitmap *bitmap);
 
 #endif
