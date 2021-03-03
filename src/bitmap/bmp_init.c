@@ -2,10 +2,10 @@
 #include "ftmemory.h"
 #include "ftstring.h"
 
-t_bitmap	*bmp_init(uint32_t width, uint32_t height, uint16_t bytesperpixel)
+t_bitmap	*bmp_init(int width, int height, short bytesperpixel)
 {
 	t_bitmap	*bitmap;
-	uint32_t	pixelbytesize;
+	int			pixelbytesize;
 
 	bitmap = ft_calloc(1, sizeof(t_bitmap));
 	if (!bitmap)
