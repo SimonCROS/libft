@@ -10,7 +10,7 @@ typedef struct s_bmpfileheader
 	uint32_t	filesize;
 	uint32_t	reserved;
 	uint32_t	fileoffset_to_pixelarray;
-}	t_bmpfileheader;
+} __attribute__((__packed__))t_bmpfileheader;
 
 typedef struct s_bmpinfoheader
 {
@@ -25,21 +25,21 @@ typedef struct s_bmpinfoheader
 	uint32_t	xpixelpermeter;
 	uint32_t	numcolorspallette;
 	uint32_t	mostimpcolor;
-}	t_bmpinfoheader;
+} __attribute__((__packed__))t_bmpinfoheader;
 
 typedef struct s_bmpheader
 {
-	t_bmpfileheader	fileheader;
-	t_bmpinfoheader	infoheader;
-}	t_bmpheader;
+	t_bmpfileheader	file;
+	t_bmpinfoheader	infos;
+} __attribute__((__packed__))t_bmpheader;
 
 typedef struct s_bitmap
 {
 	t_bmpheader		header;
-	uint32_t		*body;
+	uint8_t			*body;
 }	t_bitmap;
 
-t_bitmap	*bmp_init(uint32_t width, uint32_t height, uint16_t bytesperpixel);
+t_bitmap	*bmp_init(uint32_t width, uint32_t height);
 void		bmp_set_pixel(t_bitmap *bitmap, uint32_t x, uint32_t y
 				, t_color color);
 int			bmp_save(char *output, t_bitmap *bitmap);

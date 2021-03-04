@@ -6,7 +6,7 @@ int	bmp_save(char *output, t_bitmap *bitmap)
 {
 	int	fd;
 
-	fd = open(output, O_WRONLY | O_CREAT, S_IROTH | S_IWOTH);
+	fd = open(output, O_TRUNC | O_WRONLY | O_CREAT, 0777);
 	if (fd == -1)
 		return (0);
 	bmp_write(fd, bitmap);
@@ -16,6 +16,6 @@ int	bmp_save(char *output, t_bitmap *bitmap)
 
 void	bmp_write(int fd, t_bitmap *bitmap)
 {
-	write(fd, &(bitmap->header), sizeof(t_bmpheader));
-	write(fd, bitmap->body, bitmap->header.infoheader.imagesize);
+	write(fd, &(bitmap->header.file), sizeof(t_bmpheader));
+	write(fd, bitmap->body, bitmap->header.infos.imagesize);
 }

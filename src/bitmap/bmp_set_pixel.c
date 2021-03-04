@@ -3,12 +3,12 @@
 
 void	bmp_set_pixel(t_bitmap *bitmap, uint32_t x, uint32_t y, t_color color)
 {
-	uint32_t	pos;
-	uint16_t	bytes_per_pixel;
+	t_bmpinfoheader	*infos;
+	uint32_t		pos;
 
-	pos = (bitmap->header.infoheader.height - y) * x;
-	bytes_per_pixel = bitmap->header.infoheader.bitsperpixel / 8;
-	bitmap->body[pos] = (unsigned char)fminf(color.r, 1) * 255;
-	bitmap->body[pos + 1] = (unsigned char)fminf(color.r, 1) * 255;
-	bitmap->body[pos + 2] = (unsigned char)fminf(color.r, 1) * 255;
+	infos = &(bitmap->header.infos);
+	pos = ((infos->height - y - 1) * infos->width + x) * (infos->bitsperpixel / 8);	bitmap->body[pos] = (uint8_t)(fminf(color.b, 1) * 255);
+	bitmap->body[pos + 1] = (uint8_t)(fminf(color.g, 1) * 255);
+	bitmap->body[pos + 2] = (uint8_t)(fminf(color.r, 1) * 255);
+	bitmap->body[pos + 3] = 0x0;
 }
