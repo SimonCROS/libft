@@ -40,8 +40,8 @@ typedef struct s_bitmap
 }	t_bitmap;
 
 t_bitmap	*bmp_init(uint32_t width, uint32_t height);
-void		bmp_set_pixel(t_bitmap *bitmap, uint32_t x, uint32_t y
-				, t_color color);
+void		bmp_set_pixel(t_bitmap *bitmap, uint32_t x, uint32_t y,
+				t_color color);
 int			bmp_save(char *output, t_bitmap *bitmap);
 void		bmp_write(int fd, t_bitmap *bitmap);
 

@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/23 11:39:11 by scros             #+#    #+#              #
-#    Updated: 2021/03/02 15:48:09 by scros            ###   ########lyon.fr    #
-#                                                                              #
-# **************************************************************************** #
-
 # Styles
 override _RESET		= \033[0m
 override _BOLD		= \033[1m
@@ -195,6 +183,7 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 override UTIL_SRCS	=	$(addprefix $(UTIL)/,	\
 				ft_identity.c			\
 				ft_ternary.c			\
+				null_consumer.c			\
 				)
 
 override VECTOR3_SRCS=	$(addprefix $(VECTOR3)/,\
