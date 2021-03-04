@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2021/03/02 14:42:05 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 14:38:44 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
 
 typedef struct s_entry
 {
-	void			*value;
 	struct s_entry	*next;
+	void			*value;
 }	t_entry;
+
+typedef struct s_centry
+{
+	struct s_centry	*next;
+}	t_centry;
 
 typedef struct s_list
 {
@@ -28,6 +33,13 @@ typedef struct s_list
 	t_entry			*first;
 	int				size;
 }	t_list;
+
+typedef struct s_clist
+{
+	t_consumer		del;
+	t_centry		*first;
+	int				size;
+}	t_clist;
 
 t_entry	*lst_get_entry(t_list *list, int index);
 t_entry	*lst_last_entry(t_list *list);
@@ -43,7 +55,7 @@ t_opt	lst_shift_entry(t_list *list);
 t_opt	lst_set(t_list *list, int index, void *new_value);
 t_opt	lst_remove(t_list *list, int index);
 t_opt	lst_get(t_list *list, int index);
-t_opt	lst_shift(t_list *list);
+t_entry	*lst_shift(t_list *list);
 t_list	*lst_map_in(t_list *list, t_function mapper, t_consumer del);
 t_list	*lst_filter_in(t_list *list, t_predicate filter);
 t_opt	lst_last(t_list *list);
@@ -66,5 +78,13 @@ int		lst_push(t_list *list, void *element);
 int		lst_not_empty(t_list *list);
 int		lst_is_empty(t_list *list);
 int		lst_size(t_list *list);
+
+int			clst_push(t_clist *list, void *entry);
+t_centry	*clst_last_entry(t_clist *list);
+int			clst_not_empty(t_clist *list);
+int			clst_is_empty(t_clist *list);
+void		*clst_shift(t_clist *list);
+void		clst_clear(t_clist *list);
+t_clist		*clst_new(t_consumer del);
 
 #endif

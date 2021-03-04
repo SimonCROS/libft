@@ -1,5 +1,19 @@
 #include "libft.h"
 
+void	clst_clear(t_clist *list)
+{
+	t_centry	*entry;
+
+	if (clst_is_empty(list))
+		return ;
+	entry = clst_shift(list);
+	while (entry)
+	{
+		list->del(entry);
+		entry = clst_shift(list);
+	}
+}
+
 void	lst_free(t_list *list)
 {
 	t_entry	*entry;

@@ -1,6 +1,18 @@
 #include "libft.h"
 
-t_opt	lst_shift(t_list *list)
+void	*clst_shift(t_clist *list)
+{
+	t_centry	*first;
+
+	if (clst_is_empty(list))
+		return (NULL);
+	first = list->first;
+	list->first = first->next;
+	--(list->size);
+	return (first);
+}
+
+t_entry	*lst_shift(t_list *list)
 {
 	t_entry	*first;
 	void	*value;
