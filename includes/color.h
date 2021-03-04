@@ -21,8 +21,8 @@ typedef struct s_color
 	float	a;
 }	t_color;
 
-t_color			color_newa(unsigned char r, unsigned char g, unsigned char b
-					, unsigned char a);
+t_color			color_newa(unsigned char r, unsigned char g, unsigned char b,
+					unsigned char a);
 t_color			color_new(unsigned char r, unsigned char g, unsigned char b);
 int				color_deserialize(const char *str, t_color *color);
 t_color			color_sub(const t_color v1, const t_color v2);
