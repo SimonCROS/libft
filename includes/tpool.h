@@ -28,6 +28,7 @@ typedef struct s_tpool
 int		tpool_add_work(t_tpool *pool, t_bifunction func, void *ar1, void *ar2);
 t_tpool	*tpool_new(size_t max_thread);
 void	tpool_destroy(t_tpool *pool);
+int		tpool_start(t_tpool *pool);
 void	tpool_wait(t_tpool *pool);
 
 #endif
