@@ -8,6 +8,7 @@
  * @param element the entry to add MUST START BY A `next` PROPERTY
  * @return if the operation was successful
  */
+
 int	clst_push(t_clist *list, void *entry)
 {
 	if (!list || !entry)

@@ -40,6 +40,7 @@ override MEMORY		= memory
 override OPTIONAL	= optional
 override PRINT		= print
 override STRING		= string
+override TPOOL		= tpool
 override UTIL		= util
 override VECTOR3	= vector3
 
@@ -180,6 +181,13 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 				ft_strtoupper.c			\
 				)
 
+override TPOOL_SRCS	=	$(addprefix $(TPOOL)/,	\
+				tpool_add_work.c		\
+				tpool_destroy.c			\
+				tpool_new.c				\
+				tpool_wait.c			\
+				)
+
 override UTIL_SRCS	=	$(addprefix $(UTIL)/,	\
 				ft_identity.c			\
 				ft_ternary.c			\
@@ -219,6 +227,7 @@ override SRCS		=					\
 				$(OPTIONAL_SRCS)		\
 				$(PRINT_SRCS)			\
 				$(STRING_SRCS)			\
+				$(TPOOL_SRCS)			\
 				$(UTIL_SRCS)			\
 				$(VECTOR3_SRCS)			\
 
@@ -347,6 +356,7 @@ compile:
 			$(call compile_type,OPTIONAL,"optionals")
 			$(call compile_type,PRINT,"prints")
 			$(call compile_type,STRING,"strings")
+			$(call compile_type,TPOOL,"thread pools")
 			$(call compile_type,UTIL,"utils")
 			$(call compile_type,VECTOR3,"3D vectors")
 

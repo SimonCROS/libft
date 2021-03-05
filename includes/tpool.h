@@ -1,7 +1,7 @@
 #ifndef TPOOL_H
 # define TPOOL_H
 
-# include <unistd.h>
+# include <stdlib.h>
 # include <pthread.h>
 # include "list.h"
 # include "types.h"
@@ -9,8 +9,9 @@
 typedef struct s_tpool_work
 {
 	struct s_tpool_work	*next;
-	t_function			func;
-	void				*arg;
+	t_bifunction		func;
+	void				*arg1;
+	void				*arg2;
 }	t_tpool_work;
 
 typedef struct s_tpool
@@ -24,8 +25,8 @@ typedef struct s_tpool
 	int				stop;
 }	t_tpool;
 
-int		tpool_add_work(t_tpool *pool, t_function func, void *arg);
-t_tpool	*tpool_create(size_t max_thread);
+int		tpool_add_work(t_tpool *pool, t_bifunction func, void *ar1, void *ar2);
+t_tpool	*tpool_new(size_t max_thread);
 void	tpool_destroy(t_tpool *pool);
 void	tpool_wait(t_tpool *pool);
 
