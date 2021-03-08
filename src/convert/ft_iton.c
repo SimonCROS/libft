@@ -6,7 +6,7 @@
 /*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:26:24 by scros             #+#    #+#             */
-/*   Updated: 2020/12/22 11:44:22 by scros            ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 14:58:27 by scros            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,28 @@
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	char	*str;
+	long int	len;
+	long int	nbr;
+	char		*str;
 
-	len = ft_intlen(n) + 1;
+	nbr = n;
+	len = ft_intlen(nbr) + 1;
 	str = malloc(len);
 	if (!str)
 		return (NULL);
-	str[len] = 0;
-	return (ft_itoa_to(n, str));
+	if (n < 0)
+		nbr *= -1;
+	str[--len] = 0;
+	while (1)
+	{
+		str[--len] = (nbr % 10) + '0';
+		if (!nbr)
+			break ;
+		nbr /= 10;
+	}
+	if (n < 0)
+		str[0] = '-';
+	return (str);
 }
 
 char	*ft_uitoa(unsigned int n)

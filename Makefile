@@ -183,9 +183,10 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 
 override TPOOL_SRCS	=	$(addprefix $(TPOOL)/,	\
 				tpool_add_work.c		\
+				tpool_set_name.c		\
 				tpool_destroy.c			\
-				tpool_new.c				\
 				tpool_wait.c			\
+				tpool_new.c				\
 				)
 
 override UTIL_SRCS	=	$(addprefix $(UTIL)/,	\
