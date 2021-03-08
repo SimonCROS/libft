@@ -63,7 +63,7 @@ override COLOR_SRCS	=	$(addprefix $(COLOR)/,	\
 
 override CONV_SRCS	=	$(addprefix $(CONV)/,	\
 				ft_atoi.c				\
-				ft_atoi_len.c			\
+				ft_atoul.c			\
 				ft_iton.c				\
 				ft_iton_to.c			\
 				ft_atof.c				\

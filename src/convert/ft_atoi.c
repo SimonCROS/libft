@@ -59,3 +59,29 @@ int	ft_atoi(char *str)
 	}
 	return (ret * mul);
 }
+
+int	ft_atoi_len(const char *str, int *len)
+{
+	long	num;
+	int		mult;
+
+	num = 0;
+	*len = 0;
+	mult = 1;
+	while (str[*len] == ' ' || (str[*len] >= 9 && str[*len] <= 13))
+		(*len)++;
+	if (str[*len] == '-' || str[*len] == '+')
+		if (str[(*len)++] == '-')
+			mult *= -1;
+	while (str[*len] >= '0' && str[*len] <= '9')
+	{
+		num = num * 10 + (str[(*len)++] - '0');
+		if (num < 0)
+		{
+			if (mult < 0)
+				return (0);
+			return (-1);
+		}
+	}
+	return ((int)(num * mult));
+}
