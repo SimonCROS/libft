@@ -260,7 +260,7 @@ ifeq ($(BAR), 0)
 override COMPILE_FILE	= tabs 6; \
 			echo "$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
 			mkdir -p $(dir $@); \
-			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC); \
+			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC) -O3; \
 			echo " $(_GREEN)\xE2\x9C\x93$(_RESET)";
 else
 override COMPILE_FILE	= tabs 6; \
