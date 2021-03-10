@@ -41,7 +41,7 @@ t_list		*lst_copy(t_list *list);
 t_list		*lst_filter(t_list *list, t_predicate filter);
 t_opt		lst_shift_entry(t_list *list);
 t_opt		lst_set(t_list *list, int index, void *new_value);
-t_opt		lst_remove(t_list *list, int index);
+void		*lst_remove(t_list *list, int index);
 t_opt		lst_get(t_list *list, int index);
 t_entry		*lst_shift(t_list *list);
 t_list		*lst_map_in(t_list *list, t_function mapper, t_consumer del);
