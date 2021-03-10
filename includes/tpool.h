@@ -33,5 +33,6 @@ int		tpool_start(t_tpool *pool);
 void	tpool_wait(t_tpool *pool);
 void	tpool_set_name(t_tpool *pool, char *name);
 int		pthread_setname_ft(char *name);
+int		pthread_getname_ft(char *name, size_t buffer_len);
 
 #endif
