@@ -2,29 +2,30 @@
 # define BITMAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "color.h"
 
 typedef struct s_bmpfileheader
 {
-	uint8_t		signature[2];
-	uint32_t	filesize;
-	uint32_t	reserved;
-	uint32_t	fileoffset_to_pixelarray;
+	char	signature[2];
+	int		filesize;
+	int		reserved;
+	int		fileoffset_to_pixelarray;
 } __attribute__((__packed__))t_bmpfileheader;
 
 typedef struct s_bmpinfoheader
 {
-	uint32_t	dibheadersize;
-	uint32_t	width;
-	uint32_t	height;
-	uint16_t	planes;
-	uint16_t	bitsperpixel;
-	uint32_t	compression;
-	uint32_t	imagesize;
-	uint32_t	ypixelpermeter;
-	uint32_t	xpixelpermeter;
-	uint32_t	numcolorspallette;
-	uint32_t	mostimpcolor;
+	int		dibheadersize;
+	int		width;
+	int		height;
+	short	planes;
+	short	bitsperpixel;
+	int		compression;
+	int		imagesize;
+	int		ypixelpermeter;
+	int		xpixelpermeter;
+	int		numcolorspallette;
+	int		mostimpcolor;
 } __attribute__((__packed__))t_bmpinfoheader;
 
 typedef struct s_bmpheader
@@ -35,14 +36,13 @@ typedef struct s_bmpheader
 
 typedef struct s_bitmap
 {
-	t_bmpheader		header;
-	uint8_t			*body;
+	t_bmpheader	header;
+	char		*body;
 }	t_bitmap;
 
-t_bitmap	*bmp_init(uint32_t width, uint32_t height);
-void		bmp_set_pixel(t_bitmap *bitmap, uint32_t x, uint32_t y,
-				t_color color);
+t_bitmap	*bmp_init(int width, int height);
+void		bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color);
 int			bmp_save(char *output, t_bitmap *bitmap);
-void		bmp_write(int fd, t_bitmap *bitmap);
+ssize_t		bmp_write(int fd, t_bitmap *bitmap);
 
 #endif

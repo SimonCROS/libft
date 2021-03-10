@@ -36,7 +36,7 @@ static void	compute_name(t_tpool_thread *thread)
 		name = ft_strjoin(thread->pool->name, tmp);
 	else
 		name = ft_strjoin("POOL", tmp);
-	pthread_setname_np(name);
+	pthread_setname_ft(name);
 	free(tmp);
 	free(name);
 }

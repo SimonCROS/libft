@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 12:35:16 by scros             #+#    #+#             */
-/*   Updated: 2021/03/05 11:18:56 by scros            ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIST_H
 # define LIST_H
 
@@ -29,16 +17,16 @@ typedef struct s_centry
 
 typedef struct s_list
 {
-	t_consumer		del;
-	t_entry			*first;
-	int				size;
+	t_consumer	del;
+	t_entry		*first;
+	int			size;
 }	t_list;
 
 typedef struct s_clist
 {
-	t_consumer		del;
-	t_centry		*first;
-	int				size;
+	t_consumer	del;
+	t_centry	*first;
+	int			size;
 }	t_clist;
 
 t_entry		*lst_get_entry(t_list *list, int index);

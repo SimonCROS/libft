@@ -2,7 +2,7 @@
 #include "ftmemory.h"
 #include "ftstring.h"
 
-t_bitmap	*bmp_init(uint32_t width, uint32_t height)
+t_bitmap	*bmp_init(int width, int height)
 {
 	t_bitmap	*bitmap;
 	int			pixelbytesize;

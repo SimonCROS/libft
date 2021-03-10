@@ -1,5 +1,4 @@
 #include "bitmap.h"
-#include <unistd.h>
 #include <fcntl.h>
 
 int	bmp_save(char *output, t_bitmap *bitmap)
@@ -14,8 +13,11 @@ int	bmp_save(char *output, t_bitmap *bitmap)
 	return (1);
 }
 
-void	bmp_write(int fd, t_bitmap *bitmap)
+ssize_t	bmp_write(int fd, t_bitmap *bitmap)
 {
-	write(fd, &(bitmap->header.file), sizeof(t_bmpheader));
-	write(fd, bitmap->body, bitmap->header.infos.imagesize);
+	if (write(fd, &(bitmap->header.file), sizeof(t_bmpheader)) == -1)
+		return (0);
+	if (write(fd, bitmap->body, bitmap->header.infos.imagesize) == -1)
+		return (0);
+	return (1);
 }
