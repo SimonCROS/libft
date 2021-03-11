@@ -62,12 +62,12 @@ int			lst_add_all(t_list *container, t_list *list);
 int			lst_unshift(t_list *list, void *element);
 t_list		*as_listf(void **array, t_consumer del);
 t_list		*as_list(void **array, t_consumer del);
-int			lst_push(t_list *list, void *element);
+void		*lst_push(t_list *list, void *element);
 int			lst_not_empty(t_list *list);
 int			lst_is_empty(t_list *list);
 int			lst_size(t_list *list);
 
-int			clst_push(t_clist *list, void *entry);
+void		*clst_push(t_clist *list, void *entry);
 t_centry	*clst_last_entry(t_clist *list);
 int			clst_not_empty(t_clist *list);
 int			clst_is_empty(t_clist *list);
