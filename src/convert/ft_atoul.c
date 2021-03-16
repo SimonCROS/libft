@@ -5,7 +5,6 @@
  * @param result the final unsigned long, same result as ft_atof
  * @return 1 if the result matches ('^-?[0-9]+$'), 0 else
  */
-
 int	ft_atoul_full(char *str, unsigned long *result)
 {
 	unsigned long	ret;
@@ -32,7 +31,6 @@ int	ft_atoul_full(char *str, unsigned long *result)
  * @param str the string to convert
  * @return the final unsigned long
  */
-
 unsigned long	ft_atoul(char *str)
 {
 	unsigned long	ret;

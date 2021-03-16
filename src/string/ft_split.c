@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:12:45 by scros             #+#    #+#             */
-/*   Updated: 2021/02/26 13:52:31 by scros            ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 static void	*free_all(char **obj, int len)
@@ -49,7 +37,6 @@ static int	ft_init(const char *s, char c)
  * @param separator the separator
  * @return char** an array of strings
  */
-
 char	**ft_split(const char *s, char c)
 {
 	int		i;
@@ -87,7 +74,6 @@ char	**ft_split(const char *s, char c)
  * @param separator the separator
  * @return char** an array of strings
  */
-
 char	**ft_splitf(char *s, char c)
 {
 	char	**output;

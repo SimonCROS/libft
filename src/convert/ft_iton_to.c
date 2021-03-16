@@ -1,23 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_iton_to.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 17:45:33 by scros             #+#    #+#             */
-/*   Updated: 2021/03/08 14:56:57 by scros            ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-/*
-** Write the unsigned integer n in the string dest.
-**
-** Returns dest.
-*/
-
+/**
+ * Write the unsigned int in the string dest in alphanumeric format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
 char	*ft_uitoa_to(unsigned int n, char *dest)
 {
 	int	len;
@@ -34,12 +23,13 @@ char	*ft_uitoa_to(unsigned int n, char *dest)
 	return (dest);
 }
 
-/*
-** Write the unsigned integer in the string dest in hex format.
-**
-** Returns dest.
-*/
-
+/**
+ * Write the unsigned int in the string dest in hexadecimal format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
 char	*ft_itohex_to(unsigned int n, char *dest, int prefix)
 {
 	int	len;
@@ -66,12 +56,13 @@ char	*ft_itohex_to(unsigned int n, char *dest, int prefix)
 	return (dest);
 }
 
-/*
-** Write the unsigned int in the string dest in octal format.
-**
-** Returns dest.
-*/
-
+/**
+ * Write the unsigned int in the string dest in octal format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
 char	*ft_itooctal_to(unsigned int n, char *dest)
 {
 	int		len;

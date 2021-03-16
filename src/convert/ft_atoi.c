@@ -5,7 +5,6 @@
  * @param result the final int, same result as ft_atof
  * @return 1 if the result matches ('^-?[0-9]+$'), 0 else
  */
-
 int	ft_atoi_full(char *str, int *result)
 {
 	int	ret;
@@ -39,7 +38,6 @@ int	ft_atoi_full(char *str, int *result)
  * @param str the string to convert
  * @return the final int
  */
-
 int	ft_atoi(char *str)
 {
 	int	ret;

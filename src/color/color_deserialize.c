@@ -1,15 +1,33 @@
+#include <stdlib.h>
+
 #include "color.h"
-#include "convert.h"
-#include "string.h"
+#include "ftstring.h"
+#include "list.h"
 
 static int	is_uchar(char *str)
 {
-	float	ret;
+	int	ret;
 
 	ret = 0;
 	while (*str >= '0' && *str <= '9')
 		ret = ret * 10 + (*(str++) - '0');
 	return (!(*str) && ret < 256);
+}
+
+static int	ft_atouc_full(char *str, unsigned char *result)
+{
+	unsigned char	ret;
+
+	if (!is_uchar(str))
+		return (0);
+	ret = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		ret = ret * 10 + (*str - '0');
+		str++;
+	}
+	*result = ret;
+	return (!(*str));
 }
 
 /**
@@ -21,22 +39,24 @@ static int	is_uchar(char *str)
  */
 int	color_deserialize(const char *str, t_color *color)
 {
-	char	**v;
-	int		modified;
+	t_list			*parts;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	int				ret;
 
-	modified = 0;
-	v = ft_split(str, ',');
-	if (v[0] && v[1] && v[2])
+	ret = 0;
+	parts = as_listf((void **)ft_split(str, ','), &free);
+	if (parts->size == 3)
 	{
-		if (is_uchar(v[0]) && is_uchar(v[1]) && is_uchar(v[2]))
+		if (ft_atouc_full(lst_get(parts, 0), &r)
+			&& ft_atouc_full(lst_get(parts, 1), &g)
+			&& ft_atouc_full(lst_get(parts, 2), &b))
 		{
-			*color = color_new(ft_atoi(v[0]), ft_atoi(v[1]), ft_atoi(v[2]));
-			modified = 1;
+			ret = 1;
+			*color = color_new(r, g, b);
 		}
-		free(v[0]);
-		free(v[1]);
-		free(v[2]);
 	}
-	free(v);
-	return (modified);
+	lst_destroy(parts);
+	return (ret);
 }

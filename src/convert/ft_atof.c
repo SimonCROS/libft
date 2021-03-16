@@ -5,7 +5,6 @@
  * @param result the final float, same result as ft_atof
  * @return 1 if the result matches ('^-?[0-9]*(\.[0-9]+)?$'), 0 else
  */
-
 int	ft_atof_full(char *str, float *result)
 {
 	int		dot;
@@ -47,7 +46,6 @@ int	ft_atof_full(char *str, float *result)
  * @param str the string to convert
  * @return the final float
  */
-
 float	ft_atof(char *str)
 {
 	int		dot;
