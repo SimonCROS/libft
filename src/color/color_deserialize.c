@@ -19,7 +19,6 @@ static int	is_uchar(char *str)
  * @param str the container of the new color
  * @return the result of the operation : 1 if no error, 0 else
  */
-
 int	color_deserialize(const char *str, t_color *color)
 {
 	char	**v;
@@ -29,7 +28,7 @@ int	color_deserialize(const char *str, t_color *color)
 	v = ft_split(str, ',');
 	if (v[0] && v[1] && v[2])
 	{
-		if (is_uchar(v[0]) && is_uchar(v[0]) && is_uchar(v[0]))
+		if (is_uchar(v[0]) && is_uchar(v[1]) && is_uchar(v[2]))
 		{
 			*color = color_new(ft_atoi(v[0]), ft_atoi(v[1]), ft_atoi(v[2]));
 			modified = 1;
