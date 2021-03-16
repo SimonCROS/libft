@@ -6,9 +6,8 @@
  * 
  * @param array the array to convert
  * @param del the function to free an element of the list
- * @return t_list* the new malloced list
+ * @return t_list* the new list
  */
-
 t_list	*as_list(void **array, t_consumer del)
 {
 	t_list	*list;
@@ -16,6 +15,8 @@ t_list	*as_list(void **array, t_consumer del)
 	if (!array)
 		return (NULL);
 	list = lst_new(del);
+	if (!list)
+		return (NULL);
 	while (*array)
 		lst_push(list, *(array++));
 	return (list);
@@ -26,14 +27,16 @@ t_list	*as_list(void **array, t_consumer del)
  * 
  * @param array the array to convert
  * @param del the function to free an element of the list
- * @return t_list* the new malloced list
+ * @return t_list* the new list
  */
-
 t_list	*as_listf(void **array, t_consumer del)
 {
 	t_list	*list;
 
 	list = as_list(array, del);
+	if (!list)
+		while (*array)
+			del(*(array++));
 	free(array);
 	return (list);
 }

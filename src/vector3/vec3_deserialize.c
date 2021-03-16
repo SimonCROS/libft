@@ -1,6 +1,7 @@
 #include "vector3.h"
 #include "convert.h"
 #include "string.h"
+#include "list.h"
 
 /**
  * @brief Deserialize a vector at format "x.x,y.y,z.z"
@@ -12,21 +13,22 @@
 
 int	vec3_deserialize(const char *str, t_vector3 *vector)
 {
-	char	**val;
-	int		modified;
+	t_list		*parts;
+	t_vector3	result;
+	int			modified;
 
 	modified = 0;
-	val = ft_split(str, ',');
-	if (val[0] && val[1] && val[2])
+	parts = as_listf(ft_split(str, ','), &free);
+	if (!parts)
+		return (0);
+	if (parts->size == 3)
 	{
 		if (ft_atof_full(val[0], &(vector->x))
 			&& ft_atof_full(val[1], &(vector->y))
 			&& ft_atof_full(val[2], &(vector->z)))
 			modified = 1;
-		free(val[0]);
-		free(val[1]);
-		free(val[2]);
 	}
-	free(val);
+	lst_destroy(parts);
+	*vector = result;
 	return (modified);
 }
