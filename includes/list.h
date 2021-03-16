@@ -47,7 +47,7 @@ t_entry		*lst_shift(t_list *list);
 t_list		*lst_map_in(t_list *list, t_function mapper, t_consumer del);
 t_list		*lst_filter_in(t_list *list, t_predicate filter);
 t_opt		lst_last(t_list *list);
-t_opt		lst_first(t_list *list);
+void		*lst_first(t_list *list);
 t_opt		lst_pop(t_list *list);
 void		lst_delete(t_list *list, int index);
 void		lst_foreach(t_list *list, t_consumer visitor);
