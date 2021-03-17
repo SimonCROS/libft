@@ -45,6 +45,8 @@ int	color_deserialize(const char *str, t_color *color)
 	unsigned char	b;
 	int				ret;
 
+	if (ft_strcnt(str, ',') != 2)
+		return (0);
 	ret = 0;
 	parts = as_listf((void **)ft_split(str, ','), &free);
 	if (parts->size == 3)
