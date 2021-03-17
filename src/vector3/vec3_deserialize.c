@@ -16,6 +16,8 @@ int	vec3_deserialize(const char *str, t_vector3 *vector)
 	t_vector3	result;
 	int			ret;
 
+	if (ft_strcnt(str, ',') != 2)
+		return (0);
 	parts = as_listf((void **)ft_split(str, ','), &free);
 	if (!parts)
 		return (0);

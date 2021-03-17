@@ -14,6 +14,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strcpy(char *dest, const char *src);
+int		ft_strcnt(const char *str, char c);
 int		ft_strindex_of(char *str, char c);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(const char *s, char c);

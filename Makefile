@@ -179,6 +179,7 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 				ft_toupper.c			\
 				ft_strtolower.c			\
 				ft_strtoupper.c			\
+				ft_strcnt.c				\
 				)
 
 override TPOOL_SRCS	=	$(addprefix $(TPOOL)/,	\
