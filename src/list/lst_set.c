@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_opt	lst_set(t_list *list, int index, void *new_value)
+void	*lst_set(t_list *list, int index, void *new_value)
 {
 	t_entry	*entry;
 	void	*buf;

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_opt	lst_get(t_list *list, int index)
+void	*lst_get(t_list *list, int index)
 {
 	t_entry	*entry;
 

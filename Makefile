@@ -37,7 +37,6 @@ override MATH		= math
 override MATRIX		= matrix
 override HASH		= hash
 override MEMORY		= memory
-override OPTIONAL	= optional
 override PRINT		= print
 override STRING		= string
 override TPOOL		= tpool
@@ -135,14 +134,6 @@ override MEMORY_SRCS=	$(addprefix $(MEMORY)/,	\
 				ft_memset.c				\
 				)
 
-override OPTIONAL_SRCS=	$(addprefix $(OPTIONAL)/,	\
-				o_map.c					\
-				o_else.c				\
-				o_filter.c				\
-				o_else_get.c			\
-				o_if_present.c			\
-				)
-
 override PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
 				ft_putchar.c			\
 				ft_putendl.c			\
@@ -160,25 +151,20 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 				ft_split.c				\
 				ft_strchr.c				\
 				ft_strinsert.c			\
-				ft_strninsert.c			\
 				ft_strdup.c				\
 				ft_strindex_of.c		\
 				ft_strjoin.c			\
 				ft_strlcat.c			\
-				ft_strlcpy.c			\
 				ft_strcpy.c				\
 				ft_strlen.c				\
 				ft_strcmp.c				\
 				ft_strmapi.c			\
-				ft_strncmp.c			\
 				ft_strnstr.c			\
-				ft_strrchr.c			\
 				ft_strtrim.c			\
 				ft_substr.c				\
 				ft_tolower.c			\
 				ft_toupper.c			\
-				ft_strtolower.c			\
-				ft_strtoupper.c			\
+				ft_strto.c				\
 				ft_strcnt.c				\
 				)
 
@@ -227,7 +213,6 @@ override SRCS		=					\
 				$(MATH_SRCS)			\
 				$(MATRIX_SRCS)			\
 				$(MEMORY_SRCS)			\
-				$(OPTIONAL_SRCS)		\
 				$(PRINT_SRCS)			\
 				$(STRING_SRCS)			\
 				$(TPOOL_SRCS)			\
@@ -356,7 +341,6 @@ compile:
 			$(call compile_type,MATH,"maths")
 			$(call compile_type,MATRIX,"matrixs")
 			$(call compile_type,MEMORY,"memories")
-			$(call compile_type,OPTIONAL,"optionals")
 			$(call compile_type,PRINT,"prints")
 			$(call compile_type,STRING,"strings")
 			$(call compile_type,TPOOL,"thread pools")

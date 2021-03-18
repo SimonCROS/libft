@@ -1,12 +1,5 @@
 #include "libft.h"
 
-/**
- * Write the unsigned int in the string dest in alphanumeric format.
- * 
- * @param n the int to convert
- * @param dest the buffer for the result
- * @return dest
- */
 char	*ft_uitoa_to(unsigned int n, char *dest)
 {
 	int	len;
@@ -23,13 +16,6 @@ char	*ft_uitoa_to(unsigned int n, char *dest)
 	return (dest);
 }
 
-/**
- * Write the unsigned int in the string dest in hexadecimal format.
- * 
- * @param n the int to convert
- * @param dest the buffer for the result
- * @return dest
- */
 char	*ft_itohex_to(unsigned int n, char *dest, int prefix)
 {
 	int	len;
@@ -56,13 +42,6 @@ char	*ft_itohex_to(unsigned int n, char *dest, int prefix)
 	return (dest);
 }
 
-/**
- * Write the unsigned int in the string dest in octal format.
- * 
- * @param n the int to convert
- * @param dest the buffer for the result
- * @return dest
- */
 char	*ft_itooctal_to(unsigned int n, char *dest)
 {
 	int		len;

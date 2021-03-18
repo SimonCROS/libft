@@ -1,10 +1,3 @@
-/**
- * @brief Convert a string to a int
- * 
- * @param str the string to convert
- * @param result the final int, same result as ft_atof
- * @return 1 if the result matches ('^-?[0-9]+$'), 0 else
- */
 int	ft_atoi_full(char *str, int *result)
 {
 	int	ret;
@@ -26,18 +19,6 @@ int	ft_atoi_full(char *str, int *result)
 	return (!(*str));
 }
 
-/**
- * @brief Convert a string to a int
- * 
- * Exemple
- * `ft_atoi("42") == 42`
- * `ft_atoi("") == 0`
- * `ft_atoi("1234.5 1") == 1234.5`
- * `ft_atoi(".21") == 0.21`
- * 
- * @param str the string to convert
- * @return the final int
- */
 int	ft_atoi(char *str)
 {
 	int	ret;

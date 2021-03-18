@@ -1,13 +1,4 @@
-#include "list.h"
-#include <stdlib.h>
-
-/**
- * @brief Copies all elements of the list in a new list if they pass the filter.
- * 
- * @param list the list
- * @param filter the filter
- * @return t_list* the new list
- */
+#include "libft.h"
 
 t_list	*lst_filter(t_list *list, t_predicate filter)
 {
@@ -30,15 +21,6 @@ t_list	*lst_filter(t_list *list, t_predicate filter)
 	}
 	return (copy);
 }
-
-/**
- * @brief Loop inside all values of the list and remove them if the predicate
- * filter returns false.
- * 
- * @param list the list
- * @param filter the filter
- * @return t_list* the same list, for chaining
- */
 
 t_list	*lst_filter_in(t_list *list, t_predicate filter)
 {

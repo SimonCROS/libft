@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_opt	lst_pop(t_list *list)
+void	*lst_pop(t_list *list)
 {
 	t_entry	**last_pointer;
 	t_entry	*last;

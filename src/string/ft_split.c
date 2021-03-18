@@ -30,13 +30,6 @@ static int	ft_init(const char *s, char c)
 	return (j);
 }
 
-/**
- * @brief Split the string each character separator into an array of strings.
- * 
- * @param string the string to split
- * @param separator the separator
- * @return char** an array of strings
- */
 char	**ft_split(const char *s, char c)
 {
 	int		i;
@@ -66,14 +59,6 @@ char	**ft_split(const char *s, char c)
 	return (output);
 }
 
-/**
- * @brief Split the string each character separator into an array of strings,
- * then free the base string.
- * 
- * @param string the string to split
- * @param separator the separator
- * @return char** an array of strings
- */
 char	**ft_splitf(char *s, char c)
 {
 	char	**output;

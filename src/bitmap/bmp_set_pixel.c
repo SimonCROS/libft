@@ -1,4 +1,4 @@
-#include "bitmap.h"
+#include "libft.h"
 #include <math.h>
 
 void	bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color)

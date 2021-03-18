@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   color_from.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 13:26:34 by scros             #+#    #+#             */
-/*   Updated: 2021/02/26 11:18:03 by scros            ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "color.h"
+#include "libft.h"
 
 t_color	color_newa(unsigned char r, unsigned char g, unsigned char b
 	, unsigned char a)

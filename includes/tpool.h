@@ -1,10 +1,8 @@
 #ifndef TPOOL_H
 # define TPOOL_H
 
-# include <stdlib.h>
 # include <pthread.h>
-# include "list.h"
-# include "types.h"
+# include "libft.h"
 
 typedef struct s_tpool_work
 {

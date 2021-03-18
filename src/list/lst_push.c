@@ -1,15 +1,5 @@
-#include "list.h"
-#include "types.h"
+#include "libft.h"
 
-#include <stdlib.h>
-
-/**
- * @brief Append a custom entry at the end of the list
- * 
- * @param list the custom list
- * @param element the entry to add MUST START BY A `next` PROPERTY
- * @return the pushed element if success, NULL otherwise
- */
 void	*clst_push(t_clist *list, void *entry)
 {
 	if (!list || !entry)
@@ -22,13 +12,6 @@ void	*clst_push(t_clist *list, void *entry)
 	return (entry);
 }
 
-/**
- * @brief Append an element at the end of the list
- * 
- * @param list the custom list
- * @param element the element to add
- * @return the pushed element if success, NULL otherwise
- */
 void	*lst_push(t_list *list, void *element)
 {
 	t_entry	*entry;

@@ -1,15 +1,5 @@
 #include "libft.h"
 
-/**
- * @brief Loop inside all values of the list and replace them in a new list with
- * the result of mapper.
- * 
- * @param list the list
- * @param mapper the function to execute on all the values of the list
- * @param del the function to delete an element of the list
- * @return t_list* the new list
- */
-
 t_list	*lst_map(t_list *list, t_function mapper, t_consumer del)
 {
 	t_entry	*entry;
@@ -29,16 +19,6 @@ t_list	*lst_map(t_list *list, t_function mapper, t_consumer del)
 	}
 	return (copy);
 }
-
-/**
- * @brief Loop inside all values of the list and replace them with the result of
- * mapper.
- * 
- * @param list the list
- * @param mapper the function to execute on all the values of the list
- * @param del the function to delete an element of the list
- * @return t_list* the same list, for chaining
- */
 
 t_list	*lst_map_in(t_list *list, t_function mapper, t_consumer del)
 {

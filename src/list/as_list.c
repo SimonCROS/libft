@@ -1,13 +1,5 @@
-#include "list.h"
-#include <stdlib.h>
+#include "libft.h"
 
-/**
- * @brief Convert the void** array into a new t_list.
- * 
- * @param array the array to convert
- * @param del the function to free an element of the list
- * @return t_list* the new list
- */
 t_list	*as_list(void **array, t_consumer del)
 {
 	t_list	*list;
@@ -22,13 +14,6 @@ t_list	*as_list(void **array, t_consumer del)
 	return (list);
 }
 
-/**
- * @brief Convert the void** array into a new t_list, then free array.
- * 
- * @param array the array to convert
- * @param del the function to free an element of the list
- * @return t_list* the new list
- */
 t_list	*as_listf(void **array, t_consumer del)
 {
 	t_list	*list;

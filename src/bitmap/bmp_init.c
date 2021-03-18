@@ -1,6 +1,4 @@
-#include "bitmap.h"
-#include "ftmemory.h"
-#include "ftstring.h"
+#include "libft.h"
 
 t_bitmap	*bmp_init(int width, int height)
 {

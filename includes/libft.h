@@ -1,32 +1,602 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scros <scros@student.42lyon.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 11:06:43 by scros             #+#    #+#             */
-/*   Updated: 2021/03/02 14:39:36 by scros            ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include <unistd.h>
 # include <stdlib.h>
 
-# include "types.h"
+/*** Types ********************************************************************/
 
-# include "color.h"
-# include "convert.h"
-# include "list.h"
-# include "iterator.h"
-# include "ftmath.h"
-# include "ftmemory.h"
-# include "print.h"
-# include "ftstring.h"
-# include "util.h"
-# include "vector3.h"
+# define TRUE 1
+# define FALSE 0
+
+typedef int						(*t_bipredicate)(void *, void *);
+typedef void*					(*t_bifunction)(void *, void *);
+typedef void					(*t_biconsumer)(void *, void *);
+typedef int						(*t_predicate)(void *);
+typedef void*					(*t_function)(void *);
+typedef void					(*t_consumer)(void *);
+typedef void*					(*t_supplier)();
+typedef t_biconsumer			t_bicon;
+typedef t_bifunction			t_bifun;
+typedef t_bipredicate			t_bipre;
+typedef t_supplier				t_sup;
+typedef t_function				t_fun;
+typedef t_consumer				t_con;
+typedef t_predicate				t_pre;
+
+typedef unsigned long long		t_uint64;
+typedef unsigned int			t_uint32;
+typedef unsigned short			t_uint16;
+typedef unsigned char			t_uint8;
+
+typedef unsigned long			t_ulong;
+
+typedef struct s_iterator		t_iterator;
+
+typedef struct s_bmpfileheader	t_bmpfileheader;
+typedef struct s_bmpinfoheader	t_bmpinfoheader;
+typedef struct s_bmpheader		t_bmpheader;
+typedef struct s_bitmap			t_bitmap;
+
+typedef struct s_centry			t_centry;
+typedef struct s_entry			t_entry;
+typedef struct s_clist			t_clist;
+typedef struct s_list			t_list;
+
+typedef struct s_color			t_color;
+
+typedef struct s_vector3		t_vector3;
+
+typedef struct s_matrix44		t_matrix44;
+
+/*** BMP Image utils **********************************************************/
+
+struct s_bmpfileheader
+{
+	char	signature[2];
+	int		filesize;
+	int		reserved;
+	int		fileoffset_to_pixelarray;
+} __attribute__((__packed__));
+
+struct s_bmpinfoheader
+{
+	int		dibheadersize;
+	int		width;
+	int		height;
+	short	planes;
+	short	bitsperpixel;
+	int		compression;
+	int		imagesize;
+	int		ypixelpermeter;
+	int		xpixelpermeter;
+	int		numcolorspallette;
+	int		mostimpcolor;
+} __attribute__((__packed__));
+
+struct s_bmpheader
+{
+	t_bmpfileheader	file;
+	t_bmpinfoheader	infos;
+} __attribute__((__packed__));
+
+struct s_bitmap
+{
+	t_bmpheader	header;
+	char		*body;
+};
+
+void		bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color);
+int			bmp_save(char *output, t_bitmap *bitmap);
+ssize_t		bmp_write(int fd, t_bitmap *bitmap);
+t_bitmap	*bmp_init(int width, int height);
+
+/*** String utils *************************************************************/
+
+/**
+ * @brief Copies the content of src + start into dest without the
+ * null-terminating \0, and stops copying if the end of dest (\0) is encountered.
+ * 
+ * @param dest the buffer for the result
+ * @param src the string to copy
+ * @param start the index at witch the copy will start in src
+ * @param max the maximum amount of characters to copy (-1 to copy all)
+ * @return the destination
+ */
+char		*ft_strninsert(char *dest, const char *src, size_t start,
+				size_t max);
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char		*ft_substr(const char *s, unsigned int start, size_t len);
+char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+/**
+ * @brief Copies the content of src + start into dest without the
+ * null-terminating \0, and stops copying if the end of dest (\0) is encountered.
+ * 
+ * @param dest the buffer for the result
+ * @param src the string to copy
+ * @param start the index at witch the copy will start in src
+ * @return the destination
+ */
+char		*ft_strinsert(char *dest, const char *src, size_t start);
+size_t		ft_strlcpy(char *dest, const char *src, size_t dstsize);
+size_t		ft_strlcat(char *dest, const char *src, size_t dstsize);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char		*ft_strtrim(const char *s1, const char *set);
+char		*ft_strjoin(const char *s1, const char *s2);
+char		*ft_strcpy(char *dest, const char *src);
+/**
+ * @brief Count the number of occurences of the character c in the string str.
+ * 
+ * @param str The string
+ * @param c The char to find
+ * @return the number of occurences
+ */
+int			ft_strcnt(const char *str, char c);
+int			ft_strindex_of(char *str, char c);
+char		*ft_strrchr(const char *s, int c);
+/**
+ * @brief Split the string each character separator into an array of strings.
+ * 
+ * @param string the string to split
+ * @param separator the separator
+ * @return char** an array of strings
+ */
+char		**ft_split(const char *string, char separator);
+char		*ft_strchr(const char *s, int c);
+int			ft_strcmp(char *s1, char *s2);
+/**
+ * @brief Split the string each character separator into an array of strings,
+ * then free the base string.
+ * 
+ * @param string the string to split
+ * @param separator the separator
+ * @return char** an array of strings
+ */
+char		**ft_splitf(char *string, char separator);
+char		*ft_strdup(const char *s1);
+char		*ft_strtoupper(char *str);
+char		*ft_strtolower(char *str);
+size_t		ft_strlen(const char *s);
+int			ft_toupper(int c);
+int			ft_tolower(int c);
+int			ft_isprint(int c);
+int			ft_isdigit(int c);
+int			ft_isascii(int c);
+int			ft_isalpha(int c);
+int			ft_isalnum(int c);
+
+/*** Memory utils *************************************************************/
+
+void		*ft_memccpy(void *dest, const void *src, int c, size_t n);
+void		*ft_memmove(void *dest, const void *src, size_t len);
+int			ft_memcmp(const void *s1, const void *s2, size_t n);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memchr(const void *s, int c, size_t n);
+void		*ft_memset(void *b, int c, size_t len);
+void		*ft_calloc(size_t count, size_t size);
+void		ft_bzero(void *s, size_t n);
+
+/*** Lists implementation *****************************************************/
+
+struct s_entry
+{
+	t_entry	*next;
+	void	*value;
+};
+
+struct s_centry
+{
+	t_centry	*next;
+};
+
+struct s_list
+{
+	t_consumer	del;
+	t_entry		*first;
+	int			size;
+};
+
+struct s_clist
+{
+	t_consumer	del;
+	t_centry	*first;
+	int			size;
+};
+
+void		*lst_reduce(t_list *l, void *id, t_bifunction a, t_consumer a_free);
+void		lst_foreachp(t_list *list, t_biconsumer visitor, void *param);
+/**
+ * @brief Loop inside all values of the list and replace them with the result of
+ * mapper.
+ * 
+ * @param list the list
+ * @param mapper the function to execute on all the values of the list
+ * @param del the function to delete an element of the list
+ * @return t_list* the same list, for chaining
+ */
+t_list		*lst_map_in(t_list *list, t_function mapper, t_consumer del);
+t_list		*lst_splice(t_list *list, int start, int end, void *value);
+/**
+ * @brief Loop inside all values of the list and replace them in a new list with
+ * the result of mapper.
+ * 
+ * @param list the list
+ * @param mapper the function to execute on all the values of the list
+ * @param del the function to delete an element of the list
+ * @return t_list* the new list
+ */
+t_list		*lst_map(t_list *list, t_function mapper, t_consumer del);
+void		*lst_set(t_list *list, int index, void *new_value);
+int			lst_insert(t_list *list, int index, void *value);
+/**
+ * @brief Loop inside all values of the list and remove them if the predicate
+ * filter returns false.
+ * 
+ * @param list the list
+ * @param filter the filter
+ * @return t_list* the same list, for chaining
+ */
+t_list		*lst_filter_in(t_list *list, t_predicate filter);
+/**
+ * @brief Copies all elements of the list in a new list if they pass the filter.
+ * 
+ * @param list the list
+ * @param filter the filter
+ * @return t_list* the new list
+ */
+t_list		*lst_filter(t_list *list, t_predicate filter);
+void		lst_foreach(t_list *list, t_consumer visitor);
+int			lst_add_all(t_list *container, t_list *list);
+t_list		*lst_slice(t_list *list, int start, int end);
+int			lst_unshift(t_list *list, void *element);
+/**
+ * @brief Convert the void** array into a new t_list, then free array.
+ * 
+ * @param array the array to convert
+ * @param del the function to free an element of the list
+ * @return t_list* the new list
+ */
+t_list		*as_listf(void **array, t_consumer del);
+t_entry		*lst_get_entry(t_list *list, int index);
+/**
+ * @brief Convert the void** array into a new t_list.
+ * 
+ * @param array the array to convert
+ * @param del the function to free an element of the list
+ * @return t_list* the new list
+ */
+t_list		*as_list(void **array, t_consumer del);
+/**
+ * @brief Append an element at the end of the list
+ * 
+ * @param list the custom list
+ * @param element the element to add
+ * @return the pushed element if success, NULL otherwise
+ */
+void		*lst_push(t_list *list, void *element);
+/**
+ * @brief Remove the element index from the list and return it.
+ * 
+ * @param list the list
+ * @param index the index of the element to remove
+ * @return the element removed from the list, or NULL if index is invalid
+ */
+void		*lst_remove(t_list *list, int index);
+t_list		*lst_concat(t_list *t1, t_list *t2);
+/**
+ * @brief Remove the element index from the list and delete it.
+ * 
+ * @param list the list
+ * @param index the index of the element to delete
+ * @return TRUE if the operation was successful, FALSE otherwise
+ */
+void		lst_delete(t_list *list, int index);
+void		*lst_get(t_list *list, int index);
+void		*lst_shift_entry(t_list *list);
+t_entry		*lst_last_entry(t_list *list);
+t_entry		*lst_new_entry(void *value);
+int			lst_not_empty(t_list *list);
+int			lst_is_empty(t_list *list);
+void		lst_destroy(t_list *list);
+t_list		*lst_new(t_consumer del);
+t_entry		*lst_shift(t_list *list);
+void		*lst_first(t_list *list);
+void		lst_clear(t_list *list);
+t_list		*lst_copy(t_list *list);
+void		*lst_last(t_list *list);
+int			lst_size(t_list *list);
+void		lst_free(t_list *list);
+void		*lst_pop(t_list *list);
+
+/**
+ * @brief Append a custom entry at the end of the list
+ * 
+ * @param list the custom list
+ * @param element the entry to add MUST START BY A `next` PROPERTY
+ * @return the pushed element if success, NULL otherwise
+ */
+void		*clst_push(t_clist *list, void *entry);
+t_centry	*clst_last_entry(t_clist *list);
+int			clst_not_empty(t_clist *list);
+int			clst_is_empty(t_clist *list);
+void		clst_destroy(t_clist *list);
+void		*clst_shift(t_clist *list);
+void		clst_clear(t_clist *list);
+t_clist		*clst_new(t_consumer del);
+
+/*** Iterator implementation **************************************************/
+
+struct s_iterator
+{
+	const t_list	*list;
+	t_entry			*current;
+};
+
+int			iterator_has_next(const t_iterator *iterator);
+void		*iterator_next(t_iterator *iterator);
+void		iterator_reset(t_iterator *iterator);
+t_iterator	iterator_new(const t_list *list);
+
+/*** Colors implementation ****************************************************/
+
+struct s_color
+{
+	float	r;
+	float	g;
+	float	b;
+	float	a;
+};
+
+t_color		color_newa(t_uint8 r, t_uint8 g, t_uint8 b, t_uint8 a);
+/**
+ * @brief Deserialize a color at format "r,g,b"
+ * 
+ * @param str the color at string format
+ * @param str the container of the new color
+ * @return the result of the operation : 1 if no error, 0 else
+ */
+int			color_deserialize(const char *str, t_color *color);
+t_color		color_sub(const t_color v1, const t_color v2);
+t_color		color_mul(const t_color v1, const t_color v2);
+t_color		color_div(const t_color v1, const t_color v2);
+t_color		color_add(const t_color v1, const t_color v2);
+t_color		color_new(t_uint8 r, t_uint8 g, t_uint8 b);
+t_color		color_mulf(const t_color v, float a);
+t_color		color_divf(const t_color v, float a);
+t_color		color_from_hexa(unsigned int hex);
+t_color		color_from_hex(unsigned int hex);
+t_uint32	color_to_hexa(const t_color c);
+t_color		*color_clone(const t_color c);
+t_uint32	color_to_hex(const t_color c);
+t_color		color_copy(const t_color c);
+
+/*** Vectors implementation ***************************************************/
+
+struct s_vector3
+{
+	float	x;
+	float	y;
+	float	z;
+};
+
+t_vector3	vec3_rotate_axis(t_vector3 vec, t_vector3 a, float theta);
+float		vec3_distance(t_vector3 v, float x, float y, float z);
+/**
+ * @brief Deserialize a vector at format "x.x,y.y,z.z"
+ * 
+ * @param str the vector at string format
+ * @param str the container of the new vector
+ * @return the result of the operation : 1 if no error, 0 else
+ */
+int			vec3_deserialize(const char *str, t_vector3 *vector);
+t_vector3	vec3_cross(t_vector3 v, float x, float y, float z);
+t_vector3	*vec3_set(t_vector3 *v, float x, float y, float z);
+float		vec3_distance_squaredv(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_sub(t_vector3 v, float x, float y, float z);
+t_vector3	vec3_mul(t_vector3 v, float x, float y, float z);
+t_vector3	vec3_div(t_vector3 v, float x, float y, float z);
+t_vector3	vec3_add(t_vector3 v, float x, float y, float z);
+float		vec3_dot(t_vector3 v, float x, float y, float z);
+float		vec3_distancev(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_rotate_z(t_vector3 vec, float theta);
+t_vector3	vec3_rotate_y(t_vector3 vec, float theta);
+t_vector3	vec3_rotate_x(t_vector3 vec, float theta);
+t_vector3	vec3_crossv(t_vector3 v1, t_vector3 v2);
+t_vector3	*vec3_setv(t_vector3 *v1, t_vector3 v2);
+t_vector3	*vec3_malloc(float x, float y, float z);
+float		vec3_angle(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_subv(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_mulv(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_divv(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_addv(t_vector3 v1, t_vector3 v2);
+float		vec3_dotv(t_vector3 v1, t_vector3 v2);
+t_vector3	vec3_new(float x, float y, float z);
+float		vec3_length_squared(t_vector3 v);
+t_vector3	vec3_muld(t_vector3 v, float a);
+t_vector3	vec3_divd(t_vector3 v, float a);
+t_vector3	vec3_normalize(t_vector3 v);
+t_vector3	vec3_negate(t_vector3 v);
+t_vector3	*vec3_clone(t_vector3 v);
+float		vec3_length(t_vector3 v);
+t_vector3	vec3_copy(t_vector3 v);
+
+/*** Matrix implementation ****************************************************/
+
+struct s_matrix44
+{
+	float	e[4][4];
+};
+
+t_vector3	mat44_mul_vec(t_matrix44 matrix, t_vector3 in);
+
+/*** Print utils **************************************************************/
+
+ssize_t		ft_puthex_fd(unsigned char c, int fd);
+ssize_t		ft_putendl_fd(char *s, int fd);
+ssize_t		ft_putchar_fd(char c, int fd);
+ssize_t		ft_putstr_fd(char *s, int fd);
+ssize_t		ft_putnbr_fd(long n, int fd);
+ssize_t		ft_puthex(unsigned char c);
+ssize_t		ft_putendl(char *s);
+ssize_t		ft_putchar(char c);
+ssize_t		ft_putstr(char *s);
+ssize_t		ft_putnbr(long n);
+
+/*** Math utils ***************************************************************/
+
+int			ft_longlonglen_hex(unsigned long long n, int pre, int width);
+int			ft_shortlen_hex(unsigned short n, int prefix, int width);
+int			ft_longlen_hex(unsigned long n, int prefix, int width);
+int			ft_charlen_hex(unsigned char n, int prefix, int width);
+int			ft_intlen_hex(unsigned int n, int prefix, int width);
+int			ft_longlonglen_octal(unsigned long long n);
+int			ft_ulonglonglen(unsigned long long n);
+int			ft_shortlen_octal(unsigned short n);
+int			ft_longlen_octal(unsigned long n);
+int			ft_charlen_octal(unsigned char n);
+int			ft_intlen_octal(unsigned int n);
+int			ft_ushortlen(unsigned short n);
+double		ft_fmax(double n1, double n2);
+double		ft_fmin(double n1, double n2);
+int			ft_ulonglen(unsigned long n);
+int			ft_ucharlen(unsigned char n);
+int			ft_longlonglen(long long n);
+int			ft_uintlen(unsigned int n);
+int			ft_min(int n1, int n2);
+int			ft_max(int n1, int n2);
+double		ft_fabs(double number);
+int			ft_shortlen(short n);
+long		ft_abs(long number);
+int			ft_longlen(long n);
+int			ft_charlen(char n);
+int			ft_intlen(int n);
+
+/*** Converters implementation ************************************************/
+
+/**
+ * Write the unsigned int in the string dest in hexadecimal format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
+char		*ft_itohex_to(unsigned int n, char *dest, int prefix);
+/**
+ * Write the unsigned int in the string dest in octal format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
+char		*ft_itooctal_to(unsigned int n, char *dest);
+/**
+ * Write the unsigned int in the string dest in alphanumeric format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
+char		*ft_uitoa_to(unsigned int n, char *dest);
+/**
+ * @brief Same as ft_atoi, but set the written length in a variable
+ * 
+ * @param str the string to convert
+ * @param len the written length
+ * @return the final int
+ */
+int			ft_atoi_len(const char *str, int *len);
+/**
+ * Convert a number in hexadecimal format.
+ * 
+ * @param n the int to convert
+ * @return a new string with the result
+ */
+char		*ft_itohex(unsigned int n, int prefix);
+/**
+ * Convert a number in octal format.
+ * 
+ * @param n the int to convert
+ * @return a new string with the result
+ */
+char		*ft_itooctal(unsigned int n);
+/**
+ * Convert a number in alphanumeric format.
+ * 
+ * @param n the int to convert
+ * @return a new string with the result
+ */
+char		*ft_uitoa(unsigned int n);
+/**
+ * @brief Convert a string to a float
+ * 
+ * @param str the string to convert
+ * @param result the final float, same result as ft_atof
+ * @return 1 if the result matches ('^-?[0-9]*(\.[0-9]+)?$'), 0 else
+ */
+int			ft_atof_full(char *str, float *result);
+/**
+ * @brief Convert a string to a float
+ * 
+ * Exemple
+ * `ft_atof("42") == 42`
+ * `ft_atof("") == 0`
+ * `ft_atof("1234.5 1") == 1234.5`
+ * `ft_atof(".21") == 0.21`
+ * 
+ * @param str the string to convert
+ * @return the final float
+ */
+float		ft_atof(char *str);
+/**
+ * @brief Convert a string to a unsigned long
+ * 
+ * @param str the string to convert
+ * @param result the final unsigned long, same result as ft_atof
+ * @return 1 if the result matches ('^-?[0-9]+$'), 0 else
+ */
+int			ft_atoul_full(char *str, unsigned long *result);
+/**
+ * @brief Convert a string to a unsigned long
+ * 
+ * Exemple
+ * `ft_atoul("42") == 42`
+ * `ft_atoul("") == 0`
+ * `ft_atoul("1234.5 1") == 1234.5`
+ * `ft_atoul(".21") == 0.21`
+ * 
+ * @param str the string to convert
+ * @return the final unsigned long
+ */
+t_ulong		ft_atoul(char *str);
+/**
+ * @brief Convert a string to a int
+ * 
+ * @param str the string to convert
+ * @param result the final int, same result as ft_atof
+ * @return 1 if the result matches ('^-?[0-9]+$'), 0 else
+ */
+int			ft_atoi_full(char *str, int *result);
+/**
+ * @brief Convert a string to a int
+ * 
+ * Exemple
+ * `ft_atoi("42") == 42`
+ * `ft_atoi("") == 0`
+ * `ft_atoi("1234.5 1") == 1234.5`
+ * `ft_atoi(".21") == 0.21`
+ * 
+ * @param str the string to convert
+ * @return the final int
+ */
+int			ft_atoi(const char *str);
+int			is_float(char *str);
+char		*ft_itoa(int n);
+
+/*** Miscellaneous ***********************************************************/
+
+int			ft_ternary(int condition, int expr1, int expr2);
+t_bicon		null_biconsumer(void);
+t_con		null_consumer(void);
+t_fun		ft_identity(void);
 
 #endif

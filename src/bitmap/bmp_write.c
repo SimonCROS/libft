@@ -1,4 +1,4 @@
-#include "bitmap.h"
+#include "libft.h"
 #include <fcntl.h>
 
 int	bmp_save(char *output, t_bitmap *bitmap)

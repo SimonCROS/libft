@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_opt	lst_last(t_list *list)
+void	*lst_last(t_list *list)
 {
 	if (lst_is_empty(list))
 		return (NULL);

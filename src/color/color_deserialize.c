@@ -1,8 +1,4 @@
-#include <stdlib.h>
-
-#include "color.h"
-#include "ftstring.h"
-#include "list.h"
+#include "libft.h"
 
 static int	is_uchar(char *str)
 {
@@ -30,13 +26,6 @@ static int	ft_atouc_full(char *str, unsigned char *result)
 	return (!(*str));
 }
 
-/**
- * @brief Deserialize a color at format "r,g,b"
- * 
- * @param str the color at string format
- * @param str the container of the new color
- * @return the result of the operation : 1 if no error, 0 else
- */
 int	color_deserialize(const char *str, t_color *color)
 {
 	t_list			*parts;

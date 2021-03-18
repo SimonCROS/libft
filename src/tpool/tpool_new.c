@@ -1,5 +1,5 @@
 #include "private/tpool_private.h"
-#include "ftstring.h"
+#include "tpool.h"
 
 static int	worker_loop(t_tpool *pool)
 {
