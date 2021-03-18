@@ -352,7 +352,7 @@ t_color		color_newa(t_uint8 r, t_uint8 g, t_uint8 b, t_uint8 a);
  * @brief Deserialize a color at format "r,g,b"
  * 
  * @param str the color at string format
- * @param str the container of the new color
+ * @param color the container of the new color
  * @return the result of the operation : 1 if no error, 0 else
  */
 int			color_deserialize(const char *str, t_color *color);
@@ -385,7 +385,7 @@ float		vec3_distance(t_vector3 v, float x, float y, float z);
  * @brief Deserialize a vector at format "x.x,y.y,z.z"
  * 
  * @param str the vector at string format
- * @param str the container of the new vector
+ * @param vector the container of the new vector
  * @return the result of the operation : 1 if no error, 0 else
  */
 int			vec3_deserialize(const char *str, t_vector3 *vector);
