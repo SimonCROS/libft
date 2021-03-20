@@ -95,7 +95,8 @@ t_bitmap	*bmp_init(int width, int height);
 
 /**
  * @brief Copies the content of src + start into dest without the
- * null-terminating \0, and stops copying if the end of dest (\0) is encountered.
+ * null-terminating \0, and stops copying if the end of dest (\0) is
+ * encountered.
  * 
  * @param dest the buffer for the result
  * @param src the string to copy
@@ -110,7 +111,8 @@ char		*ft_substr(const char *s, unsigned int start, size_t len);
 char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 /**
  * @brief Copies the content of src + start into dest without the
- * null-terminating \0, and stops copying if the end of dest (\0) is encountered.
+ * null-terminating \0, and stops copying if the end of dest (\0) is
+ * encountered.
  * 
  * @param dest the buffer for the result
  * @param src the string to copy
@@ -592,7 +594,7 @@ int			ft_atoi(const char *str);
 int			is_float(char *str);
 char		*ft_itoa(int n);
 
-/*** Miscellaneous ***********************************************************/
+/*** Miscellaneous ************************************************************/
 
 int			ft_ternary(int condition, int expr1, int expr2);
 t_bicon		null_biconsumer(void);
