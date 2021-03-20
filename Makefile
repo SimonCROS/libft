@@ -245,10 +245,10 @@ TYPE_COUNT				= $(words $(OBJS))
 
 ifeq ($(BAR), 0)
 override COMPILE_FILE	= tabs 6; \
-			echo "$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT)))%	$(_WHITE)\xE2\x9D\x96$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)\xE2\x86\x92 $(_YELLOW)$@$(_RESET)\c"; \
+			echo "$$(($(GLOBAL_COUNTER)*100/$(GLOBAL_COUNT)))%	$(_WHITE)❖$(_RESET) $(_BLUE)Compiling source $(_GREEN)$< $(_BLUE)→ $(_YELLOW)$@$(_RESET)\c"; \
 			mkdir -p $(dir $@); \
 			$(CC) $(CFLAGS) -c -o $@ $< -I $(INC) -O3; \
-			echo " $(_GREEN)\xE2\x9C\x93$(_RESET)";
+			echo " $(_GREEN)✓$(_RESET)";
 else
 override COMPILE_FILE	= tabs 6; \
 			tput cuu1; \
@@ -352,11 +352,11 @@ post_compile:
 			@echo "$(_RED)Finished ! $(_RESET)($(_PURPLE)$(GLOBAL_COUNTER)$(_RESET) files compiled)$(_RESET)"
 
 clean:
-			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
+			@echo "🚮 $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@echo "\xF0\x9F\x97\x91  $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
+			@echo "🚮 $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
 			@$(RM) $(NAME)
 
 re:			fclean all
