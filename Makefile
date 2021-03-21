@@ -84,7 +84,7 @@ override LIST_SRCS	=	$(addprefix $(LIST)/,	\
 				lst_delete.c			\
 				lst_destroy.c			\
 				lst_filter.c			\
-				lst_firts.c				\
+				lst_first.c				\
 				lst_foreach.c			\
 				lst_get.c				\
 				lst_get_entry.c			\

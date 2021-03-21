@@ -206,6 +206,15 @@ struct s_clist
 };
 
 void		*lst_reduce(t_list *l, void *id, t_bifunction a, t_consumer a_free);
+/**
+ * @brief Return the first element that pass the comparator
+ * 
+ * @param list the list
+ * @param comparator the filter, first argument is the element to check.
+ * @param arg the second argument for the comparator.
+ * @return the element if found, NULL else
+ */
+void		*lst_find_first(t_list *list, t_bipredicate comparator, void *arg);
 void		lst_foreachp(t_list *list, t_biconsumer visitor, void *param);
 /**
  * @brief Loop inside all values of the list and replace them with the result of
@@ -225,10 +234,27 @@ t_list		*lst_splice(t_list *list, int start, int end, void *value);
  * @param list the list
  * @param mapper the function to execute on all the values of the list
  * @param del the function to delete an element of the list
- * @return t_list* the new list
+ * @return the new list
  */
 t_list		*lst_map(t_list *list, t_function mapper, t_consumer del);
+/**
+ * @brief Replace an element at index
+ * 
+ * @param list the list
+ * @param index the index of the element to replace. If index is greater than 
+ * (list.size - 1), the last element is replaced.
+ * @param new_value the new value of the index
+ * @return void* the old element, NULL in case of error
+ */
 void		*lst_set(t_list *list, int index, void *new_value);
+/**
+ * @brief Insert an element at a given index of the list.
+ * 
+ * @param list the list
+ * @param index the index at which the element will be inserted
+ * @param element the element to insert
+ * @return the new size of list
+ */
 int			lst_insert(t_list *list, int index, void *value);
 /**
  * @brief Loop inside all values of the list and remove them if the predicate
@@ -244,19 +270,50 @@ t_list		*lst_filter_in(t_list *list, t_predicate filter);
  * 
  * @param list the list
  * @param filter the filter
- * @return t_list* the new list
+ * @return the new list
  */
 t_list		*lst_filter(t_list *list, t_predicate filter);
+/**
+ * @brief Iterate over all elements of the list and execute the visitor with the
+ * element as parameter.
+ * 
+ * @param list the list
+ * @param filter function to execute
+ */
 void		lst_foreach(t_list *list, t_consumer visitor);
+/**
+ * @brief Add all the element of a list into another.
+ * 
+ * @param container the container
+ * @param list the list to copy at the end of contanter
+ * @return the new size of container
+ */
 int			lst_add_all(t_list *container, t_list *list);
+/**
+ * @brief Remove all elements of the list in range [min;max[.
+ * 
+ * @param list the list
+ * @param min the index (included) of the first element to remove, starts from 
+ * the end if negative
+ * @param max the index (excluded) of the last element to remove, starts from 
+ * the end if negative
+ * @return the new list
+ */
 t_list		*lst_slice(t_list *list, int start, int end);
+/**
+ * @brief Insert an element at the start of the list.
+ * 
+ * @param list the list
+ * @param element the element to insert
+ * @return the new size of list
+ */
 int			lst_unshift(t_list *list, void *element);
 /**
  * @brief Convert the void** array into a new t_list, then free array.
  * 
  * @param array the array to convert
  * @param del the function to free an element of the list
- * @return t_list* the new list
+ * @return the new list
  */
 t_list		*as_listf(void **array, t_consumer del);
 t_entry		*lst_get_entry(t_list *list, int index);
@@ -265,7 +322,7 @@ t_entry		*lst_get_entry(t_list *list, int index);
  * 
  * @param array the array to convert
  * @param del the function to free an element of the list
- * @return t_list* the new list
+ * @return the new list
  */
 t_list		*as_list(void **array, t_consumer del);
 /**
@@ -284,6 +341,13 @@ void		*lst_push(t_list *list, void *element);
  * @return the element removed from the list, or NULL if index is invalid
  */
 void		*lst_remove(t_list *list, int index);
+/**
+ * @brief Concatenate the given lists into a new one.
+ * 
+ * @param t1 the first list
+ * @param t2 the first list
+ * @return the new list
+ */
 t_list		*lst_concat(t_list *t1, t_list *t2);
 /**
  * @brief Remove the element index from the list and delete it.
@@ -310,6 +374,7 @@ int			lst_size(t_list *list);
 void		lst_free(t_list *list);
 void		*lst_pop(t_list *list);
 
+void		*clst_find_first(t_clist *list, t_bipredicate comp, void *arg);
 /**
  * @brief Append a custom entry at the end of the list
  * 
@@ -322,6 +387,7 @@ t_centry	*clst_last_entry(t_clist *list);
 int			clst_not_empty(t_clist *list);
 int			clst_is_empty(t_clist *list);
 void		clst_destroy(t_clist *list);
+void		*clst_first(t_clist *list);
 void		*clst_shift(t_clist *list);
 void		clst_clear(t_clist *list);
 t_clist		*clst_new(t_consumer del);

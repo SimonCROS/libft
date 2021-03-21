@@ -1,10 +1,12 @@
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	char	*cp;
 
-	cp = (char *)s;
+	if (!str)
+		return (NULL);
+	cp = (char *)str;
 	while (1)
 	{
 		if (*cp == c)
@@ -16,13 +18,15 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *str, int c)
 {
 	size_t	i;
 	char	*cp;
 
-	cp = (char *)s;
-	i = ft_strlen(s);
+	if (!str)
+		return (NULL);
+	cp = (char *)str;
+	i = ft_strlen(str);
 	while (i)
 	{
 		if (cp[i] == c)
