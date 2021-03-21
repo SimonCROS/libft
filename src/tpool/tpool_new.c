@@ -95,7 +95,7 @@ t_tpool	*tpool_new(size_t num)
 
 	if (num == 0)
 		num = 1;
-	pool = calloc(1, sizeof(*pool));
+	pool = ft_calloc(1, sizeof(*pool));
 	pool->thread_cnt = num;
 	pthread_mutex_init(&(pool->work_mutex), NULL);
 	pthread_cond_init(&(pool->work_cond), NULL);
