@@ -354,6 +354,7 @@ post_compile:
 clean:
 			@echo "🚮 $(_BOLD)$(_YELLOW)Deleting objects...$(_RESET)\n"
 			@$(RM) $(OBJS)
+			@find . -type d -empty -delete
 
 fclean:		clean
 			@echo "🚮 $(_BOLD)$(_RED)Deleting $(NAME)$(_RESET)\n"
