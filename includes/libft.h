@@ -159,6 +159,7 @@ char		*ft_strdup(const char *s1);
 char		*ft_strtoupper(char *str);
 char		*ft_strtolower(char *str);
 size_t		ft_strlen(const char *s);
+int			str_not_empty(char *str);
 int			str_is_empty(char *str);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
