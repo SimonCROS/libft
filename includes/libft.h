@@ -207,7 +207,31 @@ struct s_clist
 	int			size;
 };
 
-void		*lst_reduce(t_list *l, void *id, t_bifunction a, t_consumer a_free);
+/**
+ * @brief Reduce a list to a single element using an accumulator, then destroy
+ * the list using lst_destroy.
+ * 
+ * @param list the list to reduce
+ * @param id the initial value of the accumulator
+ * @param accumulator the function that convert two elements into one
+ * @param accumulator_free the function that be called at next iteration to free
+ * the result of accumulator
+ * @return the value of accumulator after the iteration
+ */
+void		*lst_reducef(t_list *list, void *id, t_bifunction accumulator,
+				t_consumer accumulator_free);
+/**
+ * @brief Reduce a list to a single element using an accumulator.
+ * 
+ * @param list the list to reduce
+ * @param id the initial value of the accumulator
+ * @param accumulator the function that convert two elements into one
+ * @param accumulator_free the function that be called at next iteration to free
+ * the result of accumulator
+ * @return the value of accumulator after the iteration
+ */
+void		*lst_reduce(t_list *list, void *id, t_bifunction accumulator,
+				t_consumer accumulator_free);
 /**
  * @brief Return the first element that pass the comparator
  * 
@@ -217,6 +241,13 @@ void		*lst_reduce(t_list *l, void *id, t_bifunction a, t_consumer a_free);
  * @return the element if found, NULL else
  */
 void		*lst_find_first(t_list *list, t_bipredicate comparator, void *arg);
+/**
+ * @brief Iterate over all elements of the list and execute the visitor with the
+ * element and param as parameters.
+ * 
+ * @param list the list
+ * @param filter function to execute
+ */
 void		lst_foreachp(t_list *list, t_biconsumer visitor, void *param);
 /**
  * @brief Loop inside all values of the list and replace them with the result of
@@ -228,7 +259,17 @@ void		lst_foreachp(t_list *list, t_biconsumer visitor, void *param);
  * @return t_list* the same list, for chaining
  */
 t_list		*lst_map_in(t_list *list, t_function mapper, t_consumer del);
-t_list		*lst_splice(t_list *list, int start, int end, void *value);
+/**
+ * @brief Remove a part of the list and return it in a new list and insert value
+ * at the start index.
+ * 
+ * @param list the list
+ * @param start the start index (start from the end if negative)
+ * @param delete_count the number of elements to remove (only insert if 0)
+ * @param value the value to insert (nullable)
+ * @return the list containing the elements (not null even if delete count is 0)
+ */
+t_list		*lst_splice(t_list *list, int start, int delete_count, void *value);
 /**
  * @brief Loop inside all values of the list and replace them in a new list with
  * the result of mapper.
@@ -318,6 +359,15 @@ int			lst_unshift(t_list *list, void *element);
  * @return the new list
  */
 t_list		*as_listf(void **array, t_consumer del);
+/**
+ * @brief Get an entry at a given position
+ * 
+ * @param list the list
+ * @param index the index of the entry
+ * @return the entry, or null if out of bounds
+ * 
+ * @deprecated avoid usage of entries outside the libft
+ */
 t_entry		*lst_get_entry(t_list *list, int index);
 /**
  * @brief Convert the void** array into a new t_list.
