@@ -26,3 +26,17 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (ret);
 }
+
+int	ft_starts_with(char *string, char *prefix)
+{
+	if (!string || !prefix)
+		return (FALSE);
+	while (*prefix)
+	{
+		if (*string != *prefix)
+			return (FALSE);
+		string++;
+		prefix++;
+	}
+	return (TRUE);
+}

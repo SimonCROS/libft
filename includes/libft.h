@@ -124,7 +124,31 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t dstsize);
 size_t		ft_strlcat(char *dest, const char *src, size_t dstsize);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strtrim(const char *s1, const char *set);
+/**
+ * @brief Join two strings together, or duplicate one of them if the other is
+ * NULL.
+ * 
+ * @param s1 the first string
+ * @param s2 the second string
+ * @return the result of the operation, or NULL if allocation fails or if s1 and
+ * s2 are NULL too;
+ */
 char		*ft_strjoin(const char *s1, const char *s2);
+/**
+ * @brief Check if a string starts by a prefix
+ * 
+ * @param string the string to test
+ * @param prefix the prefix to test
+ * @return if string starts by prefix (FALSE if string or prefix is NULL)
+ */
+int			ft_starts_with(char *string, char *prefix);
+/**
+ * @brief Copy a string from a location to another
+ * 
+ * @param dest the buffer for src
+ * @param src the string to copy
+ * @return dest
+ */
 char		*ft_strcpy(char *dest, const char *src);
 /**
  * @brief Count the number of occurences of the character c in the string str.
@@ -134,6 +158,13 @@ char		*ft_strcpy(char *dest, const char *src);
  * @return the number of occurences
  */
 int			ft_strcnt(const char *str, char c);
+/**
+ * @brief Get the first index of a character in a string.
+ * 
+ * @param str the string
+ * @param c the character to find
+ * @return the index of the first occurence of c in str, or -1 if not found.
+ */
 int			ft_strindex_of(char *str, char c);
 char		*ft_strrchr(const char *s, int c);
 /**
@@ -144,7 +175,23 @@ char		*ft_strrchr(const char *s, int c);
  * @return char** an array of strings
  */
 char		**ft_split(const char *string, char separator);
-char		*ft_strchr(const char *s, int c);
+/**
+ * @brief Search a character in a string and get a pointer to this location.
+ * 
+ * @param str the string
+ * @param c the character to find
+ * @return the pointer at the character's location, or NULL if not found.
+ */
+char		*ft_strchr(const char *str, int c);
+/**
+ * @brief Compare two strings and get the difference of the ascii values on the
+ * first non-equal character.
+ * 
+ * @param s1 the fitst string
+ * @param s2 the second string
+ * @return 0 if strings are equals, or the difference of the ascii values on the
+ * first non-equal character else.
+ */
 int			ft_strcmp(char *s1, char *s2);
 /**
  * @brief Split the string each character separator into an array of strings,
