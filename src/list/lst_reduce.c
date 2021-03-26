@@ -1,5 +1,6 @@
 #include "libft.h"
 
+#include <stdio.h>
 void	*lst_reduce(t_list *list, void *id, t_bifunction acc, t_consumer acc_f)
 {
 	t_entry	*entry;
@@ -25,5 +26,5 @@ void	*lst_reducef(t_list *list, void *id, t_bifunction acc, t_consumer acc_f)
 
 	result = lst_reduce(list, id, acc, acc_f);
 	lst_destroy(list);
-	return (id);
+	return (result);
 }
