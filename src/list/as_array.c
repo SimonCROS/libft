@@ -8,6 +8,7 @@ void	**as_array(t_list *list)
 
 	if (!list)
 		return (NULL);
+	i = 0;
 	array = malloc(sizeof(*array) * (list->size + 1));
 	iterator = iterator_new(list);
 	while (iterator_has_next(&iterator))
