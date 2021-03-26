@@ -2,7 +2,7 @@
 
 void	tpool_wait(t_tpool *pool)
 {
-	if (pool == NULL)
+	if (pool == NULL || !pool->works->size)
 		return ;
 	pthread_mutex_lock(&(pool->work_mutex));
 	while (1)
