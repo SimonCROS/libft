@@ -76,6 +76,7 @@ override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
 				)
 
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
+				as_array.c				\
 				as_list.c				\
 				lst_add_all.c			\
 				lst_clear.c				\

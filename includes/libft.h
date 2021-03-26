@@ -460,12 +460,48 @@ void		*lst_get(t_list *list, int index);
 void		*lst_shift_entry(t_list *list);
 t_entry		*lst_last_entry(t_list *list);
 t_entry		*lst_new_entry(void *value);
+/**
+ * @brief Check if a list is not empty.
+ * 
+ * @param list the list
+ * @return if the list is not empty
+ */
 int			lst_not_empty(t_list *list);
+/**
+ * @brief Check if a list is empty.
+ * 
+ * @param list the list
+ * @return if the list is empty
+ */
 int			lst_is_empty(t_list *list);
+/**
+ * @brief Clear (see lst_clear) and free the list.
+ * 
+ * @param list the list
+ */
 void		lst_destroy(t_list *list);
+/**
+ * @brief Convert a list into a new array of elements and free the list.
+ * 
+ * @param list the list
+ * @return the new array
+ */
+void		**as_arrayf(t_list *list);
+/**
+ * @brief Convert a list into a new array of elements.
+ * 
+ * @param list the list
+ * @return the new array
+ */
+void		**as_array(t_list *list);
 t_list		*lst_new(t_consumer del);
 t_entry		*lst_shift(t_list *list);
 void		*lst_first(t_list *list);
+/**
+ * @brief Clear and free all elements of the list with the del function.
+ * 
+ * @param list the list
+ */
 void		lst_clear(t_list *list);
 t_list		*lst_copy(t_list *list);
 void		*lst_last(t_list *list);
