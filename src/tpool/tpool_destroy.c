@@ -2,7 +2,7 @@
 
 void	tpool_destroy(t_tpool *pool)
 {
-	if (pool == NULL)
+	if (!pool)
 		return ;
 	pthread_mutex_lock(&(pool->work_mutex));
 	pool->stop = 1;
