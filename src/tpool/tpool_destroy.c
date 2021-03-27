@@ -1,5 +1,13 @@
 #include "tpool.h"
 
+void	tpool_free(t_tpool *pool)
+{
+	if (!pool)
+		return ;
+	clst_destroy(pool->works);
+	free(pool);
+}
+
 void	tpool_destroy(t_tpool *pool)
 {
 	if (!pool)
@@ -12,6 +20,5 @@ void	tpool_destroy(t_tpool *pool)
 	pthread_mutex_destroy(&(pool->work_mutex));
 	pthread_cond_destroy(&(pool->work_cond));
 	pthread_cond_destroy(&(pool->working_cond));
-	clst_destroy(pool->works);
-	free(pool);
+	tpool_free(pool);
 }

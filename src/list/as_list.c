@@ -18,6 +18,8 @@ t_list	*as_listf(void **array, t_consumer del)
 {
 	t_list	*list;
 
+	if (!array)
+		return (NULL);
 	list = as_list(array, del);
 	if (!list)
 		while (*array)
