@@ -9,8 +9,11 @@ t_iterator	iterator_new(const t_list *list)
 	return (iterator);
 }
 
-void	iterator_init(t_iterator *iterator, const t_list *list)
+t_citerator	citerator_new(const t_clist *list)
 {
-	iterator->list = list;
-	iterator->current = list->first;
+	t_citerator	iterator;
+
+	iterator.list = list;
+	iterator.current = list->first;
+	return (iterator);
 }

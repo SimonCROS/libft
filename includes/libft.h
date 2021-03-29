@@ -9,6 +9,7 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef int						(*t_comparator)(void *, void *);
 typedef int						(*t_bipredicate)(void *, void *);
 typedef void*					(*t_bifunction)(void *, void *);
 typedef void					(*t_biconsumer)(void *, void *);
@@ -22,6 +23,7 @@ typedef t_bipredicate			t_bipre;
 typedef t_supplier				t_sup;
 typedef t_function				t_fun;
 typedef t_consumer				t_con;
+typedef t_comparator			t_com;
 typedef t_predicate				t_pre;
 
 typedef unsigned long long		t_uint64;
@@ -32,6 +34,7 @@ typedef unsigned char			t_uint8;
 typedef unsigned long			t_ulong;
 
 typedef struct s_iterator		t_iterator;
+typedef struct s_citerator		t_citerator;
 
 typedef struct s_bmpfileheader	t_bmpfileheader;
 typedef struct s_bmpinfoheader	t_bmpinfoheader;
@@ -43,6 +46,7 @@ typedef struct s_entry			t_entry;
 typedef struct s_clist			t_clist;
 typedef struct s_list			t_list;
 
+typedef struct s_mapentry		t_mapentry;
 typedef struct s_map			t_map;
 
 typedef struct s_color			t_color;
@@ -239,13 +243,120 @@ void		ft_bzero(void *s, size_t n);
 
 /*** Maps implementation ******************************************************/
 
+struct s_mapentry
+{
+	t_mapentry	*next;
+	void		*key;
+	void		*value;
+};
+
 struct s_map
 {
-	t_consumer		del;
-	t_bipredicate	identity_checker;
-	t_entry			*first;
+	t_biconsumer	del;
+	t_mapentry		*first;
 	int				size;
+	t_bipredicate	identity_checker;
 };
+
+/**
+ * @brief Create a new map, using identity_checker to get element.
+ * 
+ * @param identity_checker comparator for key values
+ * @param del key and value destroyer
+ * @return the new map
+ */
+t_map		*map_new(t_bipredicate identity_checker, t_biconsumer del);
+/**
+ * @brief Get a value of the map, using identity_checker to compare keys. Check
+ * map_contains_key before to be sure of the result.
+ * 
+ * @param map the map
+ * @param key the key of the value to get
+ * @param value_container the container for resulting value
+ * @return the value if found, else NULL
+ */
+void		*map_get(t_map *map, void *key);
+/**
+ * @brief Put a new entry in the map, and delete the old value if it already
+ * exists.
+ * 
+ * @param map the map
+ * @param key the key
+ * @param value the value
+ * @return TRUE if the operation succeeded, else FALSE
+ */
+int			map_put(t_map *map, void *key, void *value);
+/**
+ * @brief Change the value of the key if it already exists, else do nothing.
+ * The old key will not be destroyed, so the del function will be called with
+ * NULL as first parameter.
+ * 
+ * @param map the map
+ * @param key the key
+ * @param new_value the new value
+ * @return TRUE if the operation succeeded, else FALSE
+ */
+int			map_replace(t_map *map, void *key, void *new_value);
+/**
+ * @brief Check if a key exists in the map.
+ * 
+ * @param map the map
+ * @param key the key to test with identity_checker
+ * @return TRUE if exists, else FALSE
+ */
+int			map_contains_key(t_map *map, void *key);
+/**
+ * @brief Remove an element from the map and return the value.
+ * The old key will be destroyed, so the del function will be called with
+ * NULL as second parameter.
+ * 
+ * @param map the map
+ * @param map the key to delete
+ * @return the removed value, or NULL if value not exists
+ */
+void		*map_remove(t_map *map, void *key);
+/**
+ * @brief Delete an element of the map.
+ * 
+ * @param map the map
+ * @param map the key to delete
+ * @return TRUE if the operation succeeded, else FALSE
+ */
+int			map_delete(t_map *map, void *key);
+/**
+ * @brief Clear the map and free all elements using map->del.
+ * 
+ * @param map the map to clear
+ */
+void		map_clear(t_map *map);
+/**
+ * @brief Free all the entries without freeing keys or values.
+ * 
+ * @param map the map to free
+ */
+void		map_free(t_map *map);
+/**
+ * @brief Clear and free the map.
+ * 
+ * @param map the map to destroy
+ */
+void		map_destroy(t_map *map);
+/**
+ * @brief Duplicates a map.
+ * 
+ * @param map the map to copy
+ * @return the copied map
+ */
+t_map		*map_copy(t_map *map);
+/**
+ * @brief Sort the map using the comparator and return the result in a new map.
+ * 
+ * @param map the map
+ * @param comparator the comparator, for example ft_strcmp to sort in ASCII
+ * order.
+ * @return the same map, for chaining
+ */
+t_map		*map_sort(t_map *map, t_comparator comparator);
 
 /*** Lists implementation *****************************************************/
 
@@ -555,10 +666,21 @@ struct s_iterator
 	t_entry			*current;
 };
 
+struct s_citerator
+{
+	const t_clist	*list;
+	t_centry		*current;
+};
+
 int			iterator_has_next(const t_iterator *iterator);
 void		*iterator_next(t_iterator *iterator);
 void		iterator_reset(t_iterator *iterator);
 t_iterator	iterator_new(const t_list *list);
+
+int			citerator_has_next(const t_citerator *iterator);
+void		*citerator_next(t_citerator *iterator);
+void		citerator_reset(t_citerator *iterator);
+t_citerator	citerator_new(const t_clist *list);
 
 /*** Colors implementation ****************************************************/
 
