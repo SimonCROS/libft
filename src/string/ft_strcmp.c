@@ -2,6 +2,8 @@
 
 int	ft_strcmp(char *s1, char *s2)
 {
+	if (!s1 || !s2)
+		return (-1);
 	while (*s1 && *s1 == *s2)
 	{
 		s1++;
@@ -39,4 +41,9 @@ int	ft_starts_with(char *string, char *prefix)
 		prefix++;
 	}
 	return (TRUE);
+}
+
+int	ft_str_equals(char *s1, char *s2)
+{
+	return (s1 == s2 || ft_strcmp(s1, s2) == 0);
 }
