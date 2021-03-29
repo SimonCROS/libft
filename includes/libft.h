@@ -43,6 +43,8 @@ typedef struct s_entry			t_entry;
 typedef struct s_clist			t_clist;
 typedef struct s_list			t_list;
 
+typedef struct s_map			t_map;
+
 typedef struct s_color			t_color;
 
 typedef struct s_vector3		t_vector3;
@@ -185,7 +187,7 @@ char		**ft_split(const char *string, char separator);
 char		*ft_strchr(const char *str, int c);
 /**
  * @brief Compare two strings and get the difference of the ascii values on the
- * first non-equal character.
+ * first non-equal character. If one of the parameters is NULL, -1 is returned.
  * 
  * @param s1 the fitst string
  * @param s2 the second string
@@ -202,6 +204,14 @@ int			ft_strcmp(char *s1, char *s2);
  * @return char** an array of strings
  */
 char		**ft_splitf(char *string, char separator);
+/**
+ * @brief Compare two strings and return TRUE if they are equals.
+ * 
+ * @param s1 the fitst string
+ * @param s2 the second string
+ * @return TRUE if they are equals
+ */
+int			ft_str_equals(char *s1, char *s2);
 char		*ft_strdup(const char *s1);
 char		*ft_strtoupper(char *str);
 char		*ft_strtolower(char *str);
@@ -226,6 +236,16 @@ void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_bzero(void *s, size_t n);
+
+/*** Maps implementation ******************************************************/
+
+struct s_map
+{
+	t_consumer		del;
+	t_bipredicate	identity_checker;
+	t_entry			*first;
+	int				size;
+};
 
 /*** Lists implementation *****************************************************/
 
