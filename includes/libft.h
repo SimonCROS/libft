@@ -630,7 +630,9 @@ struct s_matrix44
 	float	e[4][4];
 };
 
+t_matrix44	mat44_null(void);
 t_vector3	mat44_mul_vec(t_matrix44 matrix, t_vector3 in);
+t_matrix44	mat44_inverse(t_matrix44 m);
 
 /*** Print utils **************************************************************/
 
