@@ -55,7 +55,7 @@ char	**ft_split(const char *s, char c)
 		else
 			s++;
 	}
-	output[i] = 0;
+	output[i] = NULL;
 	return (output);
 }
 

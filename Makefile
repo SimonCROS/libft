@@ -31,6 +31,7 @@ override INC		= includes
 override COLOR		= color
 override BITMAP		= bitmap
 override CONV		= convert
+override MAP		= map
 override LIST		= list
 override ITERAT		= iterator
 override MATH		= math
@@ -73,6 +74,17 @@ override ITERAT_SRCS=	$(addprefix $(ITERAT)/,	\
 				iterator_new.c			\
 				iterator_next.c			\
 				iterator_reset.c		\
+				)
+
+override MAP_SRCS	=	$(addprefix $(MAP)/, \
+				map_contains.c			\
+				map_destroy.c			\
+				map_get.c				\
+				map_new.c				\
+				map_put.c				\
+				map_remove.c			\
+				map_copy.c				\
+				map_sort.c				\
 				)
 
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
@@ -210,6 +222,7 @@ override SRCS		=					\
 				$(BITMAP_SRCS)			\
 				$(COLOR_SRCS)			\
 				$(CONV_SRCS)			\
+				$(MAP_SRCS)				\
 				$(LIST_SRCS)			\
 				$(ITERAT_SRCS)			\
 				$(MATH_SRCS)			\
@@ -339,6 +352,7 @@ compile:
 			$(call compile_type,COLOR,"colors")
 			$(call compile_type,CONV,"converters")
 			$(call compile_type,ITERAT,"iterators")
+			$(call compile_type,MAP,"maps")
 			$(call compile_type,LIST,"lists")
 			$(call compile_type,MATH,"maths")
 			$(call compile_type,MATRIX,"matrixs")
