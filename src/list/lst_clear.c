@@ -26,6 +26,7 @@ void	lst_free(t_list *list)
 		free(entry);
 		entry = lst_shift_entry(list);
 	}
+	free(list);
 }
 
 void	lst_clear(t_list *list)

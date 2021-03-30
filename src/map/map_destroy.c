@@ -15,6 +15,7 @@ void	map_free(t_map *map)
 		--(map->size);
 		entry = next;
 	}
+	free(map);
 }
 
 void	map_clear(t_map *map)

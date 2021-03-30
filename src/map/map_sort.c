@@ -11,17 +11,16 @@ static void	map_swap(t_mapentry *arg1, t_mapentry *arg2)
 	arg2->key = temp.key;
 	arg2->value = temp.value;
 }
-#include "stdio.h"
-t_map		*map_sort(t_map *map, t_comparator comparator, t_function copy_elem)
+
+t_map	*map_sort(t_map *map, t_comparator comparator)
 {
 	t_map			*sorted_map;
 	t_citerator		iter1;
 	t_citerator		iter2;
 	t_mapentry		*curr;
 	t_mapentry		*elem;
-	int test;
 
-	sorted_map = map_copy(map, copy_elem);
+	sorted_map = map_copy(map);
 	iter1 = citerator_new((const t_clist *)sorted_map);
 	while (citerator_has_next(&iter1))
 	{
@@ -30,7 +29,7 @@ t_map		*map_sort(t_map *map, t_comparator comparator, t_function copy_elem)
 		while (citerator_has_next(&iter2))
 		{
 			elem = citerator_next(&iter2);
-			if ((test = comparator(curr->key, elem->key)) < 0)
+			if (comparator(curr->key, elem->key) < 0)
 				map_swap(curr, elem);
 		}
 	}

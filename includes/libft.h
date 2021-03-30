@@ -342,23 +342,29 @@ void		map_free(t_map *map);
  */
 void		map_destroy(t_map *map);
 /**
- * @brief Creates a duplicate of an existing map
+ * @brief Creates a shallow copy of an existing map
+ * 
+ * @param original the original map
+ * @return the copy of the original map
+ */
+t_map		*map_copy(t_map *original);
+/**
+ * @brief Creates a deep copy of an existing map
  * 
  * @param original the original map
  * @param copy_elem the function that copies the content of key and value
  * @return the copy of the original map
  */
-t_map		*map_copy(t_map *original, t_function copy_elem);
+t_map		*map_clone(t_map *original, t_function copy_elem);
 /**
  * @brief Sort the map using the comparator and return the result in a new map.
  * 
  * @param map the map
  * @param comparator the comparator, for example ft_strcmp to sort in ASCII
  * order.
- * @param copy_elem the function that copies the content of key and value
  * @return the same map, for chaining
  */
-t_map		*map_sort(t_map *map, t_comparator comparator, t_function copy_elem);
+t_map		*map_sort(t_map *map, t_comparator comparator);
 
 /*** Lists implementation *****************************************************/
 
