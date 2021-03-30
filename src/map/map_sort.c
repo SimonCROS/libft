@@ -1,39 +1,38 @@
 #include "libft.h"
 
-static void	swap(int *xp, int *yp)
+static void	map_swap(t_mapentry *arg1, t_mapentry *arg2)
 {
-	int	temp;
+	t_mapentry	temp;
 
-	temp = *xp;
-	*xp = *yp;
-	*yp = temp;
+	temp.key = arg1->key;
+	temp.value = arg1->value;
+	arg1->key = arg2->key;
+	arg1->value = arg2->value;
+	arg2->key = temp.key;
+	arg2->value = temp.value;
 }
-
-t_map	*map_sort(t_map *map, t_comparator comparator)
+#include "stdio.h"
+t_map		*map_sort(t_map *map, t_comparator comparator, t_function copy_elem)
 {
-	int	i;
-	int	j;
-	int	swapped;
+	t_map			*sorted_map;
+	t_citerator		iter1;
+	t_citerator		iter2;
+	t_mapentry		*curr;
+	t_mapentry		*elem;
+	int test;
 
-	if (!map)
-		return (NULL);
-	i = 0;
-	while (i < map->size - 1)
+	sorted_map = map_copy(map, copy_elem);
+	iter1 = citerator_new((const t_clist *)sorted_map);
+	while (citerator_has_next(&iter1))
 	{
-		swapped = FALSE;
-		j = 0;
-		while (j < map->size - i - 1)
+		curr = citerator_next(&iter1);
+		iter2 = citerator_new((const t_clist *)sorted_map);
+		while (citerator_has_next(&iter2))
 		{
-			if (comparator())
-			{
-				swap(&arr[j], &arr[j+1]);
-				swapped = TRUE;
-			}
-			j++;
+			elem = citerator_next(&iter2);
+			if ((test = comparator(curr->key, elem->key)) < 0)
+				map_swap(curr, elem);
 		}
-		if (swapped == FALSE)
-			break ;
-		i++;
 	}
-	return (map);
+	return (sorted_map);
 }

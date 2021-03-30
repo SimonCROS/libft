@@ -83,6 +83,8 @@ override MAP_SRCS	=	$(addprefix $(MAP)/, \
 				map_new.c				\
 				map_put.c				\
 				map_remove.c			\
+				map_copy.c				\
+				map_sort.c				\
 				)
 
 override LIST_SRCS	=	$(addprefix $(LIST)/,	\
