@@ -26,97 +26,51 @@ t_matrix44	mat44_null(void)
 	return (out);
 }
 
-static int	mat44_inverse3(t_matrix44 *m, int i)
+t_matrix44	mat44_inverse(t_matrix44 m)
 {
-	int		j;
-	int		k;
-	float	f;
+	t_matrix44	rev;
+	float matrix[4][8], ratio,a;
+	int i, j, k;
 
-	f = m->e[i][i];
-	if (f == 0)
-		return (FALSE);
-	j = -1;
-	while (++j < 4)
-		m->e[i][j] /= f;
-	j = -1;
-	while (++j < i)
-	{
-		f = m->e[j][i];
-		k = -1;
-		while (++k < 4)
-			m->e[j][k] -= f * m->e[i][k];
-	}
-	return (TRUE);
-}
-
-static int	mat44_inverse2(t_matrix44 *m, int i, int pivot)
-{
-	float	tmp;
-	int		j;
-	int		k;
-
-	if (pivot != i)
+	i = -1;
+	while (++i < 4)
 	{
 		j = -1;
 		while (++j < 4)
-		{
-			tmp = m->e[i][j];
-			m->e[i][j] = m->e[pivot][j];
-			m->e[pivot][j] = tmp;
+			matrix[i][j] = m.e[i][j];
+	}
+
+	for (i = 0; i < 4; i++){
+		for (j = 4; j < 2*4; j++){
+			if (i==(j-4))
+				matrix[i][j] = 1.0;
+			else
+				matrix[i][j] = 0.0;
 		}
 	}
-	j = i;
-	while (++j < 4)
-	{
-		tmp = m->e[j][i] / m->e[i][i];
-		k = -1;
-		while (++k < 4)
-			m->e[j][k] -= tmp * m->e[i][k];
-	}
-	return (TRUE);
-}
-
-static int	mat44_inverse1(t_matrix44 *m, int i)
-{
-	int		j;
-	int		pivot;
-	float	pivotsize;
-	float	tmp;
-
-	j = -1;
-	pivot = i;
-	pivotsize = m->e[i][i];
-	if (pivotsize < 0)
-		pivotsize = -pivotsize;
-	while (++j < 3)
-	{
-		tmp = m->e[j][i];
-		if (tmp < 0)
-			tmp = -tmp;
-		if (tmp > pivotsize)
-		{
-			pivot = j;
-			pivotsize = tmp;
+	for (i = 0; i < 4; i++){
+		for (j = 0; j < 4; j++){
+			if (i!=j){
+				ratio = matrix[j][i] / matrix[i][i];
+				for (k = 0; k < 2*4; k++){
+					matrix[j][k] -= ratio * matrix[i][k];
+				}
+			}
 		}
 	}
-	if (pivotsize == 0)
-		return (FALSE);
-	return (mat44_inverse2(m, i, pivot));
-}
+	for (i = 0; i < 4; i++){
+		a = matrix[i][i];
+		for (j = 0; j < 2*4; j++){
+			matrix[i][j] /= a;
+		}
+	}
 
-t_matrix44	mat44_inverse(t_matrix44 m)
-{
-	t_matrix44	t;
-	int			i;
-
-	t = m;
 	i = -1;
-	while (++i < 3)
-		if (!mat44_inverse1(&t, i))
-			return (mat44_null());
-	i = 4;
-	while (--i >= 3)
-		if (!mat44_inverse3(&t, i))
-			return (mat44_null());
-	return (t);
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+			rev.e[i][j] = matrix[i][4 + j];
+	}
+	return (rev);
 }
