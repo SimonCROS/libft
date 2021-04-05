@@ -603,7 +603,7 @@ t_list		*lst_slice(t_list *list, int start, int end);
  * @param element the element to insert
  * @return the new size of list
  */
-int			lst_unshift(t_list *list, void *element);
+void		*lst_unshift(t_list *list, void *element);
 /**
  * @brief Convert the void** array into a new t_list, then free array.
  * 
