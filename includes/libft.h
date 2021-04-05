@@ -55,6 +55,8 @@ typedef struct s_vector3		t_vector3;
 
 typedef struct s_matrix44		t_matrix44;
 
+typedef struct s_string			t_string;
+
 /*** BMP Image utils **********************************************************/
 
 struct s_bmpfileheader
@@ -96,6 +98,71 @@ void		bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color);
 int			bmp_save(char *output, t_bitmap *bitmap);
 ssize_t		bmp_write(int fd, t_bitmap *bitmap);
 t_bitmap	*bmp_init(int width, int height);
+
+/*** Advanced string implementation *******************************************/
+
+struct s_string
+{
+	int		size;
+	char	*string;
+};
+
+/**
+ * @brief Create a new string (t_string) from a string (char *).
+ * 
+ * @param str the base string (char *)
+ * @param container the container for the new string (t_string)
+ * @return the new string (t_string)
+ */
+t_string	*as_string(char *str, t_string *container);
+/**
+ * @brief Create a new string (t_string).
+ * 
+ * @param container the container for the new string (t_string)
+ * @return the same container, for chaining, or NULL in case of error.
+ */
+t_string	*str_new(t_string *container);
+/**
+ * @brief Append a string (char *) to the begenning of the string (t_string).
+ * 
+ * @param container the string (t_string)
+ * @param str the string (char *) to append
+ * @return the same container, for chaining, or NULL in case of error.
+ */
+t_string	*str_prepend(t_string *container, char *str);
+/**
+ * @brief Append a string (char *) to the end of the string (t_string).
+ * 
+ * @param container the string (t_string)
+ * @param str the string (char *) to append
+ * @return the same container, for chaining, or NULL in case of error.
+ */
+t_string	*str_append(t_string *container, char *str);
+/**
+ * @brief Append a char to the begenning of the string (t_string).
+ * 
+ * @param container the string (t_string)
+ * @param c char to append
+ * @return the same container, for chaining, or NULL in case of error.
+ */
+t_string	*str_cappend(t_string *container, char c);
+/**
+ * @brief Insert a string (char *) to a specific index of the string (t_string).
+ * 
+ * @param container the string (t_string)
+ * @param str the string (char *) to insert
+ * @param index the index at which the string (char *) will be inserted
+ * (equivalent to prepend if less or equal to 0, equivalent to append if too
+ * long).
+ * @return the same container, for chaining, or NULL in case of error.
+ */
+// t_string	*str_insert(t_string *container, char *str, int index);
+/**
+ * @brief Free the given string.
+ * 
+ * @param string the string to free.
+ */
+void		str_destroy(t_string *string);
 
 /*** String utils *************************************************************/
 
