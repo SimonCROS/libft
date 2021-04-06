@@ -118,10 +118,9 @@ t_string	*as_string(char *str, t_string *container);
 /**
  * @brief Create a new string (t_string).
  * 
- * @param container the container for the new string (t_string)
- * @return the same container, for chaining, or NULL in case of error.
+ * @return the new string, or NULL in case of error.
  */
-t_string	*str_new(t_string *container);
+t_string	*str_new(void);
 /**
  * @brief Append a string (char *) to the begenning of the string (t_string).
  * 

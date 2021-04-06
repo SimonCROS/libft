@@ -2,20 +2,26 @@
 
 t_string	*as_string(char *str, t_string *container)
 {
-	t_string	string;
-
 	if (!container)
 		return (NULL);
-	string.string = ft_strdup(str);
-	if (!string.string)
+	container->string = ft_strdup(str);
+	if (!container->string)
 		return (NULL);
-	string.size = ft_strlen(str);
+	container->size = ft_strlen(str);
 	return (container);
 }
 
-t_string	*str_new(t_string *container)
+t_string	*str_new(void)
 {
-	return (as_string("", container));
+	t_string	*container;
+
+	container = malloc(sizeof(t_string));
+	if (!as_string("", container))
+	{
+		free(container);
+		return (NULL);
+	}
+	return (container);
 }
 
 void	str_destroy(t_string *container)
