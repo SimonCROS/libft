@@ -43,6 +43,20 @@ int	ft_starts_with(char *string, char *prefix)
 	return (TRUE);
 }
 
+int	ft_ends_with(char *string, char *suffix)
+{
+	size_t	string_len;
+	size_t	suffix_len;
+
+	if (!string || !suffix)
+		return (FALSE);
+	string_len = ft_strlen(string);
+	suffix_len = ft_strlen(suffix);
+	if (string_len < suffix_len)
+		return (FALSE);
+	return (ft_str_equals(string + string_len - suffix_len, suffix));
+}
+
 int	ft_str_equals(char *s1, char *s2)
 {
 	return (s1 == s2 || ft_strcmp(s1, s2) == 0);

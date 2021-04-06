@@ -216,6 +216,14 @@ char		*ft_strjoin(const char *s1, const char *s2);
  */
 int			ft_starts_with(char *string, char *prefix);
 /**
+ * @brief Check if a string ends by a suffix
+ * 
+ * @param string the string to test
+ * @param suffix the suffix to test
+ * @return if string ends by suffix (FALSE if string or suffix is NULL)
+ */
+int			ft_ends_with(char *string, char *suffix);
+/**
  * @brief Copy a string from a location to another
  * 
  * @param dest the buffer for src
