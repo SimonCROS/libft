@@ -7,7 +7,7 @@ void	tpool_wait(t_tpool *pool)
 	pthread_mutex_lock(&(pool->work_mutex));
 	while (1)
 	{
-		if ((!pool->stop && pool->works->size != 0)
+		if ((!pool->stop && pool->working_cnt != 0)
 			|| (pool->stop && pool->thread_cnt != 0))
 			pthread_cond_wait(&(pool->working_cond), &(pool->work_mutex));
 		else
