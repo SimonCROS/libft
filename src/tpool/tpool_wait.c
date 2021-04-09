@@ -15,4 +15,5 @@ void	tpool_wait(t_tpool *pool)
 			break ;
 	}
 	pthread_mutex_unlock(&(pool->work_mutex));
+	pool->stop = 1;
 }
