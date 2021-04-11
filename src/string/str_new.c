@@ -1,24 +1,24 @@
 #include "libft.h"
 
-t_string	*as_string(char *str, t_string *container)
+char	**as_string(char *str)
 {
-	t_string	string;
+	char	**string;
 
-	if (!container)
+	if (!str)
 		return (NULL);
-	string.string = ft_strdup(str);
-	if (!string.string)
+	string = malloc(sizeof(char *));
+	if (!string)
 		return (NULL);
-	string.size = ft_strlen(str);
-	return (container);
+	*string = ft_strdup(str);
+	if (!*string)
+	{
+		free(string);
+		return (NULL);
+	}
+	return (string);
 }
 
-t_string	*str_new(t_string *container)
+char	**str_new(void)
 {
-	return (as_string("", container));
-}
-
-void	str_destroy(t_string *container)
-{
-	free(container->string);
+	return (as_string(""));
 }
