@@ -1,3 +1,4 @@
+#include <math.h>
 #include "libft.h"
 
 t_vector3	mat44_mul_vec(t_matrix44 m, t_vector3 in)
@@ -26,51 +27,98 @@ t_matrix44	mat44_null(void)
 	return (out);
 }
 
-t_matrix44	mat44_inverse(t_matrix44 m)
+static float	determin(float matrix[4][4], int k)
 {
-	t_matrix44	rev;
-	float matrix[4][8], ratio,a;
-	int i, j, k;
-
-	i = -1;
-	while (++i < 4)
+	float deter = 0.0, z = 1.0, mt[4][4];
+	int a, b, c, x, y;
+	if (k == 1)
+		return (matrix[0][0]);
+	else
 	{
-		j = -1;
-		while (++j < 4)
-			matrix[i][j] = m.e[i][j];
-	}
-
-	for (i = 0; i < 4; i++){
-		for (j = 4; j < 2*4; j++){
-			if (i==(j-4))
-				matrix[i][j] = 1.0;
-			else
-				matrix[i][j] = 0.0;
-		}
-	}
-	for (i = 0; i < 4; i++){
-		for (j = 0; j < 4; j++){
-			if (i!=j){
-				ratio = matrix[j][i] / matrix[i][i];
-				for (k = 0; k < 2*4; k++){
-					matrix[j][k] -= ratio * matrix[i][k];
+		deter = 0;
+		for (a = 0; a < k; ++a) {
+			x = 0;
+			y = 0;
+			for (b = 0; b < k; ++b) {
+				for (c = 0; c < k; ++c) {
+					mt[b][c] = 0;
+					if ((b != 0) && (c != a)) {
+						mt[x][y] = matrix[b][c];
+						if (y < (k - 2))
+							y++;
+						else {
+							y = 0;
+							x++;
+						}
+					}
 				}
 			}
+			deter = deter + z * (matrix[0][a] * determin(mt, k - 1));
+			z = -1 * z;
 		}
 	}
-	for (i = 0; i < 4; i++){
-		a = matrix[i][i];
-		for (j = 0; j < 2*4; j++){
-			matrix[i][j] /= a;
-		}
-	}
+	return (deter);
+}
+
+static void	trans(t_matrix44 *result, float matr[4][4], float m1[4][4], int r)
+{
+	float	tran[4][4];
+	float	d;
+	int		i;
+	int		j;
 
 	i = -1;
-	while (++i < 4)
-	{
+	while (++i < r)
+	{	
 		j = -1;
-		while (++j < 4)
-			rev.e[i][j] = matrix[i][4 + j];
+		while (++j < r)
+			tran[i][j] = m1[j][i];
 	}
-	return (rev);
+	d = determin(matr, r);
+	i = -1;
+	while (++i < r)
+	{	
+		j = -1;
+		while (++j < r)
+			result->e[i][j] = tran[i][j] / d;
+	}
+}
+
+static void cofac(t_matrix44 *result, float comatr[4][4], int f) {
+	float matr[4][4], cofact[4][4];
+	int a, b, c, d, x, y;
+	for (c = 0; c < f; ++c) {
+		for (d = 0; d < f; ++d) {
+			x = 0;
+			y = 0;
+			for (a = 0; a < f; ++a) {
+				for (b = 0; b < f; ++b) {
+					if (a != c && b != d) {
+						matr[x][y] = comatr[a][b];
+						if (y < (f - 2))
+							y++;
+						else {
+							y = 0;
+							x++;
+						}
+					}
+				}
+			}
+			cofact[c][d] = pow(-1, c + d) * determin(matr, f - 1);
+		}
+	}
+	trans(result, comatr, cofact, f);
+}
+
+t_matrix44	mat44_inverse(t_matrix44 m)
+{
+	float		deter;
+	t_matrix44	result;
+
+	deter = determin(m.e, 4);
+	if (deter == 0)
+		result = mat44_null();
+	else
+		cofac(&result, m.e, 4);
+	return (result);
 }

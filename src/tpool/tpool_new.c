@@ -68,6 +68,7 @@ int	tpool_start(t_tpool *pool)
 	size_t			i;
 
 	i = 0;
+	pool->stop = 0;
 	while (i++ < pool->size)
 	{
 		pool_thread = malloc(sizeof(t_tpool_thread));

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_string	*str_append(t_string *container, char *str)
+char	**str_append(char **container, char *str)
 {
 	char	*tmp;
 
@@ -8,34 +8,32 @@ t_string	*str_append(t_string *container, char *str)
 		return (NULL);
 	if (!str)
 		return (container);
-	tmp = container->string;
-	container->string = ft_strjoin(tmp, str);
+	tmp = *container;
+	*container = ft_strjoin(tmp, str);
 	free(tmp);
-	if (!container->string)
+	if (!*container)
 		return (NULL);
-	container->size += ft_strlen(str);
 	return (container);
 }
 
-t_string	*str_cappend(t_string *container, char c)
+char	**str_cappend(char **container, char c)
 {
 	char	*tmp;
 	char	char_to_str[2];
 
 	if (!container)
 		return (NULL);
-	tmp = container->string;
+	tmp = *container;
 	char_to_str[0] = c;
 	char_to_str[1] = 0;
-	container->string = ft_strjoin(tmp, char_to_str);
+	*container = ft_strjoin(tmp, char_to_str);
 	free(tmp);
-	if (!container->string)
+	if (!*container)
 		return (NULL);
-	container->size++;
 	return (container);
 }
 
-t_string	*str_prepend(t_string *container, char *str)
+char	**str_prepend(char **container, char *str)
 {
 	char	*tmp;
 
@@ -43,11 +41,10 @@ t_string	*str_prepend(t_string *container, char *str)
 		return (NULL);
 	if (!str)
 		return (container);
-	tmp = container->string;
-	container->string = ft_strjoin(str, tmp);
+	tmp = *container;
+	*container = ft_strjoin(str, tmp);
 	free(tmp);
-	if (!container->string)
+	if (!*container)
 		return (NULL);
-	container->size += ft_strlen(str);
 	return (container);
 }
