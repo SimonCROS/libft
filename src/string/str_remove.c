@@ -16,7 +16,7 @@ char	**str_rmlast(char **container)
 			return (NULL);
 		i = -1;
 		while (++i < len - 1)
-			res[i] = *container[i];
+			res[i] = (*container)[i];
 		res[i] = 0;
 		free(*container);
 		*container = res;
