@@ -146,6 +146,13 @@ t_string	*str_append(t_string *container, char *str);
  */
 t_string	*str_cappend(t_string *container, char c);
 /**
+ * @brief Remove last element of the string
+ * 
+ * @param container the string (t_string)
+ * @return the same container, with, at least one element, or NULL if error.
+ */
+t_string	*str_rmlast(t_string *container);
+/**
  * @brief Insert a string (char *) to a specific index of the string (t_string).
  * 
  * @param container the string (t_string)
