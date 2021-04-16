@@ -663,7 +663,7 @@ t_list		*lst_concat(t_list *t1, t_list *t2);
  */
 void		lst_delete(t_list *list, int index);
 void		*lst_get(t_list *list, int index);
-void		*lst_shift_entry(t_list *list);
+t_entry		*lst_shift_entry(t_list *list);
 t_entry		*lst_last_entry(t_list *list);
 t_entry		*lst_new_entry(void *value);
 /**
@@ -701,7 +701,7 @@ void		**as_arrayf(t_list *list);
  */
 void		**as_array(t_list *list);
 t_list		*lst_new(t_consumer del);
-t_entry		*lst_shift(t_list *list);
+void		*lst_shift(t_list *list);
 void		*lst_first(t_list *list);
 /**
  * @brief Clear and free all elements of the list with the del function.
