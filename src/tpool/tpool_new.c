@@ -68,7 +68,8 @@ int	tpool_start(t_tpool *pool)
 	size_t			i;
 
 	i = 0;
-	while (i++ < pool->thread_cnt)
+	pool->stop = 0;
+	while (i++ < pool->size)
 	{
 		pool_thread = malloc(sizeof(t_tpool_thread));
 		if (!pool_thread)
@@ -85,6 +86,7 @@ int	tpool_start(t_tpool *pool)
 			return (FALSE);
 		}
 		pthread_detach(thread);
+		pool->thread_cnt++;
 	}
 	return (TRUE);
 }
@@ -96,7 +98,7 @@ t_tpool	*tpool_new(size_t num)
 	if (num == 0)
 		num = 1;
 	pool = ft_calloc(1, sizeof(*pool));
-	pool->thread_cnt = num;
+	pool->size = num;
 	pthread_mutex_init(&(pool->work_mutex), NULL);
 	pthread_cond_init(&(pool->work_cond), NULL);
 	pthread_cond_init(&(pool->working_cond), NULL);

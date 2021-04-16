@@ -20,6 +20,7 @@ typedef struct s_tpool
 	pthread_cond_t	working_cond;
 	size_t			working_cnt;
 	size_t			thread_cnt;
+	size_t			size;
 	int				stop;
 	char			*name;
 }	t_tpool;
