@@ -12,7 +12,7 @@ void	*clst_shift(t_clist *list)
 	return (first);
 }
 
-t_entry	*lst_shift(t_list *list)
+void	*lst_shift(t_list *list)
 {
 	t_entry	*first;
 	void	*value;

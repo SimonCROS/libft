@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	*lst_shift_entry(t_list *list)
+t_entry	*lst_shift_entry(t_list *list)
 {
 	t_entry	*first;
 

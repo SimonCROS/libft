@@ -187,6 +187,7 @@ override STRING_SRCS=	$(addprefix $(STRING)/,	\
 				str_is_empty.c			\
 				str_append.c			\
 				str_new.c				\
+				str_remove.c			\
 				)
 
 override TPOOL_SRCS	=	$(addprefix $(TPOOL)/,	\
