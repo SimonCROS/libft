@@ -43,6 +43,7 @@ override STRING		= string
 override TPOOL		= tpool
 override UTIL		= util
 override VECTOR3	= vector3
+override QUADRIC	= quadric
 
 override BITMAP_SRCS=	$(addprefix $(BITMAP)/,	\
 				bmp_init.c				\
@@ -155,6 +156,10 @@ override PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
 				ft_putstr.c				\
 				)
 
+override QUADRIC_SRCS=	$(addprefix $(QUADRIC)/,\
+				resolve.c				\
+				)
+
 override STRING_SRCS=	$(addprefix $(STRING)/,	\
 				ft_isalnum.c			\
 				ft_isalpha.c			\
@@ -235,6 +240,7 @@ override SRCS		=					\
 				$(TPOOL_SRCS)			\
 				$(UTIL_SRCS)			\
 				$(VECTOR3_SRCS)			\
+				$(QUADRIC_SRCS)			\
 
 override OBJS		=	$(addprefix $(BIN)/, $($(join $(if $($(TYPE)_SRCS), $(TYPE)_)SRCS,:.c=.o)))
 
@@ -364,6 +370,7 @@ compile:
 			$(call compile_type,TPOOL,"thread pools")
 			$(call compile_type,UTIL,"utils")
 			$(call compile_type,VECTOR3,"3D vectors")
+			$(call compile_type,QUADRIC,"quadrics")
 
 post_compile:
 			@echo "\n"

@@ -53,6 +53,8 @@ typedef struct s_color			t_color;
 
 typedef struct s_vector3		t_vector3;
 
+typedef struct s_quadric		t_quadric;
+
 typedef struct s_matrix44		t_matrix44;
 
 /*** BMP Image utils **********************************************************/
@@ -842,6 +844,33 @@ struct s_matrix44
 t_matrix44	mat44_null(void);
 t_vector3	mat44_mul_vec(t_matrix44 matrix, t_vector3 in);
 t_matrix44	mat44_inverse(t_matrix44 m);
+
+/*** Matrix implementation ****************************************************/
+
+struct s_quadric
+{
+	float	a;
+	float	b;
+	float	c;
+	float	d;
+	float	e;
+	float	f;
+	float	g;
+	float	h;
+	float	i;
+	float	j;
+};
+
+/**
+ * @brief Give coeff a,b,c from at^2+bt+c=0
+ * 
+ * @param quad the quadric
+ * @param origin origin
+ * @param direction direction
+ * @return the length smaller and positive or 0 if not found
+ */
+float		resolve_quad(t_quadric *quad,
+				t_vector3 *origin, t_vector3 *direction);
 
 /*** Print utils **************************************************************/
 
