@@ -873,11 +873,10 @@ struct s_quadric
  * 
  * @param quad the quadric
  * @param origin origin
- * @param direction direction
+ * @param dir direction
  * @return the length smaller and positive or 0 if not found
  */
-float		resolve_quad(t_quadric *quad,
-				t_vector3 *origin, t_vector3 *direction);
+float		resolve_quad(t_quadric *quad, t_vector3 origin, t_vector3 dir);
 
 /*** Print utils **************************************************************/
 
