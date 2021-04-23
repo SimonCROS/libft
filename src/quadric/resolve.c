@@ -7,29 +7,30 @@
 
 #include "libft.h"
 
+/*
+Aqt2 + Bqt + Cq = 0 with
+
+Aq = Axd2 + Byd2 + Czd2 + Dxdyd + Exdzd + Fydzd
+
+Bq = 2*Axoxd + 2*Byoyd + 2*Czozd + D(xoyd + yoxd) + E(xozd + zoxd) + F(yozd + ydzo) + Gxd + Hyd + Izd
+
+Cq = Axo2 + Byo2 + Czo2 + Dxoyo + Exozo + Fyozo + Gxo + Hyo + Izo + J
+
+http://skuld.bmsc.washington.edu/people/merritt/graphics/quadrics.html
+*/
+
 //give coeff a,b,c from at^2+bt+c=0
 static t_vector3	inter_quad_line_coeff(t_quadric *quad, t_vector3 c,
 	t_vector3 r)
 {
 	t_vector3	abc;
 
-	abc.x = quad->a * pow(r.x, 2) + quad->b * pow(r.y, 2) + quad->c
-		* pow(r.z, 2) + 2 * quad->d * r.y * r.z + 2 * quad->e * r.x
-		* r.z + 2 * quad->f * r.x * r.y;
-	abc.y = 2 * quad->a * c.x * r.x + 2 * quad->b * c.y * r.y + 2
-		* quad->c * c.z * r.z + 2 * quad->d * c.z * r.y + 2
-		* quad->d * c.y * r.z + 2 * quad->e * c.x * r.z + 2
-		* quad->e * c.z * r.x + 2 * quad->f * c.x * r.y + 2
-		* quad->f * c.y * r.x + quad->g * r.x + quad->h * r.y
-		+ quad->i * r.z;
-	abc.z = quad->a * pow(c.x, 2) + quad->b * pow(c.y, 2) + quad->c
-		* pow(c.z, 2) + 2 * quad->d * c.y * c.z + 2 * quad->e * c.x
-		* c.z + 2 * quad->f * c.x * c.y + quad->g * c.x + quad->h
-		* c.y + quad->i * c.z + quad->j;
+	abc.x = quad->a * 
 	return (abc);
 }
 
-//abc.a != 0 !!!!!!!
+#include <stdio.h>
+
 static float	discriminant(t_vector3 abc)
 {
 	float	delta;
