@@ -869,7 +869,8 @@ struct s_quadric
 };
 
 /**
- * @brief Give coeff a,b,c from at^2+bt+c=0
+ * @brief Resolve the length of the vector dir to get the firts intersection
+ * between the vector and the quadric.
  * 
  * @param quad the quadric
  * @param origin origin
@@ -877,6 +878,15 @@ struct s_quadric
  * @return the length smaller and positive or 0 if not found
  */
 float		resolve_quad(t_quadric *quad, t_vector3 origin, t_vector3 dir);
+/**
+ * @brief Resolve the length of the vector dir to get the firts intersection
+ * between the vector and the quadric.
+ * 
+ * @param quad the quadric
+ * @param phit point hit
+ * @return the norm at this point
+ */
+t_vector3	resolve_quad_norm(t_quadric *quad, t_vector3 phit);
 
 /*** Print utils **************************************************************/
 
