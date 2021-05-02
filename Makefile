@@ -206,22 +206,22 @@ override UTIL_SRCS	=	$(addprefix $(UTIL)/,	\
 				)
 
 override VECTOR3_SRCS=	$(addprefix $(VECTOR3)/,\
-				ft_vector3_add.c		\
-				ft_vector3_angle.c		\
-				ft_vector3_clone.c		\
-				ft_vector3_copy.c		\
-				ft_vector3_cross.c		\
-				ft_vector3_distance.c	\
-				ft_vector3_div.c		\
-				ft_vector3_negate.c		\
-				ft_vector3_dot.c		\
-				ft_vector3_length.c		\
-				ft_vector3_mul.c		\
-				ft_vector3_rotate.c		\
-				ft_vector3_new.c		\
-				ft_vector3_normalize.c	\
-				ft_vector3_set.c		\
-				ft_vector3_sub.c		\
+				vector3_add.c			\
+				vector3_angle.c			\
+				vector3_clone.c			\
+				vector3_copy.c			\
+				vector3_cross.c			\
+				vector3_distance.c		\
+				vector3_div.c			\
+				vector3_negate.c		\
+				vector3_dot.c			\
+				vector3_length.c		\
+				vector3_mul.c			\
+				vector3_rotate.c		\
+				vector3_new.c			\
+				vector3_normalize.c		\
+				vector3_set.c			\
+				vector3_sub.c			\
 				vec3_deserialize.c		\
 				)
 
