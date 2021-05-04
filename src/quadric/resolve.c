@@ -56,10 +56,6 @@ static float	discriminant(t_vector3 abc)
 	return (delta);
 }
 
-/*
-t0 = (-Bq - ((Bq^2 - 4AqCq))^0.5) / 2Aq
-t1 = (-Bq + ((Bq^2 - 4AqCq))^0.5) / 2Aq
-*/
 static float	inter_quad_line_sol(t_vector3 abc, float d)
 {
 	float	t1;
@@ -86,6 +82,42 @@ float	resolve_quad(t_quadric *quad, t_vector3 o, t_vector3 dir)
 	d = discriminant(abc);
 	t = inter_quad_line_sol(abc, d);
 	return (fmaxf(t, 0));
+}
+
+static void	inter_quad_line_sol_double(t_vector3 abc, float d, float t[2])
+{
+	float	t1;
+	float	t2;
+
+	t[1] = 0;
+	if (abc.x == 0 && abc.y != 0)
+		t[0] = -abc.z / abc.y, 0;
+	else if (d == 0)
+		t[0] = -abc.y * 0.5 / abc.x;
+	else
+	{
+		t1 = (-abc.y - sqrtf(d)) * 0.5 / abc.x;
+		t2 = (-abc.y + sqrtf(d)) * 0.5 / abc.x;
+		if (t1 > 0 && t2 > 0)
+		{
+			t[0] = fminf(t1, t2);
+			t[1] = fmaxf(t1, t2);
+		}
+		else
+			t[0] = fmaxf(t1, t2);
+	}
+	t[0] = fmaxf(t[0], 0);
+}
+
+int	resolve_quad_double(t_quadric *quad, t_vector3 o, t_vector3 di, float *t)
+{
+	t_vector3	abc;
+	float		d;
+
+	abc = inter_quad_line_coeff(quad, o, di);
+	d = discriminant(abc);
+	inter_quad_line_sol_double(abc, d, t);
+	return (!!t[0]);
 }
 
 /*

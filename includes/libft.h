@@ -599,6 +599,7 @@ int			lst_add_all(t_list *container, t_list *list);
 t_list		*lst_slice(t_list *list, int start, int end);
 /**
  * @brief Insert an element at the start of the list.
+ * If the push operation fails, element is free using list->del.
  * 
  * @param list the list
  * @param element the element to insert
@@ -632,7 +633,8 @@ t_entry		*lst_get_entry(t_list *list, int index);
  */
 t_list		*as_list(void **array, t_consumer del);
 /**
- * @brief Append an element at the end of the list
+ * @brief Append an element at the end of the list.
+ * If the push operation fails, element is free using list->del.
  * 
  * @param list the custom list
  * @param element the element to add
@@ -878,6 +880,7 @@ struct s_quadric
  * @return the length smaller and positive or 0 if not found
  */
 float		resolve_quad(t_quadric *quad, t_vector3 origin, t_vector3 dir);
+int			resolve_quad_double(t_quadric *quad, t_vector3 o, t_vector3 di, float *t);
 /**
  * @brief Resolve the length of the vector dir to get the firts intersection
  * between the vector and the quadric.

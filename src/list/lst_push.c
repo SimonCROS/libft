@@ -20,7 +20,10 @@ void	*lst_push(t_list *list, void *element)
 		return (NULL);
 	entry = lst_new_entry(element);
 	if (!entry)
+	{
+		list->del(element);
 		return (NULL);
+	}
 	if (lst_is_empty(list))
 		list->first = entry;
 	else
