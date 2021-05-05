@@ -98,6 +98,7 @@ void		bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color);
 int			bmp_save(char *output, t_bitmap *bitmap);
 ssize_t		bmp_write(int fd, t_bitmap *bitmap);
 t_bitmap	*bmp_init(int width, int height);
+void		bmp_free(t_bitmap *image);
 
 /*** Advanced string implementation *******************************************/
 

@@ -1,5 +1,12 @@
 #include "libft.h"
 
+void	bmp_free(t_bitmap *image)
+{
+	if (image)
+		free(image->body);
+	free(image);
+}
+
 t_bitmap	*bmp_init(int width, int height)
 {
 	t_bitmap	*bitmap;
