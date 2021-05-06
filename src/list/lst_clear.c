@@ -19,12 +19,13 @@ void	lst_free(t_list *list)
 	t_entry	*entry;
 
 	if (lst_is_empty(list))
-		return ;
-	entry = lst_shift_entry(list);
-	while (entry)
 	{
-		free(entry);
 		entry = lst_shift_entry(list);
+		while (entry)
+		{
+			free(entry);
+			entry = lst_shift_entry(list);
+		}
 	}
 	free(list);
 }
