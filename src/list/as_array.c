@@ -13,7 +13,7 @@ void	**as_array(t_list *list)
 	iterator = iterator_new(list);
 	while (iterator_has_next(&iterator))
 		array[i++] = iterator_next(&iterator);
-	array[list->size] = NULL;
+	array[i] = NULL;
 	return (array);
 }
 
