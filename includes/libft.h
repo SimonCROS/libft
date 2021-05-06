@@ -41,6 +41,9 @@ typedef struct s_bmpinfoheader	t_bmpinfoheader;
 typedef struct s_bmpheader		t_bmpheader;
 typedef struct s_bitmap			t_bitmap;
 
+typedef struct s_dentry			t_dentry;
+typedef struct s_dlist			t_dlist;
+
 typedef struct s_centry			t_centry;
 typedef struct s_entry			t_entry;
 typedef struct s_clist			t_clist;
@@ -434,6 +437,100 @@ t_map		*map_clone(t_map *original, t_function copy_elem);
  * @return the same map, for chaining
  */
 t_map		*map_sort(t_map *map, t_comparator comparator);
+
+/*** Double chained lists implementation **************************************/
+
+struct s_dentry
+{
+	t_dentry	*previous;
+	t_dentry	*next;
+	void		*value;
+};
+
+struct s_dlist
+{
+	t_consumer	del;
+	t_dentry	*first;
+	int			size;
+};
+
+/**
+ * @brief Creates a new double chained list
+ * 
+ * @param del the t_consumer used to delete properly an element
+ * @return pointer to the created list, NULL if malloc error
+ */
+t_dlist		*dlst_new(t_consumer del);
+/**
+ * @brief Creates a new double chained list entry
+ * 
+ * @param value entry's value
+ * @return pointer to the created entry, NULL if malloc error
+ */
+t_dentry	*dlst_new_entry(void *value);
+/**
+ * @brief Check if a list is not empty.
+ * 
+ * @param list the list
+ * @return if the list is not empty
+ */
+int			dlst_not_empty(t_dlist *list);
+/**
+ * @brief Check if a list is empty.
+ * 
+ * @param list the list
+ * @return if the list is empty
+ */
+int			dlst_is_empty(t_dlist *list);
+void		dlst_free(t_dlist *list);
+/**
+ * @brief Clear and free all elements of the list with the del function.
+ * 
+ * @param list the list
+ */
+void		dlst_clear(t_dlist *list);
+/**
+ * @brief Clear (see lst_clear) and free the list.
+ * 
+ * @param list the list
+ */
+void		dlst_destroy(t_dlist *list);
+/**
+ * @brief Remove an element at the start of the list
+ * 
+ * @param list the list
+ * @return pointer to the previous entry of the list
+ */
+t_dentry	*dlst_shift_entry(t_dlist *list);
+/**
+ * @brief Remove an element at the start of the list
+ * 
+ * @param list the list
+ * @return the previous entry of the list
+ */
+void		*dlst_shift(t_dlist *list);
+/**
+ * @brief Insert an element at the start of the list.
+ * 
+ * @param list the list
+ * @param element the element to insert
+ * @return the new entry of the list
+ */
+void		*dlst_unshift(t_dlist *list, void *element);
+/**
+ * @brief Moves a pointer on a list element right
+ * 
+ * @param walk pointer on a list element
+ * @return the pointer
+ */
+t_dentry	*dlst_walk_right(t_dentry *walk);
+/**
+ * @brief Moves a pointer on a list element left
+ * 
+ * @param walk pointer on a list element
+ * @return the pointer
+ */
+t_dentry	*dlst_walk_left(t_dentry *walk);
 
 /*** Lists implementation *****************************************************/
 
