@@ -91,7 +91,7 @@ static void	inter_quad_line_sol_double(t_vector3 abc, float d, float t[2])
 
 	t[1] = 0;
 	if (abc.x == 0 && abc.y != 0)
-		t[0] = -abc.z / abc.y, 0;
+		t[0] = -abc.z / abc.y;
 	else if (d == 0)
 		t[0] = -abc.y * 0.5 / abc.x;
 	else
