@@ -877,6 +877,7 @@ t_color		color_newa(t_uint8 r, t_uint8 g, t_uint8 b, t_uint8 a);
  * @return the result of the operation : 1 if no error, 0 else
  */
 int			color_deserialize(const char *str, t_color *color);
+t_color		color_avg(const t_color v1, const t_color v2);
 t_color		color_sub(const t_color v1, const t_color v2);
 t_color		color_mul(const t_color v1, const t_color v2);
 t_color		color_div(const t_color v1, const t_color v2);

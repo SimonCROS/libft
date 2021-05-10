@@ -11,6 +11,11 @@ static t_color	operation(const t_color v, float r, float g, float b)
 	return (vec);
 }
 
+t_color	color_avg(const t_color v1, const t_color v2)
+{
+	return (color_divf(color_add(v1, v2), 2));
+}
+
 t_color	color_add(const t_color v1, const t_color v2)
 {
 	return (operation(v1, v2.r, v2.g, v2.b));
