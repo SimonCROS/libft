@@ -98,6 +98,7 @@ struct s_bitmap
 };
 
 void		bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color);
+t_color		bmp_get_pixel(t_bitmap *bitmap, int x, int y);
 int			bmp_save(char *output, t_bitmap *bitmap);
 ssize_t		bmp_write(int fd, t_bitmap *bitmap);
 t_bitmap	*bmp_init(int width, int height);

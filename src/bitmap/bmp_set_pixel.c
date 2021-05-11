@@ -1,6 +1,17 @@
 #include "libft.h"
 #include <math.h>
 
+t_color	bmp_get_pixel(t_bitmap *bitmap, int x, int y)
+{
+	t_bmpinfoheader	*inf;
+	int				pos;
+
+	inf = &(bitmap->header.infos);
+	pos = ((inf->height - y - 1) * inf->width + x) * (inf->bitsperpixel / 8);
+	return (color_new(bitmap->body[pos + 2], bitmap->body[pos + 1],
+			bitmap->body[pos]));
+}
+
 void	bmp_set_pixel(t_bitmap *bitmap, int x, int y, t_color color)
 {
 	t_bmpinfoheader	*inf;
