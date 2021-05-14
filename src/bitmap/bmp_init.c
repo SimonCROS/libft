@@ -23,8 +23,8 @@ t_bitmap	*bmp_init(int width, int height)
 		return (NULL);
 	}
 	ft_strcpy((char *)bitmap->header.file.signature, "BM");
-	bitmap->header.file.filesize = pixelbytesize + sizeof(t_bitmap);
-	bitmap->header.file.fileoffset_to_pixelarray = sizeof(t_bmpheader);
+	bitmap->header.file.filesize = pixelbytesize + sizeof(t_bmpheader);
+	bitmap->header.file.data_offset = sizeof(t_bmpheader);
 	bitmap->header.infos.dibheadersize = sizeof(t_bmpinfoheader);
 	bitmap->header.infos.width = width;
 	bitmap->header.infos.height = height;
