@@ -67,7 +67,7 @@ struct s_bmpfileheader
 	char	signature[2];
 	int		filesize;
 	int		reserved;
-	int		fileoffset_to_pixelarray;
+	int		data_offset;
 } __attribute__((__packed__));
 
 struct s_bmpinfoheader
