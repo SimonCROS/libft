@@ -57,6 +57,7 @@ override COLOR_SRCS	=	$(addprefix $(COLOR)/,	\
 				color_clone.c			\
 				color_div.c				\
 				color_from.c			\
+				color_from_alpha.c		\
 				color_to.c				\
 				color_mul.c				\
 				color_sub.c				\

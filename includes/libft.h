@@ -870,6 +870,7 @@ struct s_color
 };
 
 t_color		color_newa(t_uint8 r, t_uint8 g, t_uint8 b, t_uint8 a);
+t_color		color_from_hsla(float h, float s, float l, float a);
 /**
  * @brief Deserialize a color at format "r,g,b"
  * 
@@ -884,10 +885,11 @@ t_color		color_mul(const t_color v1, const t_color v2);
 t_color		color_div(const t_color v1, const t_color v2);
 t_color		color_add(const t_color v1, const t_color v2);
 t_color		color_new(t_uint8 r, t_uint8 g, t_uint8 b);
+t_color		color_from_hsl(float h, float s, float l);
 t_color		color_mulf(const t_color v, float a);
 t_color		color_divf(const t_color v, float a);
-t_color		color_from_hexa(unsigned int hex);
-t_color		color_from_hex(unsigned int hex);
+t_color		color_from_hexa(t_uint32 hex);
+t_color		color_from_hex(t_uint32 hex);
 t_uint32	color_to_hexa(const t_color c);
 t_color		*color_clone(const t_color c);
 t_uint32	color_to_hex(const t_color c);
