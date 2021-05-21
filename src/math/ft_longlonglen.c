@@ -21,7 +21,7 @@ int	ft_ulonglonglen(unsigned long long n)
 int	ft_longlonglen_hex(unsigned long long n, int pre, int width)
 {
 	if (width)
-		return (ft_max(width + (!!pre * 2), ft_longlonglen_hex(n / 16, 0, 0)));
+		return (fmaxi(width + (!!pre * 2), ft_longlonglen_hex(n / 16, 0, 0)));
 	if (pre)
 		return (3 + ft_longlonglen_hex(n / 16, 0, 0));
 	if (n < 16)

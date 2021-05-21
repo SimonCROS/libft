@@ -21,7 +21,7 @@ int	ft_ucharlen(unsigned char n)
 int	ft_charlen_hex(unsigned char n, int prefix, int width)
 {
 	if (width)
-		return (ft_max(width + (!!prefix * 2), ft_charlen_hex(n / 16, 0, 0)));
+		return (fmaxi(width + (!!prefix * 2), ft_charlen_hex(n / 16, 0, 0)));
 	if (prefix)
 		return (3 + ft_charlen_hex(n / 16, 0, 0));
 	if (n < 16)

@@ -1,15 +1,11 @@
-#include "libft.h"
-
-int	ft_max(int n1, int n2)
+int	fmaxi(int x, int y)
 {
-	if (n1 > n2)
-		return (n1);
-	return (n2);
+	if (x > y)
+		return (x);
+	return (y);
 }
 
-double	ft_fmax(double n1, double n2)
+int	fmaxi3(int x, int y, int z)
 {
-	if (n1 > n2)
-		return (n1);
-	return (n2);
+	return (fmaxi(x, fmaxi(y, z)));
 }

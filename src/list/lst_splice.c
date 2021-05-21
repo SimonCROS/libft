@@ -10,8 +10,8 @@ t_list	*lst_splice(t_list *list, int start, int delete_count, void *value)
 		return (NULL);
 	if (start < 0)
 		start += list->size;
-	start = ft_max(ft_min(list->size, start), 0);
-	delete_count = ft_max(ft_min(list->size - start, delete_count), 0);
+	start = fmaxi(fmini(list->size, start), 0);
+	delete_count = fmaxi(fmini(list->size - start, delete_count), 0);
 	while (delete_count--)
 		lst_push(copy, lst_remove(list, start + delete_count - 1));
 	if (value)

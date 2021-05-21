@@ -21,7 +21,7 @@ int	ft_ushortlen(unsigned short n)
 int	ft_shortlen_hex(unsigned short n, int prefix, int width)
 {
 	if (width)
-		return (ft_max(width + (!!prefix * 2), ft_shortlen_hex(n / 16, 0, 0)));
+		return (fmaxi(width + (!!prefix * 2), ft_shortlen_hex(n / 16, 0, 0)));
 	if (prefix)
 		return (3 + ft_shortlen_hex(n / 16, 0, 0));
 	if (n < 16)

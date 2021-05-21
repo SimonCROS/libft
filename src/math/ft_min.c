@@ -1,15 +1,11 @@
-#include "libft.h"
-
-int	ft_min(int n1, int n2)
+int	fmini(int x, int y)
 {
-	if (n1 < n2)
-		return (n1);
-	return (n2);
+	if (x < y)
+		return (x);
+	return (y);
 }
 
-double	ft_fmin(double n1, double n2)
+int	fmini3(int x, int y, int z)
 {
-	if (n1 < n2)
-		return (n1);
-	return (n2);
+	return (fmini(x, fmini(y, z)));
 }

@@ -916,20 +916,21 @@ int			ft_longlen_octal(unsigned long n);
 int			ft_charlen_octal(unsigned char n);
 int			ft_intlen_octal(unsigned int n);
 int			ft_ushortlen(unsigned short n);
-double		ft_fmax(double n1, double n2);
-double		ft_fmin(double n1, double n2);
 int			ft_ulonglen(unsigned long n);
 int			ft_ucharlen(unsigned char n);
 int			ft_longlonglen(long long n);
 int			ft_uintlen(unsigned int n);
-int			ft_min(int n1, int n2);
-int			ft_max(int n1, int n2);
 double		ft_fabs(double number);
 int			ft_shortlen(short n);
 long		ft_abs(long number);
 int			ft_longlen(long n);
 int			ft_charlen(char n);
 int			ft_intlen(int n);
+
+int			fmaxi3(int x, int y, int z);
+int			fmini3(int x, int y, int z);
+int			fmaxi(int x, int y);
+int			fmini(int x, int y);
 
 /*** Converters implementation ************************************************/
 

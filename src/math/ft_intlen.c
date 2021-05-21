@@ -21,7 +21,7 @@ int	ft_uintlen(unsigned int n)
 int	ft_intlen_hex(unsigned int n, int prefix, int width)
 {
 	if (width)
-		return (ft_max(width + (!!prefix * 2), ft_intlen_hex(n / 16, 0, 0)));
+		return (fmaxi(width + (!!prefix * 2), ft_intlen_hex(n / 16, 0, 0)));
 	if (prefix)
 		return (3 + ft_intlen_hex(n / 16, 0, 0));
 	if (n < 16)
