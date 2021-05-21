@@ -36,15 +36,12 @@ override DLIST		= dlist
 override LIST		= list
 override ITERAT		= iterator
 override MATH		= math
-override MATRIX		= matrix
 override HASH		= hash
 override MEMORY		= memory
 override PRINT		= print
 override STRING		= string
 override TPOOL		= tpool
 override UTIL		= util
-override VECTOR3	= vector3
-override QUADRIC	= quadric
 
 override BITMAP_SRCS=	$(addprefix $(BITMAP)/,	\
 				bmp_init.c				\
@@ -144,10 +141,6 @@ override MATH_SRCS	=	$(addprefix $(MATH)/,	\
 				ft_min.c				\
 				)
 
-override MATRIX_SRCS=	$(addprefix $(MATRIX)/,	\
-				matrix44.c				\
-				)
-
 override MEMORY_SRCS=	$(addprefix $(MEMORY)/,	\
 				ft_bzero.c				\
 				ft_calloc.c				\
@@ -165,10 +158,6 @@ override PRINT_SRCS	=	$(addprefix $(PRINT)/,	\
 				ft_puthex.c				\
 				ft_putnbr.c				\
 				ft_putstr.c				\
-				)
-
-override QUADRIC_SRCS=	$(addprefix $(QUADRIC)/,\
-				resolve.c				\
 				)
 
 override STRING_SRCS=	$(addprefix $(STRING)/,	\
@@ -215,27 +204,6 @@ override UTIL_SRCS	=	$(addprefix $(UTIL)/,	\
 				ft_ternary.c			\
 				null_consumer.c			\
 				)
-
-override VECTOR3_SRCS=	$(addprefix $(VECTOR3)/,\
-				vector3_add.c			\
-				vector3_angle.c			\
-				vector3_clone.c			\
-				vector3_copy.c			\
-				vector3_cross.c			\
-				vector3_distance.c		\
-				vector3_div.c			\
-				vector3_negate.c		\
-				vector3_dot.c			\
-				vector3_length.c		\
-				vector3_mul.c			\
-				vector3_rotate.c		\
-				vector3_new.c			\
-				vector3_normalize.c		\
-				vector3_set.c			\
-				vector3_sub.c			\
-				vec3_deserialize.c		\
-				)
-
 
 override SRCS		=					\
 				$(BITMAP_SRCS)			\
@@ -377,14 +345,11 @@ compile:
 			$(call compile_type,DLIST,"dlists")
 			$(call compile_type,LIST,"lists")
 			$(call compile_type,MATH,"maths")
-			$(call compile_type,MATRIX,"matrixs")
 			$(call compile_type,MEMORY,"memories")
 			$(call compile_type,PRINT,"prints")
 			$(call compile_type,STRING,"strings")
 			$(call compile_type,TPOOL,"thread pools")
 			$(call compile_type,UTIL,"utils")
-			$(call compile_type,VECTOR3,"3D vectors")
-			$(call compile_type,QUADRIC,"quadrics")
 
 post_compile:
 			@echo "\n"
