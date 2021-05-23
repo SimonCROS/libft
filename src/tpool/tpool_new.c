@@ -63,29 +63,28 @@ static void	*tpool_worker(void *arg)
 
 int	tpool_start(t_tpool *pool)
 {
-	t_tpool_thread	*pool_thread;
-	pthread_t		thread;
+	t_tpool_thread	*thread;
 	size_t			i;
 
 	i = 0;
 	pool->stop = 0;
 	while (i++ < pool->size)
 	{
-		pool_thread = malloc(sizeof(t_tpool_thread));
-		if (!pool_thread)
+		thread = malloc(sizeof(t_tpool_thread));
+		if (!thread)
 		{
 			tpool_destroy(pool);
 			return (FALSE);
 		}
-		pool_thread->id = i;
-		pool_thread->pool = pool;
-		if (pthread_create(&thread, NULL, tpool_worker, pool_thread))
+		thread->id = i;
+		thread->pool = pool;
+		if (pthread_create(&thread->thread, NULL, tpool_worker, thread))
 		{
-			free(pool_thread);
+			free(thread);
 			tpool_destroy(pool);
 			return (FALSE);
 		}
-		pthread_detach(thread);
+		pthread_detach(thread->thread);
 		pool->thread_cnt++;
 	}
 	return (TRUE);

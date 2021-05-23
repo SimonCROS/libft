@@ -38,8 +38,6 @@ static float	hue2rgb(float p, float q, float t)
 	return (p);
 }
 
-#include <stdio.h>
-
 t_color	color_from_hsla(float h, float s, float l, float a)
 {
 	t_color	color;
