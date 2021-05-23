@@ -57,6 +57,7 @@ NAME				= libft.a
 override CC			:= gcc
 override RM			:= rm -rf
 override CFLAGS		:= -Wall -Wextra -Werror
+override INCLUDES	:= -I$(INC)
 
 # Sources
 
@@ -253,13 +254,14 @@ all:		$(NAME)
 
 $(BIN)/%.o:	$(SRC)/%.c $(HEADERS)
 			@mkdir -p $(dir $@);
-			$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
+			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			ar rcs $@ $(OBJS)
 
 clean:
 			$(RM) $(OBJS)
+			find $(BIN) -type d -empty -delete
 
 fclean:		clean
 			$(RM) $(NAME)
