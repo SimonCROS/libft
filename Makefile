@@ -257,7 +257,7 @@ $(BIN)/%.o:	$(SRC)/%.c $(HEADERS)
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			ar rcs $@ $(OBJS)
+			ar rcs $@ $?
 
 clean:
 			$(RM) $(OBJS)
