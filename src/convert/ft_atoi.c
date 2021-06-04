@@ -18,7 +18,7 @@ int	ft_atoi_full(char *str, int *result)
 		str++;
 	}
 	*result = ret;
-	return (!(*str));
+	return (!(*str) && *(str - 1) != '-');
 }
 
 int	ft_atoi(char *str)
