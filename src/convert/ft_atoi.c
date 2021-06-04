@@ -8,6 +8,8 @@ int	ft_atoi_full(char *str, int *result)
 	if (*str == '-')
 	{
 		str++;
+		if (!(*str))
+			return (0);
 		mul = -1;
 	}
 	while (*str >= '0' && *str <= '9')
@@ -18,7 +20,7 @@ int	ft_atoi_full(char *str, int *result)
 		str++;
 	}
 	*result = ret;
-	return (!(*str) && *(str - 1) != '-');
+	return (!(*str));
 }
 
 int	ft_atoi(char *str)
