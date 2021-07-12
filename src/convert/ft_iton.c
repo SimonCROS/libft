@@ -2,28 +2,15 @@
 
 char	*ft_itoa(int n)
 {
-	long int	len;
-	long int	nbr;
-	char		*str;
+	int		len;
+	char	*str;
 
-	nbr = n;
-	len = ft_intlen(nbr) + 1;
+	len = ft_intlen(n) + 1;
 	str = malloc(len);
 	if (!str)
 		return (NULL);
-	if (n < 0)
-		nbr *= -1;
-	str[--len] = 0;
-	while (1)
-	{
-		str[--len] = (nbr % 10) + '0';
-		if (!nbr)
-			break ;
-		nbr /= 10;
-	}
-	if (n < 0)
-		str[0] = '-';
-	return (str);
+	str[len] = 0;
+	return (ft_itoa_to(n, str));
 }
 
 char	*ft_uitoa(unsigned int n)
@@ -31,7 +18,7 @@ char	*ft_uitoa(unsigned int n)
 	int		len;
 	char	*str;
 
-	len = ft_intlen(n) + 1;
+	len = ft_uintlen(n) + 1;
 	str = malloc(len);
 	if (!str)
 		return (NULL);

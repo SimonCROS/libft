@@ -1,5 +1,29 @@
 #include "libft.h"
 
+char	*ft_itoa_to(int n, char *dest)
+{
+	long int	len;
+	long int	nbr;
+
+	nbr = n;
+	len = ft_intlen(n) + 1;
+	if (!dest)
+		return (NULL);
+	if (n < 0)
+		nbr *= -1;
+	dest[--len] = 0;
+	while (1)
+	{
+		dest[--len] = (nbr % 10) + '0';
+		if (!nbr)
+			break ;
+		nbr /= 10;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
+}
+
 char	*ft_uitoa_to(unsigned int n, char *dest)
 {
 	int	len;

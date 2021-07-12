@@ -961,6 +961,14 @@ char		*ft_itohex_to(unsigned int n, char *dest, int prefix);
  */
 char		*ft_itooctal_to(unsigned int n, char *dest);
 /**
+ * Write the int in the string dest in alphanumeric format.
+ * 
+ * @param n the int to convert
+ * @param dest the buffer for the result
+ * @return dest
+ */
+char		*ft_itoa_to(int n, char *dest);
+/**
  * Write the unsigned int in the string dest in alphanumeric format.
  * 
  * @param n the int to convert
