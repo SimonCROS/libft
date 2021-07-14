@@ -232,6 +232,7 @@ $(NAME):	$(OBJS)
 
 clean:
 			$(RM) $(OBJS)
+			find $(BIN) -type d -empty -delete
 
 fclean:		clean
 			$(RM) $(NAME)
