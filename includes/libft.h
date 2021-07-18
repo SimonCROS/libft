@@ -17,14 +17,6 @@ typedef int						(*t_predicate)(void *);
 typedef void*					(*t_function)(void *);
 typedef void					(*t_consumer)(void *);
 typedef void*					(*t_supplier)();
-typedef t_biconsumer			t_bicon;
-typedef t_bifunction			t_bifun;
-typedef t_bipredicate			t_bipre;
-typedef t_supplier				t_sup;
-typedef t_function				t_fun;
-typedef t_consumer				t_con;
-typedef t_comparator			t_com;
-typedef t_predicate				t_pre;
 
 typedef unsigned long long		t_uint64;
 typedef unsigned int			t_uint32;
@@ -49,10 +41,22 @@ typedef struct s_entry			t_entry;
 typedef struct s_clist			t_clist;
 typedef struct s_list			t_list;
 
+typedef struct s_mapper_options	t_mapper_options;
+
 typedef struct s_mapentry		t_mapentry;
 typedef struct s_map			t_map;
 
 typedef struct s_color			t_color;
+
+typedef t_biconsumer			t_bicon;
+typedef t_bifunction			t_bifun;
+typedef t_bipredicate			t_bipre;
+typedef t_supplier				t_sup;
+typedef t_function				t_fun;
+typedef t_consumer				t_con;
+typedef t_comparator			t_com;
+typedef t_predicate				t_pre;
+typedef t_mapper_options		t_map_opts;
 
 /*** BMP Image utils **********************************************************/
 
@@ -547,6 +551,16 @@ struct s_list
 	int			size;
 };
 
+struct s_mapper_options
+{
+	union {
+		t_function		mapper;
+		t_bifunction	param_mapper;
+	};
+	void	*parameter;
+	int		free_old;
+};
+
 struct s_clist
 {
 	t_consumer	del;
@@ -580,6 +594,14 @@ void		*lst_reducef(t_list *list, void *id, t_bifunction accumulator,
 void		*lst_reduce(t_list *list, void *id, t_bifunction accumulator,
 				t_consumer accumulator_free);
 /**
+ * @brief Return the first element that pass the predicate
+ * 
+ * @param list the list
+ * @param predicate the filter
+ * @return the element if found, NULL else
+ */
+void		*lst_find_first(t_list *list, t_predicate predicate);
+/**
  * @brief Return the first element that pass the comparator
  * 
  * @param list the list
@@ -587,7 +609,7 @@ void		*lst_reduce(t_list *list, void *id, t_bifunction accumulator,
  * @param arg the second argument for the comparator.
  * @return the element if found, NULL else
  */
-void		*lst_find_first(t_list *list, t_bipredicate comparator, void *arg);
+void		*lst_find_firstp(t_list *list, t_bipredicate comparator, void *arg);
 /**
  * @brief Tests is an item is in the list using comparator (or strict equality
  * is comparator is NULL)
@@ -615,7 +637,7 @@ void		lst_foreachp(t_list *list, t_biconsumer visitor, void *param);
  * @param del the function to delete an element of the list
  * @return t_list* the same list, for chaining
  */
-t_list		*lst_map_in(t_list *list, t_function mapper, t_consumer del);
+t_list		*lst_map_in(t_list *list, t_mapper_options mapper, t_consumer del);
 /**
  * @brief Remove a part of the list and return it in a new list and insert value
  * at the start index.
@@ -636,7 +658,7 @@ t_list		*lst_splice(t_list *list, int start, int delete_count, void *value);
  * @param del the function to delete an element of the list
  * @return the new list
  */
-t_list		*lst_map(t_list *list, t_function mapper, t_consumer del);
+t_list		*lst_map(t_list *list, t_mapper_options mapper, t_consumer del);
 /**
  * @brief Replace an element at index
  * 
