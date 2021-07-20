@@ -554,6 +554,7 @@ struct s_clist
 	int			size;
 };
 
+int			lst_index_of(t_list *list, t_bipredicate comparator, void *arg);
 /**
  * @brief Reduce a list to a single element using an accumulator, then destroy
  * the list using lst_destroy.
@@ -845,12 +846,14 @@ struct s_iterator
 {
 	const t_list	*list;
 	t_entry			*current;
+	int				index;
 };
 
 struct s_citerator
 {
 	const t_clist	*list;
 	t_centry		*current;
+	int				index;
 };
 
 int			iterator_has_next(const t_iterator *iterator);

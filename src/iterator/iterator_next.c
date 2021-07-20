@@ -2,22 +2,24 @@
 
 void	*iterator_next(t_iterator *iterator)
 {
-	void	*tmp;
-
-	if (!iterator->current)
+	if (!iterator->list || (!iterator->current && iterator->index != -1))
 		return (NULL);
-	tmp = iterator->current->value;
-	iterator->current = iterator->current->next;
-	return (tmp);
+	if (iterator->index == -1)
+		iterator->current = iterator->list->first;
+	else
+		iterator->current = iterator->current->next;
+	iterator->index++;
+	return (iterator->current->value);
 }
 
 void	*citerator_next(t_citerator *iterator)
 {
-	void	*tmp;
-
-	if (!iterator->current)
+	if (!iterator->list || (!iterator->current && iterator->index != -1))
 		return (NULL);
-	tmp = iterator->current;
-	iterator->current = iterator->current->next;
-	return (tmp);
+	if (iterator->index == -1)
+		iterator->current = iterator->list->first;
+	else
+		iterator->current = iterator->current->next;
+	iterator->index++;
+	return (iterator->current);
 }

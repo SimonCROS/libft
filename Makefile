@@ -99,6 +99,7 @@ override LIST_SRCS	:= $(addprefix $(LIST)/,	\
 				lst_foreach.c					\
 				lst_get.c						\
 				lst_get_entry.c					\
+				lst_index_of.c					\
 				lst_insert.c					\
 				lst_is_empty.c					\
 				lst_last.c						\
