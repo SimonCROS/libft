@@ -23,6 +23,7 @@ t_list	*lst_splice(t_list *list, int start, int delete_count, void *value)
 			first = lst_get_entry(list, start - 1);
 			first->next = lst_new_entry(value);
 		}
+		list->size++;
 	}
 	return (copy);
 }
