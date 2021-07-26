@@ -553,10 +553,7 @@ struct s_list
 
 struct s_mapper_options
 {
-	union {
-		t_function		mapper;
-		t_bifunction	param_mapper;
-	};
+	void	*mapper;
 	void	*parameter;
 	int		free_old;
 };
