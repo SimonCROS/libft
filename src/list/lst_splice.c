@@ -21,7 +21,7 @@ t_list	*lst_splice(t_list *list, int start, int delete_count, void *value)
 		else
 		{
 			first = lst_get_entry(list, start - 1);
-			first->next = lst_new_entry(value);
+			first->next = lst_new_entry_2(value, first->next, list->del);
 		}
 		list->size++;
 	}

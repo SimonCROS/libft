@@ -791,6 +791,7 @@ void		lst_delete(t_list *list, int index);
 void		*lst_get(t_list *list, int index);
 t_entry		*lst_shift_entry(t_list *list);
 t_entry		*lst_last_entry(t_list *list);
+t_entry		*lst_new_entry_2(void *value, t_entry *next, t_consumer delete);
 t_entry		*lst_new_entry(void *value);
 /**
  * @brief Check if a list is not empty.
