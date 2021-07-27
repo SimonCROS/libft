@@ -36,8 +36,10 @@ char	**ft_split(const char *s, char c)
 	char	*newstr;
 	char	**output;
 
+	if (!s)
+		return (NULL);
 	output = ft_calloc(ft_init(s, c) + 1, sizeof(*output));
-	if (!s || !output)
+	if (!output)
 		return (NULL);
 	i = 0;
 	while (*s)
