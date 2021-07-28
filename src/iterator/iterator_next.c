@@ -2,7 +2,8 @@
 
 void	*iterator_next(t_iterator *iterator)
 {
-	if (!iterator->list || (!iterator->current && iterator->index != -1))
+	if (!iterator->list || !iterator_has_next(iterator)
+		|| (!iterator->current && iterator->index != -1))
 		return (NULL);
 	if (iterator->index == -1)
 		iterator->current = iterator->list->first;
@@ -14,7 +15,8 @@ void	*iterator_next(t_iterator *iterator)
 
 void	*citerator_next(t_citerator *iterator)
 {
-	if (!iterator->list || (!iterator->current && iterator->index != -1))
+	if (!iterator->list || !citerator_has_next(iterator)
+		|| (!iterator->current && iterator->index != -1))
 		return (NULL);
 	if (iterator->index == -1)
 		iterator->current = iterator->list->first;
