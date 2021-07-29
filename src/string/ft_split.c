@@ -30,6 +30,16 @@ static int	ft_init(const char *s, char c)
 	return (j);
 }
 
+static char	*ft_sstrchr(const char *s, char c)
+{
+	char	*newstr;
+
+	newstr = ft_strchr(s, c);
+	if (!newstr)
+		newstr = ft_strchr(s, 0);
+	return (newstr);
+}
+
 char	**ft_split(const char *s, char c)
 {
 	int		i;
@@ -44,9 +54,7 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	while (*s)
 	{
-		newstr = ft_strchr(s, c);
-		if (!newstr)
-			newstr = ft_strchr(s, 0);
+		newstr = ft_sstrchr(s, c);
 		if (newstr - s)
 		{
 			output[i] = ft_substr(s, 0, newstr - s);
