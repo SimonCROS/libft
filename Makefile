@@ -92,6 +92,7 @@ override LIST_SRCS	:= $(addprefix $(LIST)/,	\
 				lst_clear.c						\
 				lst_concat.c					\
 				lst_copy.c						\
+				lst_count.c						\
 				lst_delete.c					\
 				lst_destroy.c					\
 				lst_filter.c					\
