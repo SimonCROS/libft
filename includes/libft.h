@@ -828,6 +828,7 @@ void		**as_arrayf(t_list *list);
  */
 void		**as_array(t_list *list);
 t_list		*lst_new(t_consumer del);
+t_list		*lst_init(t_list *list, t_consumer del);
 void		*lst_shift(t_list *list);
 void		*lst_first(t_list *list);
 /**
@@ -859,6 +860,7 @@ void		*clst_first(t_clist *list);
 void		*clst_shift(t_clist *list);
 void		clst_clear(t_clist *list);
 t_clist		*clst_new(t_consumer del);
+t_clist		*clst_init(t_clist *list, t_consumer del);
 
 /*** Iterator implementation **************************************************/
 

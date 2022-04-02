@@ -7,9 +7,7 @@ t_clist	*clst_new(t_consumer del)
 	list = malloc(sizeof(t_clist));
 	if (!list)
 		return (NULL);
-	list->del = del;
-	list->size = 0;
-	list->first = NULL;
+	clst_init(list, del);
 	return (list);
 }
 
@@ -20,8 +18,6 @@ t_list	*lst_new(t_consumer del)
 	list = malloc(sizeof(t_list));
 	if (!list)
 		return (NULL);
-	list->del = del;
-	list->size = 0;
-	list->first = NULL;
+	lst_init(list, del);
 	return (list);
 }
