@@ -18,7 +18,7 @@ void	lst_free(t_list *list)
 {
 	t_entry	*entry;
 
-	if (lst_is_empty(list))
+	if (!lst_is_empty(list))
 	{
 		entry = lst_shift_entry(list);
 		while (entry)

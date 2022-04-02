@@ -481,7 +481,6 @@ int			dlst_not_empty(t_dlist *list);
  * @return if the list is empty
  */
 int			dlst_is_empty(t_dlist *list);
-void		dlst_free(t_dlist *list);
 /**
  * @brief Clear and free all elements of the list with the del function.
  * 
@@ -690,7 +689,7 @@ t_list		*lst_filter_in(t_list *list, t_predicate filter);
  * 
  * @param list the list
  * @param filter the filter
- * @return the new list
+ * @return A view of the list
  */
 t_list		*lst_filter(t_list *list, t_predicate filter);
 /**
