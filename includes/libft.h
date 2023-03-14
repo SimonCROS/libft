@@ -827,8 +827,14 @@ void		**as_arrayf(t_list *list);
  */
 void		**as_array(t_list *list);
 t_list		*lst_new(t_consumer del);
-t_list		*lst_init(t_list *list, t_consumer del);
+void		lst_init(t_list *list, t_consumer del);
 int			lst_count(t_list *list, t_predicate filter);
+/**
+ * @brief Removes the first element from of the list and returns it.
+ *
+ * @param list the list.
+ * @return the removed element, or null if the list was empty.
+ */
 void		*lst_shift(t_list *list);
 void		*lst_first(t_list *list);
 /**
@@ -841,6 +847,12 @@ t_list		*lst_copy(t_list *list);
 void		*lst_last(t_list *list);
 int			lst_size(t_list *list);
 void		lst_free(t_list *list);
+/**
+ * @brief Removes the last element from of the list and returns it.
+ *
+ * @param list the list.
+ * @return the removed element, or null if the list was empty.
+ */
 void		*lst_pop(t_list *list);
 
 void		*clst_find_first(t_clist *list, t_bipredicate comp, void *arg);
@@ -860,7 +872,7 @@ void		*clst_first(t_clist *list);
 void		*clst_shift(t_clist *list);
 void		clst_clear(t_clist *list);
 t_clist		*clst_new(t_consumer del);
-t_clist		*clst_init(t_clist *list, t_consumer del);
+void		clst_init(t_clist *list, t_consumer del);
 
 /*** Iterator implementation **************************************************/
 
