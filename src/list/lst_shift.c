@@ -8,6 +8,7 @@ void	*clst_shift(t_clist *list)
 		return (NULL);
 	first = list->first;
 	list->first = first->next;
+	first->next = NULL;
 	--(list->size);
 	return (first);
 }

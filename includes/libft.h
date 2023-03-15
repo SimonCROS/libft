@@ -813,13 +813,6 @@ int			lst_is_empty(t_list *list);
  */
 void		lst_destroy(t_list *list);
 /**
- * @brief Convert a list into a new array of elements and free the list.
- * 
- * @param list the list
- * @return the new array
- */
-void		**as_arrayf(t_list *list);
-/**
  * @brief Convert a list into a new array of elements.
  * 
  * @param list the list
@@ -846,7 +839,6 @@ void		lst_clear(t_list *list);
 t_list		*lst_copy(t_list *list);
 void		*lst_last(t_list *list);
 int			lst_size(t_list *list);
-void		lst_free(t_list *list);
 /**
  * @brief Removes the last element from of the list and returns it.
  *

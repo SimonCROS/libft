@@ -16,13 +16,3 @@ void	**as_array(t_list *list)
 	array[i] = NULL;
 	return (array);
 }
-
-void	**as_arrayf(t_list *list)
-{
-	void	**array;
-
-	array = as_array(list);
-	if (list)
-		lst_free(list);
-	return (array);
-}
