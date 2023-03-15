@@ -24,6 +24,6 @@ void	*lst_reducef(t_list *list, void *id, t_bifunction acc, t_consumer acc_f)
 	void	*result;
 
 	result = lst_reduce(list, id, acc, acc_f);
-	lst_destroy(list);
+	lst_destroy(list, TRUE);
 	return (result);
 }

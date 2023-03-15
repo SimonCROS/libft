@@ -6,8 +6,8 @@ void	clst_destroy(t_clist *list)
 	free(list);
 }
 
-void	lst_destroy(t_list *list)
+void	lst_destroy(t_list *list, char del)
 {
-	lst_clear(list);
+	lst_clear(list, del);
 	free(list);
 }

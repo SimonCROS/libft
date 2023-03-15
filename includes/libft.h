@@ -826,11 +826,13 @@ int			lst_not_empty(t_list *list);
  */
 int			lst_is_empty(t_list *list);
 /**
- * @brief Clear (see lst_clear) and free the list.
+ * @brief Clear and free (see lst_clear) the list.
+ * IF del is TRUE, free all elements of the list with the del function.
  * 
  * @param list the list
+ * @param del if the elements should be freed
  */
-void		lst_destroy(t_list *list);
+void		lst_destroy(t_list *list, char del);
 /**
  * @brief Convert a list into a new array of elements.
  * 
@@ -850,11 +852,13 @@ int			lst_count(t_list *list, t_predicate filter);
 void		*lst_shift(t_list *list);
 void		*lst_first(t_list *list);
 /**
- * @brief Clear and free all elements of the list with the del function.
+ * @brief Clear the list.
+ * IF del is TRUE, free all elements of the list with the del function.
  * 
  * @param list the list
+ * @param del if the elements should be freed
  */
-void		lst_clear(t_list *list);
+void		lst_clear(t_list *list, char del);
 t_list		*lst_copy(t_list *list);
 char		lst_copy_to(t_list *list, t_list *dest);
 void		*lst_last(t_list *list);
