@@ -657,6 +657,16 @@ t_list		*lst_splice(t_list *list, int start, int delete_count, void *value);
  */
 t_list		*lst_map(t_list *list, t_mapper_options mapper, t_consumer del);
 /**
+ * @brief Loop inside all values of the list and replace them in the dest list
+ * with the result of mapper.
+ * 
+ * @param list the list
+ * @param dest the destination of the modified elements
+ * @param mapper the function to execute on all the values of the list
+ * @return TRUE if success, FALSE otherwise
+ */
+char		lst_map_to(t_list *list, t_list *dest, t_mapper_options options);
+/**
  * @brief Replace an element at index
  * 
  * @param list the list
@@ -837,6 +847,7 @@ void		*lst_first(t_list *list);
  */
 void		lst_clear(t_list *list);
 t_list		*lst_copy(t_list *list);
+char		lst_copy_to(t_list *list, t_list *dest);
 void		*lst_last(t_list *list);
 int			lst_size(t_list *list);
 /**

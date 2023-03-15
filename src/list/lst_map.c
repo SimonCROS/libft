@@ -1,21 +1,35 @@
 #include "libft.h"
 
-t_list	*lst_map(t_list *list, t_mapper_options options, t_consumer del)
+char	lst_map_to(t_list *list, t_list *dest, t_mapper_options options)
 {
 	t_entry	*entry;
+
+	if (lst_is_empty(list))
+		return (TRUE);
+	entry = list->first;
+	while (entry)
+	{
+		if (!lst_push(dest, ((t_fun)options.mapper)(entry->value)))
+		{
+			lst_clear(dest);
+			return (FALSE);
+		}
+		entry = entry->next;
+	}
+	return (TRUE);
+}
+
+t_list	*lst_map(t_list *list, t_mapper_options options, t_consumer del)
+{
 	t_list	*copy;
 
 	copy = lst_new(del);
 	if (!copy)
 		return (NULL);
-	if (lst_is_empty(list))
-		return (copy);
-	entry = list->first;
-	lst_push(copy, ((t_fun)options.mapper)(entry->value));
-	while (entry->next)
+	if (!lst_map_to(list, copy, options))
 	{
-		entry = entry->next;
-		lst_push(copy, ((t_fun)options.mapper)(entry->value));
+		lst_destroy(copy);
+		return (NULL);
 	}
 	return (copy);
 }
