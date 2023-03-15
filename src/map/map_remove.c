@@ -1,16 +1,15 @@
 #include "libft.h"
 
-void	*map_remove(t_map *map, void *key)
+static void	*map_remove_entry(t_map *map, void *key)
 {
 	t_mapentry	**parent_next;
 	t_mapentry	*entry;
-	void		*value;
 
 	if (clst_is_empty((t_clist *)map))
 		return (NULL);
 	parent_next = &(map->first);
 	entry = map->first;
-	while (entry && !map->identity_checker(entry->key, key))
+	while (entry && map->comparator(entry->key, key) == 0)
 	{
 		parent_next = &(entry->next);
 		entry = entry->next;
@@ -18,10 +17,24 @@ void	*map_remove(t_map *map, void *key)
 	if (entry)
 	{
 		*parent_next = entry->next;
+		entry->next = NULL;
+		--(map->size);
+		return (entry);
+	}
+	return (NULL);
+}
+
+void	*map_remove(t_map *map, void *key)
+{
+	t_mapentry	*entry;
+	void		*value;
+
+	entry = map_remove_entry(map, key);
+	if (entry)
+	{
 		value = entry->value;
 		map->del(entry->key, NULL);
 		free(entry);
-		--(map->size);
 		return (value);
 	}
 	return (NULL);
@@ -29,24 +42,13 @@ void	*map_remove(t_map *map, void *key)
 
 int	map_delete(t_map *map, void *key)
 {
-	t_mapentry	**parent_next;
 	t_mapentry	*entry;
 
-	if (clst_is_empty((t_clist *)map))
-		return (FALSE);
-	parent_next = &(map->first);
-	entry = map->first;
-	while (entry && !map->identity_checker(entry->key, key))
-	{
-		parent_next = &(entry->next);
-		entry = entry->next;
-	}
+	entry = map_remove_entry(map, key);
 	if (entry)
 	{
-		*parent_next = entry->next;
 		map->del(entry->key, entry->value);
 		free(entry);
-		--(map->size);
 		return (TRUE);
 	}
 	return (FALSE);

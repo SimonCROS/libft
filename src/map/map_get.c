@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	*map_get(t_map *map, void *key)
+t_mapentry	*map_get_entry(t_map *map, void *key)
 {
 	t_mapentry	*entry;
 
@@ -9,9 +9,19 @@ void	*map_get(t_map *map, void *key)
 	entry = map->first;
 	while (entry)
 	{
-		if (map->identity_checker(entry->key, key))
-			return (entry->value);
+		if (map->comparator(entry->key, key) == 0)
+			return (entry);
 		entry = entry->next;
 	}
+	return (NULL);
+}
+
+void	*map_get(t_map *map, void *key)
+{
+	t_mapentry	*entry;
+
+	entry = map_get_entry(map, key);
+	if (entry)
+		return (entry->value);
 	return (NULL);
 }

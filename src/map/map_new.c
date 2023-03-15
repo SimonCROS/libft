@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_map	*map_new(t_bipredicate identity_checker, t_biconsumer del)
+t_map	*map_new(t_comparator comparator, t_biconsumer del)
 {
 	t_map	*map;
 
@@ -10,6 +10,6 @@ t_map	*map_new(t_bipredicate identity_checker, t_biconsumer del)
 	map->del = del;
 	map->size = 0;
 	map->first = NULL;
-	map->identity_checker = identity_checker;
+	map->comparator = comparator;
 	return (map);
 }

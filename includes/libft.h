@@ -326,19 +326,28 @@ struct s_map
 	t_biconsumer	del;
 	t_mapentry		*first;
 	int				size;
-	t_bipredicate	identity_checker;
+	t_bipredicate	comparator;
 };
 
 /**
- * @brief Create a new map, using identity_checker to get element.
+ * @brief Create a new map, using comparator to get element.
  * 
- * @param identity_checker comparator for key values
+ * @param comparator comparator for key values
  * @param del key and value destroyer
  * @return the new map
  */
-t_map		*map_new(t_bipredicate identity_checker, t_biconsumer del);
+t_map		*map_new(t_bipredicate comparator, t_biconsumer del);
 /**
- * @brief Get a value of the map, using identity_checker to compare keys. Check
+ * @brief Get an entry of the map, using comparator to compare keys.
+ * 
+ * @param map the map
+ * @param key the key of the entry to get
+ * @param value_container the container for resulting value
+ * @return the entry if found, else NULL
+ */
+t_mapentry	*map_get_entry(t_map *map, void *key);
+/**
+ * @brief Get a value of the map, using comparator to compare keys. Check
  * map_contains_key before to be sure of the result.
  * 
  * @param map the map
@@ -372,7 +381,7 @@ int			map_replace(t_map *map, void *key, void *new_value);
  * @brief Check if a key exists in the map.
  * 
  * @param map the map
- * @param key the key to test with identity_checker
+ * @param key the key to test with comparator
  * @return TRUE if exists, else FALSE
  */
 int			map_contains_key(t_map *map, void *key);

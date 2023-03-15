@@ -6,7 +6,7 @@ t_map	*map_copy(t_map *original)
 	t_citerator		iter;
 	t_mapentry		*elem;
 
-	copy = map_new(original->identity_checker, original->del);
+	copy = map_new(original->comparator, original->del);
 	iter = citerator_new((const t_clist *)original);
 	while (citerator_has_next(&iter))
 	{
@@ -22,7 +22,7 @@ t_map	*map_clone(t_map *original, t_function copy_elem)
 	t_citerator		iter;
 	t_mapentry		*elem;
 
-	copy = map_new(original->identity_checker, original->del);
+	copy = map_new(original->comparator, original->del);
 	iter = citerator_new((const t_clist *)original);
 	while (citerator_has_next(&iter))
 	{
