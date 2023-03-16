@@ -4,7 +4,6 @@ void	*lst_unshift(t_list *list, void *element)
 {
 	t_entry	*entry;
 
-	//ft_putendl("a");
 	entry = lst_new_entry(element);
 	if (!entry)
 	{
