@@ -47,7 +47,7 @@ t_list	*lst_filter_in(t_list *list, t_predicate filter)
 			entry->value = NULL;
 		}
 	}
-	lst_clear(&tmp, TRUE);
+	lst_clear(&tmp);
 	return (list);
 }
 

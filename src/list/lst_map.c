@@ -11,7 +11,7 @@ char	lst_map_to(t_list *list, t_list *dest, t_mapper_options options)
 	{
 		if (!lst_push(dest, ((t_fun)options.mapper)(entry->value)))
 		{
-			lst_clear(dest, TRUE);
+			lst_clear(dest);
 			return (FALSE);
 		}
 		entry = entry->next;
@@ -28,7 +28,7 @@ t_list	*lst_map(t_list *list, t_mapper_options options, t_consumer del)
 		return (NULL);
 	if (!lst_map_to(list, copy, options))
 	{
-		lst_destroy(copy, TRUE);
+		lst_destroy(copy);
 		return (NULL);
 	}
 	return (copy);

@@ -48,6 +48,6 @@ int	color_deserialize(const char *str, t_color *color)
 			*color = color_new(r, g, b);
 		}
 	}
-	lst_destroy(parts, TRUE);
+	lst_destroy(parts);
 	return (ret);
 }

@@ -7,7 +7,8 @@ void	*lst_unshift(t_list *list, void *element)
 	entry = lst_new_entry(element);
 	if (!entry)
 	{
-		list->del(element);
+		if (list->del)
+			list->del(element);
 		return (NULL);
 	}
 	entry->next = list->first;

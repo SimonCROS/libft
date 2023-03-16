@@ -14,7 +14,7 @@ void	clst_clear(t_clist *list)
 	}
 }
 
-void	lst_clear(t_list *list, char del)
+void	lst_shallow_clear(t_list *list)
 {
 	t_entry	*entry;
 
@@ -23,7 +23,21 @@ void	lst_clear(t_list *list, char del)
 	entry = lst_shift_entry(list);
 	while (entry)
 	{
-		if (del && list->del && entry->value)
+		free(entry);
+		entry = lst_shift_entry(list);
+	}
+}
+
+void	lst_clear(t_list *list)
+{
+	t_entry	*entry;
+
+	if (lst_is_empty(list))
+		return ;
+	entry = lst_shift_entry(list);
+	while (entry)
+	{
+		if (list->del && entry->value)
 			list->del(entry->value);
 		free(entry);
 		entry = lst_shift_entry(list);

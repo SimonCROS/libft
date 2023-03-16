@@ -18,7 +18,7 @@ t_list	*as_list(void **array, t_consumer del)
 		if (!entry)
 		{
 			list->del = NULL;
-			lst_destroy(list, TRUE);
+			lst_destroy(list);
 			return (NULL);
 		}
 		*prev = entry;
