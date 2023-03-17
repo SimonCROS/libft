@@ -4,6 +4,7 @@ void	*clst_push(t_clist *list, void *entry)
 {
 	if (!list || !entry)
 		return (NULL);
+	((t_centry *)entry)->next = NULL;
 	if (clst_is_empty(list))
 		list->first = entry;
 	else
