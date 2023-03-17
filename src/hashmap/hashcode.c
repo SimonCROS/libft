@@ -1,7 +1,7 @@
 #include "libft.h"
 
 t_hashmap	*new_hash() {
-	int			i;
+	unsigned int			i;
 	t_hashmap	*hashmap;
 
 	hashmap = ft_calloc(1, sizeof(t_hashmap));
@@ -39,7 +39,7 @@ unsigned int code_hash(t_hashmap *hashmap, char *key) {
 int	get_hash(t_hashmap *hashmap, char *key) {
 	t_hashpair *current;
 
-	current = hashmap->list[hashcode(hashmap, key)];
+	current = hashmap->list[code_hash(hashmap, key)];
 	while (current) {
 		if (ft_strcmp(current->key, key)) {
 			return (current->value);

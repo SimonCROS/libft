@@ -10,6 +10,7 @@ override CONV		:= convert
 override MAP		:= map
 override DLIST		:= dlist
 override LIST		:= list
+override HASHMAP	:= hashmap
 override ITERAT		:= iterator
 override MATH		:= math
 override HASH		:= hash
@@ -56,6 +57,10 @@ override CONV_SRCS	:= $(addprefix $(CONV)/,	\
 				ft_iton.c						\
 				ft_iton_to.c					\
 				ft_atof.c						\
+				)
+
+override HASHMAP_SRCS := $(addprefix $(HASHMAP)/,\
+				hashcode.c						\
 				)
 
 override ITERAT_SRCS:= $(addprefix $(ITERAT)/,	\
@@ -204,6 +209,7 @@ override SRCS		:=							\
 				$(MAP_SRCS)						\
 				$(DLIST_SRCS)					\
 				$(LIST_SRCS)					\
+				$(HASHMAP_SRCS)					\
 				$(ITERAT_SRCS)					\
 				$(MATH_SRCS)					\
 				$(MATRIX_SRCS)					\
