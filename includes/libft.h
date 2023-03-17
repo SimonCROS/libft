@@ -331,7 +331,9 @@ struct s_hashmap
 	unsigned int	len;
 };
 
-
+t_hashmap	*new_hash();
+int			set_hash(t_hashmap *hashmap, char *key, int value);
+int			get_hash(t_hashmap *hashmap, char *key);
 
 /*** Maps implementation ******************************************************/
 

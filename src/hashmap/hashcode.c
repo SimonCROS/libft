@@ -9,7 +9,7 @@ t_hashmap	*new_hash() {
 		return (NULL);
 	hashmap->cap = 8;
 	hashmap->len = 0;
-	hashmap->list = ft_calloc(hashmap->cap, sizeof(t_hashpair));
+	hashmap->list = ft_calloc(hashmap->cap, sizeof(t_hashpair *));
 	i = 0;
 	while (i < hashmap->cap) {
 		if (!(hashmap->list[i])) {
@@ -47,4 +47,29 @@ int	get_hash(t_hashmap *hashmap, char *key) {
 		current = current->next;
 	}
 	return (-1);
+}
+
+int	set_hash(t_hashmap *hashmap, char *key, int value) {
+	unsigned int	index;
+	t_hashpair		*current;
+	t_hashpair		*new_hash;
+
+	index = code_hash(hashmap, key);
+	current = hashmap->list[index];
+	while (current) {
+		if (!ft_strcmp(current->key, key)) {
+			current->value = value;
+			return (0);
+		}
+		current = current->next;
+	}
+	new_hash = malloc(sizeof(t_hashpair));
+	if (!new_hash)
+		return (1);
+	new_hash->key = key;
+	new_hash->value = value;
+	new_hash->next = hashmap->list[index];
+	hashmap->list[index] = new_hash;
+	hashmap->len++;
+	return (0);
 }
