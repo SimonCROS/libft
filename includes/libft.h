@@ -41,6 +41,9 @@ typedef struct s_entry			t_entry;
 typedef struct s_clist			t_clist;
 typedef struct s_list			t_list;
 
+typedef struct s_hashpair		t_hashpair;
+typedef struct s_hashmap		t_hashmap;
+
 typedef struct s_mapper_options	t_mapper_options;
 
 typedef struct s_mapentry		t_mapentry;
@@ -311,6 +314,24 @@ void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_bzero(void *s, size_t n);
+
+/*** HashMap implementation ***************************************************/
+
+struct s_hashpair
+{
+	char		*key;
+	int			value;
+	t_hashpair	*next;
+};
+
+struct s_hashmap
+{
+	t_hashpair		**list;
+	unsigned int	cap;
+	unsigned int	len;
+};
+
+
 
 /*** Maps implementation ******************************************************/
 
