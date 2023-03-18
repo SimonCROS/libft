@@ -13,7 +13,6 @@ override LIST		:= list
 override HASHMAP	:= hashmap
 override ITERAT		:= iterator
 override MATH		:= math
-override HASH		:= hash
 override MEMORY		:= memory
 override PRINT		:= print
 override STRING		:= string
@@ -60,7 +59,11 @@ override CONV_SRCS	:= $(addprefix $(CONV)/,	\
 				)
 
 override HASHMAP_SRCS := $(addprefix $(HASHMAP)/,\
-				hashcode.c						\
+				__hashmap_key_pre.c				\
+				hashmap_clear.c					\
+				hashmap_get.c					\
+				hashmap_init.c					\
+				hashmap_set.c					\
 				)
 
 override ITERAT_SRCS:= $(addprefix $(ITERAT)/,	\
@@ -182,6 +185,7 @@ override STRING_SRCS:= $(addprefix $(STRING)/,	\
 				ft_toupper.c					\
 				ft_strto.c						\
 				ft_strcnt.c						\
+				str_hashcode.c					\
 				str_is_empty.c					\
 				str_append.c					\
 				str_new.c						\

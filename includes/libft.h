@@ -162,6 +162,7 @@ char		**str_rmlast(char **container);
  * @return the same container, for chaining, or NULL in case of error.
  */
 // char		**str_insert(char **container, char *str, int index);
+t_uint32	str_hashcode(char *key);
 
 /*** String utils *************************************************************/
 
@@ -314,160 +315,6 @@ void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_bzero(void *s, size_t n);
-
-/*** HashMap implementation ***************************************************/
-
-struct s_hashpair
-{
-	char		*key;
-	int			value;
-	t_hashpair	*next;
-};
-
-struct s_hashmap
-{
-	t_hashpair		**list;
-	unsigned int	cap;
-	unsigned int	len;
-};
-
-t_hashmap	*new_hash(void);
-int			set_hash(t_hashmap *hashmap, char *key, int value);
-int			get_hash(t_hashmap *hashmap, char *key);
-
-/*** Maps implementation ******************************************************/
-
-struct s_mapentry
-{
-	t_mapentry	*next;
-	void		*key;
-	void		*value;
-};
-
-struct s_map
-{
-	t_biconsumer	del;
-	t_mapentry		*first;
-	int				size;
-	t_bipredicate	comparator;
-};
-
-/**
- * @brief Create a new map, using comparator to get element.
- * 
- * @param comparator comparator for key values
- * @param del key and value destroyer
- * @return the new map
- */
-t_map		*map_new(t_bipredicate comparator, t_biconsumer del);
-/**
- * @brief Get an entry of the map, using comparator to compare keys.
- * 
- * @param map the map
- * @param key the key of the entry to get
- * @param value_container the container for resulting value
- * @return the entry if found, else NULL
- */
-t_mapentry	*map_get_entry(t_map *map, void *key);
-/**
- * @brief Get a value of the map, using comparator to compare keys. Check
- * map_contains_key before to be sure of the result.
- * 
- * @param map the map
- * @param key the key of the value to get
- * @param value_container the container for resulting value
- * @return the value if found, else NULL
- */
-void		*map_get(t_map *map, void *key);
-/**
- * @brief Put a new entry in the map, and delete the old value if it already
- * exists.
- * 
- * @param map the map
- * @param key the key
- * @param value the value
- * @return TRUE if the operation succeeded, else FALSE
- */
-int			map_put(t_map *map, void *key, void *value);
-/**
- * @brief Change the value of the key if it already exists, else do nothing.
- * The old key will not be destroyed, so the del function will be called with
- * NULL as first parameter.
- * 
- * @param map the map
- * @param key the key
- * @param new_value the new value
- * @return TRUE if the operation succeeded, else FALSE
- */
-int			map_replace(t_map *map, void *key, void *new_value);
-/**
- * @brief Check if a key exists in the map.
- * 
- * @param map the map
- * @param key the key to test with comparator
- * @return TRUE if exists, else FALSE
- */
-int			map_contains_key(t_map *map, void *key);
-/**
- * @brief Remove an element from the map and return the value.
- * The old key will be destroyed, so the del function will be called with
- * NULL as second parameter.
- * 
- * @param map the map
- * @param map the key to delete
- * @return the removed value, or NULL if value not exists
- */
-void		*map_remove(t_map *map, void *key);
-/**
- * @brief Delete an element of the map.
- * 
- * @param map the map
- * @param map the key to delete
- * @return TRUE if the operation succeeded, else FALSE
- */
-int			map_delete(t_map *map, void *key);
-/**
- * @brief Clear the map and free all elements using map->del.
- * 
- * @param map the map to clear
- */
-void		map_clear(t_map *map);
-/**
- * @brief Free all the entries without freeing keys or values.
- * 
- * @param map the map to free
- */
-void		map_free(t_map *map);
-/**
- * @brief Clear and free the map.
- * 
- * @param map the map to destroy
- */
-void		map_destroy(t_map *map);
-/**
- * @brief Creates a shallow copy of an existing map
- * 
- * @param original the original map
- * @return the copy of the original map
- */
-t_map		*map_copy(t_map *original);
-/**
- * @brief Creates a deep copy of an existing map
- * 
- * @param original the original map
- * @param copy_elem the function that copies the content of key and value
- * @return the copy of the original map
- */
-t_map		*map_clone(t_map *original, t_function copy_elem);
-/**
- * @brief Sort the map using the comparator and return the result in a new map.
- * 
- * @param map the map
- * @param comparator the comparator, for example ft_strcmp to sort in ASCII
- * order.
- * @return the same map, for chaining
- */
-t_map		*map_sort(t_map *map, t_comparator comparator);
 
 /*** Double chained lists implementation **************************************/
 
@@ -942,6 +789,162 @@ int			citerator_has_next(const t_citerator *iterator);
 void		*citerator_next(t_citerator *iterator);
 void		citerator_reset(t_citerator *iterator);
 t_citerator	citerator_new(const t_clist *list);
+
+/*** HashMap implementation ***************************************************/
+
+struct s_hashpair
+{
+	t_centry	entry;
+	char		*key;
+	void		*value;
+};
+
+struct s_hashmap
+{
+	t_clist			*buckets;
+	unsigned int	cap;
+	unsigned int	len;
+};
+
+int			__hashmap_key_pre(t_hashpair *pair, char *key);
+char		hashmap_init(t_hashmap *hashmap);
+char		hashmap_set(t_hashmap *hashmap, char *key, void *value);
+void		*hashmap_get(t_hashmap *hashmap, char *key);
+void		hashmap_clear(t_hashmap *hashmap);
+
+/*** Maps implementation ******************************************************/
+
+struct s_mapentry
+{
+	t_mapentry	*next;
+	void		*key;
+	void		*value;
+};
+
+struct s_map
+{
+	t_biconsumer	del;
+	t_mapentry		*first;
+	int				size;
+	t_bipredicate	comparator;
+};
+
+/**
+ * @brief Create a new map, using comparator to get element.
+ * 
+ * @param comparator comparator for key values
+ * @param del key and value destroyer
+ * @return the new map
+ */
+t_map		*map_new(t_bipredicate comparator, t_biconsumer del);
+/**
+ * @brief Get an entry of the map, using comparator to compare keys.
+ * 
+ * @param map the map
+ * @param key the key of the entry to get
+ * @param value_container the container for resulting value
+ * @return the entry if found, else NULL
+ */
+t_mapentry	*map_get_entry(t_map *map, void *key);
+/**
+ * @brief Get a value of the map, using comparator to compare keys. Check
+ * map_contains_key before to be sure of the result.
+ * 
+ * @param map the map
+ * @param key the key of the value to get
+ * @param value_container the container for resulting value
+ * @return the value if found, else NULL
+ */
+void		*map_get(t_map *map, void *key);
+/**
+ * @brief Put a new entry in the map, and delete the old value if it already
+ * exists.
+ * 
+ * @param map the map
+ * @param key the key
+ * @param value the value
+ * @return TRUE if the operation succeeded, else FALSE
+ */
+int			map_put(t_map *map, void *key, void *value);
+/**
+ * @brief Change the value of the key if it already exists, else do nothing.
+ * The old key will not be destroyed, so the del function will be called with
+ * NULL as first parameter.
+ * 
+ * @param map the map
+ * @param key the key
+ * @param new_value the new value
+ * @return TRUE if the operation succeeded, else FALSE
+ */
+int			map_replace(t_map *map, void *key, void *new_value);
+/**
+ * @brief Check if a key exists in the map.
+ * 
+ * @param map the map
+ * @param key the key to test with comparator
+ * @return TRUE if exists, else FALSE
+ */
+int			map_contains_key(t_map *map, void *key);
+/**
+ * @brief Remove an element from the map and return the value.
+ * The old key will be destroyed, so the del function will be called with
+ * NULL as second parameter.
+ * 
+ * @param map the map
+ * @param map the key to delete
+ * @return the removed value, or NULL if value not exists
+ */
+void		*map_remove(t_map *map, void *key);
+/**
+ * @brief Delete an element of the map.
+ * 
+ * @param map the map
+ * @param map the key to delete
+ * @return TRUE if the operation succeeded, else FALSE
+ */
+int			map_delete(t_map *map, void *key);
+/**
+ * @brief Clear the map and free all elements using map->del.
+ * 
+ * @param map the map to clear
+ */
+void		map_clear(t_map *map);
+/**
+ * @brief Free all the entries without freeing keys or values.
+ * 
+ * @param map the map to free
+ */
+void		map_free(t_map *map);
+/**
+ * @brief Clear and free the map.
+ * 
+ * @param map the map to destroy
+ */
+void		map_destroy(t_map *map);
+/**
+ * @brief Creates a shallow copy of an existing map
+ * 
+ * @param original the original map
+ * @return the copy of the original map
+ */
+t_map		*map_copy(t_map *original);
+/**
+ * @brief Creates a deep copy of an existing map
+ * 
+ * @param original the original map
+ * @param copy_elem the function that copies the content of key and value
+ * @return the copy of the original map
+ */
+t_map		*map_clone(t_map *original, t_function copy_elem);
+/**
+ * @brief Sort the map using the comparator and return the result in a new map.
+ * 
+ * @param map the map
+ * @param comparator the comparator, for example ft_strcmp to sort in ASCII
+ * order.
+ * @return the same map, for chaining
+ */
+t_map		*map_sort(t_map *map, t_comparator comparator);
 
 /*** Colors implementation ****************************************************/
 

@@ -9,7 +9,8 @@ void	clst_clear(t_clist *list)
 	entry = clst_shift(list);
 	while (entry)
 	{
-		list->del(entry);
+		if (list->del)
+			list->del(entry);
 		entry = clst_shift(list);
 	}
 }
