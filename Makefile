@@ -114,6 +114,7 @@ override LIST_SRCS	:= $(addprefix $(LIST)/,	\
 				lst_map.c						\
 				lst_new.c						\
 				lst_new_entry.c					\
+				lst_find_first.c				\
 				lst_pop.c						\
 				lst_push.c						\
 				lst_reduce.c					\
