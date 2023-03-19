@@ -12,7 +12,7 @@ char	hashmap_init(t_hashmap *hashmap)
 	i = 0;
 	while (i < hashmap->cap)
 	{
-		clst_init(hashmap->buckets + i, NULL);
+		clst_init(hashmap->buckets + i, (t_con)free);
 		i++;
 	}
 	return (TRUE);

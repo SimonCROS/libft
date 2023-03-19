@@ -811,6 +811,7 @@ char		hashmap_init(t_hashmap *hashmap);
 char		hashmap_set(t_hashmap *hashmap, char *key, void *value);
 void		*hashmap_get(t_hashmap *hashmap, char *key);
 void		hashmap_clear(t_hashmap *hashmap);
+void		hashmap_free(t_hashmap *hashmap);
 
 /*** Maps implementation ******************************************************/
 

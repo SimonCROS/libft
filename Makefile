@@ -61,6 +61,7 @@ override CONV_SRCS	:= $(addprefix $(CONV)/,	\
 override HASHMAP_SRCS := $(addprefix $(HASHMAP)/,\
 				__hashmap_key_pre.c				\
 				hashmap_clear.c					\
+				hashmap_free.c					\
 				hashmap_get.c					\
 				hashmap_init.c					\
 				hashmap_set.c					\
