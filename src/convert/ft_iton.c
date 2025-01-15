@@ -5,8 +5,8 @@ char	*ft_itoa(int n)
 	int		len;
 	char	*str;
 
-	len = ft_intlen(n) + 1;
-	str = malloc(len);
+	len = ft_intlen(n);
+	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
 	str[len] = 0;
