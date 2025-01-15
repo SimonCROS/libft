@@ -21,3 +21,15 @@ char	*ft_strdup(const char *s1)
 	pointer[i] = 0;
 	return (pointer);
 }
+
+char	*ft_strndup(char *ptr, size_t n)
+{
+	char	*line;
+
+	line = malloc(n + 1);
+	if (!line)
+		return (NULL);
+	ft_memcpy(line, ptr, n);
+	line[n] = '\0';
+	return (line);
+}

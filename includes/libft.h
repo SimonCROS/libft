@@ -292,6 +292,7 @@ char		**ft_splitf(char *string, char separator);
  */
 int			ft_str_equals(char *s1, char *s2);
 char		*ft_strdup(const char *s1);
+char		*ft_strndup(char *ptr, size_t n);
 char		*ft_strtoupper(char *str);
 char		*ft_strtolower(char *str);
 size_t		ft_strlen(const char *s);
